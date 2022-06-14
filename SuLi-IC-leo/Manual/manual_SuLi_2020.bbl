@@ -1,0 +1,414 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Aureli%
+, Maranzoni%
+, Mignosa%
+\BCBL {}\ \BBA {} Ziveri%
+}{%
+Aureli%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2008}}%
+}]{%
+aureli2008}
+\APACinsertmetastar {%
+aureli2008}%
+\begin{APACrefauthors}%
+Aureli, F.%
+, Maranzoni, A.%
+, Mignosa, P.%
+\BCBL {}\ \BBA {} Ziveri, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Dam-break flows: acquisition of experimental data
+  through an imaging technique and 2D numerical modeling} {Dam-break flows:
+  acquisition of experimental data through an imaging technique and 2d
+  numerical modeling}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Hydraulic Engineering}{134}{8}{1089--1101}.
+\newblock
+\begin{APACrefDOI} \doi{10.1061/(ASCE)0733-9429(2008)134:8(1089)}
+  \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Beji%
+\ \BBA {} Battjes%
+}{%
+Beji%
+\ \BBA {} Battjes%
+}{%
+{\protect \APACyear {1994}}%
+}]{%
+beji1994}
+\APACinsertmetastar {%
+beji1994}%
+\begin{APACrefauthors}%
+Beji, S.%
+\BCBT {}\ \BBA {} Battjes, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1994}{05}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Numerical simulation of nonlinear wave propagation over
+  a bar} {Numerical simulation of nonlinear wave propagation over a
+  bar}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Coastal Engineering}{23}{}{1--16}.
+\newblock
+\begin{APACrefDOI} \doi{10.1016/0378-3839(94)90012-4} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fennema%
+\ \BBA {} Chaudhry%
+}{%
+Fennema%
+\ \BBA {} Chaudhry%
+}{%
+{\protect \APACyear {1990}}%
+}]{%
+fennema1990}
+\APACinsertmetastar {%
+fennema1990}%
+\begin{APACrefauthors}%
+Fennema, R\BPBI J.%
+\BCBT {}\ \BBA {} Chaudhry, M\BPBI H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1990}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Explicit methods for 2-D transient free surface flows}
+  {Explicit methods for 2-d transient free surface flows}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Hydraulic Engineering}{116}{8}{1013--1034}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Higuera%
+, Lara%
+\BCBL {}\ \BBA {} Losada%
+}{%
+Higuera%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+higuera2013}
+\APACinsertmetastar {%
+higuera2013}%
+\begin{APACrefauthors}%
+Higuera, P.%
+, Lara, J\BPBI L.%
+\BCBL {}\ \BBA {} Losada, I\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Realistic wave generation and active wave absorption for
+  Navier--Stokes models: Application to OpenFOAM{\textregistered}} {Realistic
+  wave generation and active wave absorption for navier--stokes models:
+  Application to openfoam{\textregistered}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Coastal Engineering}{71}{}{102--118}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Koshizuka%
+, Oka%
+\BCBL {}\ \BBA {} Tamako%
+}{%
+Koshizuka%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1995}}%
+}]{%
+koshizuka1995}
+\APACinsertmetastar {%
+koshizuka1995}%
+\begin{APACrefauthors}%
+Koshizuka, S.%
+, Oka, Y.%
+\BCBL {}\ \BBA {} Tamako, H.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1995}{}{}.
+\newblock
+\APACrefbtitle {A particle method for calculating splashing of incompressible
+  viscous fluid} {A particle method for calculating splashing of incompressible
+  viscous fluid}\ \APACbVolEdTR{}{\BTR{}}.
+\newblock
+\APACaddressInstitution{}{American Nuclear Society, Inc., La Grange Park, IL
+  (United States)}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Monteiro%
+, Lucchese%
+\BCBL {}\ \BBA {} Schettini%
+}{%
+Monteiro%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+monteiro2017}
+\APACinsertmetastar {%
+monteiro2017}%
+\begin{APACrefauthors}%
+Monteiro, L\BPBI R.%
+, Lucchese, L\BPBI V.%
+\BCBL {}\ \BBA {} Schettini, E\BPBI B\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Distribuição de Pressão em Escoamentos com
+  Superfície Livre Devido à Curvatura das Linhas de Corrente} {Distribuição
+  de pressão em escoamentos com superfície livre devido à curvatura das
+  linhas de corrente}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {XXII Simpósio Brasileiro de Recursos Hídricos.} {Xxii
+  simpósio brasileiro de recursos hídricos.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Monteiro%
+, Lucchese%
+\BCBL {}\ \BBA {} Schettini%
+}{%
+Monteiro%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+monteiro2019}
+\APACinsertmetastar {%
+monteiro2019}%
+\begin{APACrefauthors}%
+Monteiro, L\BPBI R.%
+, Lucchese, L\BPBI V.%
+\BCBL {}\ \BBA {} Schettini, E\BPBI B\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Comparison between hydrostatic and total pressure
+  simulations of dam-break flows} {Comparison between hydrostatic and total
+  pressure simulations of dam-break flows}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Hydraulic Research}{58}{5}{725--737}.
+\newblock
+\begin{APACrefDOI} \doi{10.1080/00221686.2019.1671509} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Monteiro%
+\ \BBA {} Schettini%
+}{%
+Monteiro%
+\ \BBA {} Schettini%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+monteiro2014}
+\APACinsertmetastar {%
+monteiro2014}%
+\begin{APACrefauthors}%
+Monteiro, L\BPBI R.%
+\BCBT {}\ \BBA {} Schettini, E\BPBI B\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Compara{\c{c}}{\~a}o entre a aproxima{\c{c}}{\~a}o
+  hidrost{\'a}tica e a n{\~a}o-hidrost{\'a}tica na simula{\c{c}}{\~a}o
+  num{\'e}rica de escoamentos com superf{\'\i}cie livre} {Compara{\c{c}}{\~a}o
+  entre a aproxima{\c{c}}{\~a}o hidrost{\'a}tica e a n{\~a}o-hidrost{\'a}tica
+  na simula{\c{c}}{\~a}o num{\'e}rica de escoamentos com superf{\'\i}cie
+  livre}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Revista Brasileira de Recursos Hídricos}{20}{4}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.21168/rbrh.v20n4.p1051-1062} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Nasr-Azadani%
+\ \BBA {} Meiburg%
+}{%
+Nasr-Azadani%
+\ \BBA {} Meiburg%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+nasr2014}
+\APACinsertmetastar {%
+nasr2014}%
+\begin{APACrefauthors}%
+Nasr-Azadani, M\BPBI M.%
+\BCBT {}\ \BBA {} Meiburg, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Turbidity currents interacting with three-dimensional
+  seafloor topography} {Turbidity currents interacting with three-dimensional
+  seafloor topography}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Fluid Mechanics}{745}{}{409–443}.
+\newblock
+\begin{APACrefDOI} \doi{10.1017/jfm.2014.47} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Patnaik%
+, Guirguis%
+, Boris%
+\BCBL {}\ \BBA {} Oran%
+}{%
+Patnaik%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1987}}%
+}]{%
+patnaik1987}
+\APACinsertmetastar {%
+patnaik1987}%
+\begin{APACrefauthors}%
+Patnaik, G.%
+, Guirguis, R.%
+, Boris, J.%
+\BCBL {}\ \BBA {} Oran, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1987}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A barely implicit correction for flux-corrected
+  transport} {A barely implicit correction for flux-corrected
+  transport}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Computational Physics}{71}{1}{1--20}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rigotti%
+\ \protect \BOthers {.}}{%
+Rigotti%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+rigotti2015}
+\APACinsertmetastar {%
+rigotti2015}%
+\begin{APACrefauthors}%
+Rigotti, J\BPBI A.%
+\BCBT {}\ \BOthersPeriod {.}
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Funcionalidade ecol{\'o}gica em cursos d'{\'a}gua:
+  implica{\c{c}}{\~o}es para a requalifica{\c{c}}{\~a}o da paisagem fluvial}
+  {Funcionalidade ecol{\'o}gica em cursos d'{\'a}gua: implica{\c{c}}{\~o}es
+  para a requalifica{\c{c}}{\~a}o da paisagem fluvial}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Mestrado Acadêmico no Programa de Pós-graduação em
+  Geografia da Universidade Federal de Santa Catarina}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rijn%
+}{%
+Rijn%
+}{%
+{\protect \APACyear {1980}}%
+}]{%
+delft1980}
+\APACinsertmetastar {%
+delft1980}%
+\begin{APACrefauthors}%
+Rijn, L\BPBI v.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1980}{}{}.
+\newblock
+\APACrefbtitle {Storm surge barrier Oosterschelde - computation of siltation in
+  dredged trenches: Semi-empirical model for the flow in dredged trenches}
+  {Storm surge barrier oosterschelde - computation of siltation in dredged
+  trenches: Semi-empirical model for the flow in dredged trenches}\
+  [investigation].
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wang%
+, Roache%
+, Jia%
+, Schmalz%
+\BCBL {}\ \BBA {} Smith%
+}{%
+Wang%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2009}}%
+}]{%
+wang2009}
+\APACinsertmetastar {%
+wang2009}%
+\begin{APACrefauthors}%
+Wang, S\BPBI S.%
+, Roache, P\BPBI J.%
+, Jia, Y.%
+, Schmalz, R\BPBI A.%
+\BCBL {}\ \BBA {} Smith, P\BPBI E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2009}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Verification and validation of 3D free-surface flow
+  models} {Verification and validation of 3d free-surface flow models}.{\BBCQ}.
+\newblock
+\begin{APACrefDOI} \doi{10.1061/9780784409572} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Yue%
+, Lin%
+\BCBL {}\ \BBA {} Patel%
+}{%
+Yue%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2003}}%
+}]{%
+yue2003}
+\APACinsertmetastar {%
+yue2003}%
+\begin{APACrefauthors}%
+Yue, W.%
+, Lin, C\BHBI L.%
+\BCBL {}\ \BBA {} Patel, V\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Numerical simulation of unsteady multidimensional free
+  surface motions by level set method} {Numerical simulation of unsteady
+  multidimensional free surface motions by level set method}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{International Journal for Numerical Methods in
+  Fluids}{42}{8}{853--884}.
+\newblock
+\begin{APACrefDOI} \doi{10.1002/fld.555} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

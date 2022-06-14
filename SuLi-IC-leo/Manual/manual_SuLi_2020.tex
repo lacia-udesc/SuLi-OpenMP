@@ -1,0 +1,698 @@
+\documentclass[12pt, a4paper]{article}
+
+% Pedro %
+%ASS.: PEDRO%
+%\red{ASS.: PEDRO}
+\usepackage[pdftex]{color,graphicx}
+\usepackage{appendix}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{listings} % http://ctan.org/pkg/listings % http://linorg.usp.br/CTAN/macros/latex/contrib/listings/listings-devel.pdf
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape=True,
+  escapeinside='',
+  breaklines=true
+}
+
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\SL}{{\bf SuLi}}
+\newcommand{\SLIT}{{\bf SuLi-IT}}
+\newcommand{\SLIC}{{\bf SuLi-IC}}
+% Pedro %
+
+%
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+%\usepackage{listings}
+%\lstset{language=C}
+\usepackage{comment}
+%\usepackage[dvips]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,filecolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{psfrag}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\pgfplotsset{/pgf/number format/use comma,compat=newest}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel} % English language/hyphenation
+%\usepackage[Brazil]{babel}
+
+\usepackage[natbibapa]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+
+%\hypersetup{
+%colorlinks=true,
+%linkcolor=blue,           
+%}
+
+\makeatletter
+\def\@xobeysp{ }
+\makeatother
+
+\usepackage[top=1.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\newcommand{\p}{\partial}
+\newcommand{\bomega}{\boldsymbol{\omega}}
+\newcommand{\bnabla}{\boldsymbol{\nabla}}
+
+% Useful packages
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\graphicspath{{images/}}
+\usepackage{listings}
+\usepackage[nottoc]{tocbibind}
+\usepackage{gensymb}
+\usepackage{tikz,tkz-tab}
+\usepackage{lastpage}
+
+% Meta content 
+\title{Manual do Usuário}
+\author{
+  Leonardo Romero Monteiro \\[.5 cm]
+  Pedro Miguel de Andrade Filho \\[.5 cm]
+  Vinícios Morigi
+}
+\date{Janeiro de 2021}
+\pagestyle{headings}
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+%Color definitions
+\definecolor{dark}{RGB}{22,75,94}
+\definecolor{lightgrey}{rgb}{.90,.90,.90}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,     
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+\begin{document}
+
+
+\begin{titlepage}
+$ $
+
+\vspace{3cm}
+\begin{center}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.25\textwidth]{suli}
+\end{figure}
+
+\vspace{1cm}
+
+
+{\LARGE SuLi - Simulador de Escoamentos com Superfície Livre}
+
+	\noindent\rule{\linewidth}{0.2 mm} \\[1 cm]
+	{\LARGE \bfseries \thetitle}\\[.7 cm]
+	\rule{\linewidth}{0.2 mm} \\[1 cm]
+	
+
+	{ \Large \theauthor}
+	\end{center}
+
+
+\vspace{6cm}
+
+	\begin{flushleft}
+	{\Large Versão 1.0 \\  \thedate}
+	\end{flushleft}
+	
+\end{titlepage}
+
+
+\newpage
+
+
+\begin{titlepage}
+
+
+\begin{table}[htp]
+\centering
+\begin{tabular}{ccc}
+\multirow{4}{*}{\includegraphics[width=0.15\textwidth]{udesc}} & Universidade do Estado de Santa Catarina & \multirow{4}{*}{\includegraphics[width=0.15\textwidth]{lacia}} \\
+                  & Centro de Ciências Tecnológicas &                   \\
+                  & Departamento de Engenharia Civil &                   \\
+                  &   Laboratório de Ciências das Águas &                  
+\end{tabular}
+\end{table}
+
+
+\& \\[.5 cm]  
+
+
+\begin{table}[htp]
+\centering
+\begin{tabular}{ccc}
+\multirow{3}{*}{\includegraphics[width=0.15\textwidth]{ufrgs}} & Universidade Federeal do Rio Grande do Sul & \multirow{3}{*}{\includegraphics[width=0.10\textwidth]{iph}} \\
+                  & Instituto de Pesquisas Hidráulicas &                   \\
+                  & Núcleo de Estudos em Transição e Turbulência &                   \\               
+\end{tabular}
+\end{table}
+
+\vspace{3cm}
+
+\begin{flushleft}
+	
+\noindent\rule{\linewidth}{0.2 mm} \\[1 cm]
+	
+Monteiro, Leonardo Romero; Andrade Filho, Pedro Miguel; Morigi, Vinícios \\[1 cm]
+	
+Manual do Usuário: SuLi - Simulador de Escoamentos com Superfície Livre - Joinville/SC: UDESC/CCT/DEC/LaCiA, 2021. \\[0.2 cm]
+	
+\pageref{LastPage} Páginas \\[1 cm]
+	
+Palavras-chave:
+
+Equações de Navier-Stokes, Escoamento monofásico, Escoamento bifásico, Simulador Numérico. 
+	
+	
+\rule{\linewidth}{0.2 mm} \\[1 cm]
+	
+
+
+
+\vspace{5cm}
+
+
+	{\Large Versão 1.0 \\ Edição brasileira \\ \thedate}
+	\end{flushleft}
+	
+\end{titlepage}
+
+
+
+
+\newpage
+\tableofcontents 
+\newpage
+% \listoffigures \newpage CASO NECESSÁRIO!
+% \listoftables \newpage CASO NECESSÁRIO!
+
+\section{Introdução}
+O programa {\bf SuLi (Superfície Livre)} foi criado em 2014 pelo Núcleo de Estudos em Transição e Turbulência (NETT) pertencente ao Instituto de Pesquisas Hidráulicas da Universidade Federal do Rio Grande do Sul (IPH/UFRGS). Hoje ele é também desenvolvido pelo Laboratório de Ciência das Águas (LaCiA) no Centro de Ciências Tecnológicas da Universidade do Estado de Santa Catarina (CCT/UDESC).
+
+O código possui dois módulos para representação da superfície livre numericamente. Um denominado \SLIT\ que utiliza métodos de rastreamento de interface (\textit{interface-tracking method} o qual simula o fluido de forma monofásica (\cite{monteiro2014}) e outro \SLIC\ que utiliza o método de captura de interface (\textit{interface-capturing method}), baseado na metodologia Level-Set (\cite{monteiro2019}) o qual considera uma composição bifásica do escoamento. \label{itxic}
+
+Este é um código voltado para o desenvolvimento acadêmico e quando aplicado em casos reais de engenharia, o usuário deve conhecer especificamente quais métodos são os mais adequados para cada uso e aplicação. Os desenvolvedores do código não se responsabilizam perante os resultados gerados.
+
+\subsection{Objetivo}
+O \SL\ tem como objetivo ser um código aberto e livre que simula numericamente corpos de água e escoamentos com superfície livre utilizando as equações de Navier-Stokes, fornecendo resultados capazes de suprir análises importantes destes escoamentos. 
+
+O usuário tem a liberdade de definir as condições iniciais e de contorno desejadas, além de modificar o código como assim desejar para atingir os seus objetivos.
+
+
+\subsection{Considerações adicionais}
+O código é escrito na linguagem de programação "Fortran 90"\ desenvolvido na plataforma Linux, utilizando o programa Gfortran (ao usuário do Windows é possível utilizar o código após algumas configurações também abordadas neste manual, vide \ref{WindowsUsers}).
+
+Para o pós-processamento dos resultados é recomendado o programa livre \verb|Paraview| (abordado na seção \ref{visu}), entretanto o usuário tem a liberdade de utilizar qualquer outro programa de seu interesse, bastando adaptar o formato dos dados de saída do \SL\ de acordo com o programa escolhido.
+
+Ao utilizar o módulo \SLIT\ favor referenciar a pulicação \cite{monteiro2014} e caso utilize \SLIC\ favor referenciar a publicação \cite{monteiro2019}. O \SL\ é um código livre e aberto e a única forma de fortalecer o mesmo é ampliando a sua utilização.
+\newpage
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\section{O SuLi}
+Para poder utilizar o \SL\ da melhor forma, é necessário que alguns pré-requisitos de funcionamento sejam instalados e configurados em sua máquina, em contra partida não é essencial o conhecimento avançado do código para o seu uso mais básico, basta um entendimento geral conforme aborda a seção \ref{utilizando_o_codigo}.
+
+\subsection{Pré-Requisitos}
+Os requisitos necessários para a melhor utilização do \SL\ solicitam um computador com sistema operacional 64-bit. A configuração do processador e da memória RAM dependerão dos casos que se deseja simular, mas, de qualquer forma, são indicados computadores com no mínimo: 4 GB de RAM, e; processador i5 ou equivalente. Aconselha-se também se ter ao menos 5 GB livres no HD antes de iniciar qualquer simulação. Quanto melhor for o computador mais rápidas serão as simulações e mais pontos podem ser utilizados no domínio computacional. 
+
+\textbf{Obs.:} Os pré-requisitos são apenas necessários para usuários iniciantes. Usuários avançados podem adaptar as configurações de suas máquinas de acordo com suas necessidades.
+
+\subsection{Instalação}
+\subsubsection{Usuários de Windows}	\label{WindowsUsers}
+Para usuários do Windows, há uma etapa de instalação inicial extra, que envolve a configuração do ambiente Ubuntu. É necessário que siga os passos contidos no Apêndice \ref{InstallUbuntu} e depois retorne a este tópico, prosseguindo a instalação naturalmente idealizada para usuários Linux.
+
+%Update e Upgrade do sistema%
+\subsubsection{Para usuários Linux e Windows}  \label{ContinueInstall}
+Para usuários Linux (ou Windows que já cumpriram o passo anterior), é necessário garantir que o sistema operacional está atualizado a fim de evitar erros de compatibilidade. Para tal, siga os passos seguintes no terminal de comando do seu computador:
+
+\begin{verbatim}
+sudo apt-get update (Para compreender os programas e arquivos desatualizados)
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt-get upgrade (Para efetivamente atualizar o sistema)
+\end{verbatim}
+
+%gfortran e Makefile%
+Prosseguindo, é necessário instalar os programas {\bf gfortran} e {\bf MakeFile} em sua máquina, para que o código do \SL\ possa ser corretamente interpretado e compilado. Portanto, ainda no terminal, siga estes comandos para realizar a instalação:
+
+\begin{verbatim}
+sudo apt-get install gfortran	(Para instalar o gfortran)
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt-get install make	(Para instalar o MakeFile)
+\end{verbatim}
+
+Agora está tudo instalado e configurado para a utilização do \SL. A instalação do visualizador de dados Paraview é apresentada no Capítulo \ref{visu}. Caso a instalação de algum desses pacotes não seja efetuada com sucesso, tente refazer as etapas de configuração, instalação e atualização do sistema. Caso o problema persista entre em contato pelo e-mail: leonardo.monteiro@udesc.br
+
+\subsection{Estrutura}
+Para a utilização do \SL\ existem 3 etapas:
+\begin{itemize}
+	\item Compilação e inicialização do programa:
+		\begin{itemize}
+			\item Arquivo gerador/compilador inicial ``Makefile''.
+		\end{itemize}
+	\item Calculo da simulação numérica:
+		\begin{itemize}
+			\item Algoritmos em Fortran 90 programados para efetivamente realizar a simulação. As condições iniciais e de contorno estão alocadas nesta etapa.
+		\end{itemize}
+	\item Armazenamento dos dados obtidos:
+		\begin{itemize}
+			\item Pastas ``dados'' e ``arquivos'' que armazenam os dados para etapas de pós-processamento e análises futuras.
+		\end{itemize}
+\end{itemize}
+Na seção \ref{utilizando_o_codigo} a apresentação do código é feita de forma profunda, justamente para que o usuário compreenda a liberdade e tenha autonomia de personalizar o programa de acordo com a sua necessidade.
+
+
+\subsection{Compilando}
+A partir do terminal de comando do linux, navegue até o local onde está a pasta do \SL . Ciente dos arquivos presentes na pasta, o usuário pode realizar algumas operações no terminal com o {\bf{Makefile}}, que são:
+\label{limpar_dados}
+\begin{verbatim}
+make          (para compilar o código)*; 
+make clean    (para remover os arquivos auxiliares criados na compilação);
+make allclean (para remover todos os arquivos não básicos para o código).
+\end{verbatim} 
+
+\paragraph{*}	\label{infosmake}
+O comando {\bf{make}} fornece liberdade ao usuário para definir itens específicos relevantes à compilação dentro do arquivo Makefile. Ativando itens na linha ``OPTFC ='' mudará importantes configurações de compilação, por exemplo:
+\begin{itemize}
+
+
+\item\textbf{-mcmodel=medium} $\rightarrow$ possibilitará o uso de mais pontos para a simulação. Utilizar se estiver ocorrendo erro por causa do excesso de pontos.
+
+\item\textbf{-fcheck=all} $\rightarrow$ faz uma verificação do código para identificar se está escrito corretamente. Utilizar quando se modificar bruscamente o código para identificar possíveis erros de escrita.
+
+\end{itemize}
+Contudo, usuários que não tenham conhecimento do uso do Makefile devem utilizar a opção padrão definida.
+
+Toda vez que o usuário modificar algo na escrita das rotinas no código (nos arquivos .f90) deve-se compilá-lo novamente com o comando \verb!make!. Entretanto, se a mudança for em um módulo então deve-se primeiro remover os arquivos auxiliares (\verb!make clean!) e depois sim compilar (\verb!make!).
+
+\subsection{Rodando}
+
+Depois de compilado, para rodar o \SL\ basta digitar o comando \verb!./rodar_3d! no terminal (note que tanto a pasta na qual o programa foi instalado quanto as pastas ``dados'' e ``arquivos'' vão receber novos arquivos, auxiliares ao processo da simulação). Para interromper a simulação, feche o terminal de comando ou aperte o comando \verb!Ctrl+c!.
+
+%\subsection{Problemas conhecidos}
+
+\newpage
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\section{Personalizando o código}	\label{utilizando_o_codigo}
+
+Nesta seção são definidos: o domínio de cálculo, as funções a serem utilizadas para o cálculo das equações, as condições iniciais e as condições de contorno. Aqui entram as principais modificações e personalizações que o usuário pode fazer de acordo com a sua necessidade.
+
+Mesmo que o \SLIT\ e o \SLIC\ sejam semelhantes, existem funções/variáveis particulares de cada um. Quando o item for específico do \SLIT\ a função/variável terá a marcação ¹, caso for específico do \SLIC\ terá a marcação ².
+
+O \SL\ é composto de códigos reunidos em documentos de subrotina, dos quais se complementam e se interdependem, a seguir serão abordadas modificações que podem ser realizadas nos modulos:
+
+\begin{table}[htb]
+	\begin{center}
+		\begin{tabular}{llll}
+		0\_modules.f90 & 1\_principal.f90 & 2\_iniciais.f90 & 3\_contorno.f90 \\
+		4\_plot.f90  & 5\_viscosidade.f90 & 6\_convdiff.f90 & 7\_advectivo.f90 \\
+		8\_derivadas.f90 & 9\_grad.f90 & 10\_pos.f90 & 11\_diversos.f90 \\
+		12\_paraview\_3D.f90 & 13\_mms.f90 & 14\_level\_set.f90² & \\
+		\end{tabular}		
+	\end{center}
+\end{table}
+
+\paragraph{Observação:} Sempre que uma nova simulação for realizada é importante limpar todos os dados existentes referentes a simulações anteriores para que estes não influenciem no andamento e resultado da nova simulação. Para tanto, utilize os comandos apresentados em \ref{limpar_dados} de acordo com a necessidade.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Definindo o domínio}
+
+Na pasta \,\verb|0_modules.f90| são encontradas as variáveis para especificar as dimensões espaciais pelo o número de células do domínio e discretização do intervalo espacial, \verb|(nx,ny,nz)| e \verb|(dx,dy,dz)|, respectivamente. As dimensões do domínio são referenciadas por:
+\begin{lstlisting}
+Eixo x	$\rightarrow (nx+1) \times dx \rightarrow$  Comprimento		(m)
+Eixo y  $\rightarrow (ny+1) \times dy \rightarrow$  Largura			  (m)
+Eixo z	$\rightarrow (nz+1) \times dz \rightarrow$  Profundidade	(m)
+\end{lstlisting}	\label{eixos}
+
+A malha temporal da simulação é definida pelas seguintes variáveis:
+\begin{lstlisting}
+dt $\rightarrow$   Intervalo de tempo (s)$^*,^2$
+ts $\rightarrow$   Tempo total	 (s)
+\end{lstlisting}
+
+\paragraph{*,²} Toda vez que o parâmetro \verb|dt| for alterado, seu respectivo valor também deverá ser alterado no denominador da expressão do parâmetro \verb|ts|!
+
+\paragraph{Observação:} É importante salientar que o domínio espacial do \SL\ foi feito para realizar simulações em três dimensões (3D) e não em apenas duas (2D). Para tanto, o usuário que quiser minimizar os efeitos de uma terceira dimensão em sua simulação deverá possuir um bom entendimento das equações e leis que regem tais processos, para que os resultados obtidos estejam condizentes com a realidade física e matemática proposta à simulação.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Condições e Configurações Iniciais}
+Continuando em \verb|0_modules.f90|, a primeira condição inicial importante em relação ao escoamento é o parâmetro \verb|uinicial|; que significa a velocidade inicial que o escoamento terá a partir do seu \verb|eixo x|, isto é, ao longo do comprimento do seu escoamento (como denotado em \ref{eixos}). Também existem algumas outras configurações iniciais importantes para o desenvolvimento da simulação, neste e em outros arquivos/módulos/subrotinas, tratados a seguir:
+
+
+\subsubsection{Métodos De Evolução Temporal²}
+Diferentes métodos para calcular a evolução temporal da solução estão disponíveis no \SLIC. Os métodos podem resultar em um grau menor de precisão e com maior rapidez na resolução, ou serem mais precisos porém, consequentemente, mais lentos. Esta função está disponível pelo parâmetro representado por \verb|t_tempo|, acessível em \verb|0_modules.f90| e aplicado em \verb|11_diversos.f90|.
+\begin{lstlisting}[escapeinside='']
+t_tempo	
+  $\rightarrow$  0 para Euler 'Explícito'
+	$\rightarrow$  1 para Runge-Kutta de '2ª Ordem'
+	$\rightarrow$  2 para Runge-Kutta de '3ª Ordem'
+	$\rightarrow$  3 para Adams-Bashforth de '2ª Ordem'
+\end{lstlisting}
+
+\paragraph{Euler Explícito de 1ª Ordem (EE):} mais simples, mais rápido, menos preciso.
+\paragraph{Runge-Kutta de 2ª Ordem (RK2):} mais complexo, mais lento, mais preciso.
+\paragraph{Runge-Kutta de 3ª Ordem (RK3):} ainda mais complexo, ainda mais lento, ainda mais preciso.
+\paragraph{Adams-Bashforth de 2ª Ordem (AB2):} possui menor custo computacional se comparado ao método de RK2, em contrapartida possui restrições quanto a estabilidade do código.
+
+\subsubsection{Termo Advectivo}
+
+É possível obter formas matemáticas distintas porém equivalentes para o cálculo dos termos advectivos da equação de Navier-Stokes. Entretanto, mesmo sendo equivalentes matematicamente, possudem apresentar diferenças numéricas relevantes. Para modificar a forma de cálculo do termo advectivo utilizamos o parâmetro representado por \verb|adv_type| no módulo \verb|7_advectivo.f90|
+\begin{lstlisting}[escapeinside='']
+adv_type  
+  $\rightarrow$  1 para Advectivo 'Clássico'
+  $\rightarrow$  2 para Rotacional
+  $\rightarrow$  3 para 'Antissimétrico'
+\end{lstlisting}
+
+\paragraph{Formulação Clássica:} $H_i = u_j  \dfrac{\partial u_i}{\partial x_j}$
+\paragraph{Formulação Rotacional:} $H_i = u_j \left(\dfrac{\partial u_i}{\partial x_j} - \dfrac{\partial u_j}{\partial x_i}\right)$
+\paragraph{Formulação Antissimétrica:} $H_i = \dfrac{1}{2} \left(\dfrac{\partial u_i u_j}{\partial x_j} + u_j\dfrac{\partial u_i}{\partial x_j}\right)$
+
+\subsubsection{Derivada Espacial}
+As derivadas espaciais são aproximadas por aproximações numéricas das mesmas. Os tipo de derivada que o \SL\ utiliza para as resoluções dos métodos através de determinados esquemas de interpolação são escolhidos pelo parâmetro \verb|der|, no arquivo \verb|0_module.f90|.
+\begin{lstlisting}[escapeinside='']
+der	
+  $\rightarrow$  1 para Upwind
+	$\rightarrow$  2 para Centrado$^*$
+	$\rightarrow$  3 para Upwind de $2^a$ Ordem$^{*,2}$
+\end{lstlisting}
+
+\paragraph{Upwind:} Proposta para o cálculo de soluções aproximadas de equações de conservação. Possui grande erro de difusão numérica. Também chamado de Upwind de 1ª Ordem.
+\paragraph{Centrado*:} Simples, preciso e rápido mas pode facilmente apresentar problemas de estabilidade numérica.
+\paragraph{Upwind de 2ª Ordem*,²:} Mais preciso do que o Upwind de primeira ordem entretanto mais custoso. Ainda possui erro expressivo de difusão numérica. 
+
+\vspace{0.5cm}
+\noindent *Só é possível utilizar as opções quando \verb|adv_type| for advectivo clássico.
+
+\subsubsection{Obstáculos} \label{obst}
+No \SL\ é possível adicionar obstáculos ao domínio da simulação do escoamento. Este parâmetro é representado no código por \verb|obst_t|, do qual estão acessíveis 10 obstáculos pré-definidos, parâmetro \verb|obst_t| $\in$ [0, 10], cujas características e origens estão referenciadas na seção \ref{met_num}.
+
+\subsubsection{Modelo de Turbulência}
+Utilizado para calcular e antecipar os efeitos da turbulência em fluidos, através da resolução numérica das equações de Navier-Stokes, aqui expostas através dos estudos de LES (Large Eddy Simulation - Simulação de Grandes Vórtices) de Joseph Smagorinsky. O uso de cada opção depende do nível de refino da malha utilizada na simulação. Este parâmetro é representado por \verb|m_turb|.
+\begin{lstlisting}[escapeinside='']
+m_turb  
+  $\rightarrow$  0 para Sem Modelo
+	$\rightarrow$  1 para LES Smagorinsky-Lilly 'Clássico'
+	$\rightarrow$  2 para LES Smagorinsky-Lilly Direcional
+\end{lstlisting}
+
+\paragraph{Sem Modelo:} quando a malha estiver refinada o suficiente, excluindo a necessidade do uso de um modelo de turbulência ou outros métodos estejam sendo utilizados para representar a turbulência.
+\paragraph{LES Smagorinsky-Lilly Clássico:} quando do uso de uma malha não tão refinada, tendo no modelo de turbulência a representação aproximada dos efeitos.
+\paragraph{LES Smagorinsky-Lilly Direcional:} quando do uso de uma malha não tão refinada, tendo no modelo de turbulência a representação aproximada dos efeitos. A denominação "Direcional"\ surgiu após manipulações da equipe. A aplicação deste modelo ainda não foi publicada e nem validada.
+
+\subsubsection{Ondas}
+O \SL\ tem a capacidade de simular a entrada de ondas no domínio espacial do escoamento, através da aplicação numérica da Teoria de Ondas de Stokes. Esta codificação foi baseada no trabalho de \cite{higuera2013}. Os parâmetro a serem representados por \verb|wave_t| são:
+\begin{lstlisting}[escapeinside='']
+wave_t	
+  $\rightarrow$  0 para Sem Onda
+	$\rightarrow$  1 para Onda De Stokes I
+	$\rightarrow$  2 para Onda De Stokes II
+	$\rightarrow$  5 para Onda De Stokes V
+\end{lstlisting}
+
+\paragraph{Sem Onda:} ausência de ondas na simulação.
+\paragraph{Onda De Stokes I:} ondas de menor amplitude e maior comprimento.
+\paragraph{Onda De Stokes II:} ondas de amplitude e comprimento intermediários.
+\paragraph{Onda De Stokes V:} ondas de maior amplitude e menor comprimento.
+
+
+\subsubsection{Plotagem²}
+Refere-se ao que será apresentado ao final dos cálculos realizados pelo \SL\ na simulação, sendo para a visualização/análise do usuário. Parâmetro aqui representado por \verb|t_plot|.
+\begin{lstlisting}
+t_plot	
+  $\rightarrow$  0 para Modo Simples
+	$\rightarrow$  1 para Modo Completo
+\end{lstlisting}
+Na seção \ref{visu} é possível entender melhor o que e como serão visualizados os itens da simulação.
+
+\paragraph{Modo Simples:} Consideram-se os parâmetros \verb|Velocidade| do escoamento; \verb|Level-Set|, ferramenta utilizada pelo \SL\ para diferenciar os fluidos do domínio, em geral água e ar; e \verb|IBM| (Immersed Boundary Method), uma técnica utilizada para os cálculos em simulações de interação fluido-estrutura.
+\paragraph{Modo Completo:} Além dos anteriores, também são levados em consideração os parâmetros \verb|Pressão,  Vorticidade e Viscosidade| do escoamento.
+
+\subsubsection{Método da Solução Manufaturada}
+O Método da Solução Manufaturada (Method of Manufactured Solutions - MMS) é utilizado para a verificação das aplicações numéricas, atribuído apenas aos desenvolvedores de esquemas numéricos a fim de viabilizar o seu uso no código. Este parâmetro é representado por \verb|mms_t|. A presente solução manufaturada é descrita com detalhes por \cite{wang2009}.
+
+\begin{lstlisting}[escapeinside='']
+mms_t	
+  $\rightarrow$  0 para Sem MMS
+	$\rightarrow$  1 para MMS permanente
+	$\rightarrow$  2 para MMS 'não' permanente
+\end{lstlisting}
+
+Os parâmetros \textit{a} e \textit{h0}, encontradas no arquivo \verb|0_module.f90| referem-se a altura da onda e a profundidade do escoamento, respectivamente, para a verificação do código.
+
+Mais informações a respeito de formulações e aplicações podem ser encontradas no artigo \cite{monteiro2019}.
+
+\subsubsection{Coeficientes Específicos}
+Existem ainda 3 parâmetros muito importantes para a simulação (aqui tratados como coeficientes), são eles: $\theta^1$,  \verb|chezy e decliv| encontrados em \verb|0_module.f90|.
+
+\paragraph{Ponderador $\theta^1$:} Este é um coeficiente ponderador de implicitude do termo da pressão. Tem função apenas na versão monofásica Aconselha-se deixar sempre no valor de 0,6. Este parâmetro é baseado no trabalho de \cite{patnaik1987}.
+\paragraph{Chezy:} coeficiente de rugosidade do escoamento. O coeficiente de Chezy (Cz) pode ser aproximado ao coeficiente de Manning (n) através da equação
+
+\begin{center}
+$Cz = \dfrac{Rh^{1/6}}{n}.$
+\end{center}
+
+\paragraph{Decliv:} Declividade (m/m) aplicada ao longo do comprimento do domínio.
+\linebreak
+
+Algumas outras condições iniciais devem ser impostas no arquivo \verb|2_iniciais.f90|. Variáveis como a velocidade ($u,v,w$), as pressões ($prd1$) e desnível¹ ($eta1$)  podem ser inseridas de acordo com o usuário sem grandes dificuldades (sempre respeitadas as condições de estabilidade do código).
+
+No módulo \SLIC, o desnível da água (a posição da interface entre a água e o ar) deve ser definida na subtirona \verb|level_set_ini| dentro do arquivo \verb|14_level_set.f90|, melhor detalhado no subítem \ref{sub:levelset}.
+
+
+\subsubsection{Camada Esponja}
+
+A camada esponja é um artificio utizado para eliminar ondas de dentro do domínio computacional, muito utilizado como condição de contorno de saída para que as ondas não retornem quando passarem por esta condição de contorno.
+
+\begin{lstlisting}[escapeinside='']
+esp_type
+  $\rightarrow$  0 para Sem camada esponja
+	$\rightarrow$  1 para Considerar a profundidade
+	$\rightarrow$  2 para Desconsiderar a profundidade
+	$\rightarrow$  3 para 'Método' da Tangente 'Hiperbólica'
+\end{lstlisting}	
+
+Mais características como o comprimento da camada espoja e sua posição podem ser alteradas da subtorina \textit{sponge\_layer}, dentro do arquivo \verb|3_contorno.f90|.
+
+
+\subsubsection{Ativação do coeficiente de Chezy¹}
+Está é uma simples função para ativar ou desativar o coeficiente de Chezy no contorno do domínio computacional.
+	
+\begin{lstlisting}[escapeinside='']
+chezy_t	
+  $\rightarrow$  0 para Desconsiderar atrito no fundo
+	$\rightarrow$  1 para Considerar atrito no fundo
+\end{lstlisting}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Condições de Contorno}
+Em \verb|modules.f90|, devido ao seu domínio tridimensional, o \SL\ possui 6 contornos espaciais a serem definidos com até 5 opções diferentes, explicados logo na sequência:
+\begin{lstlisting}[escapeinside='']
+ccx0  $\rightarrow$  0 para 'periódico'
+      $\rightarrow$  1 para free-slip
+      $\rightarrow$  2 para no-slip
+      $\rightarrow$  3 para prescrita
+
+ccxf  $\rightarrow$  0 para 'periódico'
+      $\rightarrow$  1 para free-slip
+      $\rightarrow$  2 para no-slip
+      $\rightarrow$  3 para prescrita
+      $\rightarrow$  4 para 'saída' livre
+      
+ccy0  $\rightarrow$  0 para 'periódico'
+      $\rightarrow$  1 para free-slip
+      $\rightarrow$  2 para no-slip
+      $\rightarrow$  3 para prescrita
+      
+ccyf  $\rightarrow$  0 para 'periódico'
+      $\rightarrow$  1 para free-slip
+      $\rightarrow$  2 para no-slip
+      $\rightarrow$  3 para prescrita
+      
+ccz0  $\rightarrow$  1 para free-slip
+      $\rightarrow$  2 para no-slip
+      $\rightarrow$  3 para prescrita
+      
+cczf  $\rightarrow$  1 para free-slip
+      $\rightarrow$  3 para prescrita
+\end{lstlisting}
+
+\begin{verbatim}
+Onde: 	
+		cc 	=	 Condição De Contorno
+		x, y, z 	=	Eixos do escoamento
+		0, f	= 	início/fim do eixo de escoamento
+\end{verbatim}
+
+\paragraph{Periódico:} Tudo que entra, sai do domínio e vice-versa, seguindo um regime de fluxo periódico. É importante citar que adotando a condição periódica no início (\verb|ccx0, ccy0 e/ou ccz0|) é necessário adotar também para o final (\verb|ccxf, ccyf e/ou cczf|)
+\paragraph{Free-slip:} Deslizamento livre, não há velocidade normal, apenas tangencial.
+\paragraph{No-slip:} Ausência de deslizamento, portanto, velocidade normal e tangencial nulas.
+\paragraph{Prescrita:} Velocidade imposta pelo usuário, prescrita conforme desejar.
+\paragraph{Saída livre:} Fornece liberdade de saída para o escoamento, mas necessita a adição de uma camada esponja para suavizá-lo ao final do domínio.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Funções auxiliares}
+Nesta seção estão abordados tópicos relacionados a funções/rotinas auxiliares á aplicação do \SL, em áreas ainda mais aprofundadas do código. Portanto, adverte-se a necessidade de possuir um entendimento maior do propósito de cada aplicação antes de alterá-la em código.
+
+\subsubsection{Obstáculos} \label{met_num}
+Assim como o usuário pode optar por não adicionar nenhum obstáculo ao seu domínio (\verb|obst_t = 0|), é possível que em versões futuras do \SL\ e deste manual sejam disponibilizadas ferramentas e opções para modelagem de obstáculos diretamente pelo próprio usuário. A seguir estão as opções pré-definidas citadas na seção \ref{obst} e suas respectivas referências, aplicadas ao código no módulo \verb|3_contorno.f90|:
+
+\begin{lstlisting}[escapeinside='']
+obst_t	
+  0  $\rightarrow$   Sem 'Obstáculo'
+	1  $\rightarrow$   Dunas
+	2  $\rightarrow$   '\cite{yue2003}'
+	3  $\rightarrow$   '\cite{nasr2014}'
+	4  $\rightarrow$   '\cite{beji1994}'
+	5  $\rightarrow$   canal 0 - '\cite{delft1980}'
+	6  $\rightarrow$   canal 1 e 2 - '\cite{delft1980}'
+	7  $\rightarrow$   '\cite{monteiro2017}'
+	8  $\rightarrow$   '\cite{rigotti2015}'
+\end{lstlisting}
+
+\subsubsection{Level-Set²} \label{sub:levelset}
+O Level-Set é um método para caracterização de diferentes fluidos imiscíveis envolvidos na simulação (água e ar, por exemplo). No modulo \verb|14_level_set.f90| é possível personalizar estas configurações a partir dos seguintes parâmetros:
+
+\paragraph{$\alpha_1$:} Número de células que farão parte da espessura da interface entre fluidos.
+\paragraph{$\rho$:} Massa específica ($kg/m^3$) dos fluidos 1 e 2, representadas por \verb|rho_f1| e \verb|rho_f2|, respectivamente.
+\paragraph{$\mu$:} Viscosidade dinâmica ($Pa.s$) dos fluidos 1 e 2, representadas por \verb|mi_f1| e \verb|mi_f2|, respectivamente.
+\paragraph{$\sigma$:} Tensão superficial ($N/m$)
+\vspace{0.5cm}
+
+Existem pré-definidas 7 possibilidades para a definição da interface entre o ar e a água onde:
+
+\vspace{0.5cm}
+\begin{lstlisting}[escapeinside='']
+    1 $\rightarrow$  Onda 
+	2 $\rightarrow$  Onda 2 ('Criação' de onda no 'início do domínio' baseado em '\cite{higuera2013}')
+	3 $\rightarrow$  Barragem 
+	4 $\rightarrow$  Gota 
+	5 $\rightarrow$  '\cite{fennema1990}' ou '\cite{aureli2008}'
+	6 $\rightarrow$  MMS - '\cite{wang2009}'
+	7 $\rightarrow$  '\cite{koshizuka1995}'.
+\end{lstlisting}
+
+\subsubsection{Restart²}
+Esta função serve para auxiliar o usuário em situações em que exista a necessidade de interromper a simulação sem perder o progresso da mesma, fazendo um backup que possa ser utilizado para reiniciar a simulação. Os parâmetros representados por \verb|interv_rest e irest| são acessíveis em \verb|0_modules.f90|, módulo \textit{restart} e aplicados nas subrotinas \textit{restart\_ini} do arquivo \verb|11_diversos.f90|.
+\begin{lstlisting}[escapeinside='']
+interv_rest = intervalo de tempo a ser salvo para o restart
+irest	
+  $\rightarrow$  0 para indicar se a 'simulação não é' um restart de outra
+	$\rightarrow$  1 para indicar se a 'simulação é' um restart de outra
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Visualização Dos Resultados}	\label{visu}
+Como já mencionado, a opção dos autores para visualização dos resultados da simulação é o programa livre \textbf{Paraview}, disponível em \verb|www.paraview.org/|, com versões disponíveis para usuários de Linux e/ou Windows. No Linux (Ambiente Ubuntu) a instalação do paraview pode ser facilmente realizada por meio do comando 
+
+\begin{verbatim}
+sudo apt install paraview
+\end{verbatim}
+
+No Linux, para visualizar os resultados dos campos das variáveis calculadas com o \SL\ deve-se acessar a pasta "arquivos" \, via terminal e digitar \verb|./paraview visu.xdmf|. No windows, o comando direto via terminal não é possível, sendo assim, a opção é iniciar o Paraview em janela independente e abrir a pasta \verb|visu.xdmf| diretamente nele.
+
+%Prof.: Este comando está em funcionamento para versões do ParaView, instaladas no Ubuntu, anteriores a $5.0$. Para versões mais atuais, o usuário deve utilizar o ParaView pelo programa binário fornecido no site do próprio programa. (não sei se isso é verdade)
+
+%P/ Pedro: Não sei se isso é verdade! Temos que verificar.
+
+O paraview acessará então os dados calculados pelo \SL\ e os apresentará de acordo com as ferramentas disponíveis na versão e interface do programa. O intervalo de criação dos campos (os frames da simulação) para esta posterior visualização é definido pelo parâmetro \verb|dt_frame| no módulo \verb|0_modules.f90|
+
+Assim, o usuário, tendo um conhecimento básico do programa, pode usufruir dos resultados de sua simulação.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%\section{Metodologia e Aplicações Numéricas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\appendix
+\section{Apêndice: Ambiente Ubuntu no Windows}
+\label{InstallUbuntu}
+
+\paragraph{Preparando o Windows:} É necessário habilitar o sistema para aceitar qualquer distribuição Linux que venha a ser utilizada, para tal siga o caminho abaixo.
+
+\begin{verbatim}
+No "Menu Iniciar" do seu Windows vá para o "Painel De Controle".
+Então clique em "Programas".
+Depois clique em "Ativar ou desativar recursos do Windows".
+Na janela que será aberta habilite a opção "Subsistema do Windows para Linux"
+\end{verbatim}
+Após ter realizado esse procedimento, é preciso reiniciar seu computador para que as alterações sejam devidamente atualizadas, caso contrário o usuário enfrentará problemas na próxima etapa de instalação.
+
+
+% dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart --> Comando pra configuração direta pelo cmd!
+
+\paragraph{Instalando o Ubuntu:} Após a reinicialização do sistema, é preciso instalar efetivamente a distribuição Linux desejada, neste caso, o ambiente Ubuntu. Para tanto, abra o aplicativo ``Microsoft Store'' e pesquise por ``Ubuntu'', faça o download e abra o aplicativo Ubuntu que foi instalado em seu computador.
+
+A primeira vez que estiver acessando o ambiente Ubuntu, será pedido que um usuário e uma senha sejam cadastrados, para que o processo de instalação seja efetuado com sucesso. Guarde estas informações, pois elas podem ser importantes para a utilização do Ubuntu como subsistema do Windows.
+
+Agora, com o Windows configurado e o ambiente Ubuntu devidamente instalado, basta retornar ao tópico \ref{WindowsUsers} para a instalação do \SL. 
+
+\paragraph{Observação:} Vale frisar que sempre que for necessário realizar uma ação no terminal de comando do computador, o usuário deverá utilizá-lo através do ambiente Ubuntu.
+
+A utilização do ambiente Ubuntu como subsistema fica a cargo do próprio usuário, outros subsistemas compatíveis podem oferecer o mesmo resultado (pesquise sobre outras distribuições para subsistemas!).
+
+%\section*{Anexos}
+%\addcontentsline{toc}{section}{Anexos}
+%\red{(Tópico um pouco mais específico com infos da seção de metodologia numérica)}
+
+\newpage
+\bibliographystyle{apacite}
+\bibliography{mybib}
+
+\end{document}

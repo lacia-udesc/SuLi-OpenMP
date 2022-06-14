@@ -1,0 +1,72 @@
+\babel@toc {portuguese}{}
+\contentsline {section}{\numberline {1}Introdução}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Objetivo}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Considerações adicionais}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}O SuLi}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Pré-Requisitos}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Instalação}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Usuários de Windows}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Para usuários Linux e Windows}{3}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Estrutura}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Compilando}{4}{subsection.2.4}%
+\contentsline {paragraph}{*}{4}{section*.2}%
+\contentsline {subsection}{\numberline {2.5}Rodando}{4}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Personalizando o código}{5}{section.3}%
+\contentsline {paragraph}{Observação:}{5}{section*.3}%
+\contentsline {subsection}{\numberline {3.1}Definindo o domínio}{5}{subsection.3.1}%
+\contentsline {paragraph}{*,²}{5}{section*.4}%
+\contentsline {paragraph}{Observação:}{5}{section*.5}%
+\contentsline {subsection}{\numberline {3.2}Condições e Configurações Iniciais}{5}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Métodos De Evolução Temporal²}{6}{subsubsection.3.2.1}%
+\contentsline {paragraph}{Euler Explícito de 1ª Ordem (EE):}{6}{section*.6}%
+\contentsline {paragraph}{Runge-Kutta de 2ª Ordem (RK2):}{6}{section*.7}%
+\contentsline {paragraph}{Runge-Kutta de 3ª Ordem (RK3):}{6}{section*.8}%
+\contentsline {paragraph}{Adams-Bashforth de 2ª Ordem (AB2):}{6}{section*.9}%
+\contentsline {subsubsection}{\numberline {3.2.2}Termo Advectivo}{6}{subsubsection.3.2.2}%
+\contentsline {paragraph}{Formulação Clássica:}{6}{section*.10}%
+\contentsline {paragraph}{Formulação Rotacional:}{6}{section*.11}%
+\contentsline {paragraph}{Formulação Antissimétrica:}{6}{section*.12}%
+\contentsline {subsubsection}{\numberline {3.2.3}Derivada Espacial}{6}{subsubsection.3.2.3}%
+\contentsline {paragraph}{Upwind:}{7}{section*.13}%
+\contentsline {paragraph}{Centrado*:}{7}{section*.14}%
+\contentsline {paragraph}{Upwind de 2ª Ordem*,²:}{7}{section*.15}%
+\contentsline {subsubsection}{\numberline {3.2.4}Obstáculos}{7}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Modelo de Turbulência}{7}{subsubsection.3.2.5}%
+\contentsline {paragraph}{Sem Modelo:}{7}{section*.16}%
+\contentsline {paragraph}{LES Smagorinsky-Lilly Clássico:}{7}{section*.17}%
+\contentsline {paragraph}{LES Smagorinsky-Lilly Direcional:}{7}{section*.18}%
+\contentsline {subsubsection}{\numberline {3.2.6}Ondas}{8}{subsubsection.3.2.6}%
+\contentsline {paragraph}{Sem Onda:}{8}{section*.19}%
+\contentsline {paragraph}{Onda De Stokes I:}{8}{section*.20}%
+\contentsline {paragraph}{Onda De Stokes II:}{8}{section*.21}%
+\contentsline {paragraph}{Onda De Stokes V:}{8}{section*.22}%
+\contentsline {subsubsection}{\numberline {3.2.7}Plotagem²}{8}{subsubsection.3.2.7}%
+\contentsline {paragraph}{Modo Simples:}{8}{section*.23}%
+\contentsline {paragraph}{Modo Completo:}{8}{section*.24}%
+\contentsline {subsubsection}{\numberline {3.2.8}Método da Solução Manufaturada}{8}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}Coeficientes Específicos}{9}{subsubsection.3.2.9}%
+\contentsline {paragraph}{Ponderador $\theta ^1$:}{9}{section*.25}%
+\contentsline {paragraph}{Chezy:}{9}{section*.26}%
+\contentsline {paragraph}{Decliv:}{9}{section*.27}%
+\contentsline {subsubsection}{\numberline {3.2.10}Camada Esponja}{9}{subsubsection.3.2.10}%
+\contentsline {subsubsection}{\numberline {3.2.11}Ativação do coeficiente de Chezy¹}{9}{subsubsection.3.2.11}%
+\contentsline {subsection}{\numberline {3.3}Condições de Contorno}{9}{subsection.3.3}%
+\contentsline {paragraph}{Periódico:}{10}{section*.28}%
+\contentsline {paragraph}{Free-slip:}{10}{section*.29}%
+\contentsline {paragraph}{No-slip:}{10}{section*.30}%
+\contentsline {paragraph}{Prescrita:}{10}{section*.31}%
+\contentsline {paragraph}{Saída livre:}{10}{section*.32}%
+\contentsline {subsection}{\numberline {3.4}Funções auxiliares}{10}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Obstáculos}{11}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Level-Set²}{11}{subsubsection.3.4.2}%
+\contentsline {paragraph}{$\alpha _1$:}{11}{section*.33}%
+\contentsline {paragraph}{$\rho $:}{11}{section*.34}%
+\contentsline {paragraph}{$\mu $:}{11}{section*.35}%
+\contentsline {paragraph}{$\sigma $:}{11}{section*.36}%
+\contentsline {subsubsection}{\numberline {3.4.3}Restart²}{11}{subsubsection.3.4.3}%
+\contentsline {section}{\numberline {4}Visualização Dos Resultados}{13}{section.4}%
+\contentsline {section}{\numberline {A}Apêndice: Ambiente Ubuntu no Windows}{14}{appendix.A}%
+\contentsline {paragraph}{Preparando o Windows:}{14}{section*.37}%
+\contentsline {paragraph}{Instalando o Ubuntu:}{14}{section*.38}%
+\contentsline {paragraph}{Observação:}{14}{section*.39}%
+\contentsline {section}{Bibliografia}{15}{section*.40}%
