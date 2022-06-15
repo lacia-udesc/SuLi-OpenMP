@@ -7,6 +7,9 @@
 !Modificações
 !Leonardo Romero Monteiro em 12/01/2015
 
+!Correções
+!Leonardo Romero Monteiro & Mariana De Cesaro em 14/06/2022
+
 SUBROUTINE plot_i()
 
 USE ls_param
