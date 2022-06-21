@@ -2,19 +2,7 @@ SUBROUTINE derivax(a1,dimx,dimy,dimz,campo_saida)
 
 USE disc
 
-IMPLICIT NONE
-integer :: i, j, k
-integer, intent(IN) :: dimx,dimy,dimz
-real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
-real(8), intent(OUT), dimension(dimx,dimy,dimz) :: campo_saida
-!real(8), dimension(dimx,dimy,dimz) :: a1
-
-!a1=campo_entrada
-do k=1,dimz
- do j=1,dimy
-  do i=1,dimx
-    campo_saida(i,j,k)=(a1(i+1,j,k)-a1(i-1,j,k))/(2.*dx)
-  enddo
+I
  enddo
 enddo
 

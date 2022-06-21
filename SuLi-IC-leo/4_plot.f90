@@ -26,9 +26,6 @@ IMPLICIT NONE
 real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
 real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
 real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk
-real(8), dimension(nx,ny,nz) :: xnuta,ynuta,znuta, lsaux
-real(8), dimension(nx1,ny,nz1) :: auxy
-real(8), dimension(nx1,ny1,nz) :: auxz
 real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
 integer :: i, j, k, ii
 
