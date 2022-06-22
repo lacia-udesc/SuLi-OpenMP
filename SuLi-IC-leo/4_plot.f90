@@ -25,14 +25,16 @@ IMPLICIT NONE
 !Declarado também no programa
 real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
 real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
-real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk
-real(8), dimension(nx,ny,nz) :: xnuta,ynuta,znuta, lsaux
+real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk, lasux
+real(8), dimension(nx1,ny,nz) :: xnuta
+real(8), dimension(nx,ny1,nz) :: ynuta	
+real(8), dimension(nx,ny,nz1) :: znuta
 real(8), dimension(nx1,ny,nz1) :: auxy
 real(8), dimension(nx1,ny1,nz) :: auxz
 real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
 integer :: i, j, k, ii
 
-	
+
 !Criar pastas se não existirem
 
 call system('mkdir -p arquivos')
@@ -232,7 +234,6 @@ IMPLICIT NONE
 real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
 real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
 real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk
-real(8), dimension(nx,ny,nz) :: xnuta,ynuta,znuta, lsaux
 real(8), dimension(nx1,ny,nz1) :: auxy
 real(8), dimension(nx1,ny1,nz) :: auxz
 real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
@@ -244,6 +245,9 @@ integer :: dig1, dig2, dig3, dig4, dig5
 !Nome do arquivo de saída
  character(5) chits
 
+	real(8), dimension(nx1,ny,nz) :: xnuta
+	real(8), dimension(nx,ny1,nz) :: ynuta	
+	real(8), dimension(nx,ny,nz1) :: znuta
 
 !Cálculo para o a estimativa do tempo restante
 ciclo = (agora(5)-agora1(5)) * 60 * 60 + (agora(6)-agora1(6)) * 60 + (agora(7)-agora1(7)) + real(agora(8)-agora1(8))/1000
