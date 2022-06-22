@@ -10,30 +10,30 @@ real(8) :: t, dt = 0.001, t_i, t_a
 !Número de células para x, y e z (-); número de pontos para x, y e z (-); tempo de simulação (segundos)
 
 !Número de tempo por arquivo plotado
-real(8),parameter :: dt_frame = 1.
+real(8),parameter :: dt_frame = 0.0001*10.
 
 
-integer,parameter :: nx=int(.5/dx) , ny=int(1./dy), nz=int(0.9/dz)
+integer,parameter :: nx=int(3./dx) , ny=int(1./dy), nz=int(1./dz)
 !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
-integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(20./0.001)
+integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(0.01/0.0001)
 
 !Para fazer dz variável no espaço inicialmente criar uma função ...
-real(8),parameter :: uinicial = 0.31
+real(8),parameter :: uinicial = 0.2
 
 integer,parameter :: t_plot = 1 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
 
-integer,parameter :: t_tempo = 1 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
+integer,parameter :: t_tempo = 2 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
 
-integer,parameter :: der = 1 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
+integer,parameter :: der = 3 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
 integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional, 3 = antissimétrico
 	
-integer,parameter :: obst_t = 0 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, bd_koshizuka1995eKleefsman2005
+integer,parameter :: obst_t = 11 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
 
-integer,parameter :: m_turb = 0 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
+integer,parameter :: m_turb = 1 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
 
-integer,parameter :: esp_type = 0 ! 0 = sem camada esponja, 1 = leva em consideração a profundidade, 2 = não leva em consideração a profundidade, 3 = Método da Tangente Hiperbólica
+integer,parameter :: esp_type = 1 ! 0 = sem camada esponja, 1 = leva em consideração a profundidade, 2 = não leva em consideração a profundidade, 3 = Método da Tangente Hiperbólica
 
-integer,parameter :: wave_t = 0 ! 0 = sem onda, 1 = Stokes I, 2 = Stokes II, 5 = Stokes V
+integer,parameter :: wave_t = 5 ! 0 = sem onda, 1 = Stokes I, 2 = Stokes II, 5 = Stokes V
 
 integer,parameter :: mms_t = 0  ! 0 = sem MMS, 1 = MMS permanente, 2 = MMS não permanente
 
@@ -49,13 +49,12 @@ module restart
 end module restart
 
 !Condicoes de contorno
-module cond 
+module cond
 
-integer,parameter :: ccx0=0 !condicao de contorno parede x=0 --> 0 é periodico, 1 é free-slip, 2 é no-slip, 3 é prescrita, 4 é fluxo validacao
-integer,parameter :: ccxf=0 !condicao de contorno parede x=xf --> 0 é periodico, 1 é free-slip, 2 é no-slip, 3 é prescrita, 4 é saida livre
+integer,parameter :: ccx0=3 !condicao de contorno parede x=0 --> 0 é periodico, 1 é free-slip, 2 é no-slip, 3 é prescrita, 4 é fluxo validacao
+integer,parameter :: ccxf=4 !condicao de contorno parede x=xf --> 0 é periodico, 1 é free-slip, 2 é no-slip, 3 é prescrita, 4 é saida livre
 
-!Só pode usar condição periódica no final quando usar no começo e vice-versa
-
+!só pode usar condição periódica no final quando usar no começo e vice-versa
 integer,parameter :: ccy0=2 !condicao de contorno parede y=0 --> 0 é periodico, 1 é free-slip e 2 é no-slip, 3 é prescrita
 integer,parameter :: ccyf=2 !condicao de contorno parede y=yf --> 0 é periodico, 1 é free-slip e 2 é no-slip, 3 é prescrita
 integer,parameter :: ccz0=2 !condicao de contorno parede z=0 --> 1 é free-slip, 2 é no-slip, 3 é prescrita
@@ -78,10 +77,10 @@ integer, dimension(0:nx1+1,0:ny+1) :: ku
 !Indicam até que altura as velocidades tem que ser zeradas (até qual índice k)
 integer, dimension(0:nx+1,0:ny1+1) :: kv
 integer, dimension(0:nx+1,0:ny+1)  :: kw
-integer, parameter :: elev = 50. *dz                    
+integer, parameter :: elev = 5. *dz                    
 !Comprimento a adicionar abaixo
 
-real(8), parameter :: amp = 0.50, comp = .5, fase = -pi/2. !amplitude, comprimento e fase da onda
+real(8), parameter :: amp = 0.25, comp = 1., fase = -pi/2. !amplitude, comprimento e fase da onda
 
 end module obst
 
@@ -139,14 +138,13 @@ module parametros
 
 !Parâmetros
 !Viscosidade cinemática (m²/s), coeficiente de chezy (m**(1/2)/s), aceleração da graviadde (m/s²) e implicitness parameter $Patnaik et al. 1987$ (-) 
-real(8), parameter :: tetah = 0.50, chezy = 44.5, decliv = 0.0002
+real(8), parameter :: tetah = 0.50, chezy = 44.5, decliv = 0.00001
 
 real(8), parameter :: gx = 9.80665 * sin(atan(decliv)) , gz = 9.80665 * cos(atan(decliv))
 
-!real(8), parameter :: gx = 0. , gz = 0.
+!Real(8), parameter :: gx = 0. , gz = 0.
 
-!wind stress coefficient (m/s) e velocidade do vento para x e y (m/s)
-
+!Wind stress coefficient (m/s) e velocidade do vento para x e y (m/s)
 !real(8) :: cwind, uwind, vwind
 
 end module parametros
