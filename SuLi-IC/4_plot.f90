@@ -1,4 +1,5 @@
-!Subrotina definir as condições de contorno das velocidades e suas influências
+!Subrotina definir as condições de contorno das 
+velocidades e suas influências
 !Referência: Gotoh, 2013
 
 !Implementação em 15/04/2014
