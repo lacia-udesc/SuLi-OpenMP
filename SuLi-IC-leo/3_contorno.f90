@@ -896,7 +896,7 @@ do k = 1, nz1
 do j = 1, ny
 do i = 1, nx
 
-dpdz(i,j,k) = (prd(i,j,k) - prd(i,j,k-1))/ rhoz(i,j,k) *dt /dz
+dpdz(i,j,k) = 0.!(prd(i,j,k) - prd(i,j,k-1))/ rhoz(i,j,k) *dt /dz
 
 enddo
 enddo
@@ -906,7 +906,7 @@ do k = 1, nz
 do j = 1, ny1
 do i = 1, nx
 
-dpdy(i,j,k) = (prd(i,j,k) - prd(i,j-1,k))/ rhoy(i,j,k) *dt /dy
+dpdy(i,j,k) = 0.!(prd(i,j,k) - prd(i,j-1,k))/ rhoy(i,j,k) *dt /dy
 
 enddo
 enddo
@@ -916,7 +916,7 @@ do k = 1, nz
 do j = 1, ny
 do i = 1, nx1
 
-dpdx(i,j,k) = (prd(i,j,k) - prd(i-1,j,k))/ rhox(i,j,k) *dt /dx
+dpdx(i,j,k) = 0.!(prd(i,j,k) - prd(i-1,j,k))/ rhox(i,j,k) *dt /dx
 
 enddo
 enddo

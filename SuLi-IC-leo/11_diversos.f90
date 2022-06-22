@@ -284,7 +284,7 @@ else
 	write(*,*) "Sem entrada de onda"
 endif
 
-alpha1 = 1.5 		!Número de células que varão parte da espessura, pois é uma função suave
+alpha1 = 1.5 		!Número de células que farão parte da espessura, pois é uma função suave
 rho_f1 = 1.204		!kg/m³ ar (ls negativo) 20°C
 mi_f1 = 0.000018253 !Pa/s  !0.00001516!m²/s ar (ls negativo) 20°C !!!$$$$$$$$$ no incompact3d tá como NI
 rho_f2 =998.0		!kg/m³ água saturada (ls positivo) 20°C.
