@@ -3,7 +3,6 @@ module disc
 
 real(8),parameter ::  pi = acos(-1.) 
 
-
 !Discretizações espaciais em x e y (metros), discretização temporal (segundos)
 real(8),parameter :: dx = 0.02, dy = 0.02, dz = 0.02
 
