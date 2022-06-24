@@ -41,12 +41,25 @@ call system('mkdir -p arquivos')
 call system('mkdir -p dados')
 
 !Terminal inicial
-
-write(*,*) "nx = ", nx,"ny = ", ny, "nz = ", nz
-write(*,*) "dx = ", dx,"dy = ", dy, "dz = ", dz
+write(*,*) "Malha (nx x ny x nz):", nx, 'x', ny, 'x', nz
+!write(*,*) "nx = ", nx,"ny = , 'x',, n, 'x',, "nz = ", nz
+write(*,*) "Intervalo Espacial (dx x dy x dz):", dx, 'x', dy, 'x', dz
+!write(*,*) "dx = ", dx,"dy = ", dy, "dz = ", dz
+write(*,*) "Parâmetros temporais"
 write(*,*) "dt = ", dt,"dt_frame = ", dt_frame, "ts = ", ts
+write(*,*) "Parâmetros de modelo"
 write(*,*) "der = ", der,"advectivo = ", adv_type, "modelo de turb. = ", m_turb
-write(*,*) "ccx0 = ", ccx0 ,"ccxf = ", ccxf, "ccy0 = ", ccy0, "ccyf = ", ccyf, "ccz0 = ", ccz0, "cczf = ", cczf
+write(*,*) "Condições De Contorno:"
+write(*,*) "	ccxo		ccy0	ccz0"
+write(*,*) ccx0, ccy0, ccz0
+write(*,*) "	ccxf		ccyf	cczf"
+write(*,*) ccxf, ccyf, cczf
+!write(*,*) "	X0		Y0			Z0"
+!write(*,*) ccx0, ccy0, ccz0
+!write(*,*) "	Xf		Yf			Zf"
+!write(*,*) ccxf, ccyf, cczf
+!write(*) "ccx0 = ", ccx0 ,"ccxf = ", ccxf, "ccy0 = ", ccy0, "ccyf = ", ccyf, "ccz0 = ", ccz0, "cczf = ", cczf
+
 
 !Plotagens de condição inicial
 
@@ -352,8 +365,14 @@ if(mod(it, ceiling(dt_frame/dt)).eq.0) then
 	close (unit=cont)
 
 	!Contagem temporal
-	write(*,*) "it,", " ", "it*dt,", " ", "ciclo,", " ","tempo restante aproximado (horas),", " ","duração da simulação (min)"
-	write(*,*) it, it*dt, ciclo, prev, (t_a-t_i)/60.
+	!write(*,*) "it,", " ", "it*dt,", " ", "ciclo,", " ","tempo restante aproximado (horas),", " ","duração da simulação (min)"
+	!write(*,*) it, it*dt, ciclo, prev, (t_a-t_i)/60.
+	write(*,*)
+	write(*,*) "it:", it
+	write(*,*) "it*dt:", it*dt
+	write(*,*) "Ciclo:", ciclo
+	write(*,*) "Tempo restante aproximado (h):", 	prev
+	write(*,*) "Duração Da Simulação (min):", 	(t_a-t_i)/60
 endif
 
 write(200000,*) it, it*dt, agora, (t_a-t_i)/60.
@@ -495,6 +514,10 @@ write(9,*) "amp = ", amp, "comp = ", comp
 write(9,*) "elev = ", elev
 close (unit=9)
 
+open(unit=9, action= 'write', file= 'dados//analise.txt', status= 'unknown') !ALTERAÇÃO BY PEDRO
+write(9,*) "Duração da simulação =", (t_a-t_i)/60
+close(unit=9)
+
 END SUBROUTINE plot_atrib
 
 SUBROUTINE est(div)
@@ -518,7 +541,11 @@ write(100002,*) it*dt, vol_ini, vol_ins, vol_ini-vol_ins, maxval(abs(div))
 
 if(mod(it, ceiling(dt_frame/dt)).eq.0) then
 	write(*,*) " "
- 	write(*,*) "*vol. inicial", vol_ini, "vol. instant.", vol_ins, "erro (%)", (vol_ini-vol_ins)/vol_ini, "div.", maxval(abs(div))
+	!write(*,*) "*vol. inicial", vol_ini, "vol. instant.", vol_ins, "erro (%)", (vol_ini-vol_ins)/vol_ini, "div.", maxval(abs(div))	
+	write(*,*) "Vol. Inicial", vol_ini
+	write(*,*) "Vol. Instant.", vol_ins
+	write(*,*) "Erro (%)", (vol_ini-vol_ins)/vol_ini
+	write(*,*) "Div.", maxval(abs(div))
 	write(*,*) 
 endif
 
