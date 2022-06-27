@@ -10,6 +10,8 @@
 !Correções
 !Leonardo Romero Monteiro & Mariana De Cesaro em 14/06/2022
 
+!SUBROTINAS CONTIDAS NESTE MÓDULO: "plot_i", "plot_f", "plot_atrib" & "est"
+
 SUBROUTINE plot_i()
 
 USE ls_param
@@ -34,11 +36,11 @@ real(8), dimension(nx1,ny1,nz) :: auxz
 real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
 integer :: i, j, k, ii
 
-
-!Criar pastas se não existirem
+!Criar pastas, se já não existirem
 
 call system('mkdir -p arquivos')
 call system('mkdir -p dados')
+
 
 !Terminal inicial
 write(*,*) "Malha (nx x ny x nz):", nx, 'x', ny, 'x', nz
