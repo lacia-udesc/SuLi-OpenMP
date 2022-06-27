@@ -17,11 +17,14 @@ integer,parameter :: nx=int(.5/dx) , ny=int(1./dy), nz=int(0.9/dz)
 integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(20./0.001)
 
 !Para fazer dz variável no espaço inicialmente criar uma função ...
+
+
 real(8),parameter :: uinicial = 0.31
 
 integer,parameter :: t_plot = 1 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
 
 integer,parameter :: t_tempo = 1 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
+
 
 integer,parameter :: der = 1 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
 integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional, 3 = antissimétrico
