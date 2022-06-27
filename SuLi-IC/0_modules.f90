@@ -10,7 +10,7 @@ real(8) :: t, dt = 0.001, t_i, t_a
 !Número de células para x, y e z (-); número de pontos para x, y e z (-); tempo de simulação (segundos)
 
 !Número de tempo por arquivo plotado
-real(8),parameter :: dt_frame = 0.0001*10.
+real(8),parameter :: dt_frame = 0.001*10.
 
 
 integer,parameter :: nx=int(3./dx) , ny=int(1./dy), nz=int(1./dz)
