@@ -12,7 +12,6 @@ real(8) :: t, dt = 0.001, t_i, t_a
 !Número de tempo por arquivo plotado
 real(8),parameter :: dt_frame = 1.
 
-
 integer,parameter :: nx=int(.5/dx) , ny=int(1./dy), nz=int(0.9/dz)
 !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
 integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(20./0.001)
