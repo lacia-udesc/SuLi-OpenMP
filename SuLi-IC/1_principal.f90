@@ -23,10 +23,24 @@
 PROGRAM PNH
 
 !Declaração de Variáveis!
+USE omp_lib
 USE disc
 USE restart
 
 IMPLICIT NONE
+
+double precision :: fortran_start, fortran_end
+double precision :: openmp_start, openmp_end
+double precision :: fortran_end_level_set, fortran_start_level_set
+double precision :: openmp_end_level_set, openmp_start_level_set
+!double precision function omp_get_wtime()
+!double precision function omp_get_wtick()
+
+!Inicio do Fortran
+call cpu_time(fortran_start)
+
+!Inicio do OpenMP
+openmp_start = omp_get_wtime()
 
 if (nx*ny*nz > 30000000) then
 write(*,*) "Verifique se o seu computador tem capacidade para a simulação, se sim, cancele esta condicional no código."
@@ -70,8 +84,23 @@ t = it * dt
 if ((mms_t == 1) .and. (it == 1)) call termo_fonte1()
 if (mms_t == 2) call termo_fonte2()
 
+!Tempo do level_set() p/ Fortran
+call cpu_time(fortran_start_level_set)
+
+!Tempo do level_set() p/ OpenMP
+openmp_start_level_set = omp_get_wtime()
 
 CALL level_set()
+
+!Tempo do level_set() p/ Fortran
+call cpu_time(fortran_end_level_set)
+
+!Tempo do level_set() p/ OpenMP
+openmp_end_level_set = omp_get_wtime()
+
+write(*,*) "Tempo do level_set() p/ Fortran", fortran_end_level_set-fortran_start_level_set
+write(*,*) "Tempo do level_set() p/ OpenMP", openmp_end_level_set-openmp_start_level_set
+
 CALl contorno(3)
 
 do tt = 1, ntt
@@ -119,5 +148,16 @@ close (unit=99998799)
 close (unit=99998800)
 close (unit=99998801)
 
-End program PNH
 
+!Fim do Fortran
+call cpu_time(fortran_end)
+
+!Fim do OpenMP
+openmp_end = omp_get_wtime()
+
+!Tempo do Fortran
+write(*,*) "Tempo Total do Fortran", fortran_end-fortran_start 
+!Tempo do OpenMP
+write(*,*) "Tempo Total do OpenMP", openmp_end-openmp_start
+
+End program PNH

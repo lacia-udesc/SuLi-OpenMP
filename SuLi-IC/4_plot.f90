@@ -518,6 +518,7 @@ close (unit=9)
 
 open(unit=9, action= 'write', file= 'dados//analise.txt', status= 'unknown') !ALTERAÇÃO BY PEDRO
 write(9,*) "Duração da simulação =", (t_a-t_i)/60
+!write(9,*) "Wtime =", suli_wtime
 close(unit=9)
 
 END SUBROUTINE plot_atrib
