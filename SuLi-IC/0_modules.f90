@@ -4,7 +4,7 @@ module disc
 real(8),parameter ::  pi = acos(-1.) 
 
 !Discretizações espaciais em x e y (metros), discretização temporal (segundos)
-real(8),parameter :: dx = 0.02, dy = 0.02, dz = 0.02
+real(8),parameter :: dx = 0.01, dy = 0.01, dz = 0.01
 
 real(8) :: t, dt = 0.001, t_i, t_a
 !Número de células para x, y e z (-); número de pontos para x, y e z (-); tempo de simulação (segundos)
