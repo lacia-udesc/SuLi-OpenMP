@@ -1,0 +1,156 @@
+ Com entrada de onda.
+ Esquema temporal: 
+ RK3.
+ Malha (nx x ny x nz):         150 x          50 x          50
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+ Tempo do level_set() p/ Fortran  0.76481099999999991     
+ Tempo do level_set() p/ OpenMP  0.76496357099995294     
+
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Duração Da Simulação (min):   1.4527141333333335     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5000000000013347     
+ Erro (%)   0.0000000000000000     
+ Div.   18.734513028550030     
+
+ Tempo do level_set() p/ Fortran  0.76836400000000538     
+ Tempo do level_set() p/ OpenMP  0.76844091699990713     
+
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   87.170000000000002     
+ Tempo restante aproximado (h):   2.7673015873015874E-002
+ Duração Da Simulação (min):   2.6712021333333333     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100484616612073     
+ Erro (%)  -6.6989744399091125E-003
+ Div.   11.453424904529209     
+
+ Tempo do level_set() p/ Fortran   1.1311340000000030     
+ Tempo do level_set() p/ OpenMP   1.1312412019999556     
+
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   73.117000000000004     
+ Tempo restante aproximado (h):   4.4030005668934238E-002
+ Duração Da Simulação (min):   4.2361945333333333     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100932194561265     
+ Erro (%)  -6.7288129698552142E-003
+ Div.   14.486964505083620     
+
+ Tempo do level_set() p/ Fortran   1.1155739999999810     
+ Tempo do level_set() p/ OpenMP   1.1158209820000593     
+
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   93.906999999999996     
+ Tempo restante aproximado (h):   6.0098814382896014E-002
+ Duração Da Simulação (min):   5.6491222500000005     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101393576647915     
+ Erro (%)  -6.7595717756318181E-003
+ Div.   15.835904904139642     
+
+ Tempo do level_set() p/ Fortran   1.0920859999999948     
+ Tempo do level_set() p/ OpenMP   1.0925132590000430     
+
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   84.784999999999997     
+ Tempo restante aproximado (h):   6.8335690105974359E-002
+ Duração Da Simulação (min):   7.0868555666666673     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101975056772274     
+ Erro (%)  -6.7983371172557682E-003
+ Div.   13.353766571311542     
+
+ Tempo do level_set() p/ Fortran   1.0999419999999986     
+ Tempo do level_set() p/ OpenMP   1.1000075709998782     
+
+ it:           6
+ it*dt:   6.0000000000000001E-003
+ Ciclo:   86.271000000000001     
+ Tempo restante aproximado (h):   7.2267258186073269E-002
+ Duração Da Simulação (min):   8.3007912666666677     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5102846168404469     
+ Erro (%)  -6.8564112260686939E-003
+ Div.   12.209729233432283     
+
+ Tempo do level_set() p/ Fortran   1.1010440000000017     
+ Tempo do level_set() p/ OpenMP   1.1011219069996514     
+
+ it:           7
+ it*dt:   7.0000000000000001E-003
+ Ciclo:   72.840999999999994     
+ Tempo restante aproximado (h):   7.0614911778538986E-002
+ Duração Da Simulação (min):   9.3851903333333322     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5104168426300044     
+ Erro (%)  -6.9445617524402934E-003
+ Div.   10.549680460484511     
+
+ Tempo do level_set() p/ Fortran   1.0867090000000417     
+ Tempo do level_set() p/ OpenMP   1.0867798559997937     
+
+ it:           8
+ it*dt:   8.0000000000000002E-003
+ Ciclo:   65.069000000000003     
+ Tempo restante aproximado (h):   6.5691273587954055E-002
+ Duração Da Simulação (min):   10.581639933333332     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5106113666763652     
+ Erro (%)  -7.0742444500140299E-003
+ Div.   9.8583292803450746     
+
+ Tempo do level_set() p/ Fortran   1.0912639999999101     
+ Tempo do level_set() p/ OpenMP   1.0913766069998019     
+
+ it:           9
+ it*dt:   9.0000000000000011E-003
+ Ciclo:   71.790999999999997     
+ Tempo restante aproximado (h):   5.9155655138881248E-002
+ Duração Da Simulação (min):   12.118599583333332     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5108757505352151     
+ Erro (%)  -7.2505003559137794E-003
+ Div.   19.118614822970855     
+
+ Tempo do level_set() p/ Fortran   1.1069549999999708     
+ Tempo do level_set() p/ OpenMP   1.1070234479998362     
+
+ it:          10
+ it*dt:   1.0000000000000000E-002
+ Ciclo:   92.224999999999994     
+ Tempo restante aproximado (h):   5.0704847261898216E-002
+ Duração Da Simulação (min):   13.397263783333333     
+  
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5112018630408839     
+ Erro (%)  -7.4679086930261387E-003
+ Div.   15.039908199761051     
+
+ Tempo Total do Fortran   813.10774400000003     
+ Tempo Total do OpenMP   813.22000982899999 
