@@ -82,6 +82,19 @@
 		STOP
 	endif
 
+	!*********************************************************************************************
+
+	!Plot para verificação ordem dos esquemas de diferenciação -  Bruna Soares / MNF / junho-2022
+
+	!Velocidade na direção x
+	open (unit=123456, action= 'write', file= 'dados//velocidade_x.txt', status= 'unknown')
+	write(123456,*) "nx = ", nx, "/", "dx = ", dx, "/", "dt = ", dt
+	write(123456,*) "Velocidade na direção x"
+	write(123456,*) uint
+	close (unit=123456)
+
+	!*********************************************************************************************
+
 	!Camada esponja. Ativar somente quando necessário.
 	!CALL sponge_layer(epis_z)
 

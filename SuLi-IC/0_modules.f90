@@ -4,7 +4,7 @@ module disc
 real(8),parameter ::  pi = acos(-1.) 
 
 !Discretizações espaciais em x e y (metros), discretização temporal (segundos)
-real(8),parameter :: dx = 0.02, dy = 0.2, dz = 0.02
+real(8),parameter :: dx = 0.02, dy = 0.02, dz = 0.02
 
 real(8) :: t, dt = 0.001, t_i, t_a
 !Número de células para x, y e z (-); número de pontos para x, y e z (-); tempo de simulação (segundos)
@@ -12,15 +12,15 @@ real(8) :: t, dt = 0.001, t_i, t_a
 !Número de tempo por arquivo plotado
 real(8),parameter :: dt_frame = 0.001*10
 
-integer,parameter :: nx=int(.3/dx) , ny=int(1./dy), nz=int(1./dz)
+integer,parameter :: nx=20 , ny=20, nz=20
 !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
-integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(10./0.001)
+integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(2./0.001)
 
 !Para fazer dz variável no espaço inicialmente criar uma função ...
 
 real(8),parameter :: uinicial = 0.0
 
-integer,parameter :: t_plot = 0 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
+integer,parameter :: t_plot = 1 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
 
 integer,parameter :: t_tempo = 2 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
 
@@ -30,7 +30,7 @@ integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional, 3 =
 	
 integer,parameter :: obst_t = 0 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, bd_koshizuka1995eKleefsman2005
 
-integer,parameter :: m_turb = 0 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
+integer,parameter :: m_turb = 1 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
 
 integer,parameter :: esp_type = 0 ! 0 = sem camada esponja, 1 = leva em consideração a profundidade, 2 = não leva em consideração a profundidade, 3 = Método da Tangente Hiperbólica
 

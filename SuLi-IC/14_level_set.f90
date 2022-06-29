@@ -77,9 +77,9 @@ tipo = 1
 if (tipo == 1) then
 	!CALL waves_coef()
 	!Condição inicial de onda
-	ampl = 0. 	 !Amplitude da onda
+	ampl = 0.25 	 !Amplitude da onda
 	lambdax = 2. !Comprimento da onda na direção x
-	lambday = 2. !Wave length
+	lambday = 0. !Wave length
 	prof = 0.5   !Profundidade do escoamento sem a onda
 
 	!Calcula efetivamente o ls
