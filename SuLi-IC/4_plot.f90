@@ -370,10 +370,12 @@ if(mod(it, ceiling(dt_frame/dt)).eq.0) then
 	!write(*,*) "it,", " ", "it*dt,", " ", "ciclo,", " ","tempo restante aproximado (horas),", " ","duração da simulação (min)"
 	!write(*,*) it, it*dt, ciclo, prev, (t_a-t_i)/60.
 	write(*,*)
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "it:", it
 	write(*,*) "it*dt:", it*dt
 	write(*,*) "Ciclo:", ciclo
 	write(*,*) "Tempo restante aproximado (h):", 	prev
+	write(*,*) "Duração Da Simulação (s):", 	(t_a-t_i)
 	write(*,*) "Duração Da Simulação (min):", 	(t_a-t_i)/60
 endif
 
@@ -543,7 +545,7 @@ enddo
 write(100002,*) it*dt, vol_ini, vol_ins, vol_ini-vol_ins, maxval(abs(div))
 
 if(mod(it, ceiling(dt_frame/dt)).eq.0) then
-	write(*,*) " "
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!write(*,*) "*vol. inicial", vol_ini, "vol. instant.", vol_ins, "erro (%)", (vol_ini-vol_ins)/vol_ini, "div.", maxval(abs(div))	
 	write(*,*) "Vol. Inicial", vol_ini
 	write(*,*) "Vol. Instant.", vol_ins
