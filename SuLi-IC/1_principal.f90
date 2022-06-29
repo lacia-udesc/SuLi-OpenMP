@@ -31,15 +31,22 @@ IMPLICIT NONE
 
 double precision :: fortran_start, fortran_end
 double precision :: openmp_start, openmp_end
-double precision :: fortran_end_level_set, fortran_start_level_set
-double precision :: openmp_end_level_set, openmp_start_level_set
+
+double precision :: fortran_start_level_set, fortran_end_level_set
+double precision :: openmp_start_level_set, openmp_end_level_set
+
+double precision :: fortran_start_convdiff, fortran_end_convdiff
+double precision :: omp_start_convdiff, omp_end_convdiff
+
+double precision :: fortran_start_visco, fortran_end_visco
+double precision :: omp_start_visco, omp_end_visco
+
 !double precision function omp_get_wtime()
 !double precision function omp_get_wtick()
 
-!Inicio do Fortran
+!Inicio do Fortran e OpenMP
+write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 call cpu_time(fortran_start)
-
-!Inicio do OpenMP
 openmp_start = omp_get_wtime()
 
 if (nx*ny*nz > 30000000) then
@@ -84,20 +91,17 @@ t = it * dt
 if ((mms_t == 1) .and. (it == 1)) call termo_fonte1()
 if (mms_t == 2) call termo_fonte2()
 
-!Tempo do level_set() p/ Fortran
+!Tempo do level_set() p/ Fortran e OpenMP
 call cpu_time(fortran_start_level_set)
-
-!Tempo do level_set() p/ OpenMP
 openmp_start_level_set = omp_get_wtime()
 
 CALL level_set()
 
-!Tempo do level_set() p/ Fortran
 call cpu_time(fortran_end_level_set)
-
-!Tempo do level_set() p/ OpenMP
 openmp_end_level_set = omp_get_wtime()
 
+write(*,*)
+write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 write(*,*) "Tempo do level_set() p/ Fortran", fortran_end_level_set-fortran_start_level_set
 write(*,*) "Tempo do level_set() p/ OpenMP", openmp_end_level_set-openmp_start_level_set
 
@@ -105,9 +109,38 @@ CALl contorno(3)
 
 do tt = 1, ntt
 	dt = a_dt(tt)
-	
+	write(*,*)
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	write(*,*) "Ciclo:", tt
+
+	!Tempo do visco() p/ Fortran e OpenMP
+	CALL cpu_time(fortran_start_visco)
+	omp_start_visco = omp_get_wtime()
+
 	CALL visco()
+
+	CALL cpu_time(fortran_end_visco)
+	omp_end_visco = omp_get_wtime()
+
+	!Tempo do visco() p/ Fortran e OpenMP
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	write(*,*) "Tempo do convdiff() p/ Fortran:", fortran_end_visco-fortran_start_visco
+	write(*,*) "Tempo do convdiff() p/ OpenMP:", omp_end_visco-omp_start_visco
+
+	!Tempo do convdiff() p/ Fortran e OpenMP
+	CALL cpu_time(fortran_start_convdiff)
+	omp_start_convdiff = omp_get_wtime()
+
 	CALL convdiff()
+
+	CALL cpu_time(fortran_end_convdiff)
+	omp_end_convdiff = omp_get_wtime()
+
+	!Tempo do Fortran e OpenMP
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	write(*,*) "Tempo do convdiff() p/ Fortran:", fortran_end_convdiff-fortran_start_convdiff
+	write(*,*) "Tempo do convdiff() p/ OpenMP:", omp_end_convdiff-omp_start_convdiff
+
 	CALL tempo()
 
 	if (wave_t > 0) call boundary_waves() !For wave propagation
@@ -156,8 +189,8 @@ call cpu_time(fortran_end)
 openmp_end = omp_get_wtime()
 
 !Tempo do Fortran
-write(*,*) "Tempo Total do Fortran", fortran_end-fortran_start 
+write(*,*) "Tempo Total do Fortran:", fortran_end-fortran_start 
 !Tempo do OpenMP
-write(*,*) "Tempo Total do OpenMP", openmp_end-openmp_start
-
+write(*,*) "Tempo Total do OpenMP:", openmp_end-openmp_start
+write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 End program PNH
