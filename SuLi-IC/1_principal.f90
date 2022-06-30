@@ -29,17 +29,34 @@ USE restart
 
 IMPLICIT NONE
 
+!Declaração das variáveis para análise
 double precision :: fortran_start, fortran_end
 double precision :: openmp_start, openmp_end
 
 double precision :: fortran_start_level_set, fortran_end_level_set
 double precision :: openmp_start_level_set, openmp_end_level_set
 
+double precision :: fortran_start_visco, fortran_end_visco
+double precision :: omp_start_visco, omp_end_visco
+
 double precision :: fortran_start_convdiff, fortran_end_convdiff
 double precision :: omp_start_convdiff, omp_end_convdiff
 
-double precision :: fortran_start_visco, fortran_end_visco
-double precision :: omp_start_visco, omp_end_visco
+double precision :: fortran_start_graddin, fortran_end_graddin
+double precision :: omp_start_graddin, omp_end_graddin
+
+real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90
+real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp
+
+!Inicialização dos somatórios com valor nulo
+soma_level_set_f90 = 0.0
+soma_level_set_omp = 0.0
+soma_visco_f90 = 0.0
+soma_visco_omp = 0.0
+soma_convdiff_f90 = 0.0
+soma_convdiff_omp = 0.0
+soma_graddin_f90 = 0.0
+soma_graddin_omp = 0.0
 
 !double precision function omp_get_wtime()
 !double precision function omp_get_wtick()
@@ -102,8 +119,10 @@ openmp_end_level_set = omp_get_wtime()
 
 write(*,*)
 write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-write(*,*) "Tempo do level_set() p/ Fortran", fortran_end_level_set-fortran_start_level_set
-write(*,*) "Tempo do level_set() p/ OpenMP", openmp_end_level_set-openmp_start_level_set
+soma_level_set_f90 = soma_level_set_f90 + (fortran_end_level_set-fortran_start_level_set)
+soma_level_set_omp = soma_level_set_omp + (openmp_end_level_set-openmp_start_level_set)
+write(*,*) "Tempo individual do level_set() p/ Fortran", fortran_end_level_set-fortran_start_level_set
+write(*,*) "Tempo individual do level_set() p/ OpenMP", openmp_end_level_set-openmp_start_level_set
 
 CALl contorno(3)
 
@@ -122,7 +141,6 @@ do tt = 1, ntt
 	CALL cpu_time(fortran_end_visco)
 	omp_end_visco = omp_get_wtime()
 
-	!Tempo do visco() p/ Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "Tempo do visco() p/ Fortran:", fortran_end_visco-fortran_start_visco
 	write(*,*) "Tempo do visco() p/ OpenMP:", omp_end_visco-omp_start_visco
@@ -136,7 +154,6 @@ do tt = 1, ntt
 	CALL cpu_time(fortran_end_convdiff)
 	omp_end_convdiff = omp_get_wtime()
 
-	!Tempo do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "Tempo do convdiff() p/ Fortran:", fortran_end_convdiff-fortran_start_convdiff
 	write(*,*) "Tempo do convdiff() p/ OpenMP:", omp_end_convdiff-omp_start_convdiff
@@ -149,7 +166,20 @@ do tt = 1, ntt
 	CALl contorno(2)
 
 	if (mms_t .eq. 0) then
+
+		!Tempo do graddin() p/ Fortran e OpenMP
+		CALL cpu_time(fortran_start_graddin)
+		omp_start_graddin = omp_get_wtime()
+
 		CALL graddin()
+
+		CALL cpu_time(fortran_end_graddin)
+		omp_end_graddin = omp_get_wtime()
+
+		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+		write(*,*) "Tempo do graddin() p/ Fortran:", fortran_end_graddin-fortran_start_graddin
+		write(*,*) "Tempo do graddin() p/ OpenMP:", omp_end_graddin-omp_start_graddin
+
 		CALL posdin()
 		CALl contorno(1)
 	endif
@@ -182,15 +212,12 @@ close (unit=99998800)
 close (unit=99998801)
 
 
-!Fim do Fortran
+!Fim do Fortran e OpenMP
 call cpu_time(fortran_end)
-
-!Fim do OpenMP
 openmp_end = omp_get_wtime()
 
-!Tempo do Fortran
+!Tempo do Fortran e OpenMP
 write(*,*) "Tempo Total do Fortran:", fortran_end-fortran_start 
-!Tempo do OpenMP
 write(*,*) "Tempo Total do OpenMP:", openmp_end-openmp_start
 write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 End program PNH
