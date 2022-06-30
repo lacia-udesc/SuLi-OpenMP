@@ -124,8 +124,8 @@ do tt = 1, ntt
 
 	!Tempo do visco() p/ Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo do convdiff() p/ Fortran:", fortran_end_visco-fortran_start_visco
-	write(*,*) "Tempo do convdiff() p/ OpenMP:", omp_end_visco-omp_start_visco
+	write(*,*) "Tempo do visco() p/ Fortran:", fortran_end_visco-fortran_start_visco
+	write(*,*) "Tempo do visco() p/ OpenMP:", omp_end_visco-omp_start_visco
 
 	!Tempo do convdiff() p/ Fortran e OpenMP
 	CALL cpu_time(fortran_start_convdiff)
