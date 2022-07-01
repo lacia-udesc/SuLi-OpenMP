@@ -375,6 +375,7 @@ if(mod(it, ceiling(dt_frame/dt)).eq.0) then
 	write(*,*) "it*dt:", it*dt
 	write(*,*) "Ciclo:", ciclo
 	write(*,*) "Tempo restante aproximado (h):", 	prev
+	write(*,*) "Tempo restante aproximado (min):", 	prev/60
 	write(*,*) "Duração Da Simulação (s):", 	(t_a-t_i)
 	write(*,*) "Duração Da Simulação (min):", 	(t_a-t_i)/60
 endif
@@ -500,7 +501,7 @@ enddo
 
 !	 close (unit=100012)
 
-CALL est(div)
+CALL est(div)																		! ### PEDRO ###
 
 END SUBROUTINE plot_f
 

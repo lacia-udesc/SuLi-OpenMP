@@ -45,8 +45,19 @@ double precision :: omp_start_convdiff, omp_end_convdiff
 double precision :: fortran_start_graddin, fortran_end_graddin
 double precision :: omp_start_graddin, omp_end_graddin
 
-real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90
-real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp
+double precision :: fortran_start_plot_f, fortran_end_plot_f
+double precision :: omp_start_plot_f, omp_end_plot_f
+
+double precision :: fortran_start_plot_atri, fortran_end_plot_atri
+double precision :: omp_start_plot_atri, omp_end_plot_atri
+
+double precision :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_outros3_f90, end_outros3_f90
+double precision :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_outros3_omp, end_outros3_omp
+
+real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90, soma_plot_f_f90
+real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp, soma_plot_f_omp
+real :: soma_outros_f90, soma_outros2_f90, soma_outros3_f90
+real :: soma_outros_omp, soma_outros2_omp, soma_outros3_omp
 
 !Inicialização dos somatórios com valor nulo
 soma_level_set_f90 = 0.0
@@ -57,13 +68,19 @@ soma_convdiff_f90 = 0.0
 soma_convdiff_omp = 0.0
 soma_graddin_f90 = 0.0
 soma_graddin_omp = 0.0
+soma_outros_f90 = 0.0
+soma_outros_omp = 0.0
+soma_outros2_f90 = 0.0
+soma_outros2_omp = 0.0
+soma_outros3_f90 = 0.0
+soma_outros3_omp = 0.0
 
 !double precision function omp_get_wtime()
 !double precision function omp_get_wtick()
 
 !Inicio do Fortran e OpenMP
 write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-call cpu_time(fortran_start)
+CALL cpu_time(fortran_start)
 openmp_start = omp_get_wtime()
 
 if (nx*ny*nz > 30000000) then
@@ -80,7 +97,7 @@ else
 endif
 
 
-!Adicionar os contornos na plotagem inicial
+!Adicionar os contornos na plotagem inicial						Qual o motivo desta inicialização?		 ### PEDRO ###
 CALl contorno(1)
 CALl contorno(3)
 
@@ -122,9 +139,26 @@ write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 soma_level_set_f90 = soma_level_set_f90 + (fortran_end_level_set-fortran_start_level_set)
 soma_level_set_omp = soma_level_set_omp + (openmp_end_level_set-openmp_start_level_set)
 write(*,*) "Tempo individual do level_set() p/ Fortran", fortran_end_level_set-fortran_start_level_set
+	write(*,*) "Tempo acumulado do level_set() p/ Fortran", soma_level_set_f90
 write(*,*) "Tempo individual do level_set() p/ OpenMP", openmp_end_level_set-openmp_start_level_set
+write(*,*) "Tempo acumulado do level_set() p/ OpenMP", soma_level_set_omp
 
-CALl contorno(3)
+!Tempo do contorno(3) p/ Fortran e OpenMP
+CALL cpu_time(start_outros3_f90)
+start_outros3_omp = omp_get_wtime()
+
+CALL contorno(3)
+
+CALL cpu_time(end_outros3_f90)
+end_outros3_omp = omp_get_wtime()
+
+write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+soma_outros3_f90 = soma_outros3_f90 + (end_outros3_f90 - start_outros3_f90)
+soma_outros3_omp = soma_outros3_omp + (end_outros3_omp - start_outros3_omp)
+write(*,*) "Tempo individual do contorno(3) dentro do ciclo p/ Fortran:", end_outros3_f90 - start_outros3_f90
+write(*,*) "Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran", soma_outros3_f90
+write(*,*) "Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:", end_outros3_omp - start_outros3_omp
+write(*,*) "Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP", soma_outros3_omp
 
 do tt = 1, ntt
 	dt = a_dt(tt)
@@ -142,28 +176,52 @@ do tt = 1, ntt
 	omp_end_visco = omp_get_wtime()
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo do visco() p/ Fortran:", fortran_end_visco-fortran_start_visco
-	write(*,*) "Tempo do visco() p/ OpenMP:", omp_end_visco-omp_start_visco
+		soma_visco_f90 = soma_visco_f90 + (fortran_end_visco-fortran_start_visco)
+		soma_visco_omp = soma_visco_omp + (omp_end_visco-omp_start_visco)
+		write(*,*) "Tempo individual do visco() p/ Fortran:", fortran_end_visco-fortran_start_visco
+		write(*,*) "Tempo acumulado do visco() p/ Fortran", soma_visco_f90
+		write(*,*) "Tempo individual do visco() p/ OpenMP:", omp_end_visco-omp_start_visco
+		write(*,*) "Tempo acumulado do visco() p/ OpenMP", soma_visco_omp
 
 	!Tempo do convdiff() p/ Fortran e OpenMP
 	CALL cpu_time(fortran_start_convdiff)
 	omp_start_convdiff = omp_get_wtime()
 
 	CALL convdiff()
+	CALL tempo()
 
 	CALL cpu_time(fortran_end_convdiff)
 	omp_end_convdiff = omp_get_wtime()
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo do convdiff() p/ Fortran:", fortran_end_convdiff-fortran_start_convdiff
-	write(*,*) "Tempo do convdiff() p/ OpenMP:", omp_end_convdiff-omp_start_convdiff
+		soma_convdiff_f90 = soma_convdiff_f90 + (fortran_end_convdiff-fortran_start_convdiff)
+		soma_convdiff_omp = soma_convdiff_omp + (omp_end_convdiff-omp_start_convdiff)
+		write(*,*) "Tempo individual do convdiff() p/ Fortran:", fortran_end_convdiff-fortran_start_convdiff
+		write(*,*) "Tempo acumulado do convdiff() p/ Fortran", soma_convdiff_f90
+		write(*,*) "Tempo individual do convdiff() p/ OpenMP:", omp_end_convdiff-omp_start_convdiff
+		write(*,*) "Tempo acumulado do convdiff() p/ OpenMP", soma_convdiff_omp
 
-	CALL tempo()
 
 	if (wave_t > 0) call boundary_waves() !For wave propagation
 		!Condições de Contorno para a parte Hidrostática
 		!CALL pressh()
-	CALl contorno(2)
+
+	!Tempo do contorno(2) p/ Fortran e OpenMP
+	CALL cpu_time(start_outros2_f90)
+	start_outros2_omp = omp_get_wtime()
+
+	CALL contorno(2)
+
+	CALL cpu_time(end_outros2_f90)
+	end_outros2_omp = omp_get_wtime()
+
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
+	soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
+	write(*,*) "Tempo individual do contorno(2) dentro do ciclo p/ Fortran:", end_outros2_f90 - start_outros2_f90
+	write(*,*) "Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran", soma_outros2_f90
+	write(*,*) "Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:", end_outros2_omp - start_outros2_omp
+	write(*,*) "Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP", soma_outros2_omp
 
 	if (mms_t .eq. 0) then
 
@@ -172,26 +230,59 @@ do tt = 1, ntt
 		omp_start_graddin = omp_get_wtime()
 
 		CALL graddin()
+		CALL posdin()
 
 		CALL cpu_time(fortran_end_graddin)
 		omp_end_graddin = omp_get_wtime()
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-		write(*,*) "Tempo do graddin() p/ Fortran:", fortran_end_graddin-fortran_start_graddin
-		write(*,*) "Tempo do graddin() p/ OpenMP:", omp_end_graddin-omp_start_graddin
+		soma_graddin_f90 = soma_graddin_f90 + (fortran_end_graddin-fortran_start_graddin)
+		soma_graddin_omp = soma_graddin_omp + (omp_end_graddin-omp_start_graddin)
+		write(*,*) "Tempo individual do graddin() p/ Fortran:", fortran_end_graddin-fortran_start_graddin
+		write(*,*) "Tempo acumulado do graddin() p/ Fortran", soma_graddin_f90
+		write(*,*) "Tempo individual do graddin() p/ OpenMP:", omp_end_graddin-omp_start_graddin
+		write(*,*) "Tempo acumulado do graddin() p/ OpenMP", soma_graddin_omp
+	
+		!Tempo do contorno(1) p/ Fortran e OpenMP
+		CALL cpu_time(start_outros_f90)
+		start_outros_omp = omp_get_wtime()
 
-		CALL posdin()
-		CALl contorno(1)
+		CALL contorno(1)
+
+		CALL cpu_time(end_outros_f90)
+		end_outros_omp = omp_get_wtime()
+
+		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+		soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
+		soma_outros_omp = soma_outros_omp + (end_outros_omp - start_outros_omp)
+		write(*,*) "Tempo individual do contorno(1) dentro do ciclo p/ Fortran:", end_outros_f90 - start_outros_f90
+		write(*,*) "Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran", soma_outros_f90
+		write(*,*) "Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:", end_outros_omp - start_outros_omp
+		write(*,*) "Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP", soma_outros_omp
+
 	endif
 
  enddo
-
 
 !Solução manufaturada; cálculo do erro
 if (mms_t > 0) CALL mms()
 
 !Plotagens por passo de tempo
+	!Tempo do plot_f() p/ Fortran e OpenMP
+	call cpu_time(fortran_start_plot_f)
+	omp_start_plot_f = omp_get_wtime()
+
 CALL plot_f()
+
+	call cpu_time(fortran_end_plot_f)
+	omp_end_plot_f = omp_get_wtime()
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_plot_f_f90 = soma_plot_f_f90 + (fortran_end_plot_f-fortran_start_plot_f)
+	soma_plot_f_omp = soma_plot_f_omp + (omp_end_plot_f-omp_start_plot_f)
+	write(*,*) "Tempo individual do plot_f() p/ Fortran:", fortran_end_plot_f-fortran_start_plot_f
+	write(*,*) "Tempo acumulado do plot_f() p/ Fortran", soma_plot_f_f90
+	write(*,*) "Tempo individual do plot_f() p/ OpenMP:", omp_end_plot_f-omp_start_plot_f
+	write(*,*) "Tempo acumulado do plot_f() p/ OpenMP", soma_plot_f_omp
 
 if (mod(it,ceiling(interv_rest/dt)).eq.0) then
 	CALL restart_salva()
@@ -217,7 +308,8 @@ call cpu_time(fortran_end)
 openmp_end = omp_get_wtime()
 
 !Tempo do Fortran e OpenMP
-write(*,*) "Tempo Total do Fortran:", fortran_end-fortran_start 
+write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+write(*,*) "Tempo Total do Fortran:", fortran_end - fortran_start
 write(*,*) "Tempo Total do OpenMP:", openmp_end-openmp_start
 write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-End program PNH
+END PROGRAM PNH

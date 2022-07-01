@@ -11,7 +11,7 @@ SUBROUTINE contorno(nlock)
 
 USE velpre
 USE obst
-   USE cond
+USE cond
 USE ls_param
 
 IMPLICIT NONE
@@ -27,7 +27,7 @@ real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
 !RESOLUÇÃO DO PROBLEMA
 
 if ((nlock == 1).or.(nlock == 2)) then
-	if (mms_t > 0) call mms_bc()
+	if (mms_t > 0) call mms_bc()					! ### ANALISAR ESSE 2º IF AQUI ### !
 		!Velocidades de atrito
 		!ub = 0.
 		!vb = 0.
@@ -265,19 +265,19 @@ if ((nlock == 1).or.(nlock == 2)) then
 			
 		else
 			do j=0,ny+1
-			do i=0,nx+1
-				u(i,j,0:ku(i,j))=0. !+ dpdx(i,j,0:ku(i,j))
-				v(i,j,0:kv(i,j))=0. !+ dpdy(i,j,0:kv(i,j))
-				w(i,j,0:kw(i,j))=0. !+ dpdz(i,j,0:kw(i,j))
-				!Rugosidade Interna
-				ub(i,j,ku(i,j)+1) = u(i,j,ku(i,j)+1)
-				vb(i,j,kv(i,j)+1) = v(i,j,kv(i,j)+1)
-				wb(i,j,kw(i,j)+1) = w(i,j,kw(i,j)+1)
-				!ub(i,j,ku(i,j)+1) = 0.
-				!vb(i,j,kv(i,j)+1) = 0.
-				!wb(i,j,kw(i,j)+1) = 0.
-				 
-			enddo
+				do i=0,nx+1
+					u(i,j,0:ku(i,j))=0. !+ dpdx(i,j,0:ku(i,j))
+					v(i,j,0:kv(i,j))=0. !+ dpdy(i,j,0:kv(i,j))
+					w(i,j,0:kw(i,j))=0. !+ dpdz(i,j,0:kw(i,j))
+					!Rugosidade Interna
+					ub(i,j,ku(i,j)+1) = u(i,j,ku(i,j)+1)
+					vb(i,j,kv(i,j)+1) = v(i,j,kv(i,j)+1)
+					wb(i,j,kw(i,j)+1) = w(i,j,kw(i,j)+1)
+					!ub(i,j,ku(i,j)+1) = 0.
+					!vb(i,j,kv(i,j)+1) = 0.
+					!wb(i,j,kw(i,j)+1) = 0.
+					
+				enddo
 			enddo
 			
 			i = nx1+1 !j=todos
@@ -290,203 +290,193 @@ if ((nlock == 1).or.(nlock == 2)) then
 					v(i,j,0:kv(i,j))=0. !+ dpdy(i,j,0:kv(i,j))
 				enddo
 		endif
-
-
+	!Falta algo aqui? IF inconclusivo e/ou incompleto?							### PEDRO ###
 endif
 
 if (nlock == 2) then
 
-
-
-
-
-
-
-
-		if (ccy0.eq.0.and.ccyf.eq.0) then
-			v(:,1,:) = v(:,ny1,:)     
-		endif
-		
-		!Free-slip condition
-		if (ccy0.eq.1) then 
-			v(:,1,:) = 0.        + dpdy(:,1,:)
-		endif
-		!No-slip condition
-		if (ccy0.eq.2) then 
-			v(:,1,:) = 0.        + dpdy(:,1,:)
-		endif
-		
-		!Prescrita
-		if (ccy0.eq.3) then
-			v(:,1,:) = byy1(:,:) + dpdy(:,1,:)
-		endif
-
-		!Parede direita (j = ny ou ny1)
-		!Periodica
-		if (ccy0.eq.0.and.ccyf.eq.0) then
-			v(:,ny1,:)   = v(:,1,:)
-		endif
-
-		!Free-slip condition
-		if (ccyf.eq.1) then
-			v(:,ny1,:)   = 0.            + dpdy(:,ny1,:)
-		endif
-		
-		!No-slip condition
-		if (ccyf.eq.2) then 
-			v(:,ny1,:) = 0.             + dpdy(:,ny1,:)
-		endif
-
-		!Prescrita
-		if (ccyf.eq.3) then 
-			v(:,ny1,:)   = byyf(:,:) + dpdy(:,ny1,:)
-		endif
-
-		!Parede frente (i = 1)
-		!Periodica
-		if (ccx0.eq.0.and.ccxf.eq.0) then
-			u(1,:,:) = u(nx1,:,:)
-		endif
-		
-		!Free-slip condition
-		if (ccx0.eq.1) then
-			u(1,:,:) = 0.        + dpdx(1,:,:)
-		endif
-
-		!No-slip condition
-		if (ccx0.eq.2) then
-			u(1,:,:) = 0.        + dpdx(1,:,:)
-		endif
-
-		!Prescrita
-		if (ccx0.eq.3) then
-			u(1,:,:) = bxx1(:,:) + dpdx(1,:,:)
-		endif
-		
-		!Para validação
-		if (ccx0.eq.4) then 
-			!do i = 0, 1
-				!u(i,:,11+1) =	0.15946 + dpdx(i,:,12)
-				!u(i,:,12+1) =	0.2873  + dpdx(i,:,13)
-				!u(i,:,13+1) =	0.328   + dpdx(i,:,14)
-				!u(i,:,14+1) =	0.36376 + dpdx(i,:,15)
-				!u(i,:,15+1) =	0.39226 + dpdx(i,:,16)
-				!u(i,:,16+1) =	0.41742 + dpdx(i,:,17)
-				!u(i,:,17+1) =	0.44166 + dpdx(i,:,18)
-				!u(i,:,18+1) =	0.46318 + dpdx(i,:,19)
-				!u(i,:,19+1) =	0.48141 + dpdx(i,:,20)
-				!u(i,:,20+1) =	0.4867  + dpdx(i,:,21)
-			!enddo
-		endif
-
-		!Parede de trás (i = nx ou nx1)	
-		!Periodica
-		if (ccx0.eq.0.and.ccxf.eq.0) then
-			u(nx1,:,:)   = u(1,:,:)
-		endif
-
-		!Free-slip condition
-		if (ccxf.eq.1) then
-			u(nx1,:,:)   = 0.            + dpdx(nx1,:,:)
-		endif
-
-		!No-slip condition
-		if (ccxf.eq.2) then
-			u(nx1,:,:)   = 0.           + dpdx(nx1,:,:)
-			u(nx1+1,:,:) = u(nx1-1,:,:)
-			v(nx+1,:,:)  = -v(nx,:,:)
-			w(nx+1,:,:)  = -w(nx,:,:)
-		endif
-
-		!Prescrita
-		if (ccxf.eq.3) then
-			u(nx1,:,:)   = bxxf(:,:)   + dpdx(nx1,:,:)
-		endif
-
-		!Saida livre
-		if (ccxf.eq.4) then
-			u(nx1,:,:)   = u(nx1-1,:,:)
-		endif
-
-		!Parede do fundo (k = 1)
-		!Free-slip
-		if (ccz0.eq.1) then
-			w(:,:,1) = 0.        + dpdz(:,:,1)
-		endif
-
-		!No-slip condition
-		if (ccz0.eq.2) then
-			w(:,:,1) = 0.        + dpdz(:,:,1)
-		endif
-
-		!Velocidade prescrita para manufaturada
-		if (ccz0.eq.3) then
-			w(:,:,1) = bzz1(:,:) + dpdz(:,:,1)
-		endif
-
-		!Superfície Livre (k = nz ou nz1)
-		!Sempre na superfície livre será free-slip(em teste)
-		if (cczf.eq.1) then
-			w(:,:,nz1)   = 0.            + dpdz(:,:,nz1)
-		endif
-		
-		!Sempre na superfície livre será no-slip(em teste)
-		if (cczf.eq.2) then
-			w(:,:,nz1)   = 0.           + dpdz(:,:,nz1)
-		endif
-
-		!Velocidade prescrita para manufaturada
-		if (cczf.eq.3) then
-			w(:,:,nz1)   = bzzf(:,:)    + dpdz(:,:,nz1)
-		endif
+	if (ccy0.eq.0.and.ccyf.eq.0) then
+		v(:,1,:) = v(:,ny1,:)     
+	endif
 	
+	!Free-slip condition
+	if (ccy0.eq.1) then 
+		v(:,1,:) = 0.        + dpdy(:,1,:)
+	endif
+	!No-slip condition
+	if (ccy0.eq.2) then 
+		v(:,1,:) = 0.        + dpdy(:,1,:)
+	endif
+	
+	!Prescrita
+	if (ccy0.eq.3) then
+		v(:,1,:) = byy1(:,:) + dpdy(:,1,:)
+	endif
 
+	!Parede direita (j = ny ou ny1)
+	!Periodica
+	if (ccy0.eq.0.and.ccyf.eq.0) then
+		v(:,ny1,:)   = v(:,1,:)
+	endif
+
+	!Free-slip condition
+	if (ccyf.eq.1) then
+		v(:,ny1,:)   = 0.            + dpdy(:,ny1,:)
+	endif
+	
+	!No-slip condition
+	if (ccyf.eq.2) then 
+		v(:,ny1,:) = 0.             + dpdy(:,ny1,:)
+	endif
+
+	!Prescrita
+	if (ccyf.eq.3) then 
+		v(:,ny1,:)   = byyf(:,:) + dpdy(:,ny1,:)
+	endif
+
+	!Parede frente (i = 1)
+	!Periodica
+	if (ccx0.eq.0.and.ccxf.eq.0) then
+		u(1,:,:) = u(nx1,:,:)
+	endif
+	
+	!Free-slip condition
+	if (ccx0.eq.1) then
+		u(1,:,:) = 0.        + dpdx(1,:,:)
+	endif
+
+	!No-slip condition
+	if (ccx0.eq.2) then
+		u(1,:,:) = 0.        + dpdx(1,:,:)
+	endif
+
+	!Prescrita
+	if (ccx0.eq.3) then
+		u(1,:,:) = bxx1(:,:) + dpdx(1,:,:)
+	endif
+	
+	!Para validação
+	if (ccx0.eq.4) then 
+		!do i = 0, 1
+			!u(i,:,11+1) =	0.15946 + dpdx(i,:,12)
+			!u(i,:,12+1) =	0.2873  + dpdx(i,:,13)
+			!u(i,:,13+1) =	0.328   + dpdx(i,:,14)
+			!u(i,:,14+1) =	0.36376 + dpdx(i,:,15)
+			!u(i,:,15+1) =	0.39226 + dpdx(i,:,16)
+			!u(i,:,16+1) =	0.41742 + dpdx(i,:,17)
+			!u(i,:,17+1) =	0.44166 + dpdx(i,:,18)
+			!u(i,:,18+1) =	0.46318 + dpdx(i,:,19)
+			!u(i,:,19+1) =	0.48141 + dpdx(i,:,20)
+			!u(i,:,20+1) =	0.4867  + dpdx(i,:,21)
+		!enddo
+	endif
+
+	!Parede de trás (i = nx ou nx1)	
+	!Periodica
+	if (ccx0.eq.0.and.ccxf.eq.0) then
+		u(nx1,:,:)   = u(1,:,:)
+	endif
+
+	!Free-slip condition
+	if (ccxf.eq.1) then
+		u(nx1,:,:)   = 0.            + dpdx(nx1,:,:)
+	endif
+
+	!No-slip condition
+	if (ccxf.eq.2) then
+		u(nx1,:,:)   = 0.           + dpdx(nx1,:,:)
+		u(nx1+1,:,:) = u(nx1-1,:,:)
+		v(nx+1,:,:)  = -v(nx,:,:)
+		w(nx+1,:,:)  = -w(nx,:,:)
+	endif
+
+	!Prescrita
+	if (ccxf.eq.3) then
+		u(nx1,:,:)   = bxxf(:,:)   + dpdx(nx1,:,:)
+	endif
+
+	!Saida livre
+	if (ccxf.eq.4) then
+		u(nx1,:,:)   = u(nx1-1,:,:)
+	endif
+
+	!Parede do fundo (k = 1)
+	!Free-slip
+	if (ccz0.eq.1) then
+		w(:,:,1) = 0.        + dpdz(:,:,1)
+	endif
+
+	!No-slip condition
+	if (ccz0.eq.2) then
+		w(:,:,1) = 0.        + dpdz(:,:,1)
+	endif
+
+	!Velocidade prescrita para manufaturada
+	if (ccz0.eq.3) then
+		w(:,:,1) = bzz1(:,:) + dpdz(:,:,1)
+	endif
+
+	!Superfície Livre (k = nz ou nz1)
+	!Sempre na superfície livre será free-slip(em teste)
+	if (cczf.eq.1) then
+		w(:,:,nz1)   = 0.            + dpdz(:,:,nz1)
+	endif
+	
+	!Sempre na superfície livre será no-slip(em teste)
+	if (cczf.eq.2) then
+		w(:,:,nz1)   = 0.           + dpdz(:,:,nz1)
+	endif
+
+	!Velocidade prescrita para manufaturada
+	if (cczf.eq.3) then
+		w(:,:,nz1)   = bzzf(:,:)    + dpdz(:,:,nz1)
+	endif
+! Conversar sobre														### PEDRO ###
 
 elseif ((nlock == 3) .and. (obst_t .ne. 0)) then
-		!Contorno para Level Set, o ideal é que o objeto seja representado por pelo menos dois grid por direção
-		do j = 1,ny
+	!Contorno para Level Set, o ideal é que o objeto seja representado por pelo menos dois grid por direção
+	do j = 1,ny
 		do i = 1,nx
-		do k = 1, kw(i,j)-1 
+			do k = 1, kw(i,j)-1 
 
-			if ((kw(i-1,j) < k) .and. ((kw(i,j-1) < k)) ) then ! 5ª aqui faz interpolação 
-				ls(i,j,k) = (ls(i-1,j,k) + ls(i,j-1,k))*0.5
-			
-			elseif ((kw(i+1,j) < k) .and. ((kw(i,j-1) < k)) ) then ! 6ª aqui faz interpolação 
-				ls(i,j,k) = (ls(i+1,j,k) + ls(i,j-1,k))*0.5
+				if ((kw(i-1,j) < k) .and. ((kw(i,j-1) < k)) ) then ! 5ª aqui faz interpolação 
+					ls(i,j,k) = (ls(i-1,j,k) + ls(i,j-1,k))*0.5
+				
+				elseif ((kw(i+1,j) < k) .and. ((kw(i,j-1) < k)) ) then ! 6ª aqui faz interpolação 
+					ls(i,j,k) = (ls(i+1,j,k) + ls(i,j-1,k))*0.5
 
-			elseif ((kw(i+1,j) < k) .and. ((kw(i,j+1) < k)) ) then ! 7ª aqui faz interpolação 
-				ls(i,j,k) = (ls(i+1,j,k) + ls(i,j+1,k))*0.5
+				elseif ((kw(i+1,j) < k) .and. ((kw(i,j+1) < k)) ) then ! 7ª aqui faz interpolação 
+					ls(i,j,k) = (ls(i+1,j,k) + ls(i,j+1,k))*0.5
 
-			elseif ((kw(i-1,j) < k) .and. ((kw(i,j+1) < k)) ) then ! 8ª aqui faz interpolação 
-				ls(i,j,k) = (ls(i-1,j,k) + ls(i,j+1,k))*0.5
+				elseif ((kw(i-1,j) < k) .and. ((kw(i,j+1) < k)) ) then ! 8ª aqui faz interpolação 
+					ls(i,j,k) = (ls(i-1,j,k) + ls(i,j+1,k))*0.5
 
-			elseif ((kw(i-1,j) < k) .and. ((kw(i,j-1) >= k) .and. (kw(i,j+1) >= k)) ) then ! 1ª aqui faz interpolação 
-				ls(i,j,k) = ls(i-1,j,k) !2.*ls(i-1,j,k) - ls(i-2,j,k)
+				elseif ((kw(i-1,j) < k) .and. ((kw(i,j-1) >= k) .and. (kw(i,j+1) >= k)) ) then ! 1ª aqui faz interpolação 
+					ls(i,j,k) = ls(i-1,j,k) !2.*ls(i-1,j,k) - ls(i-2,j,k)
 
-			elseif ((kw(i,j-1) < k) .and. ((kw(i-1,j) >= k) .and. (kw(i+1,j) >= k)) ) then ! 2ª aqui faz interpolação 
-				ls(i,j,k)= ls(i,j-1,k) !2.*ls(i,j-1,k) - ls(i,j-2,k)
+				elseif ((kw(i,j-1) < k) .and. ((kw(i-1,j) >= k) .and. (kw(i+1,j) >= k)) ) then ! 2ª aqui faz interpolação 
+					ls(i,j,k)= ls(i,j-1,k) !2.*ls(i,j-1,k) - ls(i,j-2,k)
 
-			elseif ((kw(i+1,j) < k) .and. ((kw(i,j-1) >= k) .and. (kw(i,j+1) >= k)) ) then ! 3ª aqui faz interpolação 
-				ls(i,j,k)= ls(i+1,j,k) !2.*ls(i+1,j,k) - ls(i+2,j,k)
+				elseif ((kw(i+1,j) < k) .and. ((kw(i,j-1) >= k) .and. (kw(i,j+1) >= k)) ) then ! 3ª aqui faz interpolação 
+					ls(i,j,k)= ls(i+1,j,k) !2.*ls(i+1,j,k) - ls(i+2,j,k)
 
-			elseif ((kw(i,j+1) < k) .and. ((kw(i-1,j) >= k) .and. (kw(i+1,j) >= k)) ) then ! 4ª aqui faz interpolação 
-				ls(i,j,k)= ls(i,j+1,k) !2.*ls(i,j+1,k) - ls(i,j+2,k)
+				elseif ((kw(i,j+1) < k) .and. ((kw(i-1,j) >= k) .and. (kw(i+1,j) >= k)) ) then ! 4ª aqui faz interpolação 
+					ls(i,j,k)= ls(i,j+1,k) !2.*ls(i,j+1,k) - ls(i,j+2,k)
 
-			elseif ( (k == kw(i,j)-1) .and. (k < nz) ) then !Condição de topo
-				ls(i,j,k) = ls(i,j,k+1)
+				elseif ( (k == kw(i,j)-1) .and. (k < nz) ) then !Condição de topo
+					ls(i,j,k) = ls(i,j,k+1)
 
-			!Caso dentro do obstáculo tenha água, é para interpolar.
-			!else	
-			! 	ls(i,j,k) = (ls(i+1,j,k)+ls(i-1,j,k)+ls(i,j+1,k)+ls(i,j-1,k)) *0.25
-			endif
+				!Caso dentro do obstáculo tenha água, é para interpolar.
+				!else	
+				! 	ls(i,j,k) = (ls(i+1,j,k)+ls(i-1,j,k)+ls(i,j+1,k)+ls(i,j-1,k)) *0.25
+				endif
+			enddo
 		enddo
-		enddo
-		enddo
+	enddo
 
-		CALL heaviside()
+	CALL heaviside()
+
 endif
-
-
 
 
 END SUBROUTINE contorno
