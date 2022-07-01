@@ -1,0 +1,758 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ Com entrada de onda.
+ Esquema temporal: 
+ RK3.
+ Malha (nx x ny x nz):         150 x          50 x          50
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.30639899999999987     
+ Tempo acumulado do level_set() p/ Fortran  0.30639899999999987     
+ Tempo individual do level_set() p/ OpenMP  0.30690423599844507     
+ Tempo acumulado do level_set() p/ OpenMP  0.30690423599844507     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   3.0072999999999794E-002
+ Tempo acumulado do visco() p/ Fortran   3.0072999999999794E-002
+ Tempo individual do visco() p/ OpenMP:   3.0130921999443672E-002
+ Tempo acumulado do visco() p/ OpenMP   3.0130921999443672E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   7.9947000000000656E-002
+ Tempo acumulado do convdiff() p/ Fortran   7.9947000000000656E-002
+ Tempo individual do convdiff() p/ OpenMP:   8.0115209999348735E-002
+ Tempo acumulado do convdiff() p/ OpenMP   8.0115209999348735E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.348841000000000     
+ Tempo acumulado do graddin() p/ Fortran   14.348841000000000     
+ Tempo individual do graddin() p/ OpenMP:   14.375977092000539     
+ Tempo acumulado do graddin() p/ OpenMP   14.375977092000539     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2069999999997805E-002
+ Tempo acumulado do visco() p/ Fortran   4.2142999999997599E-002
+ Tempo individual do visco() p/ OpenMP:   1.2131390998547431E-002
+ Tempo acumulado do visco() p/ OpenMP   4.2262312997991103E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.3137999999999010E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.12308499999999967     
+ Tempo individual do convdiff() p/ OpenMP:   4.3195748001380707E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.12331095800072944     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   13.063303000000001     
+ Tempo acumulado do graddin() p/ Fortran   27.412144000000001     
+ Tempo individual do graddin() p/ OpenMP:   13.088231411999004     
+ Tempo acumulado do graddin() p/ OpenMP   27.464208503999544     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1908000000005359E-002
+ Tempo acumulado do visco() p/ Fortran   5.4051000000002958E-002
+ Tempo individual do visco() p/ OpenMP:   1.1909316999663133E-002
+ Tempo acumulado do visco() p/ OpenMP   5.4171629997654236E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.1020000000003165E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.16410500000000283     
+ Tempo individual do convdiff() p/ OpenMP:   4.1175786000167136E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.16448674400089658     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   19.297382999999996     
+ Tempo acumulado do graddin() p/ Fortran   46.709526999999994     
+ Tempo individual do graddin() p/ OpenMP:   19.333845758999814     
+ Tempo acumulado do graddin() p/ OpenMP   46.798054262999358     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Duração Da Simulação (s):   47.412448999999995     
+ Duração Da Simulação (min):  0.79020748333333324     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5000000000013347     
+ Erro (%)   0.0000000000000000     
+ Div.   18.734513028550030     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.30313699999999955     
+ Tempo acumulado do level_set() p/ Fortran  0.60953599999999941     
+ Tempo individual do level_set() p/ OpenMP  0.30365985400021600     
+ Tempo acumulado do level_set() p/ OpenMP  0.61056408999866107     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.3097000000001913E-002
+ Tempo acumulado do visco() p/ Fortran   6.7148000000004870E-002
+ Tempo individual do visco() p/ OpenMP:   1.3160114000129397E-002
+ Tempo acumulado do visco() p/ OpenMP   6.7331743997783633E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0561000000003844E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.20466600000000668     
+ Tempo individual do convdiff() p/ OpenMP:   4.0635127999848919E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.20512187200074550     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   13.203724999999999     
+ Tempo acumulado do graddin() p/ Fortran   59.913251999999993     
+ Tempo individual do graddin() p/ OpenMP:   13.228678949999448     
+ Tempo acumulado do graddin() p/ OpenMP   60.026733212998806     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2741000000005442E-002
+ Tempo acumulado do visco() p/ Fortran   7.9889000000010313E-002
+ Tempo individual do visco() p/ OpenMP:   1.2800565998986713E-002
+ Tempo acumulado do visco() p/ OpenMP   8.0132309996770346E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9806999999996151E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.24447300000000283     
+ Tempo individual do convdiff() p/ OpenMP:   3.9866413999334327E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.24498828600007982     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   17.893788000000001     
+ Tempo acumulado do graddin() p/ Fortran   77.807040000000001     
+ Tempo individual do graddin() p/ OpenMP:   17.927541277000273     
+ Tempo acumulado do graddin() p/ OpenMP   77.954274489999079     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2528999999986468E-002
+ Tempo acumulado do visco() p/ Fortran   9.2417999999996781E-002
+ Tempo individual do visco() p/ OpenMP:   1.2588634001076571E-002
+ Tempo acumulado do visco() p/ OpenMP   9.2720943997846916E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9525999999995065E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.28399899999999789     
+ Tempo individual do convdiff() p/ OpenMP:   3.9580888000273262E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.28456917400035309     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   7.8493699999999933     
+ Tempo acumulado do graddin() p/ Fortran   85.656409999999994     
+ Tempo individual do graddin() p/ OpenMP:   7.8612482219996309     
+ Tempo acumulado do graddin() p/ OpenMP   85.815522711998710     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   47.502000000000002     
+ Tempo restante aproximado (h):   1.5080000000000000E-002
+ Duração Da Simulação (s):   87.002769999999998     
+ Duração Da Simulação (min):   1.4500461666666666     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100484616612073     
+ Erro (%)  -6.6989744399091125E-003
+ Div.   11.453424904529209     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.44501300000000299     
+ Tempo acumulado do level_set() p/ Fortran   1.0545490000000024     
+ Tempo individual do level_set() p/ OpenMP  0.44573097200009215     
+ Tempo acumulado do level_set() p/ OpenMP   1.0562950619987532     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2309999999999377E-002
+ Tempo acumulado do visco() p/ Fortran  0.10472799999999616     
+ Tempo individual do visco() p/ OpenMP:   1.2369169000521651E-002
+ Tempo acumulado do visco() p/ OpenMP  0.10509011299836857     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0901000000005183E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.32490000000000308     
+ Tempo individual do convdiff() p/ OpenMP:   4.0967336999528925E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.32553651099988201     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   21.551119000000000     
+ Tempo acumulado do graddin() p/ Fortran   107.20752899999999     
+ Tempo individual do graddin() p/ OpenMP:   21.592362470999433     
+ Tempo acumulado do graddin() p/ OpenMP   107.40788518299814     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2737000000001331E-002
+ Tempo acumulado do visco() p/ Fortran  0.11746499999999749     
+ Tempo individual do visco() p/ OpenMP:   1.2847951000367175E-002
+ Tempo acumulado do visco() p/ OpenMP  0.11793806399873574     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9940000000001419E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.36484000000000449     
+ Tempo individual do convdiff() p/ OpenMP:   4.0001098999709939E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.36553760999959195     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.866702000000004     
+ Tempo acumulado do graddin() p/ Fortran   123.07423100000000     
+ Tempo individual do graddin() p/ OpenMP:   15.897188063998328     
+ Tempo acumulado do graddin() p/ OpenMP   123.30507324699647     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2334999999978891E-002
+ Tempo acumulado do visco() p/ Fortran  0.12979999999997638     
+ Tempo individual do visco() p/ OpenMP:   1.2394752000545850E-002
+ Tempo acumulado do visco() p/ OpenMP  0.13033281599928159     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0469000000001643E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.40530900000000614     
+ Tempo individual do convdiff() p/ OpenMP:   4.0527469000153360E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.40606507899974531     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.702235999999999     
+ Tempo acumulado do graddin() p/ Fortran   135.77646700000000     
+ Tempo individual do graddin() p/ OpenMP:   12.726143267000225     
+ Tempo acumulado do graddin() p/ OpenMP   136.03121651399670     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   39.661999999999999     
+ Tempo restante aproximado (h):   2.3942936507936507E-002
+ Duração Da Simulação (s):   137.89617000000001     
+ Duração Da Simulação (min):   2.2982695000000004     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100932194561265     
+ Erro (%)  -6.7288129698552142E-003
+ Div.   14.486964505083620     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43161600000001954     
+ Tempo acumulado do level_set() p/ Fortran   1.4861650000000219     
+ Tempo individual do level_set() p/ OpenMP  0.43233214100109763     
+ Tempo acumulado do level_set() p/ OpenMP   1.4886272029998509     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2146999999998798E-002
+ Tempo acumulado do visco() p/ Fortran  0.14194699999997518     
+ Tempo individual do visco() p/ OpenMP:   1.2205281998831197E-002
+ Tempo acumulado do visco() p/ OpenMP  0.14253809799811279     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.1053000000005113E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.44636200000001125     
+ Tempo individual do convdiff() p/ OpenMP:   4.1116414000498480E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.44718149300024379     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   16.160329000000019     
+ Tempo acumulado do graddin() p/ Fortran   151.93679600000002     
+ Tempo individual do graddin() p/ OpenMP:   16.190969363999102     
+ Tempo acumulado do graddin() p/ OpenMP   152.22218587799580     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1764999999996917E-002
+ Tempo acumulado do visco() p/ Fortran  0.15371199999997209     
+ Tempo individual do visco() p/ OpenMP:   1.1767379000957590E-002
+ Tempo acumulado do visco() p/ OpenMP  0.15430547699907038     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0987000000001217E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.48734900000001247     
+ Tempo individual do convdiff() p/ OpenMP:   4.1050231999179232E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.48823172499942302     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   16.545664000000016     
+ Tempo acumulado do graddin() p/ Fortran   168.48246000000003     
+ Tempo individual do graddin() p/ OpenMP:   16.576917632000914     
+ Tempo acumulado do graddin() p/ OpenMP   168.79910350999671     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2176999999979898E-002
+ Tempo acumulado do visco() p/ Fortran  0.16588899999995199     
+ Tempo individual do visco() p/ OpenMP:   1.2237470999025390E-002
+ Tempo acumulado do visco() p/ OpenMP  0.16654294799809577     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9758000000006177E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.52710700000001864     
+ Tempo individual do convdiff() p/ OpenMP:   3.9825907000704319E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.52805763200012734     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.262054000000006     
+ Tempo acumulado do graddin() p/ Fortran   180.74451400000004     
+ Tempo individual do graddin() p/ OpenMP:   12.285099623999486     
+ Tempo acumulado do graddin() p/ OpenMP   181.08420313399620     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   50.991000000000000     
+ Tempo restante aproximado (h):   3.2663231292517005E-002
+ Duração Da Simulação (s):   183.62346900000000     
+ Duração Da Simulação (min):   3.0603911500000001     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101393576647915     
+ Erro (%)  -6.7595717756318181E-003
+ Div.   15.835904904139642     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43630399999997849     
+ Tempo acumulado do level_set() p/ Fortran   1.9224690000000004     
+ Tempo individual do level_set() p/ OpenMP  0.43708773799880873     
+ Tempo acumulado do level_set() p/ OpenMP   1.9257149409986596     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2748999999985244E-002
+ Tempo acumulado do visco() p/ Fortran  0.17863799999993724     
+ Tempo individual do visco() p/ OpenMP:   1.2802511999325361E-002
+ Tempo acumulado do visco() p/ OpenMP  0.17934545999742113     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9770000000004302E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.56687700000002295     
+ Tempo individual do convdiff() p/ OpenMP:   3.9833562001149403E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.56789119400127674     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.262743000000000     
+ Tempo acumulado do graddin() p/ Fortran   196.00725700000004     
+ Tempo individual do graddin() p/ OpenMP:   15.291472863000308     
+ Tempo acumulado do graddin() p/ OpenMP   196.37567599699651     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1952000000007956E-002
+ Tempo acumulado do visco() p/ Fortran  0.19058999999994519     
+ Tempo individual do visco() p/ OpenMP:   1.1956419000853202E-002
+ Tempo acumulado do visco() p/ OpenMP  0.19130187899827433     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0621000000015783E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.60749800000003873     
+ Tempo individual do convdiff() p/ OpenMP:   4.0685769999981858E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.60857696400125860     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   21.353814000000000     
+ Tempo acumulado do graddin() p/ Fortran   217.36107100000004     
+ Tempo individual do graddin() p/ OpenMP:   21.394067654000537     
+ Tempo acumulado do graddin() p/ OpenMP   217.76974365099704     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2483000000003130E-002
+ Tempo acumulado do visco() p/ Fortran  0.20307299999994832     
+ Tempo individual do visco() p/ OpenMP:   1.2540683999759494E-002
+ Tempo acumulado do visco() p/ OpenMP  0.20384256299803383     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0835000000015498E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.64833300000005423     
+ Tempo individual do convdiff() p/ OpenMP:   4.0900442001657211E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.64947740600291581     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   10.156779999999998     
+ Tempo acumulado do graddin() p/ Fortran   227.51785100000004     
+ Tempo individual do graddin() p/ OpenMP:   10.176145426999938     
+ Tempo acumulado do graddin() p/ OpenMP   227.94588907799698     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   45.813000000000002     
+ Tempo restante aproximado (h):   3.7086936345966957E-002
+ Duração Da Simulação (s):   231.16024899999999     
+ Duração Da Simulação (min):   3.8526708166666666     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101975056772274     
+ Erro (%)  -6.7983371172557682E-003
+ Div.   13.353766571311542     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43490099999999643     
+ Tempo acumulado do level_set() p/ Fortran   2.3573699999999969     
+ Tempo individual do level_set() p/ OpenMP  0.43564553299984254     
+ Tempo acumulado do level_set() p/ OpenMP   2.3613604739985021     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2938000000019656E-002
+ Tempo acumulado do visco() p/ Fortran  0.21601099999996798     
+ Tempo individual do visco() p/ OpenMP:   1.2992788000701694E-002
+ Tempo acumulado do visco() p/ OpenMP  0.21683535099873552     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0480999999999767E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.68881400000005399     
+ Tempo individual do convdiff() p/ OpenMP:   4.0541505999499350E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.69001891200241516     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   18.686783000000020     
+ Tempo acumulado do graddin() p/ Fortran   246.20463400000006     
+ Tempo individual do graddin() p/ OpenMP:   18.722007464000853     
+ Tempo acumulado do graddin() p/ OpenMP   246.66789654199783     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2125999999994974E-002
+ Tempo acumulado do visco() p/ Fortran  0.22813699999996295     
+ Tempo individual do visco() p/ OpenMP:   1.2128348000260303E-002
+ Tempo acumulado do visco() p/ OpenMP  0.22896369899899582     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0686999999991258E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.72950100000004525     
+ Tempo individual do convdiff() p/ OpenMP:   4.0752156999587896E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.73077106900200306     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.314520000000016     
+ Tempo acumulado do graddin() p/ Fortran   257.51915400000007     
+ Tempo individual do graddin() p/ OpenMP:   11.336558618000709     
+ Tempo acumulado do graddin() p/ OpenMP   258.00445515999854     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2481999999977234E-002
+ Tempo acumulado do visco() p/ Fortran  0.24061899999994019     
+ Tempo individual do visco() p/ OpenMP:   1.2543793000077130E-002
+ Tempo acumulado do visco() p/ OpenMP  0.24150749199907295     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9314999999987776E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.76881600000003303     
+ Tempo individual do convdiff() p/ OpenMP:   3.9377949000481749E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.77014901800248481     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   9.9168970000000058     
+ Tempo acumulado do graddin() p/ Fortran   267.43605100000008     
+ Tempo individual do graddin() p/ OpenMP:   9.9331061889988632     
+ Tempo acumulado do graddin() p/ OpenMP   267.93756134899741     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           6
+ it*dt:   6.0000000000000001E-003
+ Ciclo:   47.627000000000002     
+ Tempo restante aproximado (h):   3.9348643852098665E-002
+ Duração Da Simulação (s):   271.83914299999998     
+ Duração Da Simulação (min):   4.5306523833333330     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5102846168404469     
+ Erro (%)  -6.8564112260686939E-003
+ Div.   12.209729233432283     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.44260399999996025     
+ Tempo acumulado do level_set() p/ Fortran   2.7999739999999571     
+ Tempo individual do level_set() p/ OpenMP  0.44334225000056904     
+ Tempo acumulado do level_set() p/ OpenMP   2.8047027239990712     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2246000000004642E-002
+ Tempo acumulado do visco() p/ Fortran  0.25286499999994483     
+ Tempo individual do visco() p/ OpenMP:   1.2248188000739901E-002
+ Tempo acumulado do visco() p/ OpenMP  0.25375567999981286     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0388000000007196E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.80920400000004022     
+ Tempo individual do convdiff() p/ OpenMP:   4.0512158000638010E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.81066117600312282     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   16.036927999999989     
+ Tempo acumulado do graddin() p/ Fortran   283.47297900000007     
+ Tempo individual do graddin() p/ OpenMP:   16.066943908999747     
+ Tempo acumulado do graddin() p/ OpenMP   284.00450525799715     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2067999999999302E-002
+ Tempo acumulado do visco() p/ Fortran  0.26493299999994413     
+ Tempo individual do visco() p/ OpenMP:   1.2067929999830085E-002
+ Tempo acumulado do visco() p/ OpenMP  0.26582360999964294     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.1245000000003529E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.85044900000004375     
+ Tempo individual do convdiff() p/ OpenMP:   4.1384735999599798E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.85204591200272262     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.095769000000018     
+ Tempo acumulado do graddin() p/ Fortran   295.56874800000008     
+ Tempo individual do graddin() p/ OpenMP:   12.119253713000944     
+ Tempo acumulado do graddin() p/ OpenMP   296.12375897099810     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1845999999991363E-002
+ Tempo acumulado do visco() p/ Fortran  0.27677899999993549     
+ Tempo individual do visco() p/ OpenMP:   1.1847913001474808E-002
+ Tempo acumulado do visco() p/ OpenMP  0.27767152300111775     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0858000000014272E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.89130700000005803     
+ Tempo individual do convdiff() p/ OpenMP:   4.0960917000120389E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.89300682900284301     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   7.5241540000000100     
+ Tempo acumulado do graddin() p/ Fortran   303.09290200000009     
+ Tempo individual do graddin() p/ OpenMP:   7.5387136720000854     
+ Tempo acumulado do graddin() p/ OpenMP   303.66247264299818     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           7
+ it*dt:   7.0000000000000001E-003
+ Ciclo:   40.753000000000000     
+ Tempo restante aproximado (h):   3.8578956635132187E-002
+ Duração Da Simulação (s):   308.26682399999999     
+ Duração Da Simulação (min):   5.1377803999999996     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5104168426300044     
+ Erro (%)  -6.9445617524402934E-003
+ Div.   10.549680460484511     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43651100000005272     
+ Tempo acumulado do level_set() p/ Fortran   3.2364850000000098     
+ Tempo individual do level_set() p/ OpenMP  0.43724039900007483     
+ Tempo acumulado do level_set() p/ OpenMP   3.2419431229991460     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2601999999958480E-002
+ Tempo acumulado do visco() p/ Fortran  0.28938099999989397     
+ Tempo individual do visco() p/ OpenMP:   1.2660278000112157E-002
+ Tempo acumulado do visco() p/ OpenMP  0.29033180100122991     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9905999999973574E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.93121300000003160     
+ Tempo individual do convdiff() p/ OpenMP:   3.9965234998817323E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.93297206400166033     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.945965999999999     
+ Tempo acumulado do graddin() p/ Fortran   318.03886800000009     
+ Tempo individual do graddin() p/ OpenMP:   14.974777586001437     
+ Tempo acumulado do graddin() p/ OpenMP   318.63725022899962     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2289000000009764E-002
+ Tempo acumulado do visco() p/ Fortran  0.30166999999990374     
+ Tempo individual do visco() p/ OpenMP:   1.2290374001167947E-002
+ Tempo acumulado do visco() p/ OpenMP  0.30262217500239785     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0692999999976109E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.97190600000000771     
+ Tempo individual do convdiff() p/ OpenMP:   4.0754480000032345E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.97372654400169267     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.066771000000017     
+ Tempo acumulado do graddin() p/ Fortran   330.10563900000011     
+ Tempo individual do graddin() p/ OpenMP:   12.089449453000270     
+ Tempo acumulado do graddin() p/ OpenMP   330.72669968199989     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2105000000019572E-002
+ Tempo acumulado do visco() p/ Fortran  0.31377499999992331     
+ Tempo individual do visco() p/ OpenMP:   1.2107096001273021E-002
+ Tempo acumulado do visco() p/ OpenMP  0.31472927100367087     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9771999999970831E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.0116779999999785     
+ Tempo individual do convdiff() p/ OpenMP:   3.9835032001064974E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.0135615760027576     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.187281000000041     
+ Tempo acumulado do graddin() p/ Fortran   342.29292000000015     
+ Tempo individual do graddin() p/ OpenMP:   12.210436008001125     
+ Tempo acumulado do graddin() p/ OpenMP   342.93713569000101     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           8
+ it*dt:   8.0000000000000002E-003
+ Ciclo:   36.497000000000000     
+ Tempo restante aproximado (h):   3.5964264417414890E-002
+ Duração Da Simulação (s):   348.23167699999999     
+ Duração Da Simulação (min):   5.8038612833333332     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5106113666763652     
+ Erro (%)  -7.0742444500140299E-003
+ Div.   9.8583292803450746     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.44284599999997454     
+ Tempo acumulado do level_set() p/ Fortran   3.6793309999999844     
+ Tempo individual do level_set() p/ OpenMP  0.44360998499905691     
+ Tempo acumulado do level_set() p/ OpenMP   3.6855531079982029     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2286000000017339E-002
+ Tempo acumulado do visco() p/ Fortran  0.32606099999994065     
+ Tempo individual do visco() p/ OpenMP:   1.2287692001336836E-002
+ Tempo acumulado do visco() p/ OpenMP  0.32701696300500771     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0444999999976972E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.0521229999999555     
+ Tempo individual do convdiff() p/ OpenMP:   4.0560508999988087E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.0541220850027457     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   16.646938000000034     
+ Tempo acumulado do graddin() p/ Fortran   358.93985800000019     
+ Tempo individual do graddin() p/ OpenMP:   16.678566171000057     
+ Tempo acumulado do graddin() p/ OpenMP   359.61570186100107     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2134000000003198E-002
+ Tempo acumulado do visco() p/ Fortran  0.33819499999994385     
+ Tempo individual do visco() p/ OpenMP:   1.2197469000966521E-002
+ Tempo acumulado do visco() p/ OpenMP  0.33921443200597423     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0501000000006115E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.0926239999999616     
+ Tempo individual do convdiff() p/ OpenMP:   4.0572005000285571E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.0946940900030313     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.933845000000019     
+ Tempo acumulado do graddin() p/ Fortran   371.87370300000021     
+ Tempo individual do graddin() p/ OpenMP:   12.958571950999612     
+ Tempo acumulado do graddin() p/ OpenMP   372.57427381200068     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1870999999985088E-002
+ Tempo acumulado do visco() p/ Fortran  0.35006599999992893     
+ Tempo individual do visco() p/ OpenMP:   1.1873650999405072E-002
+ Tempo acumulado do visco() p/ OpenMP  0.35108808300537930     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0756000000044423E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.1333800000000060     
+ Tempo individual do convdiff() p/ OpenMP:   4.0879764999772306E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.1355738550028036     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   21.014409000000001     
+ Tempo acumulado do graddin() p/ Fortran   392.88811200000021     
+ Tempo individual do graddin() p/ OpenMP:   21.054782007999165     
+ Tempo acumulado do graddin() p/ OpenMP   393.62905581999985     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           9
+ it*dt:   9.0000000000000011E-003
+ Ciclo:   40.040999999999997     
+ Tempo restante aproximado (h):   3.2415440929212766E-002
+ Duração Da Simulação (s):   399.59706399999999     
+ Duração Da Simulação (min):   6.6599510666666664     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5108757505352151     
+ Erro (%)  -7.2505003559137794E-003
+ Div.   19.118614822970855     
+
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43292900000000145     
+ Tempo acumulado do level_set() p/ Fortran   4.1122599999999858     
+ Tempo individual do level_set() p/ OpenMP  0.43366835500091838     
+ Tempo acumulado do level_set() p/ OpenMP   4.1192214629991213     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2402000000008684E-002
+ Tempo acumulado do visco() p/ Fortran  0.36246799999993762     
+ Tempo individual do visco() p/ OpenMP:   1.2456596999982139E-002
+ Tempo acumulado do visco() p/ OpenMP  0.36354468000536144     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0520000000014988E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.1739000000000210     
+ Tempo individual do convdiff() p/ OpenMP:   4.0580151999165537E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.1761540070019691     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.034928999999977     
+ Tempo acumulado do graddin() p/ Fortran   404.92304100000018     
+ Tempo individual do graddin() p/ OpenMP:   12.054782474999229     
+ Tempo acumulado do graddin() p/ OpenMP   405.68383829499908     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2306000000023687E-002
+ Tempo acumulado do visco() p/ Fortran  0.37477399999996130     
+ Tempo individual do visco() p/ OpenMP:   1.2307715998758795E-002
+ Tempo acumulado do visco() p/ OpenMP  0.37585239600412024     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0032999999993990E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.2139330000000150     
+ Tempo individual do convdiff() p/ OpenMP:   4.0038071001617936E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.2161920780035871     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.801554000000010     
+ Tempo acumulado do graddin() p/ Fortran   419.72459500000019     
+ Tempo individual do graddin() p/ OpenMP:   14.802102591000221     
+ Tempo acumulado do graddin() p/ OpenMP   420.48594088599930     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2363999999990938E-002
+ Tempo acumulado do visco() p/ Fortran  0.38713799999995224     
+ Tempo individual do visco() p/ OpenMP:   1.2365193999357871E-002
+ Tempo acumulado do visco() p/ OpenMP  0.38821759000347811     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9000999999984742E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.2529339999999998     
+ Tempo individual do convdiff() p/ OpenMP:   3.9002891000563977E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.2551949690041511     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.349660999999969     
+ Tempo acumulado do graddin() p/ Fortran   434.07425600000016     
+ Tempo individual do graddin() p/ OpenMP:   14.350015927000641     
+ Tempo acumulado do graddin() p/ OpenMP   434.83595681299994     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:          10
+ it*dt:   1.0000000000000000E-002
+ Ciclo:   51.463999999999999     
+ Tempo restante aproximado (h):   2.7784663653610941E-002
+ Duração Da Simulação (s):   441.54203699999999     
+ Duração Da Simulação (min):   7.3590339499999997     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5112018630408839     
+ Erro (%)  -7.4679086930261387E-003
+ Div.   15.039908199761051     
+
+ Tempo Total do Fortran:   446.82074600000004     
+ Tempo Total do OpenMP:   447.60472342899993     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-

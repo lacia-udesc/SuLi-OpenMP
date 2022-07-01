@@ -1,0 +1,1169 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ Com entrada de onda.
+ Esquema temporal: 
+ RK3.
+ Malha (nx x ny x nz):         150 x          50 x          50
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.30313100000000048     
+ Tempo acumulado do level_set() p/ Fortran  0.30313100000000048     
+ Tempo individual do level_set() p/ OpenMP  0.30315337999854819     
+ Tempo acumulado do level_set() p/ OpenMP  0.30315337999854819     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.2438000000000180E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   2.2438000000000180E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.2441103999881307E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   2.2441103999881307E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   3.0117999999999867E-002
+ Tempo acumulado do visco() p/ Fortran   3.0117999999999867E-002
+ Tempo individual do visco() p/ OpenMP:   3.0157248998875730E-002
+ Tempo acumulado do visco() p/ OpenMP   3.0157248998875730E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   7.7671999999999741E-002
+ Tempo acumulado do convdiff() p/ Fortran   7.7671999999999741E-002
+ Tempo individual do convdiff() p/ OpenMP:   7.7689043999271234E-002
+ Tempo acumulado do convdiff() p/ OpenMP   7.7689043999271234E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2429999999999950E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.2429999999999950E-003
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2433570011344273E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.2433570011344273E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   13.740981000000001     
+ Tempo acumulado do graddin() p/ Fortran   13.740981000000001     
+ Tempo individual do graddin() p/ OpenMP:   13.741538849000790     
+ Tempo acumulado do graddin() p/ OpenMP   13.741538849000790     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.2659999999987690E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.2659999999987690E-003
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.2686570009682328E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.2686570009682328E-003
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2107000000000312E-002
+ Tempo acumulado do visco() p/ Fortran   4.2225000000000179E-002
+ Tempo individual do visco() p/ OpenMP:   1.2108905000786763E-002
+ Tempo acumulado do visco() p/ OpenMP   4.2266153999662492E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.2038999999999049E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.11971099999999879     
+ Tempo individual do convdiff() p/ OpenMP:   4.2064860997925280E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.11975390499719651     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.8499999999986869E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.0929999999986819E-003
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.8501490014605224E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.0935060025949497E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.548014000000002     
+ Tempo acumulado do graddin() p/ Fortran   26.288995000000003     
+ Tempo individual do graddin() p/ OpenMP:   12.548710343999119     
+ Tempo acumulado do graddin() p/ OpenMP   26.290249192999909     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0810000000004436E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.3469999999992126E-003
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0840359975409228E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.3526929985091556E-003
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1759000000001407E-002
+ Tempo acumulado do visco() p/ Fortran   5.3984000000001586E-002
+ Tempo individual do visco() p/ OpenMP:   1.1762583999370690E-002
+ Tempo acumulado do visco() p/ OpenMP   5.4028737999033183E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9779000000002895E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.15949000000000169     
+ Tempo individual do convdiff() p/ OpenMP:   3.9824756000598427E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.15957866099779494     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2349999999988768E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   7.3279999999975587E-003
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2344019998854492E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   7.3279080024803989E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   18.528842000000004     
+ Tempo acumulado do graddin() p/ Fortran   44.817837000000011     
+ Tempo individual do graddin() p/ OpenMP:   18.529760037999949     
+ Tempo acumulado do graddin() p/ OpenMP   44.820009230999858     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1199999999979013E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   6.4669999999971139E-003
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1225769996817689E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   6.4752699981909245E-003
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Tempo restante aproximado (min):   0.0000000000000000     
+ Duração Da Simulação (s):   45.513615000000001     
+ Duração Da Simulação (min):  0.75856025000000005     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5000000000013347     
+ Erro (%)   0.0000000000000000     
+ Div.   18.734513028550030     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.13526699999999892     
+ Tempo acumulado do plot_f() p/ Fortran  0.13526699999999892     
+ Tempo individual do plot_f() p/ OpenMP:  0.13531814800080610     
+ Tempo acumulado do plot_f() p/ OpenMP  0.13531814800080610     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.29692200000000213     
+ Tempo acumulado do level_set() p/ Fortran  0.60005300000000261     
+ Tempo individual do level_set() p/ OpenMP  0.29695434399764054     
+ Tempo acumulado do level_set() p/ OpenMP  0.60010772399618872     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5361000000003742E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   4.7799000000003922E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5367002002894878E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   4.7808106002776185E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1997999999998399E-002
+ Tempo acumulado do visco() p/ Fortran   6.5981999999999985E-002
+ Tempo individual do visco() p/ OpenMP:   1.2005872002191609E-002
+ Tempo acumulado do visco() p/ OpenMP   6.6034610001224792E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9734000000002823E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.19922400000000451     
+ Tempo individual do convdiff() p/ OpenMP:   3.9750558000378078E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.19932921899817302     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2269999999977586E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   9.5549999999953172E-003
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2328520026348997E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   9.5607600051152986E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.693975000000002     
+ Tempo acumulado do graddin() p/ Fortran   57.511812000000013     
+ Tempo individual do graddin() p/ OpenMP:   12.694671154000389     
+ Tempo acumulado do graddin() p/ OpenMP   57.514680385000247     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1339999999980819E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   8.6009999999951958E-003
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1357410005293787E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   8.6110109987203032E-003
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1964999999996451E-002
+ Tempo acumulado do visco() p/ Fortran   7.7946999999996436E-002
+ Tempo individual do visco() p/ OpenMP:   1.1968075999902794E-002
+ Tempo acumulado do visco() p/ OpenMP   7.8002686001127586E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0086999999999762E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.23931100000000427     
+ Tempo individual do convdiff() p/ OpenMP:   4.0111572998284828E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.23944079199645785     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.4019999999964625E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   1.1956999999991780E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.4016019997361582E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   1.1962362004851457E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   17.179282999999998     
+ Tempo acumulado do graddin() p/ Fortran   74.691095000000018     
+ Tempo individual do graddin() p/ OpenMP:   17.180035691999365     
+ Tempo acumulado do graddin() p/ OpenMP   74.694716076999612     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0590000000026976E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   1.0659999999997893E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0618570015358273E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   1.0672868000256130E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1802000000002977E-002
+ Tempo acumulado do visco() p/ Fortran   8.9748999999999413E-002
+ Tempo individual do visco() p/ OpenMP:   1.1805489997641416E-002
+ Tempo acumulado do visco() p/ OpenMP   8.9808175998769002E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9996999999999616E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.27930800000000389     
+ Tempo individual do convdiff() p/ OpenMP:   4.0041591000772314E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.27948238299723016     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.3580000000009704E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   1.4314999999992750E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.3565199990116525E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   1.4318882003863109E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   7.5210170000000005     
+ Tempo acumulado do graddin() p/ Fortran   82.212112000000019     
+ Tempo individual do graddin() p/ OpenMP:   7.5214893029988161     
+ Tempo acumulado do graddin() p/ OpenMP   82.216205379998428     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0740000000074588E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   1.2734000000005352E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0754449978994671E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   1.2748312998155598E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   45.515999999999998     
+ Tempo restante aproximado (h):   1.4449523809523810E-002
+ Tempo restante aproximado (min):   2.4082539682539683E-004
+ Duração Da Simulação (s):   83.539268000000007     
+ Duração Da Simulação (min):   1.3923211333333334     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100484616612073     
+ Erro (%)  -6.6989744399091125E-003
+ Div.   11.453424904529209     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12158900000000017     
+ Tempo acumulado do plot_f() p/ Fortran  0.25685599999999909     
+ Tempo individual do plot_f() p/ OpenMP:  0.12161284499961766     
+ Tempo acumulado do plot_f() p/ OpenMP  0.25693099300042377     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42849200000000565     
+ Tempo acumulado do level_set() p/ Fortran   1.0285450000000083     
+ Tempo individual do level_set() p/ OpenMP  0.42855448100090143     
+ Tempo acumulado do level_set() p/ OpenMP   1.0286622049970902     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5702999999992926E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   7.3501999999996848E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5708006000058958E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   7.3516112002835143E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1619999999993524E-002
+ Tempo acumulado do visco() p/ Fortran  0.10136899999999294     
+ Tempo individual do visco() p/ OpenMP:   1.1636639999778708E-002
+ Tempo acumulado do visco() p/ OpenMP  0.10144481599854771     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0263000000010152E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.31957100000001404     
+ Tempo individual do convdiff() p/ OpenMP:   4.0291008997883182E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.31977339199511334     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2349999999988768E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   1.6549999999991627E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2353610002028290E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   1.6554243004065938E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   20.491506000000001     
+ Tempo acumulado do graddin() p/ Fortran   102.70361800000002     
+ Tempo individual do graddin() p/ OpenMP:   20.492198880998330     
+ Tempo acumulado do graddin() p/ OpenMP   102.70840426099676     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0789999999948350E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   1.4813000000000187E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0808629997191019E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   1.4829175997874700E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1982000000003268E-002
+ Tempo acumulado do visco() p/ Fortran  0.11335099999999620     
+ Tempo individual do visco() p/ OpenMP:   1.1984560002019862E-002
+ Tempo acumulado do visco() p/ OpenMP  0.11342937600056757     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9351999999993836E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.35892300000000787     
+ Tempo individual do convdiff() p/ OpenMP:   3.9404964998539072E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.35917835699365241     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2039999999918791E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   1.8753999999983506E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2031830012565479E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   1.8757426005322486E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.213239000000002     
+ Tempo acumulado do graddin() p/ Fortran   117.91685700000002     
+ Tempo individual do graddin() p/ OpenMP:   15.213957634001417     
+ Tempo acumulado do graddin() p/ OpenMP   117.92236189499818     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1200000000050068E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   1.6933000000005194E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1230319980531931E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   1.6952207995927893E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1621999999988475E-002
+ Tempo acumulado do visco() p/ Fortran  0.12497299999998468     
+ Tempo individual do visco() p/ OpenMP:   1.1631274002866121E-002
+ Tempo acumulado do visco() p/ OpenMP  0.12506065000343369     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9979999999999905E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.39890300000000778     
+ Tempo individual do convdiff() p/ OpenMP:   4.0007072999287630E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.39918542999294004     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2299999999972897E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.0983999999980796E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2287390020210296E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.0986165007343516E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.183700999999999     
+ Tempo acumulado do graddin() p/ Fortran   130.10055800000004     
+ Tempo individual do graddin() p/ OpenMP:   12.184400121997896     
+ Tempo acumulado do graddin() p/ OpenMP   130.10676201699607     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1089999999901465E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   1.9041999999995340E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1114169976499397E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   1.9063624993577832E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   38.027000000000001     
+ Tempo restante aproximado (h):   2.2948361678004538E-002
+ Tempo restante aproximado (min):   3.8247269463340897E-004
+ Duração Da Simulação (s):   132.17617999999999     
+ Duração Da Simulação (min):   2.2029363333333332     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100932194561265     
+ Erro (%)  -6.7288129698552142E-003
+ Div.   14.486964505083620     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12509900000000584     
+ Tempo acumulado do plot_f() p/ Fortran  0.38195500000000493     
+ Tempo individual do plot_f() p/ OpenMP:  0.12515610300033586     
+ Tempo acumulado do plot_f() p/ OpenMP  0.38208709600075963     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42331200000000990     
+ Tempo acumulado do level_set() p/ Fortran   1.4518570000000182     
+ Tempo individual do level_set() p/ OpenMP  0.42334472199945594     
+ Tempo acumulado do level_set() p/ OpenMP   1.4520069269965461     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5544999999993934E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   9.9046999999990781E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5572342001396464E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   9.9088454004231608E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2067999999999302E-002
+ Tempo acumulado do visco() p/ Fortran  0.13704099999998398     
+ Tempo individual do visco() p/ OpenMP:   1.2071515997376991E-002
+ Tempo acumulado do visco() p/ OpenMP  0.13713216600081068     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0136999999987211E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.43903999999999499     
+ Tempo individual do convdiff() p/ OpenMP:   4.0163446999940788E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.43934887699288083     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2240000000124382E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.3207999999993234E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2249270004977006E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.3211092007841216E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.513308999999992     
+ Tempo acumulado do graddin() p/ Fortran   145.61386700000003     
+ Tempo individual do graddin() p/ OpenMP:   15.514122852000582     
+ Tempo acumulado do graddin() p/ OpenMP   145.62088486899665     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1640000000218151E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.1206000000017156E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1659060003003106E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.1229530993878143E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1958999999990283E-002
+ Tempo acumulado do visco() p/ Fortran  0.14899999999997426     
+ Tempo individual do visco() p/ OpenMP:   1.1962300999584841E-002
+ Tempo acumulado do visco() p/ OpenMP  0.14909446700039553     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9918000000000120E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.47895799999999511     
+ Tempo individual do convdiff() p/ OpenMP:   3.9938103000167757E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.47928697999304859     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2579999999834399E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.5465999999976674E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2576139999728184E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.5468706007814035E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.853681999999992     
+ Tempo acumulado do graddin() p/ Fortran   161.46754900000002     
+ Tempo individual do graddin() p/ OpenMP:   15.854479236997577     
+ Tempo acumulado do graddin() p/ OpenMP   161.47536410599423     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1040000000027703E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.3310000000019926E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1057789999758825E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.3335309993854025E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1583000000001675E-002
+ Tempo acumulado do visco() p/ Fortran  0.16058299999997594     
+ Tempo individual do visco() p/ OpenMP:   1.1585659001866588E-002
+ Tempo acumulado do visco() p/ OpenMP  0.16068012600226211     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9538999999990665E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.51849699999998577     
+ Tempo individual do convdiff() p/ OpenMP:   3.9571956000145292E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.51885893599319388     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2890000000188593E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.7754999999995533E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2888460007379763E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.7757552008552011E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.786399999999986     
+ Tempo acumulado do graddin() p/ Fortran   173.25394900000001     
+ Tempo individual do graddin() p/ OpenMP:   11.787045991997729     
+ Tempo acumulado do graddin() p/ OpenMP   173.26241009799196     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.3449999999911597E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.5655000000011086E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.3334580000664573E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.5668767993920483E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   48.640000000000001     
+ Tempo restante aproximado (h):   3.1250976676384844E-002
+ Tempo restante aproximado (min):   5.2084961127308075E-004
+ Duração Da Simulação (s):   176.07701699999998     
+ Duração Da Simulação (min):   2.9346169499999997     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101393576647915     
+ Erro (%)  -6.7595717756318181E-003
+ Div.   15.835904904139642     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12494799999998918     
+ Tempo acumulado do plot_f() p/ Fortran  0.50690299999999411     
+ Tempo individual do plot_f() p/ OpenMP:  0.12501277800038224     
+ Tempo acumulado do plot_f() p/ OpenMP  0.50709987400114187     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42423700000000508     
+ Tempo acumulado do level_set() p/ Fortran   1.8760940000000232     
+ Tempo individual do level_set() p/ OpenMP  0.42426472000079229     
+ Tempo acumulado do level_set() p/ OpenMP   1.8762716469973384     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5621000000001004E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.12466799999999179     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5623634002840845E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.12471208800707245     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1687999999992371E-002
+ Tempo acumulado do visco() p/ Fortran  0.17227099999996831     
+ Tempo individual do visco() p/ OpenMP:   1.1705230001098244E-002
+ Tempo acumulado do visco() p/ OpenMP  0.17238535600336036     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0294000000017149E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.55879100000000292     
+ Tempo individual do convdiff() p/ OpenMP:   4.0320660002180375E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.55917959599537426     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2220000000174878E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   2.9977000000013021E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2216500001377426E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   2.9979202008689754E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.664656999999977     
+ Tempo acumulado do graddin() p/ Fortran   187.91860599999998     
+ Tempo individual do graddin() p/ OpenMP:   14.665377993002039     
+ Tempo acumulado do graddin() p/ OpenMP   187.92778809099400     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1009999999819229E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.7755999999993008E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0892620013910346E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.7758029995311517E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1685999999997421E-002
+ Tempo acumulado do visco() p/ Fortran  0.18395699999996573     
+ Tempo individual do visco() p/ OpenMP:   1.1689095998008270E-002
+ Tempo acumulado do visco() p/ OpenMP  0.18407445200136863     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0325000000024147E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.59911600000002707     
+ Tempo individual do convdiff() p/ OpenMP:   4.0370422000705730E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.59955001799607999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.4440000000254258E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   3.2421000000038447E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.4451579993183259E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   3.2424360008008080E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   20.498477000000008     
+ Tempo acumulado do graddin() p/ Fortran   208.41708299999999     
+ Tempo individual do graddin() p/ OpenMP:   20.499497243999940     
+ Tempo acumulado do graddin() p/ OpenMP   208.42728533499394     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0590000000026976E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   2.9814999999995706E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0616089968825690E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   2.9819638992194086E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1854999999997062E-002
+ Tempo acumulado do visco() p/ Fortran  0.19581199999996279     
+ Tempo individual do visco() p/ OpenMP:   1.1862878000101773E-002
+ Tempo acumulado do visco() p/ OpenMP  0.19593733000147040     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9479999999997517E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.63859600000002459     
+ Tempo individual do convdiff() p/ OpenMP:   3.9508096000645310E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.63905811399672530     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2450000000162618E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   3.4666000000054709E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2452099983638618E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   3.4669570006371941E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   9.7364220000000046     
+ Tempo acumulado do graddin() p/ Fortran   218.15350500000000     
+ Tempo individual do graddin() p/ OpenMP:   9.7369367879982747     
+ Tempo acumulado do graddin() p/ OpenMP   218.16422212299221     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0949999999970714E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   3.1909999999992777E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0975660008843988E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   3.1917204993078485E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   43.902999999999999     
+ Tempo restante aproximado (h):   3.5497464135313996E-002
+ Tempo restante aproximado (min):   5.9162440225523326E-004
+ Duração Da Simulação (s):   221.72488400000000     
+ Duração Da Simulação (min):   3.6954147333333336     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101975056772274     
+ Erro (%)  -6.7983371172557682E-003
+ Div.   13.353766571311542     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12117900000001214     
+ Tempo acumulado do plot_f() p/ Fortran  0.62808200000000625     
+ Tempo individual do plot_f() p/ OpenMP:  0.12120309599777102     
+ Tempo acumulado do plot_f() p/ OpenMP  0.62830296999891289     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42599099999998202     
+ Tempo acumulado do level_set() p/ Fortran   2.3020850000000053     
+ Tempo individual do level_set() p/ OpenMP  0.42604745800053934     
+ Tempo acumulado do level_set() p/ OpenMP   2.3023191049978777     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5453999999996313E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.15012199999998810     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5455999999394407E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.15016808800646686     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2343999999984590E-002
+ Tempo acumulado do visco() p/ Fortran  0.20815599999994738     
+ Tempo individual do visco() p/ OpenMP:   1.2358596999547444E-002
+ Tempo acumulado do visco() p/ OpenMP  0.20829592700101784     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9558999999997013E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.67815500000002160     
+ Tempo individual do convdiff() p/ OpenMP:   3.9596105001692194E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.67865421899841749     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2189999999966403E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   3.6885000000051349E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2180619998835027E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   3.6887632006255444E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   17.909015999999980     
+ Tempo acumulado do graddin() p/ Fortran   236.06252099999998     
+ Tempo individual do graddin() p/ OpenMP:   17.909754185002384     
+ Tempo acumulado do graddin() p/ OpenMP   236.07397630799460     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0670000000109212E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   3.3977000000003699E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0692170000984333E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   3.3986421993176918E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1852000000004637E-002
+ Tempo acumulado do visco() p/ Fortran  0.22000799999995202     
+ Tempo individual do visco() p/ OpenMP:   1.1854364998725941E-002
+ Tempo acumulado do visco() p/ OpenMP  0.22015029199974379     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9537999999993190E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.71769300000001479     
+ Tempo individual do convdiff() p/ OpenMP:   3.9582941000844585E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.71823715999926208     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2099999999909414E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   3.9095000000042290E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2082709983806126E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   3.9095903004636057E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   10.869000999999997     
+ Tempo acumulado do graddin() p/ Fortran   246.93152199999997     
+ Tempo individual do graddin() p/ OpenMP:   10.869657606999681     
+ Tempo acumulado do graddin() p/ OpenMP   246.94363391499428     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0980000000463406E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   3.6075000000050039E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1002989997214172E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   3.6086720992898336E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2045000000000528E-002
+ Tempo acumulado do visco() p/ Fortran  0.23205299999995255     
+ Tempo individual do visco() p/ OpenMP:   1.2047823001921643E-002
+ Tempo acumulado do visco() p/ OpenMP  0.23219811500166543     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9348999999958778E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.75704199999997357     
+ Tempo individual do convdiff() p/ OpenMP:   3.9373689000058221E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.75761084899932030     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2210000000200125E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   4.1316000000062303E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2197490034159273E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   4.1315652008051984E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   9.3668120000000386     
+ Tempo acumulado do graddin() p/ Fortran   256.29833400000001     
+ Tempo individual do graddin() p/ OpenMP:   9.3673535150010139     
+ Tempo acumulado do graddin() p/ OpenMP   256.31098742999529     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1199999999907959E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   3.8195000000040835E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1237840010144282E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   3.8210504993912764E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           6
+ it*dt:   6.0000000000000001E-003
+ Ciclo:   45.649999999999999     
+ Tempo restante aproximado (h):   3.7672429576300889E-002
+ Tempo restante aproximado (min):   6.2787382627168154E-004
+ Duração Da Simulação (s):   260.61496899999997     
+ Duração Da Simulação (min):   4.3435828166666663     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5102846168404469     
+ Erro (%)  -6.8564112260686939E-003
+ Div.   12.209729233432283     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12211200000001554     
+ Tempo acumulado do plot_f() p/ Fortran  0.75019400000002179     
+ Tempo individual do plot_f() p/ OpenMP:  0.12216092099697562     
+ Tempo acumulado do plot_f() p/ OpenMP  0.75046389099588851     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42594900000000280     
+ Tempo acumulado do level_set() p/ Fortran   2.7280340000000081     
+ Tempo individual do level_set() p/ OpenMP  0.42597943799773930     
+ Tempo acumulado do level_set() p/ OpenMP   2.7282985429956170     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5513999999986936E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.17563599999997503     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5526642999466276E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.17569473100593314     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2009999999975207E-002
+ Tempo acumulado do visco() p/ Fortran  0.24406299999992775     
+ Tempo individual do visco() p/ OpenMP:   1.2013786999887088E-002
+ Tempo acumulado do visco() p/ OpenMP  0.24421190200155252     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9733000000012453E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.79677499999998602     
+ Tempo individual do convdiff() p/ OpenMP:   3.9762234999216162E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.79737308399853646     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2289999999998145E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   4.3545000000062117E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2285880004346836E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   4.3544240008486668E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.180555999999967     
+ Tempo acumulado do graddin() p/ Fortran   271.47888999999998     
+ Tempo individual do graddin() p/ OpenMP:   15.181103175000317     
+ Tempo acumulado do graddin() p/ OpenMP   271.49209060499561     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0650000000159707E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.0260000000056806E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0675999985542148E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.0278104992466979E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1714999999981046E-002
+ Tempo acumulado do visco() p/ Fortran  0.25577799999990880     
+ Tempo individual do visco() p/ OpenMP:   1.1718109999492299E-002
+ Tempo acumulado do visco() p/ OpenMP  0.25593001200104482     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.0231000000005679E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.83700599999999170     
+ Tempo individual do convdiff() p/ OpenMP:   4.0269922999868868E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.83764300699840533     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.4009999999634601E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   4.5946000000025577E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.4000360026548151E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   4.5944276011141483E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.560578999999962     
+ Tempo acumulado do graddin() p/ Fortran   283.03946899999994     
+ Tempo individual do graddin() p/ OpenMP:   11.561193337998702     
+ Tempo acumulado do graddin() p/ OpenMP   283.05328394299431     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0959999999945467E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.2356000000051353E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0983760005037766E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.2376480992970755E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2180999999998221E-002
+ Tempo acumulado do visco() p/ Fortran  0.26795899999990702     
+ Tempo individual do visco() p/ OpenMP:   1.2183786002424313E-002
+ Tempo acumulado do visco() p/ OpenMP  0.26811379800346913     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9169999999955962E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.87617599999994766     
+ Tempo individual do convdiff() p/ OpenMP:   3.9197892998345196E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.87684089999675052     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.1740000000249893E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   4.8120000000050567E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.1740289994340856E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   4.8118305010575568E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   7.2376789999999573     
+ Tempo acumulado do graddin() p/ Fortran   290.27714799999990     
+ Tempo individual do graddin() p/ OpenMP:   7.2383286930016766     
+ Tempo acumulado do graddin() p/ OpenMP   290.29161263599599     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0409999999628781E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.4397000000014231E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0428809984878171E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.4419361991458572E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           7
+ it*dt:   7.0000000000000001E-003
+ Ciclo:   38.892000000000003     
+ Tempo restante aproximado (h):   3.6920653922543623E-002
+ Tempo restante aproximado (min):   6.1534423204239375E-004
+ Duração Da Simulação (s):   295.34038499999997     
+ Duração Da Simulação (min):   4.9223397499999999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5104168426300044     
+ Erro (%)  -6.9445617524402934E-003
+ Div.   10.549680460484511     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12280200000003560     
+ Tempo acumulado do plot_f() p/ Fortran  0.87299600000005739     
+ Tempo individual do plot_f() p/ OpenMP:  0.12284681800156250     
+ Tempo acumulado do plot_f() p/ OpenMP  0.87331070899745100     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43637699999999313     
+ Tempo acumulado do level_set() p/ Fortran   3.1644110000000012     
+ Tempo individual do level_set() p/ OpenMP  0.43660462199841277     
+ Tempo acumulado do level_set() p/ OpenMP   3.1649031649940298     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5878000000034262E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.20151400000000930     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5890101998811588E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.20158483300474472     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2033999999971456E-002
+ Tempo acumulado do visco() p/ Fortran  0.27999299999987848     
+ Tempo individual do visco() p/ OpenMP:   1.2039362001814879E-002
+ Tempo acumulado do visco() p/ OpenMP  0.28015316000528401     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   4.1152000000010958E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.91732799999995862     
+ Tempo individual do convdiff() p/ OpenMP:   4.1196835998562165E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.91803773599531269     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.3459999999886350E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.0466000000039202E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.3453299982065801E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.0463635008782148E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.577459000000033     
+ Tempo acumulado do graddin() p/ Fortran   304.85460699999993     
+ Tempo individual do graddin() p/ OpenMP:   14.580484420999710     
+ Tempo acumulado do graddin() p/ OpenMP   304.87209705699570     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1119999999541506E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.6508999999968381E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1124750019225758E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.6531836993381148E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1592999999948006E-002
+ Tempo acumulado do visco() p/ Fortran  0.29158599999982648     
+ Tempo individual do visco() p/ OpenMP:   1.1595093998039374E-002
+ Tempo acumulado do visco() p/ OpenMP  0.29174825400332338     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7868000000003121E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.95519599999996174     
+ Tempo individual do convdiff() p/ OpenMP:   3.7870282998483162E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.95590801899379585     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2319999999922402E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.2698000000031442E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2303840014501475E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.2694019010232296E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.459515000000010     
+ Tempo acumulado do graddin() p/ Fortran   316.31412199999994     
+ Tempo individual do graddin() p/ OpenMP:   11.459768725999311     
+ Tempo acumulado do graddin() p/ OpenMP   316.33186578299501     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0680000000083965E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   4.8576999999976778E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0712750010716263E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   4.8603111994452775E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1556999999982054E-002
+ Tempo acumulado do visco() p/ Fortran  0.30314299999980854     
+ Tempo individual do visco() p/ OpenMP:   1.1560110000573331E-002
+ Tempo acumulado do visco() p/ OpenMP  0.30330836400389671     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7852999999984149E-002
+ Tempo acumulado do convdiff() p/ Fortran  0.99304899999994589     
+ Tempo individual do convdiff() p/ OpenMP:   3.7855104998016031E-002
+ Tempo acumulado do convdiff() p/ OpenMP  0.99376312399181188     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2050000000035652E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.4903000000035007E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2047980019124225E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.4898817012144718E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.597617000000014     
+ Tempo acumulado do graddin() p/ Fortran   327.91173899999995     
+ Tempo individual do graddin() p/ OpenMP:   11.597891255001741     
+ Tempo acumulado do graddin() p/ OpenMP   327.92975703799675     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1450000000413638E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   5.0722000000018141E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1471260006364901E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   5.0750237995089265E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           8
+ it*dt:   8.0000000000000002E-003
+ Ciclo:   34.728000000000002     
+ Tempo restante aproximado (h):   3.4402465266942149E-002
+ Tempo restante aproximado (min):   5.7337442111570251E-004
+ Duração Da Simulação (s):   333.73020800000000     
+ Duração Da Simulação (min):   5.5621701333333338     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5106113666763652     
+ Erro (%)  -7.0742444500140299E-003
+ Div.   9.8583292803450746     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12139600000000428     
+ Tempo acumulado do plot_f() p/ Fortran  0.99439200000006167     
+ Tempo individual do plot_f() p/ OpenMP:  0.12140077499861945     
+ Tempo acumulado do plot_f() p/ OpenMP  0.99471148399607046     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42431299999998373     
+ Tempo acumulado do level_set() p/ Fortran   3.5887239999999849     
+ Tempo individual do level_set() p/ OpenMP  0.42432675599775393     
+ Tempo acumulado do level_set() p/ OpenMP   3.5892299209917837     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.4972999999988588E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.22648699999999788     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.4974808999104425E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.22655964200384915     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1545000000012351E-002
+ Tempo acumulado do visco() p/ Fortran  0.31468799999982089     
+ Tempo individual do visco() p/ OpenMP:   1.1549074999493314E-002
+ Tempo acumulado do visco() p/ OpenMP  0.31485743900339003     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.8519999999948595E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.0315689999998945     
+ Tempo individual do convdiff() p/ OpenMP:   3.8522901999385795E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.0322860259911977     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2280000000023392E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.7131000000037346E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2267599997576326E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.7125577011902351E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   15.860862999999995     
+ Tempo acumulado do graddin() p/ Fortran   343.77260199999995     
+ Tempo individual do graddin() p/ OpenMP:   15.861286818999361     
+ Tempo acumulado do graddin() p/ OpenMP   343.79104385699611     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1140000000059445E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   5.2836000000024086E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1158789968467318E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   5.2866116991935996E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1325999999996839E-002
+ Tempo acumulado do visco() p/ Fortran  0.32601399999981773     
+ Tempo individual do visco() p/ OpenMP:   1.1328344997309614E-002
+ Tempo acumulado do visco() p/ OpenMP  0.32618578400069964     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7850999999989199E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.0694199999998837     
+ Tempo individual do convdiff() p/ OpenMP:   3.7854174999665702E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.0701402009908634     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.1769999999605716E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   5.9307999999997918E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.1766110003227368E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   5.9302188012225088E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   12.332450999999992     
+ Tempo acumulado do graddin() p/ Fortran   356.10505299999994     
+ Tempo individual do graddin() p/ OpenMP:   12.332806066999183     
+ Tempo acumulado do graddin() p/ OpenMP   356.12384992399529     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1549999999592728E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   5.4990999999983359E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1578669984592125E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   5.5023983990395209E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1369000000001961E-002
+ Tempo acumulado do visco() p/ Fortran  0.33738299999981969     
+ Tempo individual do visco() p/ OpenMP:   1.1372999000741402E-002
+ Tempo acumulado do visco() p/ OpenMP  0.33755878300144104     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7652000000036878E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.1070719999999206     
+ Tempo individual do convdiff() p/ OpenMP:   3.7653391998901498E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.1077935929897649     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.1619999999984429E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   6.1469999999996361E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.1613569988403469E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   6.1463545011065435E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   19.960342000000026     
+ Tempo acumulado do graddin() p/ Fortran   376.06539499999997     
+ Tempo individual do graddin() p/ OpenMP:   19.960831070999120     
+ Tempo acumulado do graddin() p/ OpenMP   376.08468099499441     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1009999999819229E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   5.7091999999965282E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1037660008005332E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   5.7127749991195742E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           9
+ it*dt:   9.0000000000000011E-003
+ Ciclo:   38.393999999999998     
+ Tempo restante aproximado (h):   3.1011398800236126E-002
+ Tempo restante aproximado (min):   5.1685664667060216E-004
+ Duração Da Simulação (s):   382.62063300000000     
+ Duração Da Simulação (min):   6.3770105499999996     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5108757505352151     
+ Erro (%)  -7.2505003559137794E-003
+ Div.   19.118614822970855     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12143800000001193     
+ Tempo acumulado do plot_f() p/ Fortran   1.1158300000000736     
+ Tempo individual do plot_f() p/ OpenMP:  0.12144375299976673     
+ Tempo acumulado do plot_f() p/ OpenMP   1.1161552369958372     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42458099999998922     
+ Tempo acumulado do level_set() p/ Fortran   4.0133049999999741     
+ Tempo individual do level_set() p/ OpenMP  0.42460023399689817     
+ Tempo acumulado do level_set() p/ OpenMP   4.0138301549886819     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5065999999981159E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.25155299999997904     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5067996000871062E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.25162763800472021     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1374999999986812E-002
+ Tempo acumulado do visco() p/ Fortran  0.34875799999980650     
+ Tempo individual do visco() p/ OpenMP:   1.1377105001884047E-002
+ Tempo acumulado do visco() p/ OpenMP  0.34893588800332509     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.9277000000026874E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.1463489999999474     
+ Tempo individual do convdiff() p/ OpenMP:   3.9279308999539353E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.1470729019893042     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2150000000351611E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   6.3685000000031522E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2146990013425238E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   6.3678244012407959E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   11.176649000000054     
+ Tempo acumulado do graddin() p/ Fortran   387.24204400000002     
+ Tempo individual do graddin() p/ OpenMP:   11.176942733000033     
+ Tempo acumulado do graddin() p/ OpenMP   387.26162372799445     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0859999999629508E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   5.9177999999928232E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0877200004179031E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   5.9215469991613645E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1502000000007229E-002
+ Tempo acumulado do visco() p/ Fortran  0.36025999999981373     
+ Tempo individual do visco() p/ OpenMP:   1.1504051999509102E-002
+ Tempo acumulado do visco() p/ OpenMP  0.36043994000283419     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7786999999980253E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.1841359999999277     
+ Tempo individual do convdiff() p/ OpenMP:   3.7789439997141017E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.1848623419864452     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.2440000000187865E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   6.5929000000050308E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.2433249978348613E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   6.5921569010242820E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.369731000000002     
+ Tempo acumulado do graddin() p/ Fortran   401.61177500000002     
+ Tempo individual do graddin() p/ OpenMP:   14.370177213000716     
+ Tempo acumulado do graddin() p/ OpenMP   401.63180094099516     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.0540000000437431E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   6.1231999999971976E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.0564129990816582E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   6.1271882990695303E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1335999999971591E-002
+ Tempo acumulado do visco() p/ Fortran  0.37159599999978532     
+ Tempo individual do visco() p/ OpenMP:   1.1339164000673918E-002
+ Tempo acumulado do visco() p/ OpenMP  0.37177910400350811     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:   3.7554999999997563E-002
+ Tempo acumulado do convdiff() p/ Fortran   1.2216909999999253     
+ Tempo individual do convdiff() p/ OpenMP:   3.7558031999651575E-002
+ Tempo acumulado do convdiff() p/ OpenMP   1.2224203739860968     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(2) dentro do ciclo p/ Fortran:   2.1659999999883439E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ Fortran   6.8095000000038652E-002
+ Tempo individual do contorno(2) dentro do ciclo p/ OpenMP:   2.1667139990313444E-003
+ Tempo acumulado do contorno(2) dentro do ciclo p/ OpenMP   6.8088283009274164E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   14.019193999999970     
+ Tempo acumulado do graddin() p/ Fortran   415.63096899999999     
+ Tempo individual do graddin() p/ OpenMP:   14.019646460001240     
+ Tempo acumulado do graddin() p/ OpenMP   415.65144740099640     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(1) dentro do ciclo p/ Fortran:   2.1029999999768734E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran   6.3334999999948849E-002
+ Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:   2.1057989979453851E-003
+ Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP   6.3377681988640688E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:          10
+ it*dt:   1.0000000000000000E-002
+ Ciclo:   48.890999999999998     
+ Tempo restante aproximado (h):   2.6581198971630967E-002
+ Tempo restante aproximado (min):   4.4301998286051613E-004
+ Duração Da Simulação (s):   422.92385899999999     
+ Duração Da Simulação (min):   7.0487309833333329     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5112018630408839     
+ Erro (%)  -7.4679086930261387E-003
+ Div.   15.039908199761051     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.12141199999996388     
+ Tempo acumulado do plot_f() p/ Fortran   1.2372420000000375     
+ Tempo individual do plot_f() p/ OpenMP:  0.12141864099976374     
+ Tempo acumulado do plot_f() p/ OpenMP   1.2375738779956009     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo Total do Fortran:   428.07267500000000     
+ Tempo Total do OpenMP:   428.09696791899842     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
