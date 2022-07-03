@@ -88,7 +88,6 @@ write(*,*) "Verifique se o seu computador tem capacidade para a simulação, se 
 STOP
 endif
 
-
 !Condições iniciais
 if (irest.eq.0) then
  CALL iniciais()
@@ -96,14 +95,12 @@ else
  CALL restart_ini()
 endif
 
-
 !Adicionar os contornos na plotagem inicial						Qual o motivo desta inicialização?		 ### PEDRO ###
-CALl contorno(1)
-CALl contorno(3)
-
+	CALL contorno(1)
+	CALL contorno(3)
 
 !Solução manufaturada
-if (mms_t > 0) CALL mms()
+	if (mms_t > 0) call mms()
 
 !Plotagens iniciais
 CALL plot_i()
@@ -113,7 +110,7 @@ CALL plot_i()
 !Parte 1: Função distância; level_set()
 !Parte 2: Viscosidade Turbulenta; visco()
 !Parte 3: Passo preditor; convdiff() e tempo()
-!Parte 4 : Condições de contorno; call boundary_waves() e contorno()
+		!Parte 4 : Condições de contorno; CALL boundary_waves() e contorno()
 !Parte 5: Passo corretor; graddin() e posdin()
 
 do it = 1, ts
@@ -122,16 +119,18 @@ t = it * dt
 !write(*,*) it
 
 !Termo fonte para o método da sulução manufaturada (MMS)
+
 if ((mms_t == 1) .and. (it == 1)) call termo_fonte1()
+	
 if (mms_t == 2) call termo_fonte2()
 
 !Tempo do level_set() p/ Fortran e OpenMP
-call cpu_time(fortran_start_level_set)
+	CALL cpu_time(fortran_start_level_set)
 openmp_start_level_set = omp_get_wtime()
 
 CALL level_set()
 
-call cpu_time(fortran_end_level_set)
+	CALL cpu_time(fortran_end_level_set)
 openmp_end_level_set = omp_get_wtime()
 
 write(*,*)
@@ -259,22 +258,19 @@ do tt = 1, ntt
 		write(*,*) "Tempo acumulado do contorno(1) dentro do ciclo p/ Fortran", soma_outros_f90
 		write(*,*) "Tempo individual do contorno(1) dentro do ciclo p/ OpenMP:", end_outros_omp - start_outros_omp
 		write(*,*) "Tempo acumulado do contorno(1) dentro do ciclo p/ OpenMP", soma_outros_omp
-
-	endif
-
- enddo
+		endif		! De onde é esse endif?		### PEDRO ###
+	enddo		! De onde é esse enddo?		### PEDRO ###
 
 !Solução manufaturada; cálculo do erro
 if (mms_t > 0) CALL mms()
-
 !Plotagens por passo de tempo
 	!Tempo do plot_f() p/ Fortran e OpenMP
-	call cpu_time(fortran_start_plot_f)
+		CALL cpu_time(fortran_start_plot_f)
 	omp_start_plot_f = omp_get_wtime()
 
 CALL plot_f()
 
-	call cpu_time(fortran_end_plot_f)
+		CALL cpu_time(fortran_end_plot_f)
 	omp_end_plot_f = omp_get_wtime()
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	soma_plot_f_f90 = soma_plot_f_f90 + (fortran_end_plot_f-fortran_start_plot_f)
@@ -284,10 +280,8 @@ CALL plot_f()
 	write(*,*) "Tempo individual do plot_f() p/ OpenMP:", omp_end_plot_f-omp_start_plot_f
 	write(*,*) "Tempo acumulado do plot_f() p/ OpenMP", soma_plot_f_omp
 
-if (mod(it,ceiling(interv_rest/dt)).eq.0) then
-	CALL restart_salva()
+		if (mod(it,ceiling(interv_rest/dt)).eq.0) then call restart_salva()
 endif
-
 enddo
 
 !Atributos finais da simulação
@@ -302,9 +296,8 @@ close (unit=99998799)
 close (unit=99998800)
 close (unit=99998801)
 
-
 !Fim do Fortran e OpenMP
-call cpu_time(fortran_end)
+	CALL cpu_time(fortran_end)
 openmp_end = omp_get_wtime()
 
 !Tempo do Fortran e OpenMP

@@ -57,6 +57,7 @@ SUBROUTINE graddin()
 			do i = 1, nx1
 				matspri(i,j,k) = matspri(i,j,k)/rhox(i,j,k)
 			enddo
+
 			do i = 1, nx
 				matsprj(i,j,k) = matsprj(i,j,k)/rhoy(i,j,k)
 				matsprk(i,j,k) = matsprk(i,j,k)/rhoz(i,j,k)
@@ -176,8 +177,8 @@ SUBROUTINE graddin()
 	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
 
 		if (cont == 9999) write(*,*) "pulou pressão; ", "erro =", abs(alfamupr)
-		! OTIMIZAR CÓDIGO
-		cont = cont +1
+			! OTIMIZAR CÓDIGO
+			cont = cont +1
 
 			!inicialização
 			!alfapr   = 0.
