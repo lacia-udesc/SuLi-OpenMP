@@ -1,0 +1,1309 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ Com entrada de onda.
+ Esquema temporal: 
+ RK3.
+ Malha (nx x ny x nz):         150 x          50 x          50
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.81120499999999929     
+ Tempo acumulado do level_set() p/ Fortran  0.81120499999999929     
+ Tempo individual do level_set() p/ OpenMP  0.81386277599995083     
+ Tempo acumulado do level_set() p/ OpenMP  0.81386277599995083     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   5.9582999999999942E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   5.9582999999999942E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   5.9862119000172243E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   5.9862119000172243E-002
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.15772399999999998     
+ Tempo acumulado do convdiff() p/ Fortran  0.15772399999999998     
+ Tempo individual do convdiff() p/ OpenMP:  0.15830595399984304     
+ Tempo acumulado do convdiff() p/ OpenMP  0.15830595399984304     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   2.2658000000001621E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   2.2658000000001621E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   2.2660778000499704E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   2.2660778000499704E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   2.6976000000001221E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran   2.6976000000001221E-002
+ Tempo individual de norm. e 1_erro p/ OpenMP:   2.7009911000277498E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP   2.7009911000277498E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   29.920884000000001     
+ Tempo acumulado da redução do erro p/ Fortran   29.920884000000001     
+ Tempo individual da redução do erro p/ OpenMP:   29.944547500999761     
+ Tempo acumulado da redução do erro p/ OpenMP   29.944547500999761     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5100000000009004E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   2.5100000000009004E-003
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5124169997070567E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   2.5124169997070567E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   29.983868999999999     
+ Tempo acumulado do graddin() p/ Fortran   29.983868999999999     
+ Tempo individual do graddin() p/ OpenMP:   30.007556253000075     
+ Tempo acumulado do graddin() p/ OpenMP   30.007556253000075     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12136100000000027     
+ Tempo acumulado do convdiff() p/ Fortran  0.27908500000000025     
+ Tempo individual do convdiff() p/ OpenMP:  0.12138883699935832     
+ Tempo acumulado do convdiff() p/ OpenMP  0.27969479099920136     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3961000000001889E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   3.6619000000003510E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3964436000605929E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   3.6625214001105633E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6940999999995654E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran   4.3916999999996875E-002
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6944995999438106E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP   4.3954906999715604E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   36.520534999999995     
+ Tempo acumulado da redução do erro p/ Fortran   66.441418999999996     
+ Tempo individual da redução do erro p/ OpenMP:   36.701500147999468     
+ Tempo acumulado da redução do erro p/ OpenMP   66.646047648999229     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4449999999944794E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   4.9549999999953798E-003
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4493170003552223E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   4.9617340000622789E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   36.562775999999999     
+ Tempo acumulado do graddin() p/ Fortran   66.546644999999998     
+ Tempo individual do graddin() p/ OpenMP:   36.744087597000544     
+ Tempo acumulado do graddin() p/ OpenMP   66.751643850000619     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.13766799999999080     
+ Tempo acumulado do convdiff() p/ Fortran  0.41675299999999105     
+ Tempo individual do convdiff() p/ OpenMP:  0.13831595800002106     
+ Tempo acumulado do convdiff() p/ OpenMP  0.41801074899922241     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.8364000000005376E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   5.4983000000008886E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.8503616000089096E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   5.5128830001194729E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   2.1962000000002035E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran   6.5878999999998911E-002
+ Tempo individual de norm. e 1_erro p/ OpenMP:   2.2178065999469254E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP   6.6132972999184858E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   51.594214000000008     
+ Tempo acumulado da redução do erro p/ Fortran   118.03563300000000     
+ Tempo individual da redução do erro p/ OpenMP:   51.904572696999821     
+ Tempo acumulado da redução do erro p/ OpenMP   118.55062034599905     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5040000000160489E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   7.4590000000114287E-003
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5082059992200811E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   7.4699399992823601E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   51.645450999999994     
+ Tempo acumulado do graddin() p/ Fortran   118.19209599999999     
+ Tempo individual do graddin() p/ OpenMP:   51.956930291999925     
+ Tempo acumulado do graddin() p/ OpenMP   118.70857414200054     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Tempo restante aproximado (min):   0.0000000000000000     
+ Duração Da Simulação (s):   119.87655699999999     
+ Duração Da Simulação (min):   1.9979426166666665     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5000000000013347     
+ Erro (%)   0.0000000000000000     
+ Div.   18.734513028550030     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.23405900000000202     
+ Tempo acumulado do plot_f() p/ Fortran  0.23405900000000202     
+ Tempo individual do plot_f() p/ OpenMP:  0.23438496700055111     
+ Tempo acumulado do plot_f() p/ OpenMP  0.23438496700055111     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.82819100000000390     
+ Tempo acumulado do level_set() p/ Fortran   1.6393960000000032     
+ Tempo individual do level_set() p/ OpenMP  0.82904528399922128     
+ Tempo acumulado do level_set() p/ OpenMP   1.6429080599991721     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   6.8674999999984720E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.12825799999998466     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   6.9286910000300850E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.12914902900047309     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12704200000001720     
+ Tempo acumulado do convdiff() p/ Fortran  0.54379500000000824     
+ Tempo individual do convdiff() p/ OpenMP:  0.12737166900024022     
+ Tempo acumulado do convdiff() p/ OpenMP  0.54538241799946263     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.4138000000002648E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   6.9121000000011534E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.4143362999675446E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   6.9272193000870175E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8149999999991451E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran   8.4028999999990361E-002
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8153746999814757E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP   8.4286719998999615E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   28.809348999999997     
+ Tempo acumulado da redução do erro p/ Fortran   146.84498200000002     
+ Tempo individual da redução do erro p/ OpenMP:   28.872204831000090     
+ Tempo acumulado da redução do erro p/ OpenMP   147.42282517699914     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3070000000018354E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   9.7660000000132641E-003
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3122189995774534E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   9.7821589988598134E-003
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   28.851175000000012     
+ Tempo acumulado do graddin() p/ Fortran   147.04327100000000     
+ Tempo individual do graddin() p/ OpenMP:   28.914023921000080     
+ Tempo acumulado do graddin() p/ OpenMP   147.62259806300062     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12694799999999873     
+ Tempo acumulado do convdiff() p/ Fortran  0.67074300000000697     
+ Tempo individual do convdiff() p/ OpenMP:  0.12694926799940731     
+ Tempo acumulado do convdiff() p/ OpenMP  0.67233168599886994     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3285999999993692E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   8.2407000000005226E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3292287000695069E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   8.2564480001565244E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8635000000017499E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.10266400000000786     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8640770999809320E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.10292749099880893     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   38.033719000000019     
+ Tempo acumulado da redução do erro p/ Fortran   184.87870100000004     
+ Tempo individual da redução do erro p/ OpenMP:   38.060089033000622     
+ Tempo acumulado da redução do erro p/ OpenMP   185.48291420999976     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2800000000131604E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   1.2046000000026424E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.2850830000606948E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   1.2067241998920508E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   38.074859000000004     
+ Tempo acumulado do graddin() p/ Fortran   185.11813000000001     
+ Tempo individual do graddin() p/ OpenMP:   38.101221675000488     
+ Tempo acumulado do graddin() p/ OpenMP   185.72381973800111     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11739700000001108     
+ Tempo acumulado do convdiff() p/ Fortran  0.78814000000001805     
+ Tempo individual do convdiff() p/ OpenMP:  0.11743085400030395     
+ Tempo acumulado do convdiff() p/ OpenMP  0.78976253999917390     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3454999999993333E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran   9.5861999999998559E-002
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3460025000313180E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP   9.6024505001878424E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6878000000019711E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.11954200000002757     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6881361000741890E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.11980885199955082     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   17.514136999999977     
+ Tempo acumulado da redução do erro p/ Fortran   202.39283800000001     
+ Tempo individual da redução do erro p/ OpenMP:   17.535613654999906     
+ Tempo acumulado da redução do erro p/ OpenMP   203.01852786499967     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4920000000179243E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   1.4538000000044349E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4983119992612046E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   1.4565553998181713E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   17.554011000000003     
+ Tempo acumulado do graddin() p/ Fortran   202.67214100000001     
+ Tempo individual do graddin() p/ OpenMP:   17.575484386999960     
+ Tempo acumulado do graddin() p/ OpenMP   203.29930412500107     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   120.39900000000000     
+ Tempo restante aproximado (h):   3.8221904761904756E-002
+ Tempo restante aproximado (min):   6.3703174603174596E-004
+ Duração Da Simulação (s):   206.00549599999999     
+ Duração Da Simulação (min):   3.4334249333333333     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100484616612073     
+ Erro (%)  -6.6989744399091125E-003
+ Div.   11.453424904529209     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18989199999998618     
+ Tempo acumulado do plot_f() p/ Fortran  0.42395099999998820     
+ Tempo individual do plot_f() p/ OpenMP:  0.18989869699998962     
+ Tempo acumulado do plot_f() p/ OpenMP  0.42428366400054074     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.3300260000000037     
+ Tempo acumulado do level_set() p/ Fortran   2.9694220000000069     
+ Tempo individual do level_set() p/ OpenMP   1.3302942110003642     
+ Tempo acumulado do level_set() p/ OpenMP   2.9732022709995363     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   6.8242999999995391E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.19650099999998005     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   6.8247860999690602E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.19739689000016369     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11854999999999905     
+ Tempo acumulado do convdiff() p/ Fortran  0.90669000000001709     
+ Tempo individual do convdiff() p/ OpenMP:  0.11856676600018545     
+ Tempo acumulado do convdiff() p/ OpenMP  0.90832930599935935     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3445000000018581E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.10930700000001714     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3451957999677688E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.10947646300155611     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8097000000011576E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.13763900000003915     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8101817000570009E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.13791066900012083     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   48.126320999999990     
+ Tempo acumulado da redução do erro p/ Fortran   250.51915900000000     
+ Tempo individual da redução do erro p/ OpenMP:   48.191303536000305     
+ Tempo acumulado da redução do erro p/ OpenMP   251.20983140099997     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5379999999586289E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   1.7076000000002978E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5418049999643699E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   1.7107358998146083E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   48.167458000000011     
+ Tempo acumulado do graddin() p/ Fortran   250.83959900000002     
+ Tempo individual do graddin() p/ OpenMP:   48.232436803999917     
+ Tempo acumulado do graddin() p/ OpenMP   251.53174092900099     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12031999999999243     
+ Tempo acumulado do convdiff() p/ Fortran   1.0270100000000095     
+ Tempo individual do convdiff() p/ OpenMP:  0.12058387799970660     
+ Tempo acumulado do convdiff() p/ OpenMP   1.0289131839990660     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3644999999996799E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.12295200000001394     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3751968000178749E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.12322843100173486     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7749999999978172E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.15538900000001732     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7874105999908352E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.15578477500002919     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   34.997227999999950     
+ Tempo acumulado da redução do erro p/ Fortran   285.51638699999995     
+ Tempo individual da redução do erro p/ OpenMP:   35.069175418999293     
+ Tempo acumulado da redução do erro p/ OpenMP   286.27900681999927     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5059999999825777E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   1.9581999999985555E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5086819996431586E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   1.9616040997789241E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   35.038295000000005     
+ Tempo acumulado do graddin() p/ Fortran   285.87789400000003     
+ Tempo individual do graddin() p/ OpenMP:   35.110447926000234     
+ Tempo acumulado do graddin() p/ OpenMP   286.64218885500122     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11901299999999537     
+ Tempo acumulado do convdiff() p/ Fortran   1.1460230000000049     
+ Tempo individual do convdiff() p/ OpenMP:  0.11927849499988952     
+ Tempo acumulado do convdiff() p/ OpenMP   1.1481916789989555     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3553000000001703E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.13650500000001564     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3559197000176937E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.13678762800191180     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7750999999975647E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.17313999999999297     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7786330000490125E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.17357110500051931     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   27.092597000000012     
+ Tempo acumulado da redução do erro p/ Fortran   312.60898399999996     
+ Tempo individual da redução do erro p/ OpenMP:   27.120591924999644     
+ Tempo acumulado da redução do erro p/ OpenMP   313.39959874499891     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4330000000531982E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   2.2015000000038754E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4350650000997121E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   2.2051105997888953E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   27.133963999999992     
+ Tempo acumulado do graddin() p/ Fortran   313.01185800000002     
+ Tempo individual do graddin() p/ OpenMP:   27.161986135000006     
+ Tempo acumulado do graddin() p/ OpenMP   313.80417499000123     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   86.241000000000000     
+ Tempo restante aproximado (h):   5.6717465986394551E-002
+ Tempo restante aproximado (min):   9.4529109977324252E-004
+ Duração Da Simulação (s):   318.43777899999998     
+ Duração Da Simulação (min):   5.3072963166666662     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100932194561265     
+ Erro (%)  -6.7288129698552142E-003
+ Div.   14.486964505083620     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18936300000001438     
+ Tempo acumulado do plot_f() p/ Fortran  0.61331400000000258     
+ Tempo individual do plot_f() p/ OpenMP:  0.18937239299975772     
+ Tempo acumulado do plot_f() p/ OpenMP  0.61365605700029846     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.1881290000000035     
+ Tempo acumulado do level_set() p/ Fortran   4.1575510000000104     
+ Tempo individual do level_set() p/ OpenMP   1.1884213900002578     
+ Tempo acumulado do level_set() p/ OpenMP   4.1616236609997941     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   7.2829000000012911E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.26932999999999296     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   7.2831907999898249E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.27022879800006194     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.13557199999996783     
+ Tempo acumulado do convdiff() p/ Fortran   1.2815949999999727     
+ Tempo individual do convdiff() p/ OpenMP:  0.13557387899982132     
+ Tempo acumulado do convdiff() p/ OpenMP   1.2837655579987768     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.4597000000037497E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.15110200000005314     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.4601869999751216E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.15138949800166301     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6565000000014152E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.18970500000000712     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6567429000133416E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.19013853400065273     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   34.713932000000000     
+ Tempo acumulado da redução do erro p/ Fortran   347.32291599999996     
+ Tempo individual da redução do erro p/ OpenMP:   34.769134770000164     
+ Tempo acumulado da redução do erro p/ OpenMP   348.16873351499908     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2950000000037107E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   2.4310000000042464E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.2983419994488941E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   2.4349447997337847E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   34.754621999999983     
+ Tempo acumulado do graddin() p/ Fortran   347.76648000000000     
+ Tempo individual do graddin() p/ OpenMP:   34.809818738999638     
+ Tempo acumulado do graddin() p/ OpenMP   348.61399372900087     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12089900000000853     
+ Tempo acumulado do convdiff() p/ Fortran   1.4024939999999813     
+ Tempo individual do convdiff() p/ OpenMP:  0.12090959699980885     
+ Tempo acumulado do convdiff() p/ OpenMP   1.4046751549985856     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3477999999963686E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.16458000000001682     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3483357999575674E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.16487285600123869     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8718999999975949E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.20842399999998307     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8721976000051654E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.20886051000070438     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   36.654262000000017     
+ Tempo acumulado da redução do erro p/ Fortran   383.97717799999998     
+ Tempo individual da redução do erro p/ OpenMP:   36.707956597999328     
+ Tempo acumulado da redução do erro p/ OpenMP   384.87669011299840     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5290000000381951E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   2.6839000000080659E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5324250000267057E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   2.6881872997364553E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   36.696327000000053     
+ Tempo acumulado do graddin() p/ Fortran   384.46280700000005     
+ Tempo individual do graddin() p/ OpenMP:   36.750018402000023     
+ Tempo acumulado do graddin() p/ OpenMP   385.36401213100089     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12417799999997214     
+ Tempo acumulado do convdiff() p/ Fortran   1.5266719999999534     
+ Tempo individual do convdiff() p/ OpenMP:  0.12419531999967148     
+ Tempo acumulado do convdiff() p/ OpenMP   1.5288704749982571     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3244000000042888E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.17782400000005971     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3248852000288025E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.17812170800152671     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8140000000016698E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.22656399999999977     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8144799000765488E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.22700530900146987     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   27.721379000000013     
+ Tempo acumulado da redução do erro p/ Fortran   411.69855699999999     
+ Tempo individual da redução do erro p/ OpenMP:   27.800503344999925     
+ Tempo acumulado da redução do erro p/ OpenMP   412.67719345799833     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2690000000125110E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   2.9108000000093170E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3016889999780688E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   2.9183561997342622E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   27.762238999999965     
+ Tempo acumulado do graddin() p/ Fortran   412.22504600000002     
+ Tempo individual do graddin() p/ OpenMP:   27.841357017000519     
+ Tempo acumulado do graddin() p/ OpenMP   413.20536914800141     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   112.59900000000000     
+ Tempo restante aproximado (h):   7.5424256559766770E-002
+ Tempo restante aproximado (min):   1.2570709426627795E-003
+ Duração Da Simulação (s):   419.63556899999998     
+ Duração Da Simulação (min):   6.9939261499999992     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101393576647915     
+ Erro (%)  -6.7595717756318181E-003
+ Div.   15.835904904139642     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18469199999998409     
+ Tempo acumulado do plot_f() p/ Fortran  0.79800599999998667     
+ Tempo individual do plot_f() p/ OpenMP:  0.18513584300035291     
+ Tempo acumulado do plot_f() p/ OpenMP  0.79879190000065137     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.1878759999999602     
+ Tempo acumulado do level_set() p/ Fortran   5.3454269999999706     
+ Tempo individual do level_set() p/ OpenMP   1.1916408850001972     
+ Tempo acumulado do level_set() p/ OpenMP   5.3532645459999912     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   7.1229000000016640E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.34055900000000960     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   7.1589614000004076E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.34181841200006602     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.13179600000000846     
+ Tempo acumulado do convdiff() p/ Fortran   1.6584679999999619     
+ Tempo individual do convdiff() p/ OpenMP:  0.13235358000019914     
+ Tempo acumulado do convdiff() p/ OpenMP   1.6612240549984563     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2521999999989930E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.19034600000004964     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2527217999377172E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.19064892600090388     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6522000000009029E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.24308600000000880     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6554199999518460E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.24355950900098833     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   34.679171999999994     
+ Tempo acumulado da redução do erro p/ Fortran   446.37772899999999     
+ Tempo individual da redução do erro p/ OpenMP:   34.712562700000490     
+ Tempo acumulado da redução do erro p/ OpenMP   447.38975615799882     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3540000000252803E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   3.1462000000118451E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3562209998999606E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   3.1539782997242582E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   34.717474000000038     
+ Tempo acumulado do graddin() p/ Fortran   446.94252000000006     
+ Tempo individual do graddin() p/ OpenMP:   34.750885993999873     
+ Tempo acumulado do graddin() p/ OpenMP   447.95625514200128     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11804000000000769     
+ Tempo acumulado do convdiff() p/ Fortran   1.7765079999999696     
+ Tempo individual do convdiff() p/ OpenMP:  0.11805611999989196     
+ Tempo acumulado do convdiff() p/ OpenMP   1.7792801749983482     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.8350999999995565E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.20869700000004521     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.8357615000240912E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.20900654100114480     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8135999999969954E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.26122199999997875     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8140875999961281E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.26170038500094961     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   46.241089999999986     
+ Tempo acumulado da redução do erro p/ Fortran   492.61881899999997     
+ Tempo individual da redução do erro p/ OpenMP:   46.297992120000345     
+ Tempo acumulado da redução do erro p/ OpenMP   493.68774827799916     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4819999999863285E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   3.3944000000104779E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4856019999788259E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   3.4025384997221408E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   46.287329000000000     
+ Tempo acumulado do graddin() p/ Fortran   493.22984900000006     
+ Tempo individual do graddin() p/ OpenMP:   46.344228003000353     
+ Tempo acumulado do graddin() p/ OpenMP   494.30048314500164     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11945699999995441     
+ Tempo acumulado do convdiff() p/ Fortran   1.8959649999999240     
+ Tempo individual do convdiff() p/ OpenMP:  0.11945702599950891     
+ Tempo acumulado do convdiff() p/ OpenMP   1.8987372009978571     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.7965000000003783E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.22666200000004899     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.7970544000490918E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.22697708500163571     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7115999999987253E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.27833799999996600     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7119605000516458E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.27881999000146607     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   21.615345000000048     
+ Tempo acumulado da redução do erro p/ Fortran   514.23416399999996     
+ Tempo individual da redução do erro p/ OpenMP:   21.658995130000221     
+ Tempo acumulado da redução do erro p/ OpenMP   515.34674340799938     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.6809999999386491E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   3.6625000000043428E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.7553059999263496E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   3.6780690997147758E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   21.662348999999949     
+ Tempo acumulado do graddin() p/ Fortran   514.89219800000001     
+ Tempo individual do graddin() p/ OpenMP:   21.706618483000057     
+ Tempo acumulado do graddin() p/ OpenMP   516.00710162800169     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   101.38600000000000     
+ Tempo restante aproximado (h):   8.4765632606784228E-002
+ Tempo restante aproximado (min):   1.4127605434464039E-003
+ Duração Da Simulação (s):   524.26801799999998     
+ Duração Da Simulação (min):   8.7378003000000000     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101975056772274     
+ Erro (%)  -6.7983371172557682E-003
+ Div.   13.353766571311542     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.21652800000003936     
+ Tempo acumulado do plot_f() p/ Fortran   1.0145340000000260     
+ Tempo individual do plot_f() p/ OpenMP:  0.21823012799995922     
+ Tempo acumulado do plot_f() p/ OpenMP   1.0170220280006106     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.2090369999999666     
+ Tempo acumulado do level_set() p/ Fortran   6.5544639999999372     
+ Tempo individual do level_set() p/ OpenMP   1.2097910170004980     
+ Tempo acumulado do level_set() p/ OpenMP   6.5630555630004892     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   7.1470999999974083E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.41202999999998369     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   7.1473789999799919E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.41329220199986594     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12796400000001995     
+ Tempo acumulado do convdiff() p/ Fortran   2.0239289999999439     
+ Tempo individual do convdiff() p/ OpenMP:  0.12796123099997203     
+ Tempo acumulado do convdiff() p/ OpenMP   2.0266984319978292     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3778000000002066E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.24044000000005106     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3783702000182529E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.24076078700181824     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6744000000016968E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.29508199999998297     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6746749000049022E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.29556673900151509     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   41.074583999999959     
+ Tempo acumulado da redução do erro p/ Fortran   555.30874799999992     
+ Tempo individual da redução do erro p/ OpenMP:   41.155518751999807     
+ Tempo acumulado da redução do erro p/ OpenMP   556.50226215999919     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3059999999759384E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   3.8931000000019367E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3113719998946181E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   3.9092062997042376E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   41.114475999999968     
+ Tempo acumulado do graddin() p/ Fortran   556.00667399999998     
+ Tempo individual do graddin() p/ OpenMP:   41.195403161999820     
+ Tempo acumulado do graddin() p/ OpenMP   557.20250479000151     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12647000000004027     
+ Tempo acumulado do convdiff() p/ Fortran   2.1503989999999842     
+ Tempo individual do convdiff() p/ OpenMP:  0.12646732600023824     
+ Tempo acumulado do convdiff() p/ OpenMP   2.1531657579980674     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.7796999999973195E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.25823700000002425     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.8958837000354833E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.25971962400217308     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   2.0729999999957727E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.31581199999994070     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   2.1125051000126405E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.31669179000164149     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   24.602005000000077     
+ Tempo acumulado da redução do erro p/ Fortran   579.91075300000000     
+ Tempo individual da redução do erro p/ OpenMP:   24.670876133000093     
+ Tempo acumulado da redução do erro p/ OpenMP   581.17313829299928     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3720000000366781E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   4.1303000000056045E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3739210000712774E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   4.1465983997113653E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   24.649935000000028     
+ Tempo acumulado do graddin() p/ Fortran   580.65660900000000     
+ Tempo individual do graddin() p/ OpenMP:   24.720520877000126     
+ Tempo acumulado do graddin() p/ OpenMP   581.92302566700164     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11824599999999919     
+ Tempo acumulado do convdiff() p/ Fortran   2.2686449999999834     
+ Tempo individual do convdiff() p/ OpenMP:  0.11824817399974563     
+ Tempo acumulado do convdiff() p/ OpenMP   2.2714139319978131     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3077000000066619E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.27131400000009087     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3083034999908705E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.27280265900208178     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.6832999999905951E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.33264499999984665     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.6838493999784987E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.33353028400142648     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   21.077538000000004     
+ Tempo acumulado da redução do erro p/ Fortran   600.98829100000000     
+ Tempo individual da redução do erro p/ OpenMP:   21.092318196000633     
+ Tempo acumulado da redução do erro p/ OpenMP   602.26545648899992     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5440000000571672E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   4.3847000000113212E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5465029993938515E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   4.4012486996507505E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   21.117496000000074     
+ Tempo acumulado do graddin() p/ Fortran   601.77410500000008     
+ Tempo individual do graddin() p/ OpenMP:   21.132272301999365     
+ Tempo acumulado do graddin() p/ OpenMP   603.05529796900100     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           6
+ it*dt:   6.0000000000000001E-003
+ Ciclo:   104.77300000000000     
+ Tempo restante aproximado (h):   8.9286891440735691E-002
+ Tempo restante aproximado (min):   1.4881148573455949E-003
+ Duração Da Simulação (s):   613.17038400000001     
+ Duração Da Simulação (min):   10.219506400000000     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5102846168404469     
+ Erro (%)  -6.8564112260686939E-003
+ Div.   12.209729233432283     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.22224900000003345     
+ Tempo acumulado do plot_f() p/ Fortran   1.2367830000000595     
+ Tempo individual do plot_f() p/ OpenMP:  0.22358725899994170     
+ Tempo acumulado do plot_f() p/ OpenMP   1.2406092870005523     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.2670309999999745     
+ Tempo acumulado do level_set() p/ Fortran   7.8214949999999117     
+ Tempo individual do level_set() p/ OpenMP   1.2676334569996470     
+ Tempo acumulado do level_set() p/ OpenMP   7.8306890200001362     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   6.8640999999956875E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.48067099999994056     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   6.8645334999928309E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.48193753699979425     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12539099999992231     
+ Tempo acumulado do convdiff() p/ Fortran   2.3940359999999057     
+ Tempo individual do convdiff() p/ OpenMP:  0.12547916799940140     
+ Tempo acumulado do convdiff() p/ OpenMP   2.3968930999972144     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.4907999999991262E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.28622200000008213     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.4913349999915226E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.28771600900199701     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8668000000047869E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.35131299999989452     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8671472999812977E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.35220175700123946     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   34.122822000000042     
+ Tempo acumulado da redução do erro p/ Fortran   635.11111300000005     
+ Tempo individual da redução do erro p/ OpenMP:   34.176100003000101     
+ Tempo acumulado da redução do erro p/ OpenMP   636.44155649200002     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3899999999912325E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   4.6237000000104445E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3917169992273557E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   4.6404203995734861E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   34.165763999999967     
+ Tempo acumulado do graddin() p/ Fortran   635.93986900000004     
+ Tempo individual do graddin() p/ OpenMP:   34.219041242999992     
+ Tempo acumulado do graddin() p/ OpenMP   637.27433921200100     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11938899999995556     
+ Tempo acumulado do convdiff() p/ Fortran   2.5134249999998612     
+ Tempo individual do convdiff() p/ OpenMP:  0.11938887599990267     
+ Tempo acumulado do convdiff() p/ OpenMP   2.5162819759971171     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2332000000014887E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.29855400000009702     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2333349000073213E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.30004935800207022     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7854000000056658E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.36916699999995117     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7858272000012221E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.37006002900125168     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   26.956191999999987     
+ Tempo acumulado da redução do erro p/ Fortran   662.06730500000003     
+ Tempo individual da redução do erro p/ OpenMP:   27.020341421000012     
+ Tempo acumulado da redução do erro p/ OpenMP   663.46189791300003     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4559999999382853E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   4.8693000000042730E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4584970005889772E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   4.8862700996323838E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   26.995818999999983     
+ Tempo acumulado do graddin() p/ Fortran   662.93568800000003     
+ Tempo individual do graddin() p/ OpenMP:   27.059963575000438     
+ Tempo acumulado do graddin() p/ OpenMP   664.33430278700143     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11801000000002659     
+ Tempo acumulado do convdiff() p/ Fortran   2.6314349999998878     
+ Tempo individual do convdiff() p/ OpenMP:  0.11845753400029935     
+ Tempo acumulado do convdiff() p/ OpenMP   2.6347395099974165     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2503000000037900E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.31105700000013492     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2508492000051774E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.31255785000212200     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7528000000083921E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.38669500000003509     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7533017999994627E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.38759304700124630     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   16.201838999999950     
+ Tempo acumulado da redução do erro p/ Fortran   678.26914399999998     
+ Tempo individual da redução do erro p/ OpenMP:   16.225620205999803     
+ Tempo acumulado da redução do erro p/ OpenMP   679.68751811899983     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5459999999384308E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   5.1238999999981161E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5488350001978688E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   5.1411535996521707E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   16.241288000000054     
+ Tempo acumulado do graddin() p/ Fortran   679.17697600000008     
+ Tempo individual do graddin() p/ OpenMP:   16.265067373999955     
+ Tempo acumulado do graddin() p/ OpenMP   680.59937016100139     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           7
+ it*dt:   7.0000000000000001E-003
+ Ciclo:   89.072000000000003     
+ Tempo restante aproximado (h):   8.7135430758725832E-002
+ Tempo restante aproximado (min):   1.4522571793120973E-003
+ Duração Da Simulação (s):   692.64294700000005     
+ Duração Da Simulação (min):   11.544049116666667     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5104168426300044     
+ Erro (%)  -6.9445617524402934E-003
+ Div.   10.549680460484511     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18938100000002578     
+ Tempo acumulado do plot_f() p/ Fortran   1.4261640000000853     
+ Tempo individual do plot_f() p/ OpenMP:  0.18943492699963826     
+ Tempo acumulado do plot_f() p/ OpenMP   1.4300442140001905     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.2053079999999454     
+ Tempo acumulado do level_set() p/ Fortran   9.0268029999998571     
+ Tempo individual do level_set() p/ OpenMP   1.2059286430003340     
+ Tempo acumulado do level_set() p/ OpenMP   9.0366176630004702     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   7.0396999999957188E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.55106799999989775     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   7.0571838999967440E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.55250937599976169     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.13691900000003443     
+ Tempo acumulado do convdiff() p/ Fortran   2.7683539999999223     
+ Tempo individual do convdiff() p/ OpenMP:  0.13762673000019277     
+ Tempo acumulado do convdiff() p/ OpenMP   2.7723662399976092     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3182999999912681E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.32424000000004760     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3187474000005750E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.32574532400212775     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.9289999999955398E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.40598499999999049     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.9467520999569388E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.40706056800081569     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   31.131919000000039     
+ Tempo acumulado da redução do erro p/ Fortran   709.40106300000002     
+ Tempo individual da redução do erro p/ OpenMP:   31.152875240999492     
+ Tempo acumulado da redução do erro p/ OpenMP   710.84039335999933     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3089999999683641E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   5.3547999999949525E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3133530003178748E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   5.3724888996839582E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   31.173902000000112     
+ Tempo acumulado do graddin() p/ Fortran   710.35087800000019     
+ Tempo individual do graddin() p/ OpenMP:   31.195023109000431     
+ Tempo acumulado do graddin() p/ OpenMP   711.79439327000182     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11791100000004917     
+ Tempo acumulado do convdiff() p/ Fortran   2.8862649999999714     
+ Tempo individual do convdiff() p/ OpenMP:  0.11795992799943633     
+ Tempo acumulado do convdiff() p/ OpenMP   2.8903261679970456     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3850000000047658E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.33809000000009526     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3868068999727257E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.33961339300185500     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.9758999999908156E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.42574399999989865     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.9764519000091241E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.42682508700090693     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   25.026295000000005     
+ Tempo acumulado da redução do erro p/ Fortran   734.42735800000003     
+ Tempo individual da redução do erro p/ OpenMP:   25.033775306999814     
+ Tempo acumulado da redução do erro p/ OpenMP   735.87416866699914     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3860000000013315E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   5.5933999999950856E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4008880000110366E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   5.6125776996850618E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   25.069651000000022     
+ Tempo acumulado do graddin() p/ Fortran   735.42052900000022     
+ Tempo individual do graddin() p/ OpenMP:   25.077134921000834     
+ Tempo acumulado do graddin() p/ OpenMP   736.87152819100265     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12039200000003802     
+ Tempo acumulado do convdiff() p/ Fortran   3.0066570000000095     
+ Tempo individual do convdiff() p/ OpenMP:  0.12042925599962473     
+ Tempo acumulado do convdiff() p/ OpenMP   3.0107554239966703     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3359000000036758E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.35144900000013202     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3363203999688267E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.35297659700154327     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8541000000027452E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.44428499999992610     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8543648000559187E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.44536873500146612     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   27.329182000000060     
+ Tempo acumulado da redução do erro p/ Fortran   761.75654000000009     
+ Tempo individual da redução do erro p/ OpenMP:   27.399458898000375     
+ Tempo acumulado da redução do erro p/ OpenMP   763.27362756499952     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5289999999813517E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   5.8462999999932208E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5330919997941237E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   5.8658868996644742E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   27.371538999999984     
+ Tempo acumulado do graddin() p/ Fortran   762.79206800000020     
+ Tempo individual do graddin() p/ OpenMP:   27.441823653000029     
+ Tempo acumulado do graddin() p/ OpenMP   764.31335184400268     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           8
+ it*dt:   8.0000000000000002E-003
+ Ciclo:   79.616000000000000     
+ Tempo restante aproximado (h):   8.1006242237638013E-002
+ Tempo restante aproximado (min):   1.3501040372939669E-003
+ Duração Da Simulação (s):   778.24109699999997     
+ Duração Da Simulação (min):   12.970684949999999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5106113666763652     
+ Erro (%)  -7.0742444500140299E-003
+ Div.   9.8583292803450746     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.21977200000003450     
+ Tempo acumulado do plot_f() p/ Fortran   1.6459360000001197     
+ Tempo individual do plot_f() p/ OpenMP:  0.21980642700054887     
+ Tempo acumulado do plot_f() p/ OpenMP   1.6498506410007394     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.2717260000000579     
+ Tempo acumulado do level_set() p/ Fortran   10.298528999999915     
+ Tempo individual do level_set() p/ OpenMP   1.2718694089999190     
+ Tempo acumulado do level_set() p/ OpenMP   10.308487072000389     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   9.8931999999990694E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.64999999999988844     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   9.9926420999508991E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.65243579699927068     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.19108500000004369     
+ Tempo acumulado do convdiff() p/ Fortran   3.1977420000000532     
+ Tempo individual do convdiff() p/ OpenMP:  0.19669963000069401     
+ Tempo acumulado do convdiff() p/ OpenMP   3.2074550539973643     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.6628000000082466E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.36807700000021448     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.6648687000270002E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.36962528400181327     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   3.0593999999950938E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.47487899999987704     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   3.3436474000154703E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.47880520900162082     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   36.854249999999979     
+ Tempo acumulado da redução do erro p/ Fortran   798.61079000000007     
+ Tempo individual da redução do erro p/ OpenMP:   36.899560539999584     
+ Tempo acumulado da redução do erro p/ OpenMP   800.17318810499910     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2549999999910142E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   6.0717999999923222E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.2594559995923191E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   6.0918324996237061E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   36.911465000000021     
+ Tempo acumulado do graddin() p/ Fortran   799.70353300000022     
+ Tempo individual do graddin() p/ OpenMP:   36.959840423000060     
+ Tempo acumulado do graddin() p/ OpenMP   801.27319226700274     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11455399999999827     
+ Tempo acumulado do convdiff() p/ Fortran   3.3122960000000514     
+ Tempo individual do convdiff() p/ OpenMP:  0.11462552800003323     
+ Tempo acumulado do convdiff() p/ OpenMP   3.3220805819973975     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.5799000000015440E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.38387600000022992     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.5815261000170722E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.38544054500198399     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7536000000063723E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.49241499999994076     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7552606999743148E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.49635781600136397     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   26.581100999999990     
+ Tempo acumulado da redução do erro p/ Fortran   825.19189100000006     
+ Tempo individual da redução do erro p/ OpenMP:   26.585526629000015     
+ Tempo acumulado da redução do erro p/ OpenMP   826.75871473399911     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2940000000062355E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   6.3011999999929458E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.2994260007180856E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   6.3217750996955147E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   26.623539000000051     
+ Tempo acumulado do graddin() p/ Fortran   826.32707200000027     
+ Tempo individual do graddin() p/ OpenMP:   26.627984871999615     
+ Tempo acumulado do graddin() p/ OpenMP   827.90117713900236     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11500200000000405     
+ Tempo acumulado do convdiff() p/ Fortran   3.4272980000000555     
+ Tempo individual do convdiff() p/ OpenMP:  0.11502372299946728     
+ Tempo acumulado do convdiff() p/ OpenMP   3.4371043049968648     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.3149999999995998E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.39702600000022592     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.3153336999494059E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.39859388200147805     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7602000000010776E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.51001699999995154     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7616330999771890E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.51397414700113586     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   43.314549000000056     
+ Tempo acumulado da redução do erro p/ Fortran   868.50644000000011     
+ Tempo individual da redução do erro p/ OpenMP:   43.323753497999860     
+ Tempo acumulado da redução do erro p/ OpenMP   870.08246823199897     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.4160000000392756E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   6.5427999999968733E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.4181130002034479E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   6.5635863997158594E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   43.354834999999980     
+ Tempo acumulado do graddin() p/ Fortran   869.68190700000025     
+ Tempo individual do graddin() p/ OpenMP:   43.364032437999413     
+ Tempo acumulado do graddin() p/ OpenMP   871.26520957700177     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           9
+ it*dt:   9.0000000000000011E-003
+ Ciclo:   85.698999999999998     
+ Tempo restante aproximado (h):   7.2834675886229397E-002
+ Tempo restante aproximado (min):   1.2139112647704898E-003
+ Duração Da Simulação (s):   887.31645200000003     
+ Duração Da Simulação (min):   14.788607533333334     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5108757505352151     
+ Erro (%)  -7.2505003559137794E-003
+ Div.   19.118614822970855     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18628799999999046     
+ Tempo acumulado do plot_f() p/ Fortran   1.8322240000001102     
+ Tempo individual do plot_f() p/ OpenMP:  0.18632806599998730     
+ Tempo acumulado do plot_f() p/ OpenMP   1.8361787070007267     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran   1.1618520000000672     
+ Tempo acumulado do level_set() p/ Fortran   11.460380999999982     
+ Tempo individual do level_set() p/ OpenMP   1.1626340490001894     
+ Tempo acumulado do level_set() p/ OpenMP   11.471121121000579     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   6.8341999999915970E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.71834199999980441     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   6.8519127999934426E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.72095492499920510     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.12244399999997313     
+ Tempo acumulado do convdiff() p/ Fortran   3.5497420000000286     
+ Tempo individual do convdiff() p/ OpenMP:  0.12250965300063399     
+ Tempo acumulado do convdiff() p/ OpenMP   3.5596139579974988     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2677000000053340E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.40970300000027926     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2694533999820123E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.41128841600129817     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   2.1500999999943815E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.53151799999989535     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   2.1505157999854418E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.53547930500099028     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   24.112791000000016     
+ Tempo acumulado da redução do erro p/ Fortran   892.61923100000013     
+ Tempo individual da redução do erro p/ OpenMP:   24.117218100000173     
+ Tempo acumulado da redução do erro p/ OpenMP   894.19968633199915     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.3119999999607899E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   6.7739999999929523E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.3140209996199701E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   6.7949884996778565E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   24.156090000000063     
+ Tempo acumulado do graddin() p/ Fortran   893.83799700000031     
+ Tempo individual do graddin() p/ OpenMP:   24.160526063999896     
+ Tempo acumulado do graddin() p/ OpenMP   895.42573564100167     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11448300000006384     
+ Tempo acumulado do convdiff() p/ Fortran   3.6642250000000924     
+ Tempo individual do convdiff() p/ OpenMP:  0.11449610700037738     
+ Tempo acumulado do convdiff() p/ OpenMP   3.6741100649978762     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2648000000012871E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.42235100000029213     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2662288999308657E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.42395070500060683     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.8449000000032356E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.54996699999992771     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.8452661000083026E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.55393196600107331     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   30.997960000000035     
+ Tempo acumulado da redução do erro p/ Fortran   923.61719100000016     
+ Tempo individual da redução do erro p/ OpenMP:   31.002825340000527     
+ Tempo acumulado da redução do erro p/ OpenMP   925.20251167199967     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.2890000000188593E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   7.0028999999948383E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.2934309999982361E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   7.0243315996776801E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   31.038281999999981     
+ Tempo acumulado do graddin() p/ Fortran   924.87627900000030     
+ Tempo individual do graddin() p/ OpenMP:   31.043153640999662     
+ Tempo acumulado do graddin() p/ OpenMP   926.46888928200133     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do convdiff() p/ Fortran:  0.11374499999999443     
+ Tempo acumulado do convdiff() p/ Fortran   3.7779700000000869     
+ Tempo individual do convdiff() p/ OpenMP:  0.11374349899961089     
+ Tempo acumulado do convdiff() p/ OpenMP   3.7878535639974871     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de iniciar matrizes p/ Fortran:   1.2363000000050306E-002
+ Tempo acumulado de iniciar matrizes p/ Fortran  0.43471400000034244     
+ Tempo individual de iniciar matrizes p/ OpenMP:   1.2367813999844657E-002
+ Tempo acumulado de iniciar matrizes p/ OpenMP  0.43631851900045149     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual de norm. e 1_erro p/ Fortran:   1.7156999999997424E-002
+ Tempo acumulado de norm. e 1_erro p/ Fortran  0.56712399999992513     
+ Tempo individual de norm. e 1_erro p/ OpenMP:   1.7162517000542721E-002
+ Tempo acumulado de norm. e 1_erro p/ OpenMP  0.57109448300161603     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da redução do erro p/ Fortran:   30.209331999999904     
+ Tempo acumulado da redução do erro p/ Fortran   953.82652300000007     
+ Tempo individual da redução do erro p/ OpenMP:   30.213787052999578     
+ Tempo acumulado da redução do erro p/ OpenMP   955.41629872499925     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual da desnorm. de matriz p/ Fortran:   2.5149999999030115E-003
+ Tempo acumulado da desnorm. de matriz p/ Fortran   7.2543999999851394E-002
+ Tempo individual da desnorm. de matriz p/ OpenMP:   2.5197940003636177E-003
+ Tempo acumulado da desnorm. de matriz p/ OpenMP   7.2763109997140418E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() p/ Fortran:   30.248605999999995     
+ Tempo acumulado do graddin() p/ Fortran   955.12488500000029     
+ Tempo individual do graddin() p/ OpenMP:   30.253057566999814     
+ Tempo acumulado do graddin() p/ OpenMP   956.72194684900114     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:          10
+ it*dt:   1.0000000000000000E-002
+ Ciclo:   109.14500000000000     
+ Tempo restante aproximado (h):   6.2429722188196632E-002
+ Tempo restante aproximado (min):   1.0404953698032772E-003
+ Duração Da Simulação (s):   974.67157599999996     
+ Duração Da Simulação (min):   16.244526266666664     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5112018630408839     
+ Erro (%)  -7.4679086930261387E-003
+ Div.   15.039908199761051     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do plot_f() p/ Fortran:  0.18224399999996876     
+ Tempo acumulado do plot_f() p/ Fortran   2.0144680000000790     
+ Tempo individual do plot_f() p/ OpenMP:  0.18226838699956716     
+ Tempo acumulado do plot_f() p/ OpenMP   2.0184470940002939     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo Total do Fortran:   984.37821499999995     
+ Tempo Total do OpenMP:   986.02058287900036     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
