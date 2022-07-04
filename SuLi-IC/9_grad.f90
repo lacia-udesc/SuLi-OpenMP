@@ -39,10 +39,7 @@ SUBROUTINE graddin()
 	real(8), dimension(nx,ny,nz1) :: rhoz
 
 	!Inicialização de variáveis
-	soma_outros4_f90 = 0.0
-	soma_outros4_omp = 0.0
-	soma_outros5_f90 = 0.0
-	soma_outros5_omp = 0.0
+
 
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
