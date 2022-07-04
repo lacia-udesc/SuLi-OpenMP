@@ -48,18 +48,17 @@ SUBROUTINE graddin()
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
-	matspri = dt / (dx*dx)
-	matsprj = dt / (dy*dy)
-	matsprk = dt / (dz*dz)
-
+	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
+	CALL cpu_time(start_outros2_f90)
+	start_outros2_omp = omp_get_wtime()
 
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
 
-	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
-	CALL cpu_time(start_outros2_f90)
-	start_outros2_omp = omp_get_wtime()
+	matspri = dt / (dx*dx)
+	matsprj = dt / (dy*dy)
+	matsprk = dt / (dz*dz)
 
 	do k = 1, nz
 		do j = 1, ny
@@ -106,7 +105,6 @@ SUBROUTINE graddin()
 	!enddo
 	!enddo
 
-
 	! Condições de contorno, von Neumann
 	if (ccx0.eq.0) then  ! Condição periódica
 		matdpr(0,:,:)   = matdpr(nx,:,:)
@@ -126,6 +124,7 @@ SUBROUTINE graddin()
 
 	matdpr(:,:,0)   = matdpr(:,:,1)
 	matdpr(:,:,nz1) = matdpr(:,:,nz)
+	
 	! Normalização da pressão dinâmica
 	do k = 0, nz1
 		do j = 0, ny1
