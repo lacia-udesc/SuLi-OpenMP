@@ -289,7 +289,8 @@ SUBROUTINE graddin()
 			erroppr(:,:,0)   = erroppr(:,:,1)
 			erroppr(:,:,nz1) = erroppr(:,:,nz)
 		
-		write(*,*) "Contador: ", cont			!### PEDRO ###
+		write(*,*) "Contador		", "alfamupr		", "alfapr		", "betapr		"			!### PEDRO ###
+		write(*,*) cont, alfamupr, alfapr, betapr						!### PEDRO ###
 
 	enddo		!De qual "do" É ESTE "enddo"? Atribuí como sendo do "do while".	### PEDRO ###
 	! OTIMIZAR CÓDIGO
