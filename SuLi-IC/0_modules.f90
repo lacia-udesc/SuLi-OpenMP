@@ -212,3 +212,45 @@ module mms_m
     real(8), dimension(nx,ny,nz1) :: tf_w, erro_w, tf_pz
 
 end module mms_m
+
+module omp
+
+	IMPLICIT NONE
+
+	!Declaração das variáveis para análise
+	double precision :: fortran_start, fortran_end
+	double precision :: openmp_start, openmp_end
+
+	double precision :: fortran_start_level_set, fortran_end_level_set
+	double precision :: openmp_start_level_set, openmp_end_level_set
+
+	double precision :: fortran_start_visco, fortran_end_visco
+	double precision :: omp_start_visco, omp_end_visco
+
+	double precision :: fortran_start_convdiff, fortran_end_convdiff
+	double precision :: omp_start_convdiff, omp_end_convdiff
+
+	double precision :: fortran_start_graddin, fortran_end_graddin
+	double precision :: omp_start_graddin, omp_end_graddin
+
+	double precision :: fortran_start_plot_f, fortran_end_plot_f
+	double precision :: omp_start_plot_f, omp_end_plot_f
+
+	double precision :: fortran_start_plot_atri, fortran_end_plot_atri
+	double precision :: omp_start_plot_atri, omp_end_plot_atri
+
+	double precision :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_outros3_f90, end_outros3_f90
+	double precision :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_outros3_omp, end_outros3_omp
+    
+	double precision :: start_outros4_f90, end_outros4_f90, start_outros5_f90, end_outros5_f90
+	double precision :: start_outros4_omp, end_outros4_omp, start_outros5_omp, end_outros5_omp
+
+	real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90, soma_plot_f_f90
+	real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp, soma_plot_f_omp
+	real :: soma_outros_f90, soma_outros2_f90, soma_outros3_f90, soma_outros4_f90, soma_outros5_f90
+	real :: soma_outros_omp, soma_outros2_omp, soma_outros3_omp, soma_outros4_omp, soma_outros5_omp
+
+	!double precision function omp_get_wtime()
+	!double precision function omp_get_wtick()
+
+end module omp

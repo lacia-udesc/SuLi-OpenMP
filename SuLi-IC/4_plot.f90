@@ -555,7 +555,6 @@ SUBROUTINE est(div)
 		write(*,*) "Vol. Instant.", vol_ins
 		write(*,*) "Erro (%)", (vol_ini-vol_ins)/vol_ini
 		write(*,*) "Div.", maxval(abs(div))
-		write(*,*) 
 	endif
 
 END SUBROUTINE est

@@ -13,6 +13,8 @@ SUBROUTINE graddin()
 	USE parametros
     USE cond
 	USE obst
+	USE omp
+	USE omp_lib
 
 	IMPLICIT NONE
 
@@ -36,6 +38,12 @@ SUBROUTINE graddin()
 	real(8), dimension(nx,ny1,nz) :: rhoy
 	real(8), dimension(nx,ny,nz1) :: rhoz
 
+	!Inicialização de variáveis
+	soma_outros4_f90 = 0.0
+	soma_outros4_omp = 0.0
+	soma_outros5_f90 = 0.0
+	soma_outros5_omp = 0.0
+
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
@@ -51,6 +59,10 @@ SUBROUTINE graddin()
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
+
+	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
+	CALL cpu_time(start_outros2_f90)
+	start_outros2_omp = omp_get_wtime()
 
 	do k = 1, nz
 		do j = 1, ny
@@ -126,7 +138,22 @@ SUBROUTINE graddin()
 		enddo
 	enddo
 
-	!Normalização das matrizes s e cálculo do primeiro erro
+	CALL cpu_time(end_outros2_f90)
+	end_outros2_omp = omp_get_wtime()
+
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
+	soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
+	write(*,*) "Tempo individual de iniciar matrizes p/ Fortran:", end_outros2_f90 - start_outros2_f90
+	write(*,*) "Tempo acumulado de iniciar matrizes p/ Fortran", soma_outros2_f90
+	write(*,*) "Tempo individual de iniciar matrizes p/ OpenMP:", end_outros2_omp - start_outros2_omp
+	write(*,*) "Tempo acumulado de iniciar matrizes p/ OpenMP", soma_outros2_omp
+
+	!Tempo de norm. e 1_erro p/ Fortran e OpenMP
+	CALL cpu_time(start_outros_f90)
+	start_outros_omp = omp_get_wtime()
+
+	!Normalização das matrizes e cálculo do primeiro erro
 	erropr =   0.
 	alfamupr = 0.
 	do k = 1, nz
@@ -172,6 +199,22 @@ SUBROUTINE graddin()
 	erropr(:,:,nz1) = erropr(:,:,nz)
 
 	erroppr = erropr
+
+	CALL cpu_time(end_outros_f90)
+	end_outros_omp = omp_get_wtime()
+
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
+	soma_outros_omp = soma_outros_omp + (end_outros_omp - start_outros_omp)
+	write(*,*) "Tempo individual de norm. e 1_erro p/ Fortran:", end_outros_f90 - start_outros_f90
+	write(*,*) "Tempo acumulado de norm. e 1_erro p/ Fortran", soma_outros_f90
+	write(*,*) "Tempo individual de norm. e 1_erro p/ OpenMP:", end_outros_omp - start_outros_omp
+	write(*,*) "Tempo acumulado de norm. e 1_erro p/ OpenMP", soma_outros_omp
+
+
+	!Tempo da redução do erro p/ Fortran e OpenMP
+	CALL cpu_time(start_outros4_f90)
+	start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
 	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
@@ -279,8 +322,23 @@ SUBROUTINE graddin()
 			erroppr(:,:,0)   = erroppr(:,:,1)
 			erroppr(:,:,nz1) = erroppr(:,:,nz)
 
-	enddo												!DE QUAL "do" É ESTE "enddo"? Atribuí como sendo do "do while".	### PEDRO ###
+	enddo		!De qual "do" É ESTE "enddo"? Atribuí como sendo do "do while".	### PEDRO ###
 	! OTIMIZAR CÓDIGO
+
+	CALL cpu_time(end_outros4_f90)
+	end_outros4_omp = omp_get_wtime()
+
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_outros4_f90 = soma_outros4_f90 + (end_outros4_f90 - start_outros4_f90)
+	soma_outros4_omp = soma_outros4_omp + (end_outros4_omp - start_outros4_omp)
+	write(*,*) "Tempo individual da redução do erro p/ Fortran:", end_outros4_f90 - start_outros4_f90
+	write(*,*) "Tempo acumulado da redução do erro p/ Fortran", soma_outros4_f90
+	write(*,*) "Tempo individual da redução do erro p/ OpenMP:", end_outros4_omp - start_outros4_omp
+	write(*,*) "Tempo acumulado da redução do erro p/ OpenMP", soma_outros4_omp
+
+	!Tempo da desnorm. de matriz p/ Fortran e OpenMP
+	CALL cpu_time(start_outros5_f90)
+	start_outros5_omp = omp_get_wtime()
 
 	! Desnormalização de matriz e para a pressão dinâmica
 	do k = 0, nz+1
@@ -290,6 +348,17 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 	enddo
+
+	CALL cpu_time(end_outros5_f90)
+	end_outros5_omp = omp_get_wtime()
+
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
+	soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
+	write(*,*) "Tempo individual da desnorm. de matriz p/ Fortran:", end_outros5_f90 - start_outros5_f90
+	write(*,*) "Tempo acumulado da desnorm. de matriz p/ Fortran", soma_outros5_f90
+	write(*,*) "Tempo individual da desnorm. de matriz p/ OpenMP:", end_outros5_omp - start_outros5_omp
+	write(*,*) "Tempo acumulado da desnorm. de matriz p/ OpenMP", soma_outros5_omp
 
 END SUBROUTINE graddin
 
