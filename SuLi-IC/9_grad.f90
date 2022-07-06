@@ -233,9 +233,17 @@ SUBROUTINE graddin()
 			! Recálculo das matrizes e, erro e parâmetro beta
 
 			matepr  = matepr  - alfapr * erroppr
-			erropr = erropr - alfapr * mppr
-			betamupr = sum(erropr(1:nx,1:ny,1:nz)*erropr(1:nx,1:ny,1:nz))
-
+			!matepr(i,j,k) = matepr(i,j,k) - dot_product(alfapr,erroppr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
+			do k = 1, nz
+				do j = 1, ny
+					do i = 1, nx
+						erropr(i,j,k) = erropr(i,j,k) - alfapr * mppr(i,j,k)
+						!erropr(i,j,k) = erropr(i,j,k) - dot_product(alfapr,mppr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
+						betamupr = betamupr + erropr(i,j,k) * erropr(i,j,k)
+						!betamupr = betamupr + dot_product(erropr(i,j,k),erropr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
+					enddo
+				enddo
+			enddo
 
 			betapr = betamupr/alfamupr
 
