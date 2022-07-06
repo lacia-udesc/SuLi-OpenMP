@@ -210,23 +210,12 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 
-			do k = 1, nz
-				do j = 1, ny
-					do i = 1, nx
-						alfamupr = alfamupr + erropr(i,j,k) * erropr(i,j,k)
-						!alfamupr = alfamupr + dot_product(erropr(i,j,k),erropr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
-					enddo
-				enddo
-			enddo
+			alfamupr = sum(erropr(1:nx,1:ny,1:nz)*erropr(1:nx,1:ny,1:nz))
+			!alfamupr = alfamupr + dot_product(erropr(i,j,k),erropr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
 
-			do k = 1, nz
-				do j = 1, ny
-					do i = 1, nx
-						alfadipr = alfadipr + erroppr(i,j,k) * mppr(i,j,k)
 						!alfadipr = alfadipr + dot_product(erroppr(i,j,k),mppr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
-					enddo
-				enddo
-			enddo
+
+			alfadipr = sum(erroppr(1:nx,1:ny,1:nz)*mppr(1:nx,1:ny,1:nz))
 
 			alfapr = alfamupr / alfadipr
 	
@@ -236,18 +225,11 @@ SUBROUTINE graddin()
 			erropr = erropr - alfapr * mppr
 			betamupr = sum(erropr(1:nx,1:ny,1:nz)*erropr(1:nx,1:ny,1:nz))
 
-
 			betapr = betamupr/alfamupr
 
 			! Recálculo de errop
-			do k = 1, nz
-				do j = 1, ny
-					do i = 1, nx
-						erroppr(i,j,k) = erropr(i,j,k) + betapr * erroppr(i,j,k)
-						!erroppr(i,j,k) = erropr(i,j,k) + dot_product(betapr,erroppr(i,j,k))				### DIMENSÃO INAPROPRIADA ###
-					enddo
-				enddo
-			enddo
+
+			erroppr = erropr + betapr * erroppr
 
 			! Condições de contorno
 
