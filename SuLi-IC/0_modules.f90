@@ -245,10 +245,15 @@ module omp
 	double precision :: start_outros4_f90, end_outros4_f90, start_outros5_f90, end_outros5_f90
 	double precision :: start_outros4_omp, end_outros4_omp, start_outros5_omp, end_outros5_omp
 
+	double precision :: fortran_start_grad_1, fortran_end_grad_1, fortran_start_grad_2, fortran_end_grad_2 
+	double precision :: omp_start_grad_1, omp_end_grad_1, omp_start_grad_2, omp_end_grad_2
+    
 	real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90, soma_plot_f_f90
 	real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp, soma_plot_f_omp
 	real :: soma_outros_f90, soma_outros2_f90, soma_outros3_f90, soma_outros4_f90, soma_outros5_f90
 	real :: soma_outros_omp, soma_outros2_omp, soma_outros3_omp, soma_outros4_omp, soma_outros5_omp
+	real :: soma_grad_1_f90, soma_grad_2_f90
+	real :: soma_grad_1_omp, soma_grad_2_omp
 
 	!double precision function omp_get_wtime()
 	!double precision function omp_get_wtick()
