@@ -190,6 +190,7 @@ SUBROUTINE graddin()
 		omp_start_grad_1 = omp_get_wtime()
 
 		if (cont == 9999) write(*,*) "pulou pressão; ", "erro =", abs(alfamupr)
+		
 			! OTIMIZAR CÓDIGO
 			cont = cont +1
 
@@ -217,15 +218,13 @@ SUBROUTINE graddin()
 				do j = 1, ny
 					do i = 1, nx
 						alfamupr = alfamupr + erropr(i,j,k) * erropr(i,j,k)
+						alfadipr = alfadipr + erroppr(i,j,k) * mppr(i,j,k)
 					enddo
 				enddo
 			enddo
 
-			do k = 1, nz
-				do j = 1, ny
-					do i = 1, nx
-						alfadipr = alfadipr + erroppr(i,j,k) * mppr(i,j,k)
-					enddo
+		alfapr = alfamupr / alfadipr
+		
 		CALL cpu_time(fortran_end_grad_1)
 		omp_end_grad_1 = omp_get_wtime()
 
@@ -234,10 +233,6 @@ SUBROUTINE graddin()
 
 		CALL cpu_time(fortran_start_grad_2)
 		omp_start_grad_2 = omp_get_wtime()
-				enddo
-			enddo
-
-			alfapr = alfamupr / alfadipr
 	
 			! Recálculo das matrizes e, erro e parâmetro beta
 
@@ -261,6 +256,7 @@ SUBROUTINE graddin()
 					enddo
 				enddo
 			enddo
+
 		CALL cpu_time(fortran_end_grad_2)
 		omp_end_grad_2 = omp_get_wtime()
 
@@ -270,35 +266,92 @@ SUBROUTINE graddin()
 		CALL cpu_time(start_outros5_f90)
 		start_outros5_omp = omp_get_wtime()
 
+		! Condições de contorno
+
 		if (ccx0.eq.0) then  ! Condição periódica
-			matepr(0,:,:)   = matepr(nx,:,:)
-			matepr(nx1,:,:) = matepr(1,:,:)
-			erroppr(0,:,:)   = erroppr(nx,:,:)
-			erroppr(nx1,:,:) = erroppr(1,:,:)
+			!matepr(0,:,:)   = matepr(nx,:,:)
+			!matepr(nx1,:,:) = matepr(1,:,:)
+			!erroppr(0,:,:)   = erroppr(nx,:,:)
+			!erroppr(nx1,:,:) = erroppr(1,:,:)
+			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+				do j = 1, ny1
+			!		do i = 1, nx1
+					matepr(0,j,k) = matepr(nx,j,k)
+					matepr(nx1,j,k) = matepr(1,j,k)
+					erroppr(0,j,k) = erroppr(nx,j,k)
+					erroppr(nx1,j,k) = erroppr(1,j,k)
+			!		enddo
+				enddo
+			enddo
 		else
-			matepr(0,:,:)   = matepr(1,:,:)
-			matepr(nx1,:,:) = matepr(nx,:,:)
-			erroppr(0,:,:)   = erroppr(1,:,:)
-			erroppr(nx1,:,:) = erroppr(nx,:,:)
+			!matepr(0,:,:)   = matepr(1,:,:)
+			!matepr(nx1,:,:) = matepr(nx,:,:)
+			!erroppr(0,:,:)   = erroppr(1,:,:)
+			!erroppr(nx1,:,:) = erroppr(nx,:,:)
+			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+				do j = 1, ny1
+					!do i = 1, nx1
+					matepr(0,j,k) = matepr(1,j,k)
+					matepr(nx1,j,k) = matepr(nx,j,k)
+					erroppr(0,j,k) = erroppr(1,j,k)
+					erroppr(nx1,j,k) = erroppr(nx,j,k)
+					!enddo
+				enddo
+			enddo
 		endif
 
 		if (ccy0.eq.0) then  ! Condição periódica
-			matepr(:,0,:)   = matepr(:,ny,:)
-			matepr(:,ny1,:) = matepr(:,1,:)
-			erroppr(:,0,:)   = erroppr(:,ny,:)
-			erroppr(:,ny1,:) = erroppr(:,1,:)
+			!matepr(:,0,:)   = matepr(:,ny,:)
+			!matepr(:,ny1,:) = matepr(:,1,:)
+			!erroppr(:,0,:)   = erroppr(:,ny,:)
+			!erroppr(:,ny1,:) = erroppr(:,1,:)
+			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			!	do j = 1, ny1
+				do i = 1, nx1
+					matepr(i,0,k) = matepr(i,ny,k)
+					matepr(i,ny1,k) = matepr(i,1,k)
+					erroppr(i,0,k) = erroppr(i,ny,k)
+					erroppr(i,ny1,k) = erroppr(i,1,k)
+				enddo
+			!	enddo
+			enddo			
 		else
-			matepr(:,0,:)   = matepr(:,1,:)
-			matepr(:,ny1,:) = matepr(:,ny,:)
-			erroppr(:,0,:)   = erroppr(:,1,:)
-			erroppr(:,ny1,:) = erroppr(:,ny,:)
+			!matepr(:,0,:)   = matepr(:,1,:)
+			!matepr(:,ny1,:) = matepr(:,ny,:)
+			!erroppr(:,0,:)   = erroppr(:,1,:)
+			!erroppr(:,ny1,:) = erroppr(:,ny,:)
+			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			!	do j = 1, ny1
+				do i = 1, nx1
+					matepr(i,0,k) = matepr(i,1,k)
+					matepr(i,ny1,k) = matepr(i,ny,k)
+					erroppr(i,0,k) = erroppr(i,1,k)
+					erroppr(i,ny1,k) = erroppr(i,ny,k)
+				enddo
+			!	enddo
+			enddo
 		endif
 
-			matepr(:,:,0)   = matepr(:,:,1)
-			matepr(:,:,nz1) = matepr(:,:,nz)
+		!	matepr(:,:,0)   = matepr(:,:,1)
+		!	matepr(:,:,nz1) = matepr(:,:,nz)
+		!	erroppr(:,:,0)   = erroppr(:,:,1)
+		!	erroppr(:,:,nz1) = erroppr(:,:,nz)
+		!do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+		do j = 1, ny1
+			do i = 1, nx1
+				matepr(i,j,0) = matepr(i,j,1)
+				matepr(i,j,nz1) = matepr(i,j,nz)
+				erroppr(i,j,0) = erroppr(i,j,1)
+				erroppr(i,j,nz1) = erroppr(i,j,nz)
+			enddo
+		enddo
+		!enddo
 
-			erroppr(:,:,0)   = erroppr(:,:,1)
-			erroppr(:,:,nz1) = erroppr(:,:,nz)
+		CALL cpu_time(end_outros5_f90)
+		end_outros5_omp = omp_get_wtime()
+
+		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
+		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
 		
 		write(*,*) "Contador		", "alfamupr		", "alfapr		", "betapr		"			!### PEDRO ###
 		write(*,*) cont, alfamupr, alfapr, betapr						!### PEDRO ###
