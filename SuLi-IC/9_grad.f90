@@ -49,8 +49,6 @@ SUBROUTINE graddin()
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
 	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
-	CALL cpu_time(start_outros2_f90)
-	start_outros2_omp = omp_get_wtime()
 	!CALL cpu_time(start_outros2_f90)
 	!start_outros2_omp = omp_get_wtime()
 
@@ -109,18 +107,9 @@ SUBROUTINE graddin()
 		enddo
 	enddo
 
-	CALL cpu_time(end_outros2_f90)
-	end_outros2_omp = omp_get_wtime()
 	!CALL cpu_time(end_outros2_f90)
 	!end_outros2_omp = omp_get_wtime()
 
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
-	soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
-	write(*,*) "Tempo individual de iniciar matrizes p/ Fortran:", end_outros2_f90 - start_outros2_f90
-	write(*,*) "Tempo acumulado de iniciar matrizes p/ Fortran", soma_outros2_f90
-	write(*,*) "Tempo individual de iniciar matrizes p/ OpenMP:", end_outros2_omp - start_outros2_omp
-	write(*,*) "Tempo acumulado de iniciar matrizes p/ OpenMP", soma_outros2_omp
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
 	!soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
@@ -130,8 +119,6 @@ SUBROUTINE graddin()
 	!write(*,*) "Tempo acumulado de iniciar matrizes p/ OpenMP", soma_outros2_omp
 
 	!Tempo de norm. e 1_erro p/ Fortran e OpenMP
-	CALL cpu_time(start_outros_f90)
-	start_outros_omp = omp_get_wtime()
 	!CALL cpu_time(start_outros_f90)
 	!start_outros_omp = omp_get_wtime()
 
@@ -181,18 +168,9 @@ SUBROUTINE graddin()
 
 	erroppr = erropr
 
-	CALL cpu_time(end_outros_f90)
-	end_outros_omp = omp_get_wtime()
 	!CALL cpu_time(end_outros_f90)
 	!end_outros_omp = omp_get_wtime()
 
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
-	soma_outros_omp = soma_outros_omp + (end_outros_omp - start_outros_omp)
-	write(*,*) "Tempo individual de norm. e 1_erro p/ Fortran:", end_outros_f90 - start_outros_f90
-	write(*,*) "Tempo acumulado de norm. e 1_erro p/ Fortran", soma_outros_f90
-	write(*,*) "Tempo individual de norm. e 1_erro p/ OpenMP:", end_outros_omp - start_outros_omp
-	write(*,*) "Tempo acumulado de norm. e 1_erro p/ OpenMP", soma_outros_omp
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
 	!soma_outros_omp = soma_outros_omp + (end_outros_omp - start_outros_omp)
@@ -289,7 +267,6 @@ SUBROUTINE graddin()
 		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
 		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)
 
-			! Condições de contorno
 		CALL cpu_time(start_outros5_f90)
 		start_outros5_omp = omp_get_wtime()
 
