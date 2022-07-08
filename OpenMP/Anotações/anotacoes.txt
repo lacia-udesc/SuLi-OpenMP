@@ -30,4 +30,10 @@ https://stackoverflow.com/questions/32257244/vectorized-sum-in-fortran
 
 https://gcc.gnu.org/onlinedocs/gfortran/SUM.html#SUM
 
+ANOTAÇÕES 08-07
+
+https://docs.oracle.com/cd/E19957-01/805-4940/6j4m1u7qc/index.html
+
+https://www.tutorialspoint.com/fortran/fortran_arrays.htm
+
 
