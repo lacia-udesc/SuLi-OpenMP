@@ -200,7 +200,7 @@ SUBROUTINE graddin()
 		alfadipr = 0.
 		!betapr   = 0.
 		betamupr = 0.
-		!mppr     = 0.
+		mppr = 0.
 
 		! Parâmetro mp e alfa
 
