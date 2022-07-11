@@ -25,8 +25,8 @@ SUBROUTINE graddin()
 	real(8), dimension(nx1,ny,nz) :: matspri
 	real(8), dimension(nx,ny1,nz) :: matsprj
 	real(8), dimension(nx,ny,nz1) :: matsprk
-	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg
-	real(8), dimension(0:nx1,0:ny1,0:nz1) :: matdpr, matepr, erropr, erroppr, mppr
+	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
+	real(8), dimension(0:nx1,0:ny1,0:nz1) :: matdpr, matepr, erropr, erroppr
 
 	!contadores
 	integer :: i, j, k, cont
