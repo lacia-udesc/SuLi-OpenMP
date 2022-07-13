@@ -21,11 +21,15 @@ SUBROUTINE graddin()
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
 
-	real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	integer, parameter :: Tipo1 = selected_real_kind(10,10)
+	real(kind=Tipo1), dimension(nx,ny,nz) :: mppr
+	real(kind=Tipo1) :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	!real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
 	real(8), dimension(nx1,ny,nz) :: matspri
 	real(8), dimension(nx,ny1,nz) :: matsprj
 	real(8), dimension(nx,ny,nz1) :: matsprk
-	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
+	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg
+	!real(16), dimension(nx,ny,nz) :: mppr
 	real(8), dimension(0:nx1,0:ny1,0:nz1) :: matdpr, matepr, erropr, erroppr
 
 	!contadores
@@ -43,6 +47,15 @@ SUBROUTINE graddin()
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
+
+	write(*,*) "Kind do mppr", kind(mppr)
+	write(*,*) "Kind do alfapr", kind(alfapr)
+	write(*,*) "Kind do alfamupr", kind(alfamupr)
+	write(*,*) "Kind do alfadipr", kind(alfadipr)
+	write(*,*) "Kind do betapr", kind(betapr)
+	write(*,*) "Kind do betamupr", kind(betamupr)
+	write(*,*) "Kind do erropr", kind(erropr)
+	write(*,*) "Kind do erroppr", kind(erroppr)
 
 	cont = 0
 
@@ -65,7 +78,7 @@ SUBROUTINE graddin()
 		do j = 1, ny
 			do i = 1, nx
 				matdpr(i,j,k) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
-				matqpr(i,j,k) = ( u(i,j,k) - u(i+1,j,k) )/dx + ( v(i,j,k)-v(i,j+1,k) )/dy  + (w(i,j,k) - w(i,j,k+1)) /dz
+				matqpr(i,j,k) = (u(i,j,k) - u(i+1,j,k))/dx + (v(i,j,k)-v(i,j+1,k))/dy  + (w(i,j,k) - w(i,j,k+1))/dz
 			enddo
 		enddo
 	enddo
@@ -147,6 +160,8 @@ SUBROUTINE graddin()
 		enddo
 	enddo
 
+	write(*,*) "Cálculo do primeiro erro", alfamupr
+
 	if (ccx0.eq.0) then  ! Condição periódica
 		erropr(0,:,:)   = erropr(nx,:,:)
 		erropr(nx1,:,:) = erropr(1,:,:)
@@ -195,10 +210,10 @@ SUBROUTINE graddin()
 		cont = cont +1
 
 		!inicialização
-		!alfapr   = 0.
+		alfapr   = 0.
 		alfamupr = 0.
 		alfadipr = 0.
-		!betapr   = 0.
+		betapr   = 0.
 		betamupr = 0.
 		mppr = 0.
 
@@ -239,8 +254,12 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 		enddo
+	
+		write(*,*) "Segundo Alfamupr", alfamupr
 
 		alfapr = alfamupr / alfadipr
+
+		write(*,*) "Primeiro alfapr", alfapr
 		
 		CALL cpu_time(fortran_end_grad_1)
 		omp_end_grad_1 = omp_get_wtime()
@@ -339,8 +358,17 @@ SUBROUTINE graddin()
 		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
 		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
 		
-		write(*,*) "Contador		", "alfamupr		", "alfapr		", "betapr		"			!### PEDRO ###
-		write(*,*) cont, alfamupr, alfapr, betapr						!### PEDRO ###
+		write(*,*) "Contador		", "alfamupr		", "alfapr		", "betapr		", "betamupr		", "alfadipr		"			!### PEDRO ###
+		write(*,*) cont, alfamupr, alfapr, betapr, betamupr, alfadipr						!### PEDRO ###
+
+		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+
+		write(*,*) "Kind do mppr", kind(mppr)
+		write(*,*) "Kind do alfamupr", kind(alfamupr)
+		write(*,*) "Kind do alfapr", kind(alfapr)
+		write(*,*) "Kind do betapr", kind(betapr)
+		write(*,*) "Kind do betamupr", kind(betamupr)
+		write(*,*) "Kind do alfadipr", kind(alfadipr)
 
 	enddo
 	! OTIMIZAR CÓDIGO
