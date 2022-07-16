@@ -139,7 +139,6 @@ SUBROUTINE graddin()
 			mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2))
 			mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k))
 
-
 			erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - matapripos(i,j,k) * matepr(i+2,j+1,k+1) - mataprineg(i,j,k) * matepr(i,j+1,k+1) &
 				- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) - mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
 				- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) - mataprkneg(i,j,k) * matepr(i+1,j+1,k) - matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
@@ -172,7 +171,7 @@ SUBROUTINE graddin()
 		erroppr = erropr
 
 		!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-		do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
+		do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 1000) )
 
 
 		if (cont == 9999) write(*,*) "pulou pressão; ", "erro =", abs(alfamupr)
@@ -194,12 +193,21 @@ SUBROUTINE graddin()
 			do i = 1, nx
 				mppr(i,j,k) = erroppr(i+1,j+1,k+1) - erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
 				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
-				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)  - erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)
+			enddo
+			enddo
+			enddo		
+
+			do k = 1, nz
+			do j = 1, ny
+			do i = 1, nx
+				mppr(i,j,k) = mppr(i,j,k) - erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
 				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
 				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 			enddo
 			enddo
-			enddo	
+			enddo
+			
 			
 			
 			do k = 1, nz
@@ -212,18 +220,7 @@ SUBROUTINE graddin()
 			enddo
 
 			alfapr = alfamupr / alfadipr
-		
-			
-			open (unit=9991, action= 'write', file= 'dados//mppr.txt', status= 'unknown') ! o status deveria ser para escrever em cima deste primeiro ..z
-			do k = 1, nz
-			do j = 1, ny
-			do i = 1, nx
-				write(9991,*) i, j, k, mppr(i,j,k)
-			enddo
-			enddo
-			enddo
-			
-			close (unit=9991)
+			write(*,*) cont, alfapr
 			! Recálculo das matrizes e, erro e parâmetro beta
 
 
@@ -239,12 +236,12 @@ SUBROUTINE graddin()
 			enddo
 
 			betapr = betamupr/alfamupr
-			write(*,*) cont, alfapr, betapr
+
 			! aqui fez mais sentido avançar todo o avanço, pois todos são deslocados
-			do k = 1, nz
-			do j = 1, ny
-			do i = 1, nx
-				erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
+			do k = 2, nz+1
+			do j = 2, ny+1
+			do i = 2, nx+1
+				erroppr(i,j,k) = erropr(i,j,k) + betapr * erroppr(i,j,k)
 			enddo
 			enddo
 			enddo
@@ -292,7 +289,6 @@ SUBROUTINE graddin()
 		enddo
 		enddo
 		enddo
-
 
 	!===============================================================================================================
 
