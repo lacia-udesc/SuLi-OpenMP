@@ -21,16 +21,15 @@ SUBROUTINE graddin()
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
 
-	integer, parameter :: Tipo1 = selected_real_kind(10,10)
-	real(kind=Tipo1), dimension(nx,ny,nz) :: mppr
-	real(kind=Tipo1) :: alfapr, alfamupr, alfadipr, betapr, betamupr
-	!real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	!integer, parameter :: Tipo1 = selected_real_kind(10,10)
+	!real(kind=Tipo1), dimension(nx,ny,nz) :: mppr
+	!real(kind=Tipo1) :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
 	real(8), dimension(nx1,ny,nz) :: matspri
 	real(8), dimension(nx,ny1,nz) :: matsprj
 	real(8), dimension(nx,ny,nz1) :: matsprk
-	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg
-	!real(16), dimension(nx,ny,nz) :: mppr
-	real(8), dimension(0:nx1,0:ny1,0:nz1) :: matdpr, matepr, erropr, erroppr
+	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
+	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
 
 	!contadores
 	integer :: i, j, k, cont
@@ -77,8 +76,8 @@ SUBROUTINE graddin()
 	do k = 1, nz
 		do j = 1, ny
 			do i = 1, nx
-				matdpr(i,j,k) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
-				matqpr(i,j,k) = (u(i,j,k) - u(i+1,j,k))/dx + (v(i,j,k)-v(i,j+1,k))/dy  + (w(i,j,k) - w(i,j,k+1))/dz
+			matdpr(i+1,j+1,k+1) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
+			matqpr(i,j,k) = ( u(i,j,k) - u(i+1,j,k) )/dx + ( v(i,j,k)-v(i,j+1,k) )/dy  + (w(i,j,k) - w(i,j,k+1)) /dz
 			enddo
 		enddo
 	enddo
@@ -93,29 +92,29 @@ SUBROUTINE graddin()
 
 	! Condições de contorno, von Neumann
 	if (ccx0.eq.0) then  ! Condição periódica
-		matdpr(0,:,:)   = matdpr(nx,:,:)
-		matdpr(nx1,:,:) = matdpr(1,:,:)
+			matdpr(1,:,:)   = matdpr(nx1,:,:)
+			matdpr(nx1+1,:,:) = matdpr(2,:,:)
 	else
-		matdpr(0,:,:)   = matdpr(1,:,:)
-		matdpr(nx1,:,:) = matdpr(nx,:,:)
+			matdpr(1,:,:)   = matdpr(2,:,:)
+			matdpr(nx1+1,:,:) = matdpr(nx1,:,:)
 	endif
 
 	if (ccy0.eq.0) then  ! Condição periódica
-		matdpr(:,0,:)   = matdpr(:,ny,:)
-		matdpr(:,ny1,:) = matdpr(:,1,:)
+			matdpr(:,1,:)   = matdpr(:,ny1,:)
+			matdpr(:,ny1+1,:) = matdpr(:,2,:)
 	else
-		matdpr(:,0,:)   = matdpr(:,1,:)
-		matdpr(:,ny1,:) = matdpr(:,ny,:)
+			matdpr(:,1,:)   = matdpr(:,2,:)
+			matdpr(:,ny1+1,:) = matdpr(:,ny1,:)
 	endif
 
-	matdpr(:,:,0)   = matdpr(:,:,1)
-	matdpr(:,:,nz1) = matdpr(:,:,nz)
+		matdpr(:,:,1)   = matdpr(:,:,2)
+		matdpr(:,:,nz1+1) = matdpr(:,:,nz1)
 	
 	! Normalização da pressão dinâmica
 	do k = 0, nz1
 		do j = 0, ny1
 			do i = 0, nx1
-				matepr(i,j,k) = prd1(i,j,k) * sqrt(matdpr(i,j,k))
+			matepr(i+1,j+1,k+1) = prd1(i,j,k) * sqrt(matdpr(i+1,j+1,k+1))
 			enddo
 		enddo
 	enddo
@@ -142,44 +141,42 @@ SUBROUTINE graddin()
 		do j = 1, ny
 			do i = 1, nx
 
-				matapripos(i,j,k) = matspri(i+1,j,k)/sqrt(matdpr(i,j,k)*matdpr(i+1,j,k))
-				mataprineg(i,j,k) = matspri(i,j,k)/sqrt(matdpr(i,j,k)*matdpr(i-1,j,k))
+			matapripos(i,j,k) = matspri(i+1,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1))
+			mataprineg(i,j,k) = matspri(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1))
 
-				mataprjpos(i,j,k) = matsprj(i,j+1,k)/sqrt(matdpr(i,j,k)*matdpr(i,j+1,k))
-				mataprjneg(i,j,k) = matsprj(i,j,k)/sqrt(matdpr(i,j,k)*matdpr(i,j-1,k))
+			mataprjpos(i,j,k) = matsprj(i,j+1,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1))
+			mataprjneg(i,j,k) = matsprj(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1))
 
-				mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i,j,k)*matdpr(i,j,k+1))
-				mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i,j,k)*matdpr(i,j,k-1))
+			mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2))
+			mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k))
 
-				erropr(i,j,k) = matepr(i,j,k) - matapripos(i,j,k) * matepr(i+1,j,k) - mataprineg(i,j,k) * matepr(i-1,j,k) &
-					- mataprjpos(i,j,k) * matepr(i,j+1,k) - mataprjneg(i,j,k) * matepr(i,j-1,k) &
-					- mataprkpos(i,j,k) * matepr(i,j,k+1) - mataprkneg(i,j,k) * matepr(i,j,k-1) - matqpr(i,j,k)/sqrt(matdpr(i,j,k))
+			erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - matapripos(i,j,k) * matepr(i+2,j+1,k+1) - mataprineg(i,j,k) * matepr(i,j+1,k+1) &
+				- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) - mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
+				- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) - mataprkneg(i,j,k) * matepr(i+1,j+1,k) - matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
 
-				alfamupr = alfamupr + erropr(i,j,k) * erropr(i,j,k)
+			alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
 			enddo
 		enddo
 	enddo
 
-	write(*,*) "Cálculo do primeiro erro", alfamupr
-
 	if (ccx0.eq.0) then  ! Condição periódica
-		erropr(0,:,:)   = erropr(nx,:,:)
-		erropr(nx1,:,:) = erropr(1,:,:)
+			erropr(1,:,:)   = erropr(nx+1,:,:)
+			erropr(nx1+1,:,:) = erropr(2,:,:)
 	else
-		erropr(0,:,:)   = erropr(1,:,:)
-		erropr(nx1,:,:) = erropr(nx,:,:)
+			erropr(1,:,:)   = erropr(2,:,:)
+			erropr(nx1+1,:,:) = erropr(nx1,:,:)
 	endif
 
 	if (ccy0.eq.0) then  ! Condição periódica
-		erropr(:,0,:)   = erropr(:,ny,:)
-		erropr(:,ny1,:) = erropr(:,1,:)
+			erropr(:,1,:)   = erropr(:,ny+1,:)
+			erropr(:,ny1+1,:) = erropr(:,2,:)
 	else
-		erropr(:,0,:)   = erropr(:,1,:)
-		erropr(:,ny1,:) = erropr(:,ny,:)
+			erropr(:,1,:)   = erropr(:,2,:)
+			erropr(:,ny1+1,:) = erropr(:,ny1,:)
 	endif
 
-	erropr(:,:,0)   = erropr(:,:,1)
-	erropr(:,:,nz1) = erropr(:,:,nz)
+		erropr(:,:,1)   = erropr(:,:,2)
+		erropr(:,:,nz1+1) = erropr(:,:,nz1)
 
 	erroppr = erropr
 
@@ -199,7 +196,7 @@ SUBROUTINE graddin()
 	start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
+	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10) )
 	
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
@@ -225,10 +222,9 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-					mppr(i,j,k) = erroppr(i,j,k) &
-					- erroppr(i+1,j,k) * matapripos(i,j,k) &
-					- erroppr(i,j+1,k) * mataprjpos(i,j,k) &
-					- erroppr(i,j,k+1) * mataprkpos(i,j,k)
+				mppr(i,j,k) = erroppr(i+1,j+1,k+1) - erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
+				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
+				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)
 				enddo
 			enddo
 		enddo
@@ -236,10 +232,9 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-					mppr(i,j,k) = mppr(i,j,k) &
-					- erroppr(i-1,j,k) * mataprineg(i,j,k) &
-					- erroppr(i,j-1,k) * mataprjneg(i,j,k) &
-					- erroppr(i,j,k-1) * mataprkneg(i,j,k)
+				mppr(i,j,k) = mppr(i,j,k) - erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
+				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
 			enddo
 		enddo
@@ -249,8 +244,8 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-					alfamupr = alfamupr + erropr(i,j,k) * erropr(i,j,k)
-					alfadipr = alfadipr + erroppr(i,j,k) * mppr(i,j,k)
+				alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+				alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
 				enddo
 			enddo
 		enddo
@@ -272,22 +267,25 @@ SUBROUTINE graddin()
 
 		! Recálculo das matrizes e, erro e parâmetro beta
 		do k = 1, nz
-			do j = 1 , ny
+			do j = 1, ny
 				do i = 1, nx
-					matepr(i,j,k)  = matepr(i,j,k)  - alfapr * erroppr(i,j,k)
-					erropr(i,j,k) = erropr(i,j,k) - alfapr * mppr(i,j,k)
-					betamupr = betamupr + erropr(i,j,k) * erropr(i,j,k)
+				matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
+				erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
+
+				betamupr = betamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
 				enddo
 			enddo
 		enddo
 		
 		betapr = betamupr/alfamupr
 
+		write(*,*) cont, alfapr, betapr
+
 		! Recálculo de errop
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-					erroppr(i,j,k) = erropr(i,j,k) + betapr * erroppr(i,j,k)
+				erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
 				enddo
 			enddo
 		enddo
@@ -306,19 +304,19 @@ SUBROUTINE graddin()
 		if (ccx0.eq.0) then  ! Condição periódica
 			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do j = 1, ny1
-					matepr(0,j,k) = matepr(nx,j,k)
-					matepr(nx1,j,k) = matepr(1,j,k)
-					erroppr(0,j,k) = erroppr(nx,j,k)
-					erroppr(nx1,j,k) = erroppr(1,j,k)
+					matepr(1,j,k) = matepr(nx+1,j,k)
+					matepr(nx1+1,j,k) = matepr(2,j,k)
+					erroppr(1,j,k) = erroppr(nx+1,j,k)
+					erroppr(nx1+1,j,k) = erroppr(2,j,k)
 				enddo
 			enddo
 		else
 			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do j = 1, ny1
-					matepr(0,j,k) = matepr(1,j,k)
-					matepr(nx1,j,k) = matepr(nx,j,k)
-					erroppr(0,j,k) = erroppr(1,j,k)
-					erroppr(nx1,j,k) = erroppr(nx,j,k)
+					matepr(1,j,k) = matepr(2,j,k)
+					matepr(nx1+1,j,k) = matepr(nx+1,j,k)
+					erroppr(1,j,k) = erroppr(2,j,k)
+					erroppr(nx1+1,j,k) = erroppr(nx+1,j,k)
 				enddo
 			enddo
 		endif
@@ -326,29 +324,29 @@ SUBROUTINE graddin()
 		if (ccy0.eq.0) then  ! Condição periódica
 			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do i = 1, nx1
-					matepr(i,0,k) = matepr(i,ny,k)
-					matepr(i,ny1,k) = matepr(i,1,k)
-					erroppr(i,0,k) = erroppr(i,ny,k)
-					erroppr(i,ny1,k) = erroppr(i,1,k)
+					matepr(i,1,k) = matepr(i,ny+1,k)
+					matepr(i,ny1+1,k) = matepr(i,2,k)
+					erroppr(i,1,k) = erroppr(i,ny+1,k)
+					erroppr(i,ny1+1,k) = erroppr(i,2,k)
 				enddo
 			enddo			
 		else
 			do k = 1, nz1									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do i = 1, nx1
-					matepr(i,0,k) = matepr(i,1,k)
-					matepr(i,ny1,k) = matepr(i,ny,k)
-					erroppr(i,0,k) = erroppr(i,1,k)
-					erroppr(i,ny1,k) = erroppr(i,ny,k)
+					matepr(i,1,k) = matepr(i,2,k)
+					matepr(i,ny1+1,k) = matepr(i,ny+1,k)
+					erroppr(i,1,k) = erroppr(i,2,k)
+					erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
 				enddo
 			enddo
 		endif
 
 		do j = 1, ny1
 			do i = 1, nx1
-				matepr(i,j,0) = matepr(i,j,1)
-				matepr(i,j,nz1) = matepr(i,j,nz)
-				erroppr(i,j,0) = erroppr(i,j,1)
-				erroppr(i,j,nz1) = erroppr(i,j,nz)
+					matepr(i,j,1) = matepr(i,j,2)
+					matepr(i,j,nz1+1) = matepr(i,j,nz+1)
+					erroppr(i,j,1) = erroppr(i,j,2)
+					erroppr(i,j,nz1+1) = erroppr(i,j,nz+1)
 			enddo
 		enddo
 
@@ -363,12 +361,12 @@ SUBROUTINE graddin()
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 
-		write(*,*) "Kind do mppr", kind(mppr)
-		write(*,*) "Kind do alfamupr", kind(alfamupr)
-		write(*,*) "Kind do alfapr", kind(alfapr)
-		write(*,*) "Kind do betapr", kind(betapr)
-		write(*,*) "Kind do betamupr", kind(betamupr)
-		write(*,*) "Kind do alfadipr", kind(alfadipr)
+		!write(*,*) "Kind do mppr", kind(mppr)
+		!write(*,*) "Kind do alfamupr", kind(alfamupr)
+		!write(*,*) "Kind do alfapr", kind(alfapr)
+		!write(*,*) "Kind do betapr", kind(betapr)
+		!write(*,*) "Kind do betamupr", kind(betamupr)
+		!write(*,*) "Kind do alfadipr", kind(alfadipr)
 
 	enddo
 	! OTIMIZAR CÓDIGO
@@ -398,7 +396,7 @@ SUBROUTINE graddin()
 	do k = 0, nz+1
 		do j = 0, ny+1
 			do i = 0, nx+1
-				prd1(i,j,k) = matepr(i,j,k) / sqrt(matdpr(i,j,k))
+			prd1(i,j,k) = matepr(i+1,j+1,k+1) / sqrt(matdpr(i+1,j+1,k+1))
 			enddo
 		enddo
 	enddo
