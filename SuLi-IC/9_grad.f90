@@ -48,15 +48,6 @@ SUBROUTINE graddin()
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
 
-	write(*,*) "Kind do mppr", kind(mppr)
-	write(*,*) "Kind do alfapr", kind(alfapr)
-	write(*,*) "Kind do alfamupr", kind(alfamupr)
-	write(*,*) "Kind do alfadipr", kind(alfadipr)
-	write(*,*) "Kind do betapr", kind(betapr)
-	write(*,*) "Kind do betamupr", kind(betamupr)
-	write(*,*) "Kind do erropr", kind(erropr)
-	write(*,*) "Kind do erroppr", kind(erroppr)
-
 	cont = 0
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
@@ -255,11 +246,11 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 	
-		write(*,*) "Segundo Alfamupr", alfamupr
+		!write(*,*) "Segundo Alfamupr", alfamupr
 
 		alfapr = alfamupr / alfadipr
 
-		write(*,*) "Primeiro alfapr", alfapr
+		!write(*,*) "Primeiro alfapr", alfapr
 		
 		CALL cpu_time(fortran_end_grad_1)
 		omp_end_grad_1 = omp_get_wtime()
@@ -362,13 +353,6 @@ SUBROUTINE graddin()
 		write(*,*) cont, alfamupr, alfapr, betapr, betamupr, alfadipr						!### PEDRO ###
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-
-		write(*,*) "Kind do mppr", kind(mppr)
-		write(*,*) "Kind do alfamupr", kind(alfamupr)
-		write(*,*) "Kind do alfapr", kind(alfapr)
-		write(*,*) "Kind do betapr", kind(betapr)
-		write(*,*) "Kind do betamupr", kind(betamupr)
-		write(*,*) "Kind do alfadipr", kind(alfadipr)
 
 	enddo
 	! OTIMIZAR CÓDIGO
