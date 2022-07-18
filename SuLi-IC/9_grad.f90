@@ -47,15 +47,6 @@ SUBROUTINE graddin()
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
 
-	write(*,*) "Kind do mppr", kind(mppr)
-	write(*,*) "Kind do alfapr", kind(alfapr)
-	write(*,*) "Kind do alfamupr", kind(alfamupr)
-	write(*,*) "Kind do alfadipr", kind(alfadipr)
-	write(*,*) "Kind do betapr", kind(betapr)
-	write(*,*) "Kind do betamupr", kind(betamupr)
-	write(*,*) "Kind do erropr", kind(erropr)
-	write(*,*) "Kind do erroppr", kind(erroppr)
-
 	cont = 0
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
@@ -222,7 +213,8 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				mppr(i,j,k) = erroppr(i+1,j+1,k+1) - erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
+				mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
+				- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
 				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
 				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)
 				enddo
@@ -232,7 +224,8 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				mppr(i,j,k) = mppr(i,j,k) - erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+				mppr(i,j,k) = mppr(i,j,k) &
+				- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
 				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
 				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
@@ -250,11 +243,11 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 	
-		write(*,*) "Segundo Alfamupr", alfamupr
+		!write(*,*) "Segundo Alfamupr", alfamupr
 
 		alfapr = alfamupr / alfadipr
 
-		write(*,*) "Primeiro alfapr", alfapr
+		!write(*,*) "Primeiro alfapr", alfapr
 		
 		CALL cpu_time(fortran_end_grad_1)
 		omp_end_grad_1 = omp_get_wtime()
@@ -360,13 +353,6 @@ SUBROUTINE graddin()
 		write(*,*) cont, alfamupr, alfapr, betapr, betamupr, alfadipr						!### PEDRO ###
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-
-		!write(*,*) "Kind do mppr", kind(mppr)
-		!write(*,*) "Kind do alfamupr", kind(alfamupr)
-		!write(*,*) "Kind do alfapr", kind(alfapr)
-		!write(*,*) "Kind do betapr", kind(betapr)
-		!write(*,*) "Kind do betamupr", kind(betamupr)
-		!write(*,*) "Kind do alfadipr", kind(alfadipr)
 
 	enddo
 	! OTIMIZAR CÓDIGO
