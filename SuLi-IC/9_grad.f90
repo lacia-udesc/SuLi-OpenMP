@@ -187,7 +187,7 @@ SUBROUTINE graddin()
 	start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10) )
+	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
 	
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
@@ -272,7 +272,7 @@ SUBROUTINE graddin()
 		
 		betapr = betamupr/alfamupr
 
-		write(*,*) cont, alfapr, betapr
+		!write(*,*) cont, alfapr, betapr
 
 		! Recálculo de errop
 		do k = 1, nz
