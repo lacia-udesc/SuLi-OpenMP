@@ -218,7 +218,7 @@ SUBROUTINE graddin()
 				- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
 				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
 				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
-				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)
+				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
 				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
 			enddo
