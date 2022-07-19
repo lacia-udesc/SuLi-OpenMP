@@ -319,6 +319,7 @@ SUBROUTINE graddin()
 			matepr(:,:,nz1+1) = matepr(:,:,nz+1)
 			erroppr(:,:,1) = erroppr(:,:,2)
 			erroppr(:,:,nz1+1) = erroppr(:,:,nz+1)
+			
 		CALL cpu_time(end_outros5_f90)
 		end_outros5_omp = omp_get_wtime()
 
