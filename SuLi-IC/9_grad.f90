@@ -187,7 +187,7 @@ SUBROUTINE graddin()
 	start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10) )
+	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
 	
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
@@ -215,15 +215,23 @@ SUBROUTINE graddin()
 				do i = 1, nx
 				mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
 				- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
-				- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
 				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
-				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
 				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k)
-				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
 			enddo
 		enddo
 		
+		do k = 1, nz
+			do j = 1, ny
+				do i = 1, nx
+				mppr(i,j,k) = mppr(i,j,k) &
+				- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
+				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
+				enddo
+			enddo
+		enddo
+
 		!!!	###########################################################################################################################################################
 		
 		do k = 1, nz
