@@ -338,8 +338,8 @@ SUBROUTINE graddin()
 		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
 		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
 		
-		write(*,*) "Contador		", "alfamupr		", "alfapr		", "betapr		", "betamupr		", "alfadipr		"			!### PEDRO ###
-		write(*,*) cont, alfamupr, alfapr, betapr, betamupr, alfadipr						!### PEDRO ###
+		write(*,*) "Contador		", "alfamupr		", "betamupr		", "alfadipr"			!### PEDRO ###
+		write(*,*) cont, alfamupr, betamupr, alfadipr						!### PEDRO ###
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 
