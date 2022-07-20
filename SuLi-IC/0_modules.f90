@@ -12,7 +12,7 @@ module disc
     !Número de tempo por arquivo plotado
     real(8),parameter :: dt_frame = 0.00001*10.
 
-    integer,parameter :: nx=int(2./dx) , ny=int(1./dy), nz=int(1./dz)
+    integer,parameter :: nx=int(3./dx) , ny=int(1./dy), nz=int(1./dz)
     !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
     integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(0.01/0.001)
 
