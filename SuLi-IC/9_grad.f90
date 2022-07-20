@@ -81,23 +81,43 @@ SUBROUTINE graddin()
 
 	! Condições de contorno, von Neumann
 	if (ccx0.eq.0) then  ! Condição periódica
-			matdpr(1,:,:)   = matdpr(nx1,:,:)
-			matdpr(nx1+1,:,:) = matdpr(2,:,:)
+		do k = 1, nz2							! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			do j = 1, ny2
+				matdpr(1,j,k) = matdpr(nx1,j,k)
+				matdpr(nx1+1,j,k) = matdpr(2,j,k)
+			enddo
+		enddo
 	else
-			matdpr(1,:,:)   = matdpr(2,:,:)
-			matdpr(nx1+1,:,:) = matdpr(nx1,:,:)
+		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			do j = 1, ny2
+				matdpr(1,j,k) = matdpr(2,j,k)
+				matdpr(nx1+1,j,k) = matdpr(nx1,j,k)
+			enddo
+		enddo
 	endif
 
 	if (ccy0.eq.0) then  ! Condição periódica
-			matdpr(:,1,:)   = matdpr(:,ny1,:)
-			matdpr(:,ny1+1,:) = matdpr(:,2,:)
+		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			do i = 1, nx2
+				matdpr(i,1,k) = matdpr(i,ny1,k)
+				matdpr(i,ny1+1,k) = matdpr(i,2,k)
+			enddo
+		enddo			
 	else
-			matdpr(:,1,:)   = matdpr(:,2,:)
-			matdpr(:,ny1+1,:) = matdpr(:,ny1,:)
+		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			do i = 1, nx2
+				matdpr(i,1,k) = matdpr(i,2,k)
+				matdpr(i,ny1+1,k) = matdpr(i,ny1,k)
+			enddo
+		enddo
 	endif
 
-		matdpr(:,:,1)   = matdpr(:,:,2)
-		matdpr(:,:,nz1+1) = matdpr(:,:,nz1)
+	do j = 1, ny2
+		do i = 1, nx2
+			matdpr(i,j,1) = matdpr(i,j,2)
+			matdpr(i,j,nz1+1) = matdpr(i,j,nz1)
+		enddo
+	enddo
 	
 	! Normalização da pressão dinâmica
 	do k = 0, nz1
@@ -187,7 +207,7 @@ SUBROUTINE graddin()
 	start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 1000) )
+	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
 	
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
