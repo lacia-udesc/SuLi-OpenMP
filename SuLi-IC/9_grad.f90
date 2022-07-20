@@ -280,9 +280,18 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 		enddo
-		
+
+		CALL cpu_time(fortran_end_grad_2)
+		omp_end_grad_2 = omp_get_wtime()
+
+		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
+		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)		
+
 		betapr = betamupr/alfamupr
 
+		CALL cpu_time(start_outros2_f90)
+		start_outros2_omp = omp_get_wtime()
+		
 		! Recálculo de errop
 		do k = 1, nz
 			do j = 1, ny
@@ -292,11 +301,11 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		CALL cpu_time(fortran_end_grad_2)
-		omp_end_grad_2 = omp_get_wtime()
+		CALL cpu_time(end_outros2_f90)
+		end_outros2_omp = omp_get_wtime()
 
-		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
-		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)
+		soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
+		soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
 
 		CALL cpu_time(start_outros5_f90)
 		start_outros5_omp = omp_get_wtime()
@@ -373,12 +382,14 @@ SUBROUTINE graddin()
 	write(*,*) "Tempo acumulado de 'Parâmetro mp e alfa' p/ Fortran", soma_grad_1_f90
 	write(*,*) "Tempo acumulado de 'Parâmetro mp e alfa' p/ OpenMP", soma_grad_1_omp
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo acumulado de 'Recálculo de matrizes e erro' p/ Fortran", soma_grad_2_f90
-	write(*,*) "Tempo acumulado de 'Recálculo de matrizes e erro' p/ OpenMP", soma_grad_2_omp
+	write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ Fortran", soma_grad_2_f90
+	write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP", soma_grad_2_omp
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ Fortran", soma_outros2_f90
+	write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ OpenMP", soma_outros2_omp
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "Tempo acumulado de 'Condições de contorno' p/ Fortran", soma_outros5_f90
 	write(*,*) "Tempo acumulado de 'Condições de contorno' p/ OpenMP", soma_outros5_omp
-
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	soma_outros4_f90 = soma_outros4_f90 + (end_outros4_f90 - start_outros4_f90)
 	soma_outros4_omp = soma_outros4_omp + (end_outros4_omp - start_outros4_omp)
