@@ -150,20 +150,33 @@ SUBROUTINE graddin()
 		do j = 1, ny
 			do i = 1, nx
 
-			matapripos(i,j,k) = matspri(i+1,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1))
-			mataprineg(i,j,k) = matspri(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1))
+				matapripos(i,j,k) = matspri(i+1,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1))
+				mataprineg(i,j,k) = matspri(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1))
 
-			mataprjpos(i,j,k) = matsprj(i,j+1,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1))
-			mataprjneg(i,j,k) = matsprj(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1))
+				mataprjpos(i,j,k) = matsprj(i,j+1,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1))
+				mataprjneg(i,j,k) = matsprj(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1))
 
-			mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2))
-			mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k))
+				mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2))
+				mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k))
 
-			erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - matapripos(i,j,k) * matepr(i+2,j+1,k+1) - mataprineg(i,j,k) * matepr(i,j+1,k+1) &
-				- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) - mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
-				- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) - mataprkneg(i,j,k) * matepr(i+1,j+1,k) - matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
+			enddo
+		enddo
+	enddo
 
-			alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+	do k = 1, nz
+		do j = 1, ny
+			do i = 1, nx
+
+				erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) &
+				- matapripos(i,j,k) * matepr(i+2,j+1,k+1) &
+				- mataprineg(i,j,k) * matepr(i,j+1,k+1) &
+				- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) &
+				- mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
+				- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) &
+				- mataprkneg(i,j,k) * matepr(i+1,j+1,k) &
+				- matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
+
+				alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
 			enddo
 		enddo
 	enddo
