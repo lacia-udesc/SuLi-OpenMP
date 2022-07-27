@@ -229,9 +229,6 @@ module omp
 	double precision :: fortran_start_visco, fortran_end_visco
 	double precision :: omp_start_visco, omp_end_visco
 
-	double precision :: fortran_start_convdiff, fortran_end_convdiff
-	double precision :: omp_start_convdiff, omp_end_convdiff
-
 	double precision :: fortran_start_graddin, fortran_end_graddin
 	double precision :: omp_start_graddin, omp_end_graddin
 
@@ -250,8 +247,8 @@ module omp
 	double precision :: fortran_start_grad_1, fortran_end_grad_1, fortran_start_grad_2, fortran_end_grad_2 
 	double precision :: omp_start_grad_1, omp_end_grad_1, omp_start_grad_2, omp_end_grad_2
     
-	real :: soma_level_set_f90, soma_visco_f90, soma_convdiff_f90, soma_graddin_f90, soma_plot_f_f90
-	real :: soma_level_set_omp, soma_visco_omp, soma_convdiff_omp, soma_graddin_omp, soma_plot_f_omp
+	real :: soma_level_set_f90, soma_visco_f90, soma_graddin_f90, soma_plot_f_f90
+	real :: soma_level_set_omp, soma_visco_omp, soma_graddin_omp, soma_plot_f_omp
 	real :: soma_outros_f90, soma_outros2_f90, soma_outros3_f90, soma_outros4_f90, soma_outros5_f90
 	real :: soma_outros_omp, soma_outros2_omp, soma_outros3_omp, soma_outros4_omp, soma_outros5_omp
 	real :: soma_grad_1_f90, soma_grad_2_f90
@@ -259,5 +256,23 @@ module omp
 
 	!double precision function omp_get_wtime()
 	!double precision function omp_get_wtick()
+
+    !   Padrão de rastreio de processos:   !
+
+    !CALL cpu_time(fortran_start_)
+    !omp_start_ = omp_get_wtime()
+
+    !CALL processo()
+
+    !CALL cpu_time(fortran_end_)
+    !omp_end_ = omp_get_wtime()
+
+    !write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+    !soma_f90 = soma_f90 + (fortran_end_-fortran_start_)
+    !soma_omp = soma_omp + (omp_end_-omp_start_)
+    !write(*,*) "Tempo individual do processo() p/ Fortran:", fortran_end_-fortran_start_
+    !write(*,*) "Tempo acumulado do processo() p/ Fortran", soma_f90
+    !write(*,*) "Tempo individual do processo() p/ OpenMP:", omp_end_-omp_start_
+    !write(*,*) "Tempo acumulado do processo() p/ OpenMP", soma_omp
 
 end module omp

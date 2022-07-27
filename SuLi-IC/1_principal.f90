@@ -149,24 +149,9 @@ PROGRAM PNH
 				!write(*,*) "Tempo acumulado do visco() p/ Fortran", soma_visco_f90
 				!write(*,*) "Tempo individual do visco() p/ OpenMP:", omp_end_visco-omp_start_visco
 				!write(*,*) "Tempo acumulado do visco() p/ OpenMP", soma_visco_omp
-
-				!Tempo do convdiff() p/ Fortran e OpenMP
-				CALL cpu_time(fortran_start_convdiff)
-				omp_start_convdiff = omp_get_wtime()
-
+				
 				CALL convdiff()
 				CALL tempo()
-
-				CALL cpu_time(fortran_end_convdiff)
-				omp_end_convdiff = omp_get_wtime()
-
-				write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-				soma_convdiff_f90 = soma_convdiff_f90 + (fortran_end_convdiff-fortran_start_convdiff)
-				soma_convdiff_omp = soma_convdiff_omp + (omp_end_convdiff-omp_start_convdiff)
-				write(*,*) "Tempo individual do convdiff() p/ Fortran:", fortran_end_convdiff-fortran_start_convdiff
-				write(*,*) "Tempo acumulado do convdiff() p/ Fortran", soma_convdiff_f90
-				write(*,*) "Tempo individual do convdiff() p/ OpenMP:", omp_end_convdiff-omp_start_convdiff
-				write(*,*) "Tempo acumulado do convdiff() p/ OpenMP", soma_convdiff_omp
 
 				if (wave_t > 0) call boundary_waves() !For wave propagation
 					!Condições de Contorno para a parte Hidrostática
