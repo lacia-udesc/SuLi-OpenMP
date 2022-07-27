@@ -65,7 +65,7 @@ SUBROUTINE graddin()
 	do k = 1, nz
 		do j = 1, ny
 			do i = 1, nx
-			matdpr(i+1,j+1,k+1) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
+				matdpr(i+1,j+1,k+1) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
 				matqpr(i,j,k) = (u(i,j,k) - u(i+1,j,k))/dx + (v(i,j,k)-v(i,j+1,k))/dy  + (w(i,j,k) - w(i,j,k+1))/dz
 			enddo
 		enddo
@@ -123,7 +123,7 @@ SUBROUTINE graddin()
 	do k = 0, nz1
 		do j = 0, ny1
 			do i = 0, nx1
-			matepr(i+1,j+1,k+1) = prd1(i,j,k) * sqrt(matdpr(i+1,j+1,k+1))
+				matepr(i+1,j+1,k+1) = prd1(i,j,k) * sqrt(matdpr(i+1,j+1,k+1))
 			enddo
 		enddo
 	enddo
@@ -150,14 +150,14 @@ SUBROUTINE graddin()
 		do j = 1, ny
 			do i = 1, nx
 
-				matapripos(i,j,k) = matspri(i+1,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1))
-				mataprineg(i,j,k) = matspri(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1))
+				matapripos(i,j,k) = matspri(i+1,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1)))
+				mataprineg(i,j,k) = matspri(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1)))
 
-				mataprjpos(i,j,k) = matsprj(i,j+1,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1))
-				mataprjneg(i,j,k) = matsprj(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1))
+				mataprjpos(i,j,k) = matsprj(i,j+1,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1)))
+				mataprjneg(i,j,k) = matsprj(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1)))
 
-				mataprkpos(i,j,k) = matsprk(i,j,k+1)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2))
-				mataprkneg(i,j,k) = matsprk(i,j,k)/sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k))
+				mataprkpos(i,j,k) = matsprk(i,j,k+1)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2)))
+				mataprkneg(i,j,k) = matsprk(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k)))
 
 			enddo
 		enddo
@@ -266,13 +266,13 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
-				- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
-				- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
-				- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) & 
-				- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
-				- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
-				- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
+					mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
+					- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
+					- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+					- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) &
+					- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
+					- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
+					- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
 			enddo
 		enddo
@@ -282,8 +282,8 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
-				alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
+					alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+					alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
 				enddo
 			enddo
 		enddo
@@ -307,9 +307,9 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
-				erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
-				betamupr = betamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+					matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
+					erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
+					betamupr = betamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
 				enddo
 			enddo
 		enddo
@@ -329,7 +329,7 @@ SUBROUTINE graddin()
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
-				erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
+					erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
 				enddo
 			enddo
 		enddo
@@ -435,7 +435,7 @@ SUBROUTINE graddin()
 	do k = 0, nz+1
 		do j = 0, ny+1
 			do i = 0, nx+1
-			prd1(i,j,k) = matepr(i+1,j+1,k+1) / sqrt(matdpr(i+1,j+1,k+1))
+				prd1(i,j,k) = matepr(i+1,j+1,k+1) / sqrt(matdpr(i+1,j+1,k+1))
 			enddo
 		enddo
 	enddo

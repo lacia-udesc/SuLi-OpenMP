@@ -47,6 +47,7 @@ PROGRAM PNH
 
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+	
 	CALL cpu_time(fortran_start)
 	openmp_start = omp_get_wtime()
 
