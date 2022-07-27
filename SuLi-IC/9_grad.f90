@@ -184,23 +184,43 @@ SUBROUTINE graddin()
 	write(*,*) "Cálculo do primeiro erro", alfamupr
 
 	if (ccx0.eq.0) then  ! Condição periódica
-			erropr(1,:,:)   = erropr(nx+1,:,:)
-			erropr(nx1+1,:,:) = erropr(2,:,:)
+		do k = 1, nz2
+			do j = 1, ny2
+				erropr(1,j,k)   = erropr(nx+1,j,k)
+				erropr(nx1+1,j,k) = erropr(2,j,k)
+			enddo
+		enddo
 	else
-			erropr(1,:,:)   = erropr(2,:,:)
-			erropr(nx1+1,:,:) = erropr(nx1,:,:)
+		do k = 1, nz2
+			do j = 1, ny2
+				erropr(1,j,k)   = erropr(2,j,k)
+				erropr(nx1+1,j,k) = erropr(nx1,j,k)
+			enddo
+		enddo
 	endif
 
 	if (ccy0.eq.0) then  ! Condição periódica
-			erropr(:,1,:)   = erropr(:,ny+1,:)
-			erropr(:,ny1+1,:) = erropr(:,2,:)
+		do k = 1, nz2
+			do i = 1, nx2
+				erropr(i,1,k) = erropr(i,ny+1,k)
+				erropr(i,ny1+1,k) = erropr(i,2,k)
+			enddo
+		enddo
 	else
-			erropr(:,1,:)   = erropr(:,2,:)
-			erropr(:,ny1+1,:) = erropr(:,ny1,:)
+		do k = 1, nz2
+			do i = 1, nx2
+				erropr(i,1,k)   = erropr(i,2,k)
+				erropr(i,ny1+1,k) = erropr(i,ny1,k)
+			enddo
+		enddo
 	endif
 
-		erropr(:,:,1)   = erropr(:,:,2)
-		erropr(:,:,nz1+1) = erropr(:,:,nz1)
+	do j = 1, ny2
+		do i = 1, nx2
+			erropr(i,j,1) = erropr(i,j,2)
+			erropr(i,j,nz1+1) = erropr(i,j,nz1)
+		enddo
+	enddo
 
 	erroppr = erropr
 
