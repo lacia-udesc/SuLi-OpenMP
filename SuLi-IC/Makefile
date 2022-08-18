@@ -5,7 +5,7 @@
 # GNU
 FC = gfortran
 OPTFC = -O3 -fdefault-real-8 -fdefault-double-8 -mcmodel=medium # -fcheck=all  #  #large #-floop-optimize -funroll-loops -ftree-fre -finline-functions -fpeel-loops -funsafe-math-optimizations -fprefetch-loop-arrays 
-CC = gcc
+CC = pgfortran
 
 # Intel
 #FC = ifort
