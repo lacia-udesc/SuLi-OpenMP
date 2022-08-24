@@ -260,8 +260,8 @@ SUBROUTINE graddin()
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
 
-		!$acc parallel loop
-
+		
+		
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
@@ -276,8 +276,7 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		!$acc end parallel loop
-
+		
 		!!!	###########################################################################################################################################################
 		
 		do k = 1, nz
@@ -304,8 +303,7 @@ SUBROUTINE graddin()
 		CALL cpu_time(fortran_start_grad_2)
 		omp_start_grad_2 = omp_get_wtime()
 
-		!$acc parallel loop
-
+		
 		! Recálculo das matrizes e, erro e parâmetro beta
 		do k = 1, nz
 			do j = 1, ny
@@ -317,8 +315,7 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		!$acc end parallel loop
-
+		
 		CALL cpu_time(fortran_end_grad_2)
 		omp_end_grad_2 = omp_get_wtime()
 
@@ -330,7 +327,7 @@ SUBROUTINE graddin()
 		CALL cpu_time(start_outros2_f90)
 		start_outros2_omp = omp_get_wtime()
 
-		!$acc parallel loop
+		
 
 		! Recálculo de errop
 		do k = 1, nz
@@ -341,8 +338,7 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		!$acc end parallel loop
-
+		
 		CALL cpu_time(end_outros2_f90)
 		end_outros2_omp = omp_get_wtime()
 
@@ -352,7 +348,7 @@ SUBROUTINE graddin()
 		CALL cpu_time(start_outros5_f90)
 		start_outros5_omp = omp_get_wtime()
 
-		!$acc parallel loop
+		
 
 		! Condições de contorno
 
@@ -405,8 +401,7 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		!$acc end parallel loop
-
+		
 		CALL cpu_time(end_outros5_f90)
 		end_outros5_omp = omp_get_wtime()
 
