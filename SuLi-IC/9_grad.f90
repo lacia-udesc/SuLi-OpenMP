@@ -260,10 +260,13 @@ SUBROUTINE graddin()
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
 
+	!$OMP PARALLEL
 		
-		
+	!$OMP PARALLEL DO
 		do k = 1, nz
+		!$OMP PARALLEL DO
 			do j = 1, ny
+			!$OMP PARALLEL DO
 				do i = 1, nx
 					mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
 					- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
@@ -273,9 +276,13 @@ SUBROUTINE graddin()
 					- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
 					- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
+			!$OMP END PARALLEL DO
 			enddo
+		!$OMP END PARALLEL DO
 		enddo
+	!$OMP END PARALLEL DO
 
+	!$OMP END PARALLEL
 		
 		!!!	###########################################################################################################################################################
 		
