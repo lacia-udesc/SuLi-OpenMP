@@ -47,7 +47,8 @@ SUBROUTINE iniciais()
 
 	!Utilizado para definir obstáculos de fundo
 	CALL obstaculo()
-
+	
+	!$ write(*,*) "4"
 	!Utilizado para definir onda
 	if (wave_t > 0) then
 		write(*,*) "Com entrada de onda."
@@ -66,8 +67,10 @@ SUBROUTINE iniciais()
 		bxy0 = 0.
 		bxz0 = 0.
 	endif
+	!$ write(*,*) "5"
 
 	CALL level_set_ini()
+	!$ write(*,*) "6"
 
 	if (mms_t == 0) then
 		tf_p = 0.

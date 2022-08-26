@@ -20,6 +20,8 @@ SUBROUTINE level_set_ini()
 	real(8), dimension(ny) :: y
 	real(8), dimension(nz) :: z
 	real(8) :: dist, ampl, lambdax, lambday, prof, lsaux, m, aux1, xaux1, xaux2, xaux3, xaux4, erro1, erro2, erro3, erro4
+	write(*,*) "6"
+	write(*,*) "7"
 
 	!Inicialização das variáveis
 	alpha1 = 1.5 !Número de células que varão parte da espessura, pois é uma função suave
@@ -29,6 +31,7 @@ SUBROUTINE level_set_ini()
 	mi_f2 = 0.00100798  !Pa/s  !0.00000101!m²/s água saturada (ls positivo) 20°C !no incompact3d tá como NI
 	sigma = 0.0728!N/m tensão superficial da água 20°C
 	rho_m = abs(rho_f2-rho_f1)*0.5
+	write(*,*) "8"
 
 	!Coeficientes de integração RK3 TVD
 	adtl(1)=1.
@@ -42,6 +45,7 @@ SUBROUTINE level_set_ini()
 	adtl(3)=1./3.
 	bdtl(3)=2./3.
 	gdtl(3)=2./3.
+	write(*,*) "9"
 
 	!Resolução do problema
 	if (t_hs == 0) then
@@ -61,6 +65,7 @@ SUBROUTINE level_set_ini()
 	do k = 1, nz
 		z(k) = (k-0.5) * dz
 	enddo
+	write(*,*) "10"
 
 	!Tipos
 	!1 = Onda
@@ -75,6 +80,7 @@ SUBROUTINE level_set_ini()
 	tipo = 1
 
 	if (tipo == 1) then
+		write(*,*) "11"
 		!CALL waves_coef()
 		!Condição inicial de onda
 		ampl = 0. 	 !Amplitude da onda
@@ -94,6 +100,7 @@ SUBROUTINE level_set_ini()
 		else
 			distz = 1.
 		endif
+		write(*,*) "12"
 
 		do k = 1, nz
 			do j = 1, ny
@@ -102,6 +109,7 @@ SUBROUTINE level_set_ini()
 				enddo
 			enddo
 		enddo
+		write(*,*) "13"
 
 		!Melhorar
 		do k = 1, nz
@@ -112,6 +120,7 @@ SUBROUTINE level_set_ini()
 				enddo
 			enddo
 		enddo
+		write(*,*) "14"
 
 	elseif (tipo == 2) then
 		CALL waves_coef()
@@ -200,6 +209,7 @@ SUBROUTINE level_set_ini()
 			enddo
 		enddo
 	endif
+	write(*,*) "15"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -208,8 +218,11 @@ SUBROUTINE level_set_ini()
 			enddo
 		enddo
 	enddo
+	write(*,*) "16"
 
 	CALL heaviside()
+	write(*,*) "21"
+
 
 	vol_ini = 0.
 
@@ -220,8 +233,10 @@ SUBROUTINE level_set_ini()
 			enddo
 		enddo
 	enddo
+	write(*,*) "22"
 
 	CALL mod_ls1()
+	write(*,*) "2?"
 
 END SUBROUTINE level_set_ini
 
@@ -621,9 +636,11 @@ SUBROUTINE heaviside()
 	integer :: i, j, k, coefa1,ihs
 	real(8) :: aux1, aux2, aux3, aux4
 	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
+	write(*,*) "17"
 
 	!ihs = 2
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
+	write(*,*) "18"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -648,6 +665,7 @@ SUBROUTINE heaviside()
 			enddo
 		enddo
 	enddo
+	write(*,*) "19"
 
 	!drhodx = 0.
 	!drhody = 0.
@@ -709,6 +727,7 @@ SUBROUTINE heaviside()
 			enddo
 		enddo
 	enddo
+	write(*,*) "20"
 
 END SUBROUTINE heaviside
 
@@ -722,8 +741,10 @@ SUBROUTINE mod_ls1()
 	real(8) :: aux1, aux2
 	real(8), dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
 	!ihs = 1
+	write(*,*) "23"
 
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
+	write(*,*) "24"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -748,6 +769,7 @@ SUBROUTINE mod_ls1()
 			enddo
 		enddo
 	enddo
+	write(*,*) "25"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -766,24 +788,28 @@ SUBROUTINE mod_ls1()
 			enddo
 		enddo
 	enddo
+	write(*,*) "26"
 
 	do k = 1, nz
 		do j = 1, ny
 			call weno1(ta1(:,j,k),td1(:,j,k),nx,dx,dlsdxa(:,j,k),ihs)
 		enddo
 	enddo
+	write(*,*) "27"
 
 	do k = 1, nz
 		do i = 1, nx
 			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,dlsdya(i,:,k),ihs)
 		enddo
 	enddo
+	write(*,*) "28"
 
 	do j = 1, ny
 		do i = 1, nx
 			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,dlsdza(i,j,:),ihs)
 		enddo
 	enddo
+	write(*,*) "29"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -809,5 +835,6 @@ SUBROUTINE mod_ls1()
 			enddo
 		enddo
 	enddo
+	write(*,*) "30"
 
 END SUBROUTINE mod_ls1
