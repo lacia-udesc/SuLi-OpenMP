@@ -21,20 +21,20 @@ module disc
     !Para fazer dz variável no espaço inicialmente criar uma função ...
     real(8),parameter :: uinicial = 0.2
 
-    integer,parameter :: t_plot = 1 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
+    integer,parameter :: t_plot = 0 ! 0 = modo simples (velocidade, Level Set e IBM), 1 = modo completo (pressão, vorticidade, viscosidade)
 
     integer,parameter :: t_tempo = 2 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
 
     integer,parameter :: der = 3 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
     integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional, 3 = antissimétrico
         
-    integer,parameter :: obst_t = 11 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
+    integer,parameter :: obst_t = 0 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
 
-    integer,parameter :: m_turb = 1 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
+    integer,parameter :: m_turb = 0 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
 
-    integer,parameter :: esp_type = 1 ! 0 = sem camada esponja, 1 = leva em consideração a profundidade, 2 = não leva em consideração a profundidade, 3 = Método da Tangente Hiperbólica
+    integer,parameter :: esp_type = 0 ! 0 = sem camada esponja, 1 = leva em consideração a profundidade, 2 = não leva em consideração a profundidade, 3 = Método da Tangente Hiperbólica
 
-    integer,parameter :: wave_t = 5 ! 0 = sem onda, 1 = Stokes I, 2 = Stokes II, 5 = Stokes V
+    integer,parameter :: wave_t = 0 ! 0 = sem onda, 1 = Stokes I, 2 = Stokes II, 5 = Stokes V
 
     integer,parameter :: mms_t = 0  ! 0 = sem MMS, 1 = MMS permanente, 2 = MMS não permanente
 
