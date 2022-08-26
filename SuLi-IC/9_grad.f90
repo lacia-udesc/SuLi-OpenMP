@@ -256,17 +256,13 @@ SUBROUTINE graddin()
 		mppr = 0.
 
 		! Parâmetro mp e alfa
-		
+
 		CALL cpu_time(fortran_start_grad_1)
 		omp_start_grad_1 = omp_get_wtime()
 
-	!$OMP PARALLEL
-		
-	!$OMP PARALLEL DO
+		!$acc parallel loop collapse(3)
 		do k = 1, nz
-		!$OMP PARALLEL DO
 			do j = 1, ny
-			!$OMP PARALLEL DO
 				do i = 1, nx
 					mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
 					- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
@@ -276,16 +272,13 @@ SUBROUTINE graddin()
 					- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
 					- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
 				enddo
-			!$OMP END PARALLEL DO
 			enddo
-		!$OMP END PARALLEL DO
 		enddo
-	!$OMP END PARALLEL DO
+		!$acc end parallel
 
-	!$OMP END PARALLEL
-		
 		!!!	###########################################################################################################################################################
 		
+		!$acc parallel loop collapse(3)
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
@@ -294,6 +287,7 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 		enddo
+		!$acc end parallel
 	
 		!write(*,*) "Segundo Alfamupr", alfamupr
 
@@ -310,8 +304,8 @@ SUBROUTINE graddin()
 		CALL cpu_time(fortran_start_grad_2)
 		omp_start_grad_2 = omp_get_wtime()
 
-		
 		! Recálculo das matrizes e, erro e parâmetro beta
+		!$acc parallel loop collapse(3)
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
@@ -321,8 +315,8 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 		enddo
+		!$acc end parallel
 
-		
 		CALL cpu_time(fortran_end_grad_2)
 		omp_end_grad_2 = omp_get_wtime()
 
@@ -333,9 +327,7 @@ SUBROUTINE graddin()
 
 		CALL cpu_time(start_outros2_f90)
 		start_outros2_omp = omp_get_wtime()
-
-		
-
+	
 		! Recálculo de errop
 		do k = 1, nz
 			do j = 1, ny
@@ -345,21 +337,17 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-		
 		CALL cpu_time(end_outros2_f90)
 		end_outros2_omp = omp_get_wtime()
 
 		soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
 		soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
-
 		CALL cpu_time(start_outros5_f90)
-		start_outros5_omp = omp_get_wtime()
-
 		
-
 		! Condições de contorno
 
 		if (ccx0.eq.0) then  ! Condição periódica
+			!$acc parallel loop collapse(2)
 			do k = 1, nz2							! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do j = 1, ny2
 					matepr(1,j,k) = matepr(nx+1,j,k)
@@ -368,7 +356,9 @@ SUBROUTINE graddin()
 					erroppr(nx1+1,j,k) = erroppr(2,j,k)
 				enddo
 			enddo
+			!$acc end parallel
 		else
+			!$acc parallel loop collapse(2)
 			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do j = 1, ny2
 					matepr(1,j,k) = matepr(2,j,k)
@@ -377,9 +367,11 @@ SUBROUTINE graddin()
 					erroppr(nx1+1,j,k) = erroppr(nx+1,j,k)
 				enddo
 			enddo
+			!$acc end parallel
 		endif
 
 		if (ccy0.eq.0) then  ! Condição periódica
+			!$acc parallel loop collapse(2)
 			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do i = 1, nx2
 					matepr(i,1,k) = matepr(i,ny+1,k)
@@ -387,8 +379,10 @@ SUBROUTINE graddin()
 					erroppr(i,1,k) = erroppr(i,ny+1,k)
 					erroppr(i,ny1+1,k) = erroppr(i,2,k)
 				enddo
-			enddo			
+			!$acc end parallel
+			enddo
 		else
+			!$acc parallel loop collapse(2)
 			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
 				do i = 1, nx2
 					matepr(i,1,k) = matepr(i,2,k)
@@ -397,8 +391,10 @@ SUBROUTINE graddin()
 					erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
 				enddo
 			enddo
+			!$acc end parallel
 		endif
-
+		
+		!$acc parallel loop collapse(2)
 		do j = 1, ny2
 			do i = 1, nx2
 					matepr(i,j,1) = matepr(i,j,2)
@@ -407,8 +403,8 @@ SUBROUTINE graddin()
 					erroppr(i,j,nz1+1) = erroppr(i,j,nz+1)
 			enddo
 		enddo
+		!$acc end parallel
 
-		
 		CALL cpu_time(end_outros5_f90)
 		end_outros5_omp = omp_get_wtime()
 
