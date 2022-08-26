@@ -1,0 +1,30 @@
+Aba 1:
+https://www.umr-cnrm.fr/gmapdoc/IMG/pdf/general_fortran_optimization_guide_manual.pdf
+https://gcc.gnu.org/onlinedocs/gfortran/OpenMP.html
+http://www.inf.ufsc.br/~bosco.sobral/ensino/ine5645/Conceitos_OpenMP.pdf
+https://curc.readthedocs.io/en/latest/programming/OpenMP-Fortran.html
+https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+https://www.openacc.org/sites/default/files/inline-images/Specification/OpenACC-3.2-final.pdf
+https://www.pgroup.com/doc/pgprof16tut.pdf
+
+Aba 2:
+https://www.olcf.ornl.gov/wp-content/uploads/2020/04/OpenACC-Course-2020-Module-1.pdf
+https://www.openacc.org/sites/default/files/inline-files/OpenACC_Course_Oct2018/OpenACC%20Course%202018%20Week%201.pdf
+https://www.openacc.org/sites/default/files/inline-files/OpenACC_Course_Oct2018/OpenACC%20Course%202018%20Week%202.pdf
+https://www.openacc.org/sites/default/files/inline-files/OpenACC_Course_Oct2018/OpenACC%20Course%202018%20Week%203.pdf
+https://www.openacc.org/sites/default/files/inline-files/API%20Guide%202.7.pdf
+https://www.openacc.org/sites/default/files/inline-files/openacc-guide.pdf
+https://github.com/OpenACC/openacc-training-materials
+https://on-demand.gputechconf.com/gtc/2015/presentation/S5388-Michael-Wolfe.pdf
+https://www.inf.ufrgs.br/erad2018/downloads/minicursos/eradrs2018-openacc.pdf
+
+Aba 3:
+https://www.admin-magazine.com/HPC/Articles/(offset)/10
+https://www.admin-magazine.com/HPC/Articles/OpenACC-Data-Management
+https://www.admin-magazine.com/HPC/Articles/OpenACC-Parallelizing-Loops
+https://www.admin-magazine.com/HPC/Articles/OpenACC-Data-Management
+https://www.google.com/search?channel=fs&client=ubuntu&q=gpu+rbrh
+https://www.labhidro.ufsc.br/
+https://reader.elsevier.com/reader/sd/pii/S1364815221002474?token=8C2D3D73A982D13E7A90CBBC2FD063FFA961D8BD86EAA33747D2C6778419C3F84E29CA4CC7C304DF13DDD08E666DF7BB&originRegion=us-east-1&originCreation=20220824124556
+https://www.labhidro.ufsc.br/Artigos/Carlotto_et_al-2021-SW2D-GPU-A%20two-dimensional%20shallow%20water%20model%20accelerated%20by%20GPGPU.pdf
+https://gcc.gnu.org/wiki/GFortran
