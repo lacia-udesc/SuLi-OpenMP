@@ -1,0 +1,3 @@
+	!INTEGER OMP_GET_MAX_THREADS			#LEMBRAR#
+	!INTEGER OMP_GET_NUM_THREADS			#https://stackoverflow.com/questions/27112741/gfortran-compiling-error-for-openmp-on-windows
+   	!INTEGER OMP_GET_THREAD_NUM
