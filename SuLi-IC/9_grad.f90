@@ -51,7 +51,7 @@ SUBROUTINE graddin()
 
 	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
 	!CALL cpu_time(start_outros2_f90)
-	!start_outros2_omp = omp_get_wtime()
+	!start_outros2_omp = 10.
 
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
@@ -129,7 +129,7 @@ SUBROUTINE graddin()
 	enddo
 
 	!CALL cpu_time(end_outros2_f90)
-	!end_outros2_omp = omp_get_wtime()
+	!end_outros2_omp = 10.
 
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
@@ -141,7 +141,7 @@ SUBROUTINE graddin()
 
 	!Tempo de norm. e 1_erro p/ Fortran e OpenMP
 	!CALL cpu_time(start_outros_f90)
-	!start_outros_omp = omp_get_wtime()
+	!start_outros_omp = 10.
 
 	!Normalização das matrizes e cálculo do primeiro erro
 	erropr =   0.
@@ -225,7 +225,7 @@ SUBROUTINE graddin()
 	erroppr = erropr
 
 	!CALL cpu_time(end_outros_f90)
-	!end_outros_omp = omp_get_wtime()
+	!end_outros_omp = 10.
 
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
@@ -237,7 +237,7 @@ SUBROUTINE graddin()
 
 	!Tempo da redução do erro p/ Fortran e OpenMP
 	CALL cpu_time(start_outros4_f90)
-	start_outros4_omp = omp_get_wtime()
+	start_outros4_omp = 10.
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
 	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
@@ -258,7 +258,7 @@ SUBROUTINE graddin()
 		! Parâmetro mp e alfa
 
 		CALL cpu_time(fortran_start_grad_1)
-		omp_start_grad_1 = omp_get_wtime()
+		omp_start_grad_1 = 10.
 
 		do k = 1, nz
 			do j = 1, ny
@@ -292,13 +292,13 @@ SUBROUTINE graddin()
 		!write(*,*) "Primeiro alfapr", alfapr
 		
 		CALL cpu_time(fortran_end_grad_1)
-		omp_end_grad_1 = omp_get_wtime()
+		omp_end_grad_1 = 10.
 
 		soma_grad_1_f90 = soma_grad_1_f90 + (fortran_end_grad_1 - fortran_start_grad_1)
 		soma_grad_1_omp = soma_grad_1_omp + (omp_end_grad_1 - omp_start_grad_1)
 
 		CALL cpu_time(fortran_start_grad_2)
-		omp_start_grad_2 = omp_get_wtime()
+		omp_start_grad_2 = 10.
 
 		! Recálculo das matrizes e, erro e parâmetro beta
 		do k = 1, nz
@@ -312,7 +312,7 @@ SUBROUTINE graddin()
 		enddo
 
 		CALL cpu_time(fortran_end_grad_2)
-		omp_end_grad_2 = omp_get_wtime()
+		omp_end_grad_2 = 10.
 
 		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
 		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)		
@@ -320,7 +320,7 @@ SUBROUTINE graddin()
 		betapr = betamupr/alfamupr
 
 		CALL cpu_time(start_outros2_f90)
-		start_outros2_omp = omp_get_wtime()
+		start_outros2_omp = 10.
 	
 		! Recálculo de errop
 		do k = 1, nz
@@ -332,7 +332,7 @@ SUBROUTINE graddin()
 		enddo
 
 		CALL cpu_time(end_outros2_f90)
-		end_outros2_omp = omp_get_wtime()
+		end_outros2_omp = 10.
 
 		soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
 		soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
@@ -390,7 +390,7 @@ SUBROUTINE graddin()
 		enddo
 
 		CALL cpu_time(end_outros5_f90)
-		end_outros5_omp = omp_get_wtime()
+		end_outros5_omp = 10.
 
 		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
 		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
@@ -404,7 +404,7 @@ SUBROUTINE graddin()
 	! OTIMIZAR CÓDIGO
 
 	CALL cpu_time(end_outros4_f90)
-	end_outros4_omp = omp_get_wtime()
+	end_outros4_omp = 10.
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran", soma_grad_1_f90
