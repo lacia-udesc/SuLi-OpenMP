@@ -24,9 +24,7 @@ SUBROUTINE classico(uint,vint,wint)
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
 
-	if (der == 1) then
-	! upwind
-
+	if (der == 1) then	! upwind
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx1

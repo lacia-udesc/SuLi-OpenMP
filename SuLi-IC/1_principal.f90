@@ -47,27 +47,27 @@ PROGRAM PNH
 
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-	!$ write(*,*) "nx = ", nx
-	!$ write(*,*) "ny = ", ny
-	!$ write(*,*) "nz = ", nz
+	write(*,*) "nx = ", nx
+	write(*,*) "ny = ", ny
+	write(*,*) "nz = ", nz
 	write(*,*) "Número de threads: ", 10.
 
 	CALL cpu_time(fortran_start)
 	openmp_start = 10.
 	
-	!$ write(*,*) "1"
+	write(*,*) "1"
 	if (nx*ny*nz > 30000000) then
 		write(*,*) "Verifique se o seu computador tem capacidade para a simulação, se sim, cancele esta condicional no código."
 		STOP
 	endif
 
-	!$ write(*,*) "2"
+	write(*,*) "2"
 	!Condições iniciais
 	if (irest.eq.0) then
-		!$ write(*,*) "3"
+		write(*,*) "3"
 		CALL iniciais()
 	else
-		!$ write(*,*) "4"
+		write(*,*) "4"
 		CALL restart_ini()
 	endif
 
