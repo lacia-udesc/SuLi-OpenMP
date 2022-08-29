@@ -28,3 +28,6 @@ https://www.labhidro.ufsc.br/
 https://reader.elsevier.com/reader/sd/pii/S1364815221002474?token=8C2D3D73A982D13E7A90CBBC2FD063FFA961D8BD86EAA33747D2C6778419C3F84E29CA4CC7C304DF13DDD08E666DF7BB&originRegion=us-east-1&originCreation=20220824124556
 https://www.labhidro.ufsc.br/Artigos/Carlotto_et_al-2021-SW2D-GPU-A%20two-dimensional%20shallow%20water%20model%20accelerated%20by%20GPGPU.pdf
 https://gcc.gnu.org/wiki/GFortran
+
+https://www.earthinversion.com/utilities/how-to-create-a-simple-make-file/
+
