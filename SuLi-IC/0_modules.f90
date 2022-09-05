@@ -277,3 +277,20 @@ module omp
     !write(*,*) "Tempo acumulado do processo() p/ OpenMP", soma_omp
 
 end module omp
+
+module paodemel
+
+    USE disc
+
+    IMPLICIT NONE
+
+	real(8), dimension(nx,ny1,nz) :: rhoy
+	real(8), dimension(nx,ny,nz1) :: rhoz
+    real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	real(8), dimension(nx1,ny,nz) :: matspri
+	real(8), dimension(nx,ny1,nz) :: matsprj
+	real(8), dimension(nx,ny,nz1) :: matsprk
+	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
+	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
+
+end module paodemel
