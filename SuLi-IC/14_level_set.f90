@@ -255,9 +255,7 @@ SUBROUTINE level_set()
 
 	do itrl=1,3
 		CALL conv_weno(sy7_ls)
-		write (*,*) "hello 1"
 		CALL intt_ls(sy7_ls,gx_ls,ta1_ls,itrl,ls)
-		write (*,*) "hello 2"
 	enddo
 
 	dt1 = dtaux
@@ -315,13 +313,12 @@ SUBROUTINE intt_ls(hx,gx,ta1,itrl,ls1)
 
 	integer :: i,j,k,itrl
 	real(8),dimension(nx,ny,nz) :: hx,gx,ta1,ls1
-	write (*,*) "oi"
+
 	!RK3 TVD
 	if (adtl(itrl)==1.) then
 		!Precisa ser ls0 para todos os subtempos
 		ta1 = ls1
 	endif
-	write (*,*) "tchau"
 
 	gx = ls1 !ls1 e ls2 para os subtempos
 	ls1 = adtl(itrl)*ta1+bdtl(itrl)*gx+gdtl(itrl)*dt1*hx
@@ -377,9 +374,7 @@ SUBROUTINE der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 
 	do k = 1, nz
 		do j = 1, ny
-			do i = 1, nx
-				call weno1(ta1(i,j,k),td1(i,j,k),nx,dx,ls(i,j,k),ihs)
-			enddo
+			call weno1(ta1(:,j,k),td1(:,j,k),nx,dx,ls(:,j,k),ihs)
 		enddo
 	enddo
 
@@ -390,21 +385,18 @@ SUBROUTINE der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 	endif
 
 	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
-				call weno1(tb1(i,j,k),te1(i,j,k),ny,dy,ls(i,j,k),ihs)			!	#	ERRO	#	!
-			enddo	
+		do i = 1, nx
+			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,ls(i,:,k),ihs)
 		enddo
 	enddo
 
 	ihs = 1
-	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
-				call weno1(tc1(i,j,k),tf1(i,j,k),nz,dz,ls(i,j,k),ihs)			!	#	ERRO	#	!
-			enddo
+	do j = 1, ny
+		do i = 1, nx
+			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,ls(i,j,:),ihs)
 		enddo
 	enddo
+
 END SUBROUTINE der_weno
 
 SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
@@ -502,9 +494,8 @@ SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 					enddo
 				enddo
 			enddo
-			write (*,*) "hello 3"
+
 			CALL intt_ls(sy7_ls1,gx_ls1,ta1_ls1,itrl,ls)
-			write (*,*) "hello 4"
 		enddo
 
 		if (il == l ) then !Número máximo de iterações
@@ -540,7 +531,7 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
 	real(8),dimension(3) ::isup, isun, auxx
 	real(8),dimension(3) ::alpup, omgup,alpun, omgun
 	integer :: i,kk, ii,nx1, ihs
-	real(8) :: dx1,aux1,aux2,aux3,aux6
+	real(8) :: dx1, mod_phi1,aux1,aux2,aux3,aux4,aux5,aux6,aux,aux11, aux12
 	real(8),dimension(-2:nx1+3) :: phi1
 	real(8),dimension(nx1+4)  :: un
 	real(8),dimension(-3:nx1) :: up
@@ -555,7 +546,6 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
 	phi1(1:nx1) = phi0(1:nx1)
 
 	if (ihs == 0) then !Contorno periódico
-		!write(*,*) 'ihs == 0'
 		phi1(0)  = phi1(nx1-1)
 		phi1(-1) = phi1(nx1-2)
 		phi1(-2) = phi1(nx1-3)
@@ -565,7 +555,6 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
 		phi1(nx1+3) = phi1(4)
 
 	elseif (ihs == 1) then !Distance extrapolation
-		!write(*,*) 'ihs == 1'
 		!phi1(0)     = 2*phi1(1)     - phi1(2)
 		!phi1(-1)    = 2*phi1(0)     - phi1(1)
 		!phi1(-2)    = 2*phi1(-1)    - phi1(0)
@@ -583,7 +572,6 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
 		phi1(nx1+3) = 1./11. * (18.*phi1(nx1+2) - 9.*phi1(nx1+1) + 2.*phi1(nx1))
 
 	elseif (ihs == 2) then !Dderivative zero
-		!write(*,*) 'ihs == 2'
 		!phi1(0)     = phi1(1)
 		!phi1(nx1+1) = phi1(nx1)
 		!phi1(-1)    = phi1(2)
@@ -598,8 +586,8 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
 		phi1(nx1+3) = 1./11. * (18.*phi1(nx1+2) - 9.*phi1(nx1+1) + 2.*phi1(nx1)  )
 	endif
 
-	do i=-3,nx1 !do i=0, nx1+3
-		up(i)=(phi1(i+3)-phi1(i+2))/dx1  !up(i)=(phil(i)-phil(i-1))/dx1
+	do i=-3,nx1
+		up(i)=(phi1(i+3)-phi1(i+2))/dx1
 	enddo
 
 	do i=1,nx1+4
@@ -720,7 +708,7 @@ SUBROUTINE heaviside()
 						!drhodx(i,j,1) = (-rho_f1**(1.-hs(i,j,1))*log(rho_f1) + rho_f2**hs(i,j,1)*log(rho_f2)) * &
 						!	        sy60(i,j,1)/(alpha1*dx1) * ( 1. + cos(pi*phi(i,j,1)/(alpha1*dx1)) ) 
 						!drhody(i,j,1) = (-rho_f1**(1.-hs(i,j,1))*log(rho_f1) + rho_f2**hs(i,j,1)*log(rho_f2)) * &
-						!	        sy61(i,j,1)/(alpha1*dx1) * ( 1. + cos(pi*phi(i,j,write(*,*) "1)/(alpha1*dx1)) ) 
+						!	        sy61(i,j,1)/(alpha1*dx1) * ( 1. + cos(pi*phi(i,j,1)/(alpha1*dx1)) ) 
 
 						!dmidx(i,j,1) = (-mi_f1**(1.-hs(i,j,1))*log(mi_f1) + mi_f2**hs(i,j,1)*log(mi_f2)) * &
 						!	        sy60(i,j,1)/(alpha1*dx1) * ( 1. + cos(pi*phi(i,j,1)/(alpha1*dx1)) ) 
@@ -810,21 +798,17 @@ SUBROUTINE mod_ls1()
 	write(*,*) "27"
 
 	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
-				call weno1(tb1(i,j,k),te1(i,j,k),ny,dy,dlsdya(i,j,k),ihs)			!	#	ERRO	#	!
-			enddo	
+		do i = 1, nx
+			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,dlsdya(i,:,k),ihs)
 		enddo
 	enddo
 	write(*,*) "28"
 
-	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
-				call weno1(tc1(i,j,k),tf1(i,j,k),nz,dz,dlsdza(i,j,k),ihs)			!	#	ERRO	#	!
-			enddo
+	do j = 1, ny
+		do i = 1, nx
+			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,dlsdza(i,j,:),ihs)
 		enddo
-	enddo	
+	enddo
 	write(*,*) "29"
 
 	do k = 1, nz
