@@ -4,7 +4,7 @@
 
 # GNU
 FC = gfortran  # Fortran Compiler
-FFLAGS = -O3 -fdefault-real-8 -fdefault-double-8 -mcmodel=medium -fcheck=all # #  #large #-floop-optimize -funroll-loops -ftree-fre -finline-functions -fpeel-loops -funsafe-math-optimizations -fprefetch-loop-arrays # -Wall -Wextra -std=f2008
+FFLAGS = -O3 -fdefault-real-8 -fdefault-double-8 -mcmodel=medium #-fcheck=all -g-Wimplicit # #  #large #-floop-optimize -funroll-loops -ftree-fre -finline-functions -fpeel-loops -funsafe-math-optimizations -fprefetch-loop-arrays # -Wall -Wextra -std=f2008
 EXE = rodar_3d
 
 9_grad.o: FFLAGS+= -fopenmp
