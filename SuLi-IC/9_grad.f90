@@ -9,25 +9,25 @@
 
 SUBROUTINE graddin()
 
-	USE velpre
-	USE parametros
-    USE cond
+	USE velpre, only: u, v, w, prd1, rho
+	USE parametros, only: gz
+    USE cond, only: ccx0, ccy0
 	USE obst
+	USE disc
 	USE omp
+	USE paodemel
 	USE omp_lib
 
-	IMPLICIT NONE
 
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
 
+
+	!Inicialização de variáveis
+
 	!integer, parameter :: Tipo1 = selected_real_kind(10,10)
-	real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
-	real(8), dimension(nx1,ny,nz) :: matspri
-	real(8), dimension(nx,ny1,nz) :: matsprj
-	real(8), dimension(nx,ny,nz1) :: matsprk
-	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
-	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
+	
+
 
 	!contadores
 	integer :: i, j, k, cont
@@ -35,16 +35,10 @@ SUBROUTINE graddin()
 	!auxiliares
 	real(8) :: aux1, aux2, aux3
 
-	real(8), dimension(nx1,ny,nz) :: rhox
-	real(8), dimension(nx,ny1,nz) :: rhoy
-	real(8), dimension(nx,ny,nz1) :: rhoz
-
-	!Inicialização de variáveis
-
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
-
+	write(*,*) "1"
 	cont = 0
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
@@ -52,14 +46,17 @@ SUBROUTINE graddin()
 	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
 	!CALL cpu_time(start_outros2_f90)
 	!start_outros2_omp = 10.
-
+	write(*,*) "1"
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
+	write(*,*) "2"
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
+	write(*,*) "3"
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
-
+	write(*,*) "4"
 	matspri = dt / (dx*dx*rhox)
 	matsprj = dt / (dy*dy*rhoy)
 	matsprk = dt / (dz*dz*rhoz)
+	write(*,*) "5"
 
 	! Matrizes p e q
 	do k = 1, nz
