@@ -60,8 +60,7 @@ SUBROUTINE graddin()
 
 	! Matrizes p e q
 
-	!$OMP parallel
-	!$OMP do
+	!$OMP parallel do
 	do k = 1, nz
 		do j = 1, ny
 			do i = 1, nx
@@ -70,7 +69,6 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 	enddo
-	!$OMP end do
 	!$OMP end parallel
 
 	!dentro do obstáculo, divergência nula
