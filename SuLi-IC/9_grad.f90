@@ -26,37 +26,33 @@ SUBROUTINE graddin()
 	!Inicialização de variáveis
 
 	!integer, parameter :: Tipo1 = selected_real_kind(10,10)
-	
-
 
 	!contadores
 	integer :: i, j, k, cont
 
 	!auxiliares
 	real(8) :: aux1, aux2, aux3
+	
+	!$ write(*,*) " OpenMP: N_threads = ", OMP_GET_NUM_THREADS()
+	!$ write(*,*) " thread = ", OMP_GET_THREAD_NUM()
+	write(*,*) '----------------------------------------------------------------------------------------'
 
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
-	write(*,*) "1"
 	cont = 0
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
 	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
 	!CALL cpu_time(start_outros2_f90)
-	!start_outros2_omp = 10.
-	write(*,*) "1"
+	!start_outros2_omp = omp_get_wtime()
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
-	write(*,*) "2"
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
-	write(*,*) "3"
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
-	write(*,*) "4"
 	matspri = dt / (dx*dx*rhox)
 	matsprj = dt / (dy*dy*rhoy)
 	matsprk = dt / (dz*dz*rhoz)
-	write(*,*) "5"
 
 	! Matrizes p e q
 	do k = 1, nz
@@ -117,16 +113,17 @@ SUBROUTINE graddin()
 	enddo
 	
 	! Normalização da pressão dinâmica
-	do k = 0, nz1
-		do j = 0, ny1
-			do i = 0, nx1
-				matepr(i+1,j+1,k+1) = prd1(i,j,k) * sqrt(matdpr(i+1,j+1,k+1))
+	
+		do k = 0, nz1
+			do j = 0, ny1
+				do i = 0, nx1
+					matepr(i+1,j+1,k+1) = prd1(i,j,k) * sqrt(matdpr(i+1,j+1,k+1))
+				enddo
 			enddo
 		enddo
-	enddo
 
 	!CALL cpu_time(end_outros2_f90)
-	!end_outros2_omp = 10.
+	!end_outros2_omp = omp_get_wtime()
 
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
@@ -138,45 +135,45 @@ SUBROUTINE graddin()
 
 	!Tempo de norm. e 1_erro p/ Fortran e OpenMP
 	!CALL cpu_time(start_outros_f90)
-	!start_outros_omp = 10.
+	!start_outros_omp = omp_get_wtime()
 
 	!Normalização das matrizes e cálculo do primeiro erro
 	erropr =   0.
 	alfamupr = 0.
-	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
+		do k = 1, nz
+			do j = 1, ny
+				do i = 1, nx
 
-				matapripos(i,j,k) = matspri(i+1,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1)))
-				mataprineg(i,j,k) = matspri(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1)))
+					matapripos(i,j,k) = matspri(i+1,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+2,j+1,k+1)))
+					mataprineg(i,j,k) = matspri(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i,j+1,k+1)))
 
-				mataprjpos(i,j,k) = matsprj(i,j+1,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1)))
-				mataprjneg(i,j,k) = matsprj(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1)))
+					mataprjpos(i,j,k) = matsprj(i,j+1,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+2,k+1)))
+					mataprjneg(i,j,k) = matsprj(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j,k+1)))
 
-				mataprkpos(i,j,k) = matsprk(i,j,k+1)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2)))
-				mataprkneg(i,j,k) = matsprk(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k)))
+					mataprkpos(i,j,k) = matsprk(i,j,k+1)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k+2)))
+					mataprkneg(i,j,k) = matsprk(i,j,k)/(sqrt(matdpr(i+1,j+1,k+1)*matdpr(i+1,j+1,k)))
 
+				enddo
 			enddo
 		enddo
-	enddo
 
-	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
+		do k = 1, nz
+			do j = 1, ny
+				do i = 1, nx
 
-				erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) &
-				- matapripos(i,j,k) * matepr(i+2,j+1,k+1) &
-				- mataprineg(i,j,k) * matepr(i,j+1,k+1) &
-				- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) &
-				- mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
-				- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) &
-				- mataprkneg(i,j,k) * matepr(i+1,j+1,k) &
-				- matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
+					erropr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) &
+					- matapripos(i,j,k) * matepr(i+2,j+1,k+1) &
+					- mataprineg(i,j,k) * matepr(i,j+1,k+1) &
+					- mataprjpos(i,j,k) * matepr(i+1,j+2,k+1) &
+					- mataprjneg(i,j,k) * matepr(i+1,j,k+1) &
+					- mataprkpos(i,j,k) * matepr(i+1,j+1,k+2) &
+					- mataprkneg(i,j,k) * matepr(i+1,j+1,k) &
+					- matqpr(i,j,k)/sqrt(matdpr(i+1,j+1,k+1))
 
-				alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+					alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+				enddo
 			enddo
 		enddo
-	enddo
 
 	write(*,*) "Cálculo do primeiro erro", alfamupr
 
@@ -222,7 +219,7 @@ SUBROUTINE graddin()
 	erroppr = erropr
 
 	!CALL cpu_time(end_outros_f90)
-	!end_outros_omp = 10.
+	!end_outros_omp = omp_get_wtime()
 
 	!write(*,*) !"~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	!soma_outros_f90 = soma_outros_f90 + (end_outros_f90 - start_outros_f90)
@@ -234,10 +231,10 @@ SUBROUTINE graddin()
 
 	!Tempo da redução do erro p/ Fortran e OpenMP
 	CALL cpu_time(start_outros4_f90)
-	start_outros4_omp = 10.
+	!$ start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
-	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 10000) )
+	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 5000) )
 
 		if (cont == 9999) write(*,*) "pulou pressão; ", "erro =", abs(alfamupr)
 	
@@ -255,33 +252,37 @@ SUBROUTINE graddin()
 		! Parâmetro mp e alfa
 
 		CALL cpu_time(fortran_start_grad_1)
-		omp_start_grad_1 = 10.
+		!$ omp_start_grad_1 = omp_get_wtime()
 
-		do k = 1, nz
-			do j = 1, ny
-				do i = 1, nx
-					mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
-					- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
-					- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
-					- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) &
-					- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
-					- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
-					- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
+		!$OMP PARALLEL DO
+				do k = 1, nz
+						do j = 1, ny
+								do i = 1, nx
+									mppr(i,j,k) = erroppr(i+1,j+1,k+1) &
+									- erroppr(i+2,j+1,k+1) * matapripos(i,j,k) &
+									- erroppr(i,j+1,k+1) * mataprineg(i,j,k) &
+									- erroppr(i+1,j+2,k+1) * mataprjpos(i,j,k) &
+									- erroppr(i+1,j,k+1) * mataprjneg(i,j,k) & 
+									- erroppr(i+1,j+1,k+2) * mataprkpos(i,j,k) &
+									- erroppr(i+1,j+1,k) * mataprkneg(i,j,k)
+								enddo
+						enddo
 				enddo
-			enddo
-		enddo
+		!$OMP END PARALLEL DO
 
 		!!!	###########################################################################################################################################################
 		
-		do k = 1, nz
-			do j = 1, ny
-				do i = 1, nx
-					alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
-					alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
+		!OMP PARALLEL DO
+				do k = 1, nz
+						do j = 1, ny
+								do i = 1, nx
+										alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+										alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
+								enddo
+						enddo
 				enddo
-			enddo
-		enddo
-	
+		!OMP END PARALLEL DO
+
 		!write(*,*) "Segundo Alfamupr", alfamupr
 
 		alfapr = alfamupr / alfadipr
@@ -289,27 +290,39 @@ SUBROUTINE graddin()
 		!write(*,*) "Primeiro alfapr", alfapr
 		
 		CALL cpu_time(fortran_end_grad_1)
-		omp_end_grad_1 = 10.
+		!$ omp_end_grad_1 = omp_get_wtime()
 
 		soma_grad_1_f90 = soma_grad_1_f90 + (fortran_end_grad_1 - fortran_start_grad_1)
 		soma_grad_1_omp = soma_grad_1_omp + (omp_end_grad_1 - omp_start_grad_1)
 
 		CALL cpu_time(fortran_start_grad_2)
-		omp_start_grad_2 = 10.
+		!$ omp_start_grad_2 = omp_get_wtime()
 
 		! Recálculo das matrizes e, erro e parâmetro beta
-		do k = 1, nz
-			do j = 1, ny
-				do i = 1, nx
-					matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
-					erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
-					betamupr = betamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
-				enddo
+		
+		!$OMP PARALLEL DO
+			do k = 1, nz
+					do j = 1, ny
+							do i = 1, nx
+								matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
+								erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
+							enddo
+					enddo
 			enddo
-		enddo
+		!$OMP END PARALLEL DO
+
+		!OMP PARALLEL DO
+			do k = 1, nz
+					do j = 1, ny
+							do i = 1, nx
+								betamupr = betamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+							enddo
+					enddo
+			enddo
+		!OMP END PARALLEL DO
 
 		CALL cpu_time(fortran_end_grad_2)
-		omp_end_grad_2 = 10.
+		!$ omp_end_grad_2 = omp_get_wtime()
 
 		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
 		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)		
@@ -317,23 +330,28 @@ SUBROUTINE graddin()
 		betapr = betamupr/alfamupr
 
 		CALL cpu_time(start_outros2_f90)
-		start_outros2_omp = 10.
+		!$ start_outros2_omp = omp_get_wtime()
 	
-		! Recálculo de errop
-		do k = 1, nz
-			do j = 1, ny
-				do i = 1, nx
-					erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
-				enddo
+		! Recálculo de erroppr
+
+		!$OMP PARALLEL DO
+			do k = 1, nz
+					do j = 1, ny
+							do i = 1, nx
+								erroppr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) + betapr * erroppr(i+1,j+1,k+1)
+							enddo
+					enddo
 			enddo
-		enddo
+		!$OMP END PARALLEL DO
 
 		CALL cpu_time(end_outros2_f90)
-		end_outros2_omp = 10.
+		!$ end_outros2_omp = omp_get_wtime()
 
 		soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
 		soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
+		
 		CALL cpu_time(start_outros5_f90)
+		!$ start_outros5_omp = omp_get_wtime()
 		
 		! Condições de contorno
 
@@ -387,21 +405,23 @@ SUBROUTINE graddin()
 		enddo
 
 		CALL cpu_time(end_outros5_f90)
-		end_outros5_omp = 10.
+		!$ end_outros5_omp = omp_get_wtime()
 
 		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
 		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
 		
-		write(*,*) "Contador		", "alfamupr		", "betamupr		", "alfadipr"			!### PEDRO ###
-		write(*,*) cont, alfamupr, betamupr, alfadipr						!### PEDRO ###
+		!write(*,*) "Contador		", "alfamupr		", "betamupr		", "alfadipr"			!### PEDRO ###
+		!write(*,*) cont, alfamupr, betamupr, alfadipr						!### PEDRO ###
 
-		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+		!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 
 	enddo
+
+
 	! OTIMIZAR CÓDIGO
 
 	CALL cpu_time(end_outros4_f90)
-	end_outros4_omp = 10.
+	!$ end_outros4_omp = omp_get_wtime()
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran", soma_grad_1_f90
@@ -467,3 +487,7 @@ SUBROUTINE pressh()
 	enddo
 
 END SUBROUTINE pressh
+
+subroutine OMP_set_num_threads(number_of_threads)
+	integer(kind = 4), intent(in) :: number_of_threads
+end subroutine OMP_set_num_threads
