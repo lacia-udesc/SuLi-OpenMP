@@ -42,18 +42,17 @@ PROGRAM PNH
 	!soma_outros3_f90 = 0.0
 	!soma_outros3_omp = 0.0
 
-	!double precision function 10.
+	!double precision function omp_get_wtime()
 	!double precision function omp_get_wtick()
 
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-	write(*,*) "nx = ", nx
-	write(*,*) "ny = ", ny
-	write(*,*) "nz = ", nz
-	!write(*,*) "Número de threads: ", 10.
+
+	!$ write(*,*) " OpenMP: N_threads = ", OMP_GET_NUM_THREADS()
+	!$ write(*,*) " Paralelo? ", OMP_in_parallel()
 
 	CALL cpu_time(fortran_start)
-	openmp_start = 10.
+	!$ openmp_start = omp_get_wtime()
 	
 	if (nx*ny*nz > 30000000) then
 		write(*,*) "Verifique se o seu computador tem capacidade para a simulação, se sim, cancele esta condicional no código."
@@ -102,14 +101,13 @@ PROGRAM PNH
 
 		!Tempo do level_set() p/ Fortran e OpenMP
 		CALL cpu_time(fortran_start_level_set)
-		openmp_start_level_set = 10.
+		!$ openmp_start_level_set = omp_get_wtime()
 
 		CALL level_set()
 
 		CALL cpu_time(fortran_end_level_set)
-		openmp_end_level_set = 10.
+		!$ openmp_end_level_set = omp_get_wtime()
 
-		write(*,*)
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 		soma_level_set_f90 = soma_level_set_f90 + (fortran_end_level_set-fortran_start_level_set)
 		soma_level_set_omp = soma_level_set_omp + (openmp_end_level_set-openmp_start_level_set)
@@ -120,12 +118,12 @@ PROGRAM PNH
 
 		!Tempo do contorno(3) p/ Fortran e OpenMP
 		CALL cpu_time(start_outros3_f90)
-		start_outros3_omp = 10.
+		!$ start_outros3_omp = omp_get_wtime()
 
 		CALL contorno(3)
 
 		CALL cpu_time(end_outros3_f90)
-		end_outros3_omp = 10.
+		!$ end_outros3_omp = omp_get_wtime()
 
 		write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 		soma_outros3_f90 = soma_outros3_f90 + (end_outros3_f90 - start_outros3_f90)
@@ -137,18 +135,17 @@ PROGRAM PNH
 
 		do tt = 1, ntt
 			dt = a_dt(tt)
-			write(*,*)
 			write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 			write(*,*) "Ciclo:", tt
 
 			!Tempo do visco() p/ Fortran e OpenMP
 			CALL cpu_time(fortran_start_visco)
-			!omp_start_visco = 10.
+			!omp_start_visco = omp_get_wtime()
 
 			CALL visco()
 
 			CALL cpu_time(fortran_end_visco)
-			omp_end_visco = 10.
+			!$ omp_end_visco = omp_get_wtime()
 
 			write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 			soma_visco_f90 = soma_visco_f90 + (fortran_end_visco-fortran_start_visco)
@@ -171,16 +168,14 @@ PROGRAM PNH
 
 				!Tempo do graddin() p/ Fortran e OpenMP
 				CALL cpu_time(fortran_start_graddin)
-				omp_start_graddin = 10.
+				!$ omp_start_graddin = omp_get_wtime()
 	
-				write(*,*) "a"
 				CALL graddin()
-				write(*,*) "b"
 	
 				CALL posdin()
 
 				CALL cpu_time(fortran_end_graddin)
-				omp_end_graddin = 10.
+				!$ omp_end_graddin = omp_get_wtime()
 
 				write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 				soma_graddin_f90 = soma_graddin_f90 + (fortran_end_graddin-fortran_start_graddin)
@@ -202,12 +197,12 @@ PROGRAM PNH
 		
 		!Tempo do plot_f() p/ Fortran e OpenMP
 		!CALL cpu_time(fortran_start_plot_f)
-		!omp_start_plot_f = 10.
+		!omp_start_plot_f = omp_get_wtime()
 
 		CALL plot_f()
 	
 		!CALL cpu_time(fortran_end_plot_f)
-		!omp_end_plot_f = 10.
+		!omp_end_plot_f = omp_get_wtime()
 		!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 		!soma_plot_f_f90 = soma_plot_f_f90 + (fortran_end_plot_f-fortran_start_plot_f)
 		!soma_plot_f_omp = soma_plot_f_omp + (omp_end_plot_f-omp_start_plot_f)
@@ -235,7 +230,7 @@ PROGRAM PNH
 
 	!Fim do Fortran e OpenMP
 	CALL cpu_time(fortran_end)
-	openmp_end = 10.
+	!$ openmp_end = omp_get_wtime()
 
 	!Tempo do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
