@@ -1,0 +1,1192 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+  OpenMP: N_threads =            1
+  Paralelo?  F
+ Com entrada de onda.
+ Esquema temporal: 
+ RK3.
+ mms: zero
+ Malha (nx x ny x nz):         150 x          50 x          50
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.30656399999999984     
+ Tempo acumulado do level_set() p/ Fortran  0.30656399999999984     
+ Tempo individual do level_set() p/ OpenMP  0.30677395200018509     
+ Tempo acumulado do level_set() p/ OpenMP  0.30677395200018509     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.2483000000000253E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   2.2483000000000253E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.2525595000843168E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   2.2525595000843168E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   2.9542000000000179E-002
+ Tempo acumulado do visco() p/ Fortran   2.9542000000000179E-002
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   6189357.7325098822     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   42.321906000000233     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   7.2265545060017757     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   24.014900000000040     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   4.1048784090216941     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   3.3039929999999034     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP  0.58616021298257692     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   2.5566210000002361     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   25120048.150247931     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   75.168232000000003     
+ Tempo acumulado do loop da redução do erro p/ Fortran   75.168232000000003     
+ Tempo individual do loop da redução do erro p/ OpenMP:   12.822857035999732     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   12.822857035999732     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   75.234795999999989     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   75.234795999999989     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   12.851204376000169     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   12.851204376000169     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   3.8576999999989425E-002
+ Tempo acumulado do visco() p/ Fortran   6.8118999999989605E-002
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   3412082.9173140102     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   91.925131999999749     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   15.621927643055642     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   51.512636000000427     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   8.8060204030398381     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   6.7166119999998957     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   1.1999317550007618     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   5.4514310000003139     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   54330719.034589879     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   86.922010999999998     
+ Tempo acumulado do loop da redução do erro p/ Fortran   162.09024299999999     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.777388771000005     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   27.600245806999737     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   86.953938999999991     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   162.18873499999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.791639641000074     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   27.642844017000243     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   3.6723999999992429E-002
+ Tempo acumulado do visco() p/ Fortran  0.10484299999998203     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   201565.55390143956     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   137.83498699999893     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   23.379559081027764     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   76.871475000000245     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   13.133265006052170     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   9.9120669999992792     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   1.7468928779826456     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   8.3698220000009531     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   81462959.958244503     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   80.286845999999997     
+ Tempo acumulado do loop da redução do erro p/ Fortran   242.37708899999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   13.610019074999400     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   41.210264881999137     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   80.317125000000004     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   242.50585999999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   13.622743867999816     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   41.265587885000059     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Tempo restante aproximado (min):   0.0000000000000000     
+ Duração Da Simulação (s):   243.30179500000000     
+ Duração Da Simulação (min):   4.0550299166666663     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5000000000013347     
+ Erro (%)   0.0000000000000000     
+ Div.   14.032708852332959     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.30099100000001044     
+ Tempo acumulado do level_set() p/ Fortran  0.60755500000001028     
+ Tempo individual do level_set() p/ OpenMP  0.30098803700002463     
+ Tempo acumulado do level_set() p/ OpenMP  0.60776198900020972     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5736999999992349E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   4.8219999999992602E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5739966999935859E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   4.8265562000779028E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2147999999996273E-002
+ Tempo acumulado do visco() p/ Fortran  0.11699099999997831     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   3118546.8497074852     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   169.89374799999891     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   28.810140434996356     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   95.154723000001852     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   16.194672465055191     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   12.054563999998788     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   2.1610384370014799     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   10.567434000002168     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   100236557.99484830     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   56.365178999999983     
+ Tempo acumulado do loop da redução do erro p/ Fortran   298.74226799999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.5911028489999808     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   50.801367730999118     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   56.401887000000016     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   298.90774699999997     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.6039375800000926     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   50.869525465000152     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.4529000000011365E-002
+ Tempo acumulado do visco() p/ Fortran  0.16151999999998967     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   781686.16002929246     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   218.10343499999894     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   36.874870539003496     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   121.91491100000364     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   20.699895567054227     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   14.916381999999100     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   2.6989271510046819     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   13.851878000003312     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   128985846.61469273     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   83.738177000000007     
+ Tempo acumulado do loop da redução do erro p/ Fortran   382.48044499999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.146031078999840     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   64.947398809998958     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   83.763995000000023     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   382.67174199999999     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.158624300000156     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   65.028149765000308     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.5633000000009361E-002
+ Tempo acumulado do visco() p/ Fortran  0.20715299999999903     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   183829.64670493614     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   259.27910999999960     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   43.857910063021336     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   144.59808000000305     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   24.610576041070999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   18.284352000002070     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   3.2031357560026663     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   16.424266000003357     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   153710119.91144535     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   72.435868000000028     
+ Tempo acumulado do loop da redução do erro p/ Fortran   454.91631300000000     
+ Tempo individual do loop da redução do erro p/ OpenMP:   12.273369022000225     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   77.220767831999183     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   72.472401999999988     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   455.14414399999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   12.286215862000063     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   77.314365627000370     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   41.963999999999999     
+ Tempo restante aproximado (h):   1.3321904761904761E-002
+ Tempo restante aproximado (min):   2.2203174603174601E-004
+ Duração Da Simulação (s):   456.73076399999997     
+ Duração Da Simulação (min):   7.6121793999999996     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100484845370867     
+ Erro (%)  -6.6989896904953872E-003
+ Div.   15.534166648039761     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43171499999999696     
+ Tempo acumulado do level_set() p/ Fortran   1.0392700000000072     
+ Tempo individual do level_set() p/ OpenMP  0.43171814400011499     
+ Tempo acumulado do level_set() p/ OpenMP   1.0394801330003247     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5600999999994656E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   7.3820999999987258E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5604555999962031E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   7.3870118000741058E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2461000000030253E-002
+ Tempo acumulado do visco() p/ Fortran  0.21961400000002929     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   1019565.1615585197     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   308.45786600000110     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   52.129246976986906     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   171.81509200000124     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   29.230345592132835     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   21.946336999998959     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   3.7908951229310333     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   19.275618000004457     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   183249021.17481813     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   85.858015999999964     
+ Tempo acumulado do loop da redução do erro p/ Fortran   540.77432899999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.519495625000673     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   91.740263456999855     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   85.878436999999963     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   541.02258099999995     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.532480312999724     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   91.846845940000094     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.0197000000025582E-002
+ Tempo acumulado do visco() p/ Fortran  0.26981100000005487     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   490384.94914411538     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   345.10581000000411     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   58.344652230978681     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   192.39562100000529     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   32.732131864156145     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   24.332036999995136     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   4.2339271659620863     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   21.614601000002736     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   205409576.07164815     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   64.687414999999987     
+ Tempo acumulado do loop da redução do erro p/ Fortran   605.46174399999995     
+ Tempo individual do loop da redução do erro p/ OpenMP:   10.945492789000127     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   102.68575624599998     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   64.719548000000032     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   605.74212899999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   10.958118268999897     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   102.80496420899999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.6825000000012551E-002
+ Tempo acumulado do visco() p/ Fortran  0.31663600000006742     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   172509.91593470826     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   378.65726300000244     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   64.003970032990765     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   211.02779000000595     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   35.881812371147134     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   26.579660999992495     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   4.6132006739926510     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   23.562229000004791     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   225622537.71462914     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   58.567220999999904     
+ Tempo acumulado do loop da redução do erro p/ Fortran   664.02896499999986     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.8999121819997526     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   112.58566842799974     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   58.599290999999994     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   664.34141999999997     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.9125898550000784     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   112.71755406400007     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   36.688000000000002     
+ Tempo restante aproximado (h):   2.1609886621315195E-002
+ Tempo restante aproximado (min):   3.6016477702191990E-004
+ Duração Da Simulação (s):   666.84111099999996     
+ Duração Da Simulação (min):   11.114018516666667     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5100932201488428     
+ Erro (%)  -6.7288134316660997E-003
+ Div.   13.312649825327441     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43311900000003334     
+ Tempo acumulado do level_set() p/ Fortran   1.4723890000000406     
+ Tempo individual do level_set() p/ OpenMP  0.43440868500056240     
+ Tempo acumulado do level_set() p/ OpenMP   1.4738888180008871     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5629000000094493E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran   9.9450000000081751E-002
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5633176000155800E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP   9.9503294000896858E-002
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.1986999999976433E-002
+ Tempo acumulado do visco() p/ Fortran  0.32862300000004385     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   622221.35189803399     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   414.46676699999955     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   70.044855624014417     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   230.71831600000786     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   39.257008258142378     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   28.895165999994003     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   5.0291194309638740     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   25.856108000007239     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   247221630.92153898     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   62.670542999999952     
+ Tempo acumulado do loop da redução do erro p/ Fortran   726.69950799999981     
+ Tempo individual do loop da redução do erro p/ OpenMP:   10.603947353999502     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   123.18961578199924     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   62.702608000000055     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   727.04402800000003     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   10.616814959000294     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   123.33436902300036     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.5535000000077162E-002
+ Tempo acumulado do visco() p/ Fortran  0.38415800000012101     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   388884.66490829707     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   464.18653199999778     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   78.395906148015456     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   257.63680600000856     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   43.946689301142214     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   32.500833999995066     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   5.6492031789484827     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   29.148365000005938     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   276995260.02753353     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   86.679435999999896     
+ Tempo acumulado do loop da redução do erro p/ Fortran   813.37894399999971     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.711811033000231     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   137.90142681499947     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   86.711275000000001     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   813.75530300000003     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.724652136999794     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   138.05902116000016     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.3756999999905020E-002
+ Tempo acumulado do visco() p/ Fortran  0.43791500000002603     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   314268.98236687551     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   496.71918099999777     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   83.893196060058472     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   275.94187800001345     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   47.022594859201490     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   34.738787999998422     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   6.0278114539432863     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   31.097365000000892     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   296835280.01353592     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   57.121252000000027     
+ Tempo acumulado do loop da redução do erro p/ Fortran   870.50019599999973     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.6488546760001555     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   147.55028149099962     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   57.150033000000008     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   870.90533600000003     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.6613763180002934     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   147.72039747800045     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   36.158999999999999     
+ Tempo restante aproximado (h):   2.7132045675413028E-002
+ Tempo restante aproximado (min):   4.5220076125688380E-004
+ Duração Da Simulação (s):   874.30922899999996     
+ Duração Da Simulação (min):   14.571820483333333     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101392198033896     
+ Erro (%)  -6.7594798680305854E-003
+ Div.   12.912005518996704     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43254300000000967     
+ Tempo acumulado do level_set() p/ Fortran   1.9049320000000503     
+ Tempo individual do level_set() p/ OpenMP  0.43255052899985458     
+ Tempo acumulado do level_set() p/ OpenMP   1.9064393470007417     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5438000000008287E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.12488800000009004     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5442140999984986E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.12494543500088184     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2275000000045111E-002
+ Tempo acumulado do visco() p/ Fortran  0.45019000000007114     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   588779.27364109189     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   536.64646599999492     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   90.594229546008137     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   298.14323300001200     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   50.798633360187523     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   37.757277000000173     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   6.5278215758889928     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   33.503651999998752     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   321053651.34581023     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   69.833935999999994     
+ Tempo acumulado do loop da redução do erro p/ Fortran   940.33413199999973     
+ Tempo individual do loop da redução do erro p/ OpenMP:   11.827151442999821     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   159.37743293399944     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   69.863965000000007     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   940.76930100000004     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   11.840224171000045     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   159.56062164900050     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.5266999999967084E-002
+ Tempo acumulado do visco() p/ Fortran  0.49545700000003823     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   402853.55999411538     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   569.54307599999095     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   96.203573089021120     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   316.94503700001684     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   53.929062298176177     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   39.752315999998714     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   6.9013169058989661     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   35.510889999995143     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   341351094.84504479     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   58.143958999999995     
+ Tempo acumulado do loop da redução do erro p/ Fortran   998.47809099999972     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.8251422659996024     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   169.20257519999905     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   58.175888999999984     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   998.94519000000003     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.8380777159991339     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   169.39869936499963     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.0531999999975596E-002
+ Tempo acumulado do visco() p/ Fortran  0.54598900000001382     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   148645.92036384772     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   591.79325199998800     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   99.974416654004926     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   329.36039700002101     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   56.026800364168594     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   41.155348000005020     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   7.1457818798726294     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   36.818692999997452     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   355019379.51082766     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   39.023047000000020     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1037.5011379999996     
+ Tempo individual do loop da redução do erro p/ OpenMP:   6.5907648950005751     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   175.79334009499962     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   39.051034000000072     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1037.9962240000000     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   6.6037604870007272     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   176.00245985200036     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   35.762999999999998     
+ Tempo restante aproximado (h):   3.0351872483687359E-002
+ Tempo restante aproximado (min):   5.0586454139478932E-004
+ Duração Da Simulação (s):   1042.3018030000001     
+ Duração Da Simulação (min):   17.371696716666669     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5101969600571512     
+ Erro (%)  -6.7979733705382812E-003
+ Div.   11.259796515385929     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43205299999999625     
+ Tempo acumulado do level_set() p/ Fortran   2.3369850000000465     
+ Tempo individual do level_set() p/ OpenMP  0.43233474799944815     
+ Tempo acumulado do level_set() p/ OpenMP   2.3387740950001898     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5781000000051790E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.15066900000014183     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5819747999776155E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.15076518300065800     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2183999999933803E-002
+ Tempo acumulado do visco() p/ Fortran  0.55817299999994763     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   438994.01860995713     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   639.23877300000265     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   107.96294207899882     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   355.01605400003058     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   60.467760966189417     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   44.667233000004913     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   7.7217225709164268     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   39.954056000006872     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   383691892.43198299     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   82.666585000000168     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1120.1677229999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.013882551999814     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   189.80722264699943     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   82.696619000000055     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1120.6928430000000     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.026753727999676     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   190.02921358000003     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.8234000000084052E-002
+ Tempo acumulado do visco() p/ Fortran  0.61640700000003168     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   440537.17722934717     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   685.49385500000415     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   115.72270799597209     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   380.51525100003795     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   64.805679562213300     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   47.580359000005743     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   8.2501234319624928     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   42.735453000000476     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   411978822.25630498     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   80.644413999999870     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1200.8121369999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   13.624257177999425     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   203.43147982499886     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   80.676485999999841     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1201.3693289999999     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   13.636827456999526     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   203.66604103699956     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.1527999999962049E-002
+ Tempo acumulado do visco() p/ Fortran  0.66793499999999373     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   309053.82025641279     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   717.35798200000647     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   121.08621242997924     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   398.06818000004426     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   67.797939495232640     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   49.757767000004847     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   8.6387072270026692     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   44.612120000002292     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   431317502.80497420     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   55.682461999999987     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1256.4945989999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.4324546339994413     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   212.86393445899830     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   55.713885000000118     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1257.0832140000000     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.4455458619995625     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   213.11158689899912     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           6
+ it*dt:   6.0000000000000001E-003
+ Ciclo:   29.041000000000000     
+ Tempo restante aproximado (h):   3.0625573239985993E-002
+ Tempo restante aproximado (min):   5.1042622066643317E-004
+ Duração Da Simulação (s):   1262.2875099999999     
+ Duração Da Simulação (min):   21.038125166666664     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5102834328943362     
+ Erro (%)  -6.8556219286615584E-003
+ Div.   14.533602805413130     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43656200000009449     
+ Tempo acumulado do level_set() p/ Fortran   2.7735470000001410     
+ Tempo individual do level_set() p/ OpenMP  0.43656788899988896     
+ Tempo acumulado do level_set() p/ OpenMP   2.7753419840000788     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.6046000000178537E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.17671500000032037     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.6048472999718797E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.17681365600037680     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2169000000085362E-002
+ Tempo acumulado do visco() p/ Fortran  0.68010400000007909     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   570018.83177046082     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   763.10295500001655     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   128.80837546198654     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   423.57224400004333     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   72.109020319262527     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   52.986411000008061     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   9.2641279969875541     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   47.164379000016439     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   458972876.80146104     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   80.033846000000040     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1336.5284449999997     
+ Tempo individual do loop da redução do erro p/ OpenMP:   13.624357099000008     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   226.48829155799831     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   80.066254000000072     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1337.1494680000001     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   13.637070716000380     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   226.74865761499950     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.0948999999945954E-002
+ Tempo acumulado do visco() p/ Fortran  0.73105300000002504     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   477721.97230492946     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   788.27591200001723     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   133.05325387698576     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   437.40574500004067     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   74.473861210274663     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   54.651855000010087     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   9.5462670220149448     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   48.687287000019992     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   474514454.38508105     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   43.911821000000145     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1380.4402659999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   7.4272988339998847     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   233.91559039199819     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   43.944167999999991     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1381.0936360000001     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   7.4404358300007516     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   234.18909344500025     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.7918999999865264E-002
+ Tempo acumulado do visco() p/ Fortran  0.77897199999989031     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   217422.72554219354     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   819.00391900001875     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   138.18348644998605     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   454.43555000004352     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   77.366109040290212     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   56.499272000010947     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   9.9105005010296736     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   50.723781000012664     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   493273475.86543447     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   53.339229000000159     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1433.7794950000000     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.0314724729996669     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   242.94706286499786     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   53.371527000000015     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1434.4651630000001     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.0444252229999620     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   243.23351866800022     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           7
+ it*dt:   7.0000000000000001E-003
+ Ciclo:   37.866000000000000     
+ Tempo restante aproximado (h):   3.0758348491416565E-002
+ Tempo restante aproximado (min):   5.1263914152360941E-004
+ Duração Da Simulação (s):   1440.5824430000000     
+ Duração Da Simulação (min):   24.009707383333332     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5104173790948781     
+ Erro (%)  -6.9449193956893831E-003
+ Div.   11.928024648718868     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.42954099999997197     
+ Tempo acumulado do level_set() p/ Fortran   3.2030880000001130     
+ Tempo individual do level_set() p/ OpenMP  0.42954424500021560     
+ Tempo acumulado do level_set() p/ OpenMP   3.2048862290002944     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5516999999808831E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.20223200000012920     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5519779999740422E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.20233343600011722     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2257999999974345E-002
+ Tempo acumulado do visco() p/ Fortran  0.79122999999986465     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   499015.09918518760     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   855.65967300001410     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   144.42033780599741     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   475.32828800004853     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   80.993946846282597     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   59.925863999999834     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   10.541716388017448     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   52.535568000013441     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   515043682.51146752     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   65.060801999999967     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1498.8402970000000     
+ Tempo individual do loop da redução do erro p/ OpenMP:   11.249945964000290     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   254.19700882899815     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   65.092803000000004     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1499.5579660000001     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   11.262601473000359     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   254.49612014100057     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.6006000000033964E-002
+ Tempo acumulado do visco() p/ Fortran  0.83723599999989862     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   318160.66928706435     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   889.21876600001781     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   150.12838642200313     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   494.30746700004755     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   84.207613410286285     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   62.311960000012746     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   10.952106103028200     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   54.918077000011422     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   535932759.80873656     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   59.198915999999826     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1558.0392129999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   10.051343639999686     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   264.24835246899784     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   59.229501999999911     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1558.7874680000000     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   10.065271830000711     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   264.56139197100129     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.5722000000068874E-002
+ Tempo acumulado do visco() p/ Fortran  0.88295799999996749     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   152161.06582774298     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   920.85266100001752     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   155.48400338998454     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   512.53221400003963     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   87.206098653329718     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   64.366054000013960     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   11.316954435033040     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   56.736313000006945     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   555636095.92694283     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   55.531965000000127     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1613.5711779999999     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.3965572170000087     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   273.64490968599785     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   55.564176000000089     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1614.3516440000001     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.4090338149999297     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   273.97042578600121     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           8
+ it*dt:   8.0000000000000002E-003
+ Ciclo:   30.885000000000002     
+ Tempo restante aproximado (h):   2.8815489183118961E-002
+ Tempo restante aproximado (min):   4.8025815305198266E-004
+ Duração Da Simulação (s):   1621.3831310000000     
+ Duração Da Simulação (min):   27.023052183333334     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5106138756905507     
+ Erro (%)  -7.0759171261377124E-003
+ Div.   11.566658230417872     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43345199999998840     
+ Tempo acumulado do level_set() p/ Fortran   3.6365400000001014     
+ Tempo individual do level_set() p/ OpenMP  0.43373520799923426     
+ Tempo acumulado do level_set() p/ OpenMP   3.6386214369995287     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.6239000000032320E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.22847100000016152     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.6293029000044044E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.22862646500016126     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2326999999913824E-002
+ Tempo acumulado do visco() p/ Fortran  0.89528499999988131     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   515859.10438584624     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   970.40280900001483     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   163.90715085097872     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   540.39467200004401     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   91.963790571306163     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   67.841652000014861     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   11.948083769007098     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   59.637166999991237     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   586181942.23951602     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   87.055051000000049     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1700.6262290000000     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.861083578000034     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   288.50599326399788     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   87.087376999999833     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1701.4390209999999     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.873858545000076     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   288.84428433100129     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.0042999999959648E-002
+ Tempo acumulado do visco() p/ Fortran  0.94532799999984096     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   472514.18559653882     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   1020.0019960000158     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   172.31977451302191     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   567.96651400004680     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   96.722421498338008     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   71.554990000010562     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   12.558400006002557     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   62.597655999993563     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   616801944.82937634     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   86.826587999999902     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1787.4528169999999     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.834751103000599     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   303.34074436699848     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   86.850774000000001     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1788.2897949999999     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.848140508000142     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   303.69242483900143     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.6234999999796855E-002
+ Tempo acumulado do visco() p/ Fortran  0.99156299999963782     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   369652.22024308250     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   1052.1835570000148     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   177.66866444300376     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   585.45142600004147     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   99.722748253322607     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   73.764099000006368     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   12.921814017986435     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   64.519870999997025     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   636505358.00973141     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   55.463831999999911     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1842.9166489999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   9.3901071450000018     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   312.73085151199848     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   55.495901999999887     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1843.7856969999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   9.4027897529995244     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   313.09521459200096     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           9
+ it*dt:   9.0000000000000011E-003
+ Ciclo:   31.492999999999999     
+ Tempo restante aproximado (h):   2.5948712950609902E-002
+ Tempo restante aproximado (min):   4.3247854917683170E-004
+ Duração Da Simulação (s):   1851.7284540000001     
+ Duração Da Simulação (min):   30.862140900000000     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5108793818092343     
+ Erro (%)  -7.2529212052599478E-003
+ Div.   14.254482296342209     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do level_set() p/ Fortran  0.43520399999988513     
+ Tempo acumulado do level_set() p/ Fortran   4.0717439999999865     
+ Tempo individual do level_set() p/ OpenMP  0.43551547100014432     
+ Tempo acumulado do level_set() p/ OpenMP   4.0741369079996730     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do contorno(3) dentro do ciclo p/ Fortran:   2.5580999999874621E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ Fortran  0.25405200000003614     
+ Tempo individual do contorno(3) dentro do ciclo p/ OpenMP:   2.5595447999876342E-002
+ Tempo acumulado do contorno(3) dentro do ciclo p/ OpenMP  0.25422191300003760     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   1.2413000000151442E-002
+ Tempo acumulado do visco() p/ Fortran   1.0039759999997893     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   548127.13415919861     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   1100.5307350000096     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   185.80876624405118     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   611.61389900004065     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   104.26067622832943     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   77.075370000006856     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   13.478158964005161     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   67.759342999992683     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   666560436.21501327     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   84.289659000000029     
+ Tempo acumulado do loop da redução do erro p/ Fortran   1927.2063079999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.262450930999876     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   326.99330244299836     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   84.317479000000048     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   1928.1031759999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.275512006000099     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   327.37072659800106     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   4.6595999999908599E-002
+ Tempo acumulado do visco() p/ Fortran   1.0505719999996979     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   462215.60452640447     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   1150.0658389999933     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   194.12436464803977     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   638.11980200004427     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   108.91968533931322     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   80.791597000003108     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   14.089101928981108     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   71.087780999994052     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   697376462.85760772     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   86.351044000000002     
+ Tempo acumulado do loop da redução do erro p/ Fortran   2013.5573519999998     
+ Tempo individual do loop da redução do erro p/ OpenMP:   14.637780521999957     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   341.63108296499831     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   86.364497999999912     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   2014.4676739999998     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   14.650402671999473     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   342.02112927000053     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do visco() p/ Fortran:   5.0274999999828651E-002
+ Tempo acumulado do visco() p/ Fortran   1.1008469999995265     
+  OpenMP: N_threads =            1
+  thread =            0
+ ----------------------------------------------------------------------------------------
+ Cálculo do primeiro erro   293620.63823062263     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran   1185.1241360000201     
+ Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP   200.40793351503999     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de matrizes' p/ Fortran   659.67526600003771     
+ Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP   112.76615148625751     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Recálculo de erro' p/ Fortran   85.562435000021665     
+ Tempo acumulado de 'Recálculo de erro' p/ OpenMP   14.989031211986003     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo acumulado de 'Condições de contorno' p/ Fortran   73.326545999990927     
+ Tempo acumulado de 'Condições de contorno' p/ OpenMP   717937279.30847085     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do loop da redução do erro p/ Fortran:   65.732685999999831     
+ Tempo acumulado do loop da redução do erro p/ Fortran   2079.2900379999996     
+ Tempo individual do loop da redução do erro p/ OpenMP:   11.753728265000063     
+ Tempo acumulado do loop da redução do erro p/ OpenMP   353.38481122999838     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo individual do graddin() + posdin() p/ Fortran:   65.766431000000239     
+ Tempo acumulado do graddin() + posdin() p/ Fortran   2080.2341050000000     
+ Tempo individual do graddin() + posdin() p/ OpenMP:   11.767279652000070     
+ Tempo acumulado do graddin() + posdin() p/ OpenMP   353.78840892200060     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:          10
+ it*dt:   1.0000000000000000E-002
+ Ciclo:   39.886000000000003     
+ Tempo restante aproximado (h):   2.2241753957665627E-002
+ Tempo restante aproximado (min):   3.7069589929442711E-004
+ Duração Da Simulação (s):   2089.1123390000002     
+ Duração Da Simulação (min):   34.818538983333340     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   1.5000000000013347     
+ Vol. Instant.   1.5112069728272237     
+ Erro (%)  -7.4713152172526890E-003
+ Div.   12.115205491137408     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Tempo Total do Fortran:   2094.4116650000001     
+ Tempo Total do OpenMP:   366.47302949999994     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-

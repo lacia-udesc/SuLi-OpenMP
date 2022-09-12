@@ -1,1 +1,0 @@
-Os 2 primeiros loops (do ts [10]) do level_set() demoram menos do que os outros.
