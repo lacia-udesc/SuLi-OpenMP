@@ -66,9 +66,9 @@ SUBROUTINE iniciais()
 		bxy0 = 0.
 		bxz0 = 0.
 	endif
-	write(*,*) "pao de mel master"
+
 	CALL level_set_ini()
-	write(*,*) "pao de mel master2"
+	
 	if (mms_t == 0) then
 		tf_p = 0.
 		tf_u = 0.
