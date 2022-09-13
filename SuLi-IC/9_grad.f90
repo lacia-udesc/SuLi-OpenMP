@@ -241,20 +241,26 @@ SUBROUTINE graddin()
 		! OTIMIZAR CÓDIGO
 		cont = cont +1
 
+	!$OMP SINGLE
+	
 		!inicialização
 		alfapr   = 0.
 		alfamupr = 0.
 		alfadipr = 0.
 		betapr   = 0.
 		betamupr = 0.
-		mppr = 0.
+	
+	!$OMP END SINGLE
 
 		! Parâmetro mp e alfa
 
 		CALL cpu_time(fortran_start_grad_1)
 		!$ omp_start_grad_1 = omp_get_wtime()
 
-		!$OMP PARALLEL DO
+		!OMP PARALLEL NUM_THREADS(4)
+
+		!$OMP PARALLEL
+			!$OMP DO
 				do k = 1, nz
 						do j = 1, ny
 								do i = 1, nx
@@ -268,22 +274,36 @@ SUBROUTINE graddin()
 								enddo
 						enddo
 				enddo
-		!$OMP END PARALLEL DO
+			!$OMP END DO
+		!$OMP END PARALLEL
 
 		!!!	###########################################################################################################################################################
 		
-		!OMP PARALLEL DO
+		!$OMP PARALLEL SECTIONS
+
+			!$OMP SECTION
 				do k = 1, nz
 						do j = 1, ny
 								do i = 1, nx
 										alfamupr = alfamupr + erropr(i+1,j+1,k+1) * erropr(i+1,j+1,k+1)
+									enddo
+							enddo
+					enddo
+
+			!$OMP SECTION
+					do k = 1, nz
+							do j = 1, ny
+									do i = 1, nx
 										alfadipr = alfadipr + erroppr(i+1,j+1,k+1) * mppr(i,j,k)
 								enddo
 						enddo
 				enddo
-		!OMP END PARALLEL DO
+
+		!$OMP END PARALLEL SECTIONS
 
 		!write(*,*) "Segundo Alfamupr", alfamupr
+
+		!$OMP BARRIER
 
 		alfapr = alfamupr / alfadipr
 
@@ -300,16 +320,29 @@ SUBROUTINE graddin()
 
 		! Recálculo das matrizes e, erro e parâmetro beta
 		
-		!$OMP PARALLEL DO
-			do k = 1, nz
-					do j = 1, ny
-							do i = 1, nx
-								matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
-								erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
-							enddo
-					enddo
-			enddo
-		!$OMP END PARALLEL DO
+		!$OMP PARALLEL
+			!$OMP DO
+				do k = 1, nz
+						do j = 1, ny
+								do i = 1, nx
+									matepr(i+1,j+1,k+1) = matepr(i+1,j+1,k+1) - alfapr * erroppr(i+1,j+1,k+1)
+								enddo
+						enddo
+				enddo
+			!$OMP END DO NOWAIT
+			
+			!$OMP DO
+				do k = 1, nz
+						do j = 1, ny
+								do i = 1, nx
+									erropr(i+1,j+1,k+1) = erropr(i+1,j+1,k+1) - alfapr * mppr(i,j,k)
+								enddo
+						enddo
+				enddo
+			!$OMP END DO
+		!$OMP END PARALLEL
+
+		!$OMP BARRIER
 
 		!OMP PARALLEL DO
 			do k = 1, nz
@@ -320,6 +353,8 @@ SUBROUTINE graddin()
 					enddo
 			enddo
 		!OMP END PARALLEL DO
+
+		!OMP BARRIER
 
 		CALL cpu_time(fortran_end_grad_2)
 		!$ omp_end_grad_2 = omp_get_wtime()
@@ -355,19 +390,24 @@ SUBROUTINE graddin()
 		
 		! Condições de contorno
 
-		!$OMP PARALLEL SECTIONS
+		!OMP PARALLEL SECTIONS NUM_THREADS(4)
 
-			!$OMP SECTION
+		!OMP PARALLEL SECTIONS NUM_THREADS(4)
+
+		!$OMP PARALLEL
 			if (ccx0.eq.0) then  ! Condição periódica
-				do k = 1, nz2
-					do j = 1, ny2
-						matepr(1,j,k) = matepr(nx+1,j,k)
-						matepr(nx1+1,j,k) = matepr(2,j,k)
-						erroppr(1,j,k) = erroppr(nx+1,j,k)
-						erroppr(nx1+1,j,k) = erroppr(2,j,k)
+				!$OMP DO
+					do k = 1, nz2
+						do j = 1, ny2
+							matepr(1,j,k) = matepr(nx+1,j,k)
+							matepr(nx1+1,j,k) = matepr(2,j,k)
+							erroppr(1,j,k) = erroppr(nx+1,j,k)
+							erroppr(nx1+1,j,k) = erroppr(2,j,k)
+						enddo
 					enddo
-				enddo
+				!$OMP END DO NOWAIT
 			else
+				!$OMP DO
 				do k = 1, nz2		
 					do j = 1, ny2
 						matepr(1,j,k) = matepr(2,j,k)
@@ -376,30 +416,34 @@ SUBROUTINE graddin()
 						erroppr(nx1+1,j,k) = erroppr(nx+1,j,k)
 					enddo
 				enddo
+				!$OMP END DO NOWAIT
 			endif
 
-			!$OMP SECTION
 			if (ccy0.eq.0) then  ! Condição periódica
-				do k = 1, nz2		
-					do i = 1, nx2
-						matepr(i,1,k) = matepr(i,ny+1,k)
-						matepr(i,ny1+1,k) = matepr(i,2,k)
-						erroppr(i,1,k) = erroppr(i,ny+1,k)
-						erroppr(i,ny1+1,k) = erroppr(i,2,k)
+				!$OMP DO
+					do k = 1, nz2		
+						do i = 1, nx2
+							matepr(i,1,k) = matepr(i,ny+1,k)
+							matepr(i,ny1+1,k) = matepr(i,2,k)
+							erroppr(i,1,k) = erroppr(i,ny+1,k)
+							erroppr(i,ny1+1,k) = erroppr(i,2,k)
+						enddo
 					enddo
-				enddo
+				!$OMP END DO NOWAIT
 			else
-				do k = 1, nz2		
-					do i = 1, nx2
-						matepr(i,1,k) = matepr(i,2,k)
-						matepr(i,ny1+1,k) = matepr(i,ny+1,k)
-						erroppr(i,1,k) = erroppr(i,2,k)
-						erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
+				!$OMP DO
+					do k = 1, nz2		
+						do i = 1, nx2
+							matepr(i,1,k) = matepr(i,2,k)
+							matepr(i,ny1+1,k) = matepr(i,ny+1,k)
+							erroppr(i,1,k) = erroppr(i,2,k)
+							erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
+						enddo
 					enddo
-				enddo
+				!$OMP END DO NOWAIT
 			endif
 
-			!$OMP SECTION
+			!$OMP DO
 			do j = 1, ny2
 				do i = 1, nx2
 						matepr(i,j,1) = matepr(i,j,2)
@@ -408,8 +452,9 @@ SUBROUTINE graddin()
 						erroppr(i,j,nz1+1) = erroppr(i,j,nz+1)
 				enddo
 			enddo
+			!$OMP END DO
 
-		!$OMP END PARALLEL SECTIONS
+		!$OMP END PARALLEL
 
 		CALL cpu_time(end_outros5_f90)
 		!$ end_outros5_omp = omp_get_wtime()
