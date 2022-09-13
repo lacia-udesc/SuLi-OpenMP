@@ -18,12 +18,10 @@ SUBROUTINE graddin()
 	USE paodemel
 	USE omp_lib
 
-
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
 
-
-	!Inicialização de variáveis
+	!Inicialização de variáveis específicas no modulo paodemel
 
 	!integer, parameter :: Tipo1 = selected_real_kind(10,10)
 
@@ -45,8 +43,10 @@ SUBROUTINE graddin()
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
 	!Tempo da montagem inicial de matrizes p/ Fortran e OpenMP
+
 	!CALL cpu_time(start_outros2_f90)
 	!start_outros2_omp = omp_get_wtime()
+
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
@@ -74,14 +74,14 @@ SUBROUTINE graddin()
 
 	! Condições de contorno, von Neumann
 	if (ccx0.eq.0) then  ! Condição periódica
-		do k = 1, nz2							! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+		do k = 1, nz2
 			do j = 1, ny2
 				matdpr(1,j,k) = matdpr(nx1,j,k)
 				matdpr(nx1+1,j,k) = matdpr(2,j,k)
 			enddo
 		enddo
 	else
-		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+		do k = 1, nz2		
 			do j = 1, ny2
 				matdpr(1,j,k) = matdpr(2,j,k)
 				matdpr(nx1+1,j,k) = matdpr(nx1,j,k)
@@ -90,14 +90,14 @@ SUBROUTINE graddin()
 	endif
 
 	if (ccy0.eq.0) then  ! Condição periódica
-		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+		do k = 1, nz2		
 			do i = 1, nx2
 				matdpr(i,1,k) = matdpr(i,ny1,k)
 				matdpr(i,ny1+1,k) = matdpr(i,2,k)
 			enddo
 		enddo			
 	else
-		do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+		do k = 1, nz2		
 			do i = 1, nx2
 				matdpr(i,1,k) = matdpr(i,2,k)
 				matdpr(i,ny1+1,k) = matdpr(i,ny1,k)
@@ -355,54 +355,61 @@ SUBROUTINE graddin()
 		
 		! Condições de contorno
 
-		if (ccx0.eq.0) then  ! Condição periódica
-			do k = 1, nz2							! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
-				do j = 1, ny2
-					matepr(1,j,k) = matepr(nx+1,j,k)
-					matepr(nx1+1,j,k) = matepr(2,j,k)
-					erroppr(1,j,k) = erroppr(nx+1,j,k)
-					erroppr(nx1+1,j,k) = erroppr(2,j,k)
-				enddo
-			enddo
-		else
-			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
-				do j = 1, ny2
-					matepr(1,j,k) = matepr(2,j,k)
-					matepr(nx1+1,j,k) = matepr(nx+1,j,k)
-					erroppr(1,j,k) = erroppr(2,j,k)
-					erroppr(nx1+1,j,k) = erroppr(nx+1,j,k)
-				enddo
-			enddo
-		endif
+		!$OMP PARALLEL SECTIONS
 
-		if (ccy0.eq.0) then  ! Condição periódica
-			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
+			!$OMP SECTION
+			if (ccx0.eq.0) then  ! Condição periódica
+				do k = 1, nz2
+					do j = 1, ny2
+						matepr(1,j,k) = matepr(nx+1,j,k)
+						matepr(nx1+1,j,k) = matepr(2,j,k)
+						erroppr(1,j,k) = erroppr(nx+1,j,k)
+						erroppr(nx1+1,j,k) = erroppr(2,j,k)
+					enddo
+				enddo
+			else
+				do k = 1, nz2		
+					do j = 1, ny2
+						matepr(1,j,k) = matepr(2,j,k)
+						matepr(nx1+1,j,k) = matepr(nx+1,j,k)
+						erroppr(1,j,k) = erroppr(2,j,k)
+						erroppr(nx1+1,j,k) = erroppr(nx+1,j,k)
+					enddo
+				enddo
+			endif
+
+			!$OMP SECTION
+			if (ccy0.eq.0) then  ! Condição periódica
+				do k = 1, nz2		
+					do i = 1, nx2
+						matepr(i,1,k) = matepr(i,ny+1,k)
+						matepr(i,ny1+1,k) = matepr(i,2,k)
+						erroppr(i,1,k) = erroppr(i,ny+1,k)
+						erroppr(i,ny1+1,k) = erroppr(i,2,k)
+					enddo
+				enddo
+			else
+				do k = 1, nz2		
+					do i = 1, nx2
+						matepr(i,1,k) = matepr(i,2,k)
+						matepr(i,ny1+1,k) = matepr(i,ny+1,k)
+						erroppr(i,1,k) = erroppr(i,2,k)
+						erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
+					enddo
+				enddo
+			endif
+
+			!$OMP SECTION
+			do j = 1, ny2
 				do i = 1, nx2
-					matepr(i,1,k) = matepr(i,ny+1,k)
-					matepr(i,ny1+1,k) = matepr(i,2,k)
-					erroppr(i,1,k) = erroppr(i,ny+1,k)
-					erroppr(i,ny1+1,k) = erroppr(i,2,k)
+						matepr(i,j,1) = matepr(i,j,2)
+						matepr(i,j,nz1+1) = matepr(i,j,nz+1)
+						erroppr(i,j,1) = erroppr(i,j,2)
+						erroppr(i,j,nz1+1) = erroppr(i,j,nz+1)
 				enddo
 			enddo
-		else
-			do k = 1, nz2									! SERÁ QUE NÃO DEVERIA COMEÇAR O LOOP COM 0 AO INVÉS DE 1?
-				do i = 1, nx2
-					matepr(i,1,k) = matepr(i,2,k)
-					matepr(i,ny1+1,k) = matepr(i,ny+1,k)
-					erroppr(i,1,k) = erroppr(i,2,k)
-					erroppr(i,ny1+1,k) = erroppr(i,ny+1,k)
-				enddo
-			enddo
-		endif
-		
-		do j = 1, ny2
-			do i = 1, nx2
-					matepr(i,j,1) = matepr(i,j,2)
-					matepr(i,j,nz1+1) = matepr(i,j,nz+1)
-					erroppr(i,j,1) = erroppr(i,j,2)
-					erroppr(i,j,nz1+1) = erroppr(i,j,nz+1)
-			enddo
-		enddo
+
+		!$OMP END PARALLEL SECTIONS
 
 		CALL cpu_time(end_outros5_f90)
 		!$ end_outros5_omp = omp_get_wtime()
