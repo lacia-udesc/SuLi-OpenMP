@@ -17,6 +17,8 @@ module disc
     !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
     integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(0.01/0.001)
 
+    integer, parameter :: malha = nx*ny*nz
+
     integer,parameter :: nx2=nx1+1, ny2=ny1+1, nz2=nz1+1
 
     !Para fazer dz variável no espaço inicialmente criar uma função ...
