@@ -260,7 +260,7 @@ SUBROUTINE graddin()
 		!OMP PARALLEL NUM_THREADS(4)
 
 		!$OMP PARALLEL
-			!$OMP DO
+			!$OMP DO SCHEDULE(DYNAMIC)
 				do k = 1, nz
 						do j = 1, ny
 								do i = 1, nx
@@ -321,7 +321,7 @@ SUBROUTINE graddin()
 		! Recálculo das matrizes e, erro e parâmetro beta
 		
 		!$OMP PARALLEL
-			!$OMP DO
+			!$OMP DO SCHEDULE(DYNAMIC)
 				do k = 1, nz
 						do j = 1, ny
 								do i = 1, nx
@@ -331,7 +331,7 @@ SUBROUTINE graddin()
 				enddo
 			!$OMP END DO NOWAIT
 			
-			!$OMP DO
+			!$OMP DO SCHEDULE(DYNAMIC)
 				do k = 1, nz
 						do j = 1, ny
 								do i = 1, nx
@@ -369,7 +369,7 @@ SUBROUTINE graddin()
 	
 		! Recálculo de erroppr
 
-		!$OMP PARALLEL DO
+		!$OMP PARALLEL DO SCHEDULE(DYNAMIC)
 			do k = 1, nz
 					do j = 1, ny
 							do i = 1, nx
@@ -396,7 +396,7 @@ SUBROUTINE graddin()
 
 		!$OMP PARALLEL
 			if (ccx0.eq.0) then  ! Condição periódica
-				!$OMP DO
+				!$OMP DO SCHEDULE(DYNAMIC)
 					do k = 1, nz2
 						do j = 1, ny2
 							matepr(1,j,k) = matepr(nx+1,j,k)
@@ -407,7 +407,7 @@ SUBROUTINE graddin()
 					enddo
 				!$OMP END DO NOWAIT
 			else
-				!$OMP DO
+				!$OMP DO SCHEDULE(DYNAMIC)
 				do k = 1, nz2		
 					do j = 1, ny2
 						matepr(1,j,k) = matepr(2,j,k)
@@ -420,7 +420,7 @@ SUBROUTINE graddin()
 			endif
 
 			if (ccy0.eq.0) then  ! Condição periódica
-				!$OMP DO
+				!$OMP DO SCHEDULE(DYNAMIC)
 					do k = 1, nz2		
 						do i = 1, nx2
 							matepr(i,1,k) = matepr(i,ny+1,k)
@@ -431,7 +431,7 @@ SUBROUTINE graddin()
 					enddo
 				!$OMP END DO NOWAIT
 			else
-				!$OMP DO
+				!$OMP DO SCHEDULE(DYNAMIC)
 					do k = 1, nz2		
 						do i = 1, nx2
 							matepr(i,1,k) = matepr(i,2,k)
@@ -443,7 +443,7 @@ SUBROUTINE graddin()
 				!$OMP END DO NOWAIT
 			endif
 
-			!$OMP DO
+			!$OMP DO SCHEDULE(DYNAMIC)
 			do j = 1, ny2
 				do i = 1, nx2
 						matepr(i,j,1) = matepr(i,j,2)
