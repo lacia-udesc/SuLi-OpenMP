@@ -16,7 +16,7 @@ SUBROUTINE graddin()
 	USE disc
 	USE omp
 	USE paodemel
-	USE omp_lib
+	USE, INTRINSIC :: omp_lib
 
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
