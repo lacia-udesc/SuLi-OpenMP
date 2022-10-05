@@ -234,14 +234,17 @@ module omp
 	double precision :: fortran_start_graddin, fortran_end_graddin
 	double precision :: omp_start_graddin, omp_end_graddin
 
+	double precision :: fortran_start_plot_i, fortran_end_plot_i
+	double precision :: omp_start_plot_i, omp_end_plot_i
+
 	double precision :: fortran_start_plot_f, fortran_end_plot_f
 	double precision :: omp_start_plot_f, omp_end_plot_f
 
 	double precision :: fortran_start_plot_atri, fortran_end_plot_atri
 	double precision :: omp_start_plot_atri, omp_end_plot_atri
 
-	double precision :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_outros3_f90, end_outros3_f90
-	double precision :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_outros3_omp, end_outros3_omp
+	double precision :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_contorno3_f90, end_contorno3_f90
+	double precision :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_contorno3_omp, end_contorno3_omp
     
 	double precision :: start_outros4_f90, end_outros4_f90, start_outros5_f90, end_outros5_f90
 	double precision :: start_outros4_omp, end_outros4_omp, start_outros5_omp, end_outros5_omp
@@ -249,33 +252,47 @@ module omp
 	double precision :: fortran_start_grad_1, fortran_end_grad_1, fortran_start_grad_2, fortran_end_grad_2 
 	double precision :: omp_start_grad_1, omp_end_grad_1, omp_start_grad_2, omp_end_grad_2
     
-	real :: soma_level_set_f90, soma_visco_f90, soma_graddin_f90, soma_plot_f_f90
-	real :: soma_level_set_omp, soma_visco_omp, soma_graddin_omp, soma_plot_f_omp
-	real :: soma_outros_f90, soma_outros2_f90, soma_outros3_f90, soma_outros4_f90, soma_outros5_f90
-	real :: soma_outros_omp, soma_outros2_omp, soma_outros3_omp, soma_outros4_omp, soma_outros5_omp
+	real :: soma_level_set_f90, soma_visco_f90, soma_graddin_f90, soma_plot_i_f90, soma_plot_f_f90, soma_plot_atri_f90
+	real :: soma_level_set_omp, soma_visco_omp, soma_graddin_omp, soma_plot_i_omp, soma_plot_f_omp, soma_plot_atri_omp
+	real :: soma_outros_f90, soma_outros2_f90, soma_contorno3_f90, soma_outros4_f90, soma_outros5_f90
+	real :: soma_outros_omp, soma_outros2_omp, soma_contorno3_omp, soma_outros4_omp, soma_outros5_omp
 	real :: soma_grad_1_f90, soma_grad_2_f90
 	real :: soma_grad_1_omp, soma_grad_2_omp
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    double precision :: fortran_start_convdiff, fortran_end_convdiff, fortran_start_posdin, fortran_end_posdin
+	double precision :: omp_start_convdiff, omp_end_convdiff, omp_start_posdin, omp_end_posdin
+
+    double precision :: fortran_start_contorno1, fortran_end_contorno1, fortran_start_contorno2, fortran_end_contorno2
+	double precision :: omp_start_contorno1, omp_end_contorno1, omp_start_contorno2, omp_end_contorno2
+
+    double precision :: fortran_start_tempo, fortran_end_tempo
+	double precision :: omp_start_tempo, omp_end_tempo 
+
+    real :: soma_convdiff_f90, soma_contorno2_f90, soma_posdin_f90, soma_contorno1_f90, soma_tempo_f90
+	real :: soma_convdiff_omp, soma_contorno2_omp, soma_posdin_omp, soma_contorno1_omp, soma_tempo_omp
+    
 	!double precision function omp_get_wtime()
 	!double precision function omp_get_wtick()
 
-    !   Padrão de rastreio de processos:   !
+    !   Padrão de rastreio de processos   !
 
-    !CALL cpu_time(fortran_start_)
-    !omp_start_ = omp_get_wtime()
+    !CALL cpu_time(fortran_start_processo)
+    !!$ omp_start_processo = omp_get_wtime()
 
     !CALL processo()
 
-    !CALL cpu_time(fortran_end_)
-    !omp_end_ = omp_get_wtime()
+    !CALL cpu_time(fortran_end_processo)
+    !!$ omp_end_processo = omp_get_wtime()
 
     !write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-    !soma_f90 = soma_f90 + (fortran_end_-fortran_start_)
-    !soma_omp = soma_omp + (omp_end_-omp_start_)
-    !write(*,*) "Tempo individual do processo() p/ Fortran:", fortran_end_-fortran_start_
-    !write(*,*) "Tempo acumulado do processo() p/ Fortran", soma_f90
-    !write(*,*) "Tempo individual do processo() p/ OpenMP:", omp_end_-omp_start_
-    !write(*,*) "Tempo acumulado do processo() p/ OpenMP", soma_omp
+    !soma_processo_f90 = soma_processo_f90 + (fortran_end_processo - fortran_start_processo)
+    !soma_processo_omp = soma_processo_omp + (omp_end_processo - omp_start_processo)
+    !write(*,*) "Tempo acumulado do processo() p/ Fortran", soma_processo_f90
+    !write(*,*) "Tempo acumulado do processo() p/ OpenMP", soma_processo_omp
+    !write(*,*) "Tempo individual do processo() p/ Fortran:", fortran_end_processo - fortran_start_processo
+    !write(*,*) "Tempo individual do processo() p/ OpenMP:", omp_end_processo - omp_start_processo
 
 end module omp
 
