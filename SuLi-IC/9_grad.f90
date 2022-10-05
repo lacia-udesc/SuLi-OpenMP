@@ -230,8 +230,8 @@ SUBROUTINE graddin()
 	!write(*,*) "Tempo acumulado de norm. e 1_erro p/ OpenMP", soma_outros_omp
 
 	!Tempo da redução do erro p/ Fortran e OpenMP
-	CALL cpu_time(start_outros4_f90)
-	!$ start_outros4_omp = omp_get_wtime()
+	!CALL cpu_time(start_outros4_f90)
+	! start_outros4_omp = omp_get_wtime()
 
 	!%%%%%%%%%%%%%   loop da redução do erro   %%%%%%%%%%%%%%!
 	do while ((abs(alfamupr) > (0.0001/(nx*ny*nz))) .and. (cont < 5000) )
@@ -254,8 +254,8 @@ SUBROUTINE graddin()
 
 		! Parâmetro mp e alfa
 
-		CALL cpu_time(fortran_start_grad_1)
-		!$ omp_start_grad_1 = omp_get_wtime()
+		!CALL cpu_time(fortran_start_grad_1)
+		! omp_start_grad_1 = omp_get_wtime()
 
 		!OMP PARALLEL NUM_THREADS(4)
 
@@ -309,14 +309,14 @@ SUBROUTINE graddin()
 
 		!write(*,*) "Primeiro alfapr", alfapr
 		
-		CALL cpu_time(fortran_end_grad_1)
-		!$ omp_end_grad_1 = omp_get_wtime()
+		!CALL cpu_time(fortran_end_grad_1)
+		! omp_end_grad_1 = omp_get_wtime()
 
 		soma_grad_1_f90 = soma_grad_1_f90 + (fortran_end_grad_1 - fortran_start_grad_1)
 		soma_grad_1_omp = soma_grad_1_omp + (omp_end_grad_1 - omp_start_grad_1)
 
-		CALL cpu_time(fortran_start_grad_2)
-		!$ omp_start_grad_2 = omp_get_wtime()
+		!CALL cpu_time(fortran_start_grad_2)
+		! omp_start_grad_2 = omp_get_wtime()
 
 		! Recálculo das matrizes e, erro e parâmetro beta
 		
@@ -356,16 +356,16 @@ SUBROUTINE graddin()
 
 		!OMP BARRIER
 
-		CALL cpu_time(fortran_end_grad_2)
-		!$ omp_end_grad_2 = omp_get_wtime()
+		!CALL cpu_time(fortran_end_grad_2)
+		! omp_end_grad_2 = omp_get_wtime()
 
 		soma_grad_2_f90 = soma_grad_2_f90 + (fortran_end_grad_2 - fortran_start_grad_2)
 		soma_grad_2_omp = soma_grad_2_omp + (omp_end_grad_2 - omp_start_grad_2)		
 
 		betapr = betamupr/alfamupr
 
-		CALL cpu_time(start_outros2_f90)
-		!$ start_outros2_omp = omp_get_wtime()
+		!CALL cpu_time(start_outros2_f90)
+		! start_outros2_omp = omp_get_wtime()
 	
 		! Recálculo de erroppr
 
@@ -379,14 +379,14 @@ SUBROUTINE graddin()
 			enddo
 		!$OMP END PARALLEL DO
 
-		CALL cpu_time(end_outros2_f90)
-		!$ end_outros2_omp = omp_get_wtime()
+		!CALL cpu_time(end_outros2_f90)
+		! end_outros2_omp = omp_get_wtime()
 
 		soma_outros2_f90 = soma_outros2_f90 + (end_outros2_f90 - start_outros2_f90)
 		soma_outros2_omp = soma_outros2_omp + (end_outros2_omp - start_outros2_omp)
 		
-		CALL cpu_time(start_outros5_f90)
-		!$ start_outros5_omp = omp_get_wtime()
+		!CALL cpu_time(start_outros5_f90)
+		! start_outros5_omp = omp_get_wtime()
 		
 		! Condições de contorno
 
@@ -456,8 +456,8 @@ SUBROUTINE graddin()
 
 		!$OMP END PARALLEL
 
-		CALL cpu_time(end_outros5_f90)
-		!$ end_outros5_omp = omp_get_wtime()
+		!CALL cpu_time(end_outros5_f90)
+		! end_outros5_omp = omp_get_wtime()
 
 		soma_outros5_f90 = soma_outros5_f90 + (end_outros5_f90 - start_outros5_f90)
 		soma_outros5_omp = soma_outros5_omp + (end_outros5_omp - start_outros5_omp)
@@ -472,28 +472,28 @@ SUBROUTINE graddin()
 
 	! OTIMIZAR CÓDIGO
 
-	CALL cpu_time(end_outros4_f90)
-	!$ end_outros4_omp = omp_get_wtime()
+	!CALL cpu_time(end_outros4_f90)
+	! end_outros4_omp = omp_get_wtime()
 
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran", soma_grad_1_f90
-	write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP", soma_grad_1_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ Fortran", soma_grad_2_f90
-	write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP", soma_grad_2_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ Fortran", soma_outros2_f90
-	write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ OpenMP", soma_outros2_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	write(*,*) "Tempo acumulado de 'Condições de contorno' p/ Fortran", soma_outros5_f90
-	write(*,*) "Tempo acumulado de 'Condições de contorno' p/ OpenMP", soma_outros5_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	!write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ Fortran", soma_grad_1_f90
+	!write(*,*) "Tempo acumulado de 'Parâmetros mppr e alfas' p/ OpenMP", soma_grad_1_omp
+	!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	!write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ Fortran", soma_grad_2_f90
+	!write(*,*) "Tempo acumulado de 'Recálculo de matrizes' p/ OpenMP", soma_grad_2_omp
+	!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	!write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ Fortran", soma_outros2_f90
+	!write(*,*) "Tempo acumulado de 'Recálculo de erro' p/ OpenMP", soma_outros2_omp
+	!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	!write(*,*) "Tempo acumulado de 'Condições de contorno' p/ Fortran", soma_outros5_f90
+	!write(*,*) "Tempo acumulado de 'Condições de contorno' p/ OpenMP", soma_outros5_omp
+	!write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	soma_outros4_f90 = soma_outros4_f90 + (end_outros4_f90 - start_outros4_f90)
 	soma_outros4_omp = soma_outros4_omp + (end_outros4_omp - start_outros4_omp)
-	write(*,*) "Tempo individual do loop da redução do erro p/ Fortran:", end_outros4_f90 - start_outros4_f90
-	write(*,*) "Tempo acumulado do loop da redução do erro p/ Fortran", soma_outros4_f90
-	write(*,*) "Tempo individual do loop da redução do erro p/ OpenMP:", end_outros4_omp - start_outros4_omp
-	write(*,*) "Tempo acumulado do loop da redução do erro p/ OpenMP", soma_outros4_omp
+	!write(*,*) "Tempo individual do loop da redução do erro p/ Fortran:", end_outros4_f90 - start_outros4_f90
+	!write(*,*) "Tempo acumulado do loop da redução do erro p/ Fortran", soma_outros4_f90
+	!write(*,*) "Tempo individual do loop da redução do erro p/ OpenMP:", end_outros4_omp - start_outros4_omp
+	!write(*,*) "Tempo acumulado do loop da redução do erro p/ OpenMP", soma_outros4_omp
 
 	! Desnormalização de matriz e para a pressão dinâmica
 	do k = 0, nz+1
@@ -539,7 +539,3 @@ SUBROUTINE pressh()
 	enddo
 
 END SUBROUTINE pressh
-
-subroutine OMP_set_num_threads(number_of_threads)
-	integer(kind = 4), intent(in) :: number_of_threads
-end subroutine OMP_set_num_threads
