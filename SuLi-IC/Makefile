@@ -17,7 +17,7 @@ SRC = 0_modules.f90 1_principal.f90 2_iniciais.f90 3_contorno.f90 4_plot.f90 5_v
 #OBJ = ${SRC:.f90=.o}	#Substitui .f90 por .o
 OBJ = $(patsubst %.f90,%.o,$(SRC))
 
-rodar_3d: $(EXE)
+rodar_3d:
 
 $(EXE): $(OBJ)
 	$(FC) -o $@ $^ $(FFLAGS) -fopenmp
@@ -33,5 +33,6 @@ allclean:
 	rm -rf arquivos
 	rm -rf dados
 	rm -f saida
+	rm -f simulacao_
 	rm -f 0_modules.o
 	rm -f fort.99998799
