@@ -12,7 +12,7 @@ module disc
     !Número de tempo por arquivo plotado
     real(8),parameter :: dt_frame = 0.00001*10.
 
-    integer,parameter :: nx=int(3.6/dx) , ny=int(1.2/dy), nz=int(1.2/dz)
+    integer,parameter :: nx=int(3./dx) , ny=int(1./dy), nz=int(1./dz)
     !integer,parameter :: nx=int(10) , ny=int(10), nz=int(10)
     !nz=int(10./dz1-0.1+0.5) porque a última célula é maior (0.5)
     integer,parameter :: nx1=nx+1, ny1=ny+1, nz1=nz+1, ts = ceiling(0.01/0.001)
@@ -187,7 +187,7 @@ module smag
 end module smag
 
 module ls_param
-
+    
     USE disc, only: nx, ny, nz, dx, dy, dz
 
     real(8), dimension(nx,ny,nz) :: ls, mod_ls, kurv, hs, ddlsdx, ddlsdy, ddlsdz, hsx, hsy, hsz
@@ -314,3 +314,25 @@ module paodemel
 	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
 
 end module paodemel
+
+module paodemel2
+
+    USE disc, only: nx, ny, nz
+
+    IMPLICIT NONE
+
+	real(8), dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
+
+end module paodemel2
+
+module paodemel3
+
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1
+
+	real(8) :: zi, zj, zk
+	integer :: i, j, k, niv, ii
+	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
+	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
+	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
+
+end module paodemel3
