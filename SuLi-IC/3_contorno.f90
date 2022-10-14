@@ -9,6 +9,7 @@
 
 SUBROUTINE contorno(nlock)
 
+	USE disc, only: mms_t, obst_t, esp_type, pi
 	USE velpre
 	USE obst
 	USE cond
@@ -783,6 +784,7 @@ SUBROUTINE sponge_layer(epis_z)
 	!Subrotina para representar a camada esponja, quando se quer um domínio com saída livre. 
 	!Não funciona com escoamentos, porque a velocidade é forçada a zero.
 
+	USE disc, only: esp_type, pi
 	USE velpre
 	USE ls_param
 	

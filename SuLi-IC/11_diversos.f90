@@ -9,6 +9,7 @@
 
 SUBROUTINE tempo()
 
+	USE disc, only: dt, it, t_tempo, tt
 	USE vartempo
 	USE velpre
 

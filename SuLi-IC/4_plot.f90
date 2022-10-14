@@ -530,6 +530,7 @@ END SUBROUTINE plot_atrib
 
 SUBROUTINE est(div)
 
+	USE disc, only: dt, dt_frame, it
 	USE velpre
 	USE ls_param
 

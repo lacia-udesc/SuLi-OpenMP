@@ -9,7 +9,9 @@
 
 SUBROUTINE level_set_ini()
 
+	USE disc, only: pi
 	USE ls_param
+	
 	IMPLICIT NONE
 
 	!Declarado também no programa
@@ -227,6 +229,7 @@ END SUBROUTINE level_set_ini
 
 SUBROUTINE level_set()
 
+	USE disc, only: dt, mms_t
 	USE ls_param
 	USE velpre
 
@@ -343,7 +346,7 @@ END SUBROUTINE conv_weno
 
 SUBROUTINE der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 
-	USE disc
+	USE disc, only: nx, ny, nz, dx, dy, dz
 	USE cond
 
 	implicit none
@@ -371,14 +374,14 @@ SUBROUTINE der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 
 	do k = 1, nz
 		do i = 1, nx
-			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,ls(i,:,k),ihs)
+			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,ls(i,:,k),ihs)		!#		TRETA		#
 		enddo
 	enddo
 
 	ihs = 1
 	do j = 1, ny
 		do i = 1, nx
-			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,ls(i,j,:),ihs)
+			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,ls(i,j,:),ihs)		!#		TRETA		#
 		enddo
 	enddo
 
@@ -508,7 +511,7 @@ SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 
 END SUBROUTINE reinic_weno
 
-SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)
+SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)	!#	VERIFICAR	#
 
 	IMPLICIT NONE
 
@@ -613,12 +616,13 @@ END SUBROUTINE weno1
 
 SUBROUTINE heaviside()
 
-	USE ls_param
-	USE velpre
+	USE disc, only: nx, ny, nz, pi, dt, mms_t
+	USE ls_param, only: ls, alpha1, dx1, mi_f1, mi_f2, hs, hsx, hsy, hsz, rho_f1, rho_f2, t_hs
+	USE velpre, only: rho, ls_nu
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, coefa1,ihs
+	integer :: i, j, k, coefa1, ihs
 	real(8) :: aux1, aux2, aux3, aux4
 	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
 
@@ -775,13 +779,13 @@ SUBROUTINE mod_ls1()
 
 	do k = 1, nz
 		do i = 1, nx
-			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,dlsdya(i,:,k),ihs)
+			call weno1(tb1(i,:,k),te1(i,:,k),ny,dy,dlsdya(i,:,k),ihs)		!#		TRETA		#
 		enddo
 	enddo
 
 	do j = 1, ny
 		do i = 1, nx
-			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,dlsdza(i,j,:),ihs)
+			call weno1(tc1(i,j,:),tf1(i,j,:),nz,dz,dlsdza(i,j,:),ihs)		!#		TRETA		#
 		enddo
 	enddo
 

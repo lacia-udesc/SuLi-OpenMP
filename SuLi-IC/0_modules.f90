@@ -67,7 +67,7 @@ end module cond
 
 module obst
 
-    USE disc
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dz, pi
 
     !Velocidade de fundo (m/s)
     real(8), dimension(0:nx1+1,0:ny+1,0:nz+1) :: ub
@@ -79,7 +79,7 @@ module obst
     !Indicam até que altura as velocidades tem que ser zeradas (até qual índice k)
     integer, dimension(0:nx+1,0:ny1+1) :: kv
     integer, dimension(0:nx+1,0:ny+1)  :: kw
-    integer, parameter :: elev = 5. *dz                    
+    integer, parameter :: elev = 5. *dz
     !Comprimento a adicionar abaixo
 
     real(8), parameter :: amp = 0.25, comp = 1., fase = -pi/2. !amplitude, comprimento e fase da onda
@@ -88,7 +88,7 @@ end module obst
 
 module velpre
 
-    USE disc
+    USE disc, only: nx, nx1, nx2, ny, ny1, ny2, nz, nz1, nz2
 
     !Velocidades para x e z (m/s)
     real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: u
@@ -129,7 +129,8 @@ end module velpre
 
 module vartempo
 
-    USE disc
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1
+
     real(8),dimension(nx1,ny,nz) :: Fu, u0, fu0, fu1
     real(8),dimension(nx,ny1,nz) :: Fv, v0, fv0, fv1
     real(8),dimension(nx,ny,nz1) :: Fw, w0, fw0, fw1
@@ -187,7 +188,7 @@ end module smag
 
 module ls_param
 
-    USE disc
+    USE disc, only: nx, ny, nz, dx, dy, dz
 
     real(8), dimension(nx,ny,nz) :: ls, mod_ls, kurv, hs, ddlsdx, ddlsdy, ddlsdz, hsx, hsy, hsz
     real(8) :: dtau, alpha1, mi_f1, mi_f2, rho_f1, rho_f2 , vol_ini, vol_ins, ls_m, rho_m, sigma
@@ -222,56 +223,56 @@ module omp
 	IMPLICIT NONE
 
 	!Declaração das variáveis para análise
-	double precision :: fortran_start, fortran_end
-	double precision :: openmp_start, openmp_end
+	real(8) :: fortran_start, fortran_end
+	real(8) :: openmp_start, openmp_end
 
-	double precision :: fortran_start_level_set, fortran_end_level_set
-	double precision :: openmp_start_level_set, openmp_end_level_set
+	real(8) :: fortran_start_level_set, fortran_end_level_set
+	real(8) :: openmp_start_level_set, openmp_end_level_set
 
-	double precision :: fortran_start_visco, fortran_end_visco
-	double precision :: omp_start_visco, omp_end_visco
+	real(8) :: fortran_start_visco, fortran_end_visco
+	real(8) :: omp_start_visco, omp_end_visco
 
-	double precision :: fortran_start_graddin, fortran_end_graddin
-	double precision :: omp_start_graddin, omp_end_graddin
+	real(8) :: fortran_start_graddin, fortran_end_graddin
+	real(8) :: omp_start_graddin, omp_end_graddin
 
-	double precision :: fortran_start_plot_i, fortran_end_plot_i
-	double precision :: omp_start_plot_i, omp_end_plot_i
+	real(8) :: fortran_start_plot_i, fortran_end_plot_i
+	real(8) :: omp_start_plot_i, omp_end_plot_i
 
-	double precision :: fortran_start_plot_f, fortran_end_plot_f
-	double precision :: omp_start_plot_f, omp_end_plot_f
+	real(8) :: fortran_start_plot_f, fortran_end_plot_f
+	real(8) :: omp_start_plot_f, omp_end_plot_f
 
-	double precision :: fortran_start_plot_atri, fortran_end_plot_atri
-	double precision :: omp_start_plot_atri, omp_end_plot_atri
+	real(8) :: fortran_start_plot_atri, fortran_end_plot_atri
+	real(8) :: omp_start_plot_atri, omp_end_plot_atri
 
-	double precision :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_contorno3_f90, end_contorno3_f90
-	double precision :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_contorno3_omp, end_contorno3_omp
+	real(8) :: start_outros_f90, end_outros_f90, start_outros2_f90, end_outros2_f90, start_contorno3_f90, end_contorno3_f90
+	real(8) :: start_outros_omp, end_outros_omp, start_outros2_omp, end_outros2_omp, start_contorno3_omp, end_contorno3_omp
+
+	real(8) :: start_outros4_f90, end_outros4_f90, start_outros5_f90, end_outros5_f90
+	real(8) :: start_outros4_omp, end_outros4_omp, start_outros5_omp, end_outros5_omp
+
+	real(8) :: fortran_start_grad_1, fortran_end_grad_1, fortran_start_grad_2, fortran_end_grad_2 
+	real(8) :: omp_start_grad_1, omp_end_grad_1, omp_start_grad_2, omp_end_grad_2
     
-	double precision :: start_outros4_f90, end_outros4_f90, start_outros5_f90, end_outros5_f90
-	double precision :: start_outros4_omp, end_outros4_omp, start_outros5_omp, end_outros5_omp
-
-	double precision :: fortran_start_grad_1, fortran_end_grad_1, fortran_start_grad_2, fortran_end_grad_2 
-	double precision :: omp_start_grad_1, omp_end_grad_1, omp_start_grad_2, omp_end_grad_2
-    
-	real :: soma_level_set_f90, soma_visco_f90, soma_graddin_f90, soma_plot_i_f90, soma_plot_f_f90, soma_plot_atri_f90
-	real :: soma_level_set_omp, soma_visco_omp, soma_graddin_omp, soma_plot_i_omp, soma_plot_f_omp, soma_plot_atri_omp
-	real :: soma_outros_f90, soma_outros2_f90, soma_contorno3_f90, soma_outros4_f90, soma_outros5_f90
-	real :: soma_outros_omp, soma_outros2_omp, soma_contorno3_omp, soma_outros4_omp, soma_outros5_omp
-	real :: soma_grad_1_f90, soma_grad_2_f90
-	real :: soma_grad_1_omp, soma_grad_2_omp
+	real(8) :: soma_level_set_f90, soma_visco_f90, soma_graddin_f90, soma_plot_i_f90, soma_plot_f_f90, soma_plot_atri_f90
+	real(8) :: soma_level_set_omp, soma_visco_omp, soma_graddin_omp, soma_plot_i_omp, soma_plot_f_omp, soma_plot_atri_omp
+	real(8) :: soma_outros_f90, soma_outros2_f90, soma_contorno3_f90, soma_outros4_f90, soma_outros5_f90
+	real(8) :: soma_outros_omp, soma_outros2_omp, soma_contorno3_omp, soma_outros4_omp, soma_outros5_omp
+	real(8) :: soma_grad_1_f90, soma_grad_2_f90
+	real(8) :: soma_grad_1_omp, soma_grad_2_omp
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    double precision :: fortran_start_convdiff, fortran_end_convdiff, fortran_start_posdin, fortran_end_posdin
-	double precision :: omp_start_convdiff, omp_end_convdiff, omp_start_posdin, omp_end_posdin
+    real(8) :: fortran_start_convdiff, fortran_end_convdiff, fortran_start_posdin, fortran_end_posdin
+	real(8) :: omp_start_convdiff, omp_end_convdiff, omp_start_posdin, omp_end_posdin
 
-    double precision :: fortran_start_contorno1, fortran_end_contorno1, fortran_start_contorno2, fortran_end_contorno2
-	double precision :: omp_start_contorno1, omp_end_contorno1, omp_start_contorno2, omp_end_contorno2
+    real(8) :: fortran_start_contorno1, fortran_end_contorno1, fortran_start_contorno2, fortran_end_contorno2
+	real(8) :: omp_start_contorno1, omp_end_contorno1, omp_start_contorno2, omp_end_contorno2
 
-    double precision :: fortran_start_tempo, fortran_end_tempo
-	double precision :: omp_start_tempo, omp_end_tempo 
+    real(8) :: fortran_start_tempo, fortran_end_tempo
+	real(8) :: omp_start_tempo, omp_end_tempo 
 
-    real :: soma_convdiff_f90, soma_contorno2_f90, soma_posdin_f90, soma_contorno1_f90, soma_tempo_f90
-	real :: soma_convdiff_omp, soma_contorno2_omp, soma_posdin_omp, soma_contorno1_omp, soma_tempo_omp
+    real(8) :: soma_convdiff_f90, soma_contorno2_f90, soma_posdin_f90, soma_contorno1_f90, soma_tempo_f90
+	real(8) :: soma_convdiff_omp, soma_contorno2_omp, soma_posdin_omp, soma_contorno1_omp, soma_tempo_omp
     
 	!double precision function omp_get_wtime()
 	!double precision function omp_get_wtick()
