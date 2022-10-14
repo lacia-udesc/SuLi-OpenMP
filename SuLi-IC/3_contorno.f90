@@ -14,16 +14,15 @@ SUBROUTINE contorno(nlock)
 	USE obst
 	USE cond
 	USE ls_param
+	USE paodemel3
 
 	IMPLICIT NONE
 
 	!Declarado também no programa
-	real(8) :: zi, zj, zk
-	integer :: i, j, k, niv, ii,nlock
 
-	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
-	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
-	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
+	integer :: nlock
+
+
 
 	!RESOLUÇÃO DO PROBLEMA
 
@@ -58,7 +57,11 @@ SUBROUTINE contorno(nlock)
 			prd1(:,:,0)    = prd1(:,:,1)
 			prd1(:,:,nz+1) = prd1(:,:,nz)
 
+			write(*,*) "CHECKPOINT D"
+
 			CALL prd_corr(dpdx,dpdy,dpdz)
+
+			write(*,*) "CHECKPOINT DD"
 
 			!Parede esquerda (j = 1)
 			!Periodica
@@ -509,7 +512,11 @@ SUBROUTINE contorno(nlock)
 			enddo
 		enddo
 
+	write(*,*) "CHECKPOINT E"
+
 		CALL heaviside()
+
+	write(*,*) "CHECKPOINT EE"
 
 	endif
 

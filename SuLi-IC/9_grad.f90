@@ -504,6 +504,7 @@ END SUBROUTINE graddin
 
 SUBROUTINE pressh()
 
+	USE disc, only: dz
 	USE velpre
 	USE parametros
 

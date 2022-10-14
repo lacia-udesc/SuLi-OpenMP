@@ -210,8 +210,10 @@ SUBROUTINE level_set_ini()
 			enddo
 		enddo
 	enddo
-
-	CALL heaviside()
+		
+	!CALL heaviside()
+		
+	write(*,*) "CHECKPOINT CC"
 
 	vol_ini = 0.
 
@@ -223,7 +225,11 @@ SUBROUTINE level_set_ini()
 		enddo
 	enddo
 
-	CALL mod_ls1()
+	write(*,*) "CHECKPOINT 1"
+
+	CALL mod_ls11()
+
+	write(*,*) "CHECKPOINT 2"
 
 END SUBROUTINE level_set_ini
 
@@ -250,7 +256,7 @@ SUBROUTINE level_set()
 
 	CALL reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 
-	CALL mod_ls1()
+	CALL mod_ls11()
 	CALL heaviside()
 
 	vol_ins = 0.
@@ -274,7 +280,7 @@ SUBROUTINE level_set()
 			enddo
 		enddo
 
-		CALL mod_ls1()
+		CALL mod_ls11()
 		CALL heaviside()
 
 		vol_ins = 0.
@@ -287,7 +293,7 @@ SUBROUTINE level_set()
 		enddo
 	enddo
 
-	CALL mod_ls1() !Função para plotagem e cálculo da curvatura
+	CALL mod_ls11() !Função para plotagem e cálculo da curvatura
 
 	CALL heaviside()
 
@@ -515,10 +521,10 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)	!#	VERIFICAR	#
 
 	IMPLICIT NONE
 
+	integer :: i,kk, ii,nx1, ihs
 	real(8),dimension(nx1) :: phiaux,dphidxp,dphidxn,phi0
 	real(8),dimension(3) ::isup, isun, auxx
 	real(8),dimension(3) ::alpup, omgup,alpun, omgun
-	integer :: i,kk, ii,nx1, ihs
 	real(8) :: dx1, mod_phi1,aux1,aux2,aux3,aux4,aux5,aux6,aux,aux11, aux12
 	real(8),dimension(-2:nx1+3) :: phi1
 	real(8),dimension(nx1+4)  :: un
@@ -716,18 +722,24 @@ SUBROUTINE heaviside()
 
 END SUBROUTINE heaviside
 
-SUBROUTINE mod_ls1()
+SUBROUTINE mod_ls11()
 
-	USE ls_param
+	USE disc, only: nx, ny, nz, dx, dy, dz
+	USE ls_param, only: ls, mod_ls, kurv, ddlsdx, ddlsdy, ddlsdz
+	use paodemel2
 
 	IMPLICIT NONE
 
-	integer :: i, j, k,ihs
+	integer :: i, j, k, ihs
 	real(8) :: aux1, aux2
-	real(8), dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
+
 	!ihs = 1
 
+	write(*,*) "CHECKPOINT 2"
+
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
+
+	write(*,*) "CHECKPOINT 3"
 
 	do k = 1, nz
 		do j = 1, ny
@@ -814,4 +826,4 @@ SUBROUTINE mod_ls1()
 		enddo
 	enddo
 
-END SUBROUTINE mod_ls1
+END SUBROUTINE mod_ls11

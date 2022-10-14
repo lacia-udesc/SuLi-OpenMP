@@ -48,7 +48,7 @@ PROGRAM PNH
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	!$ CALL OMP_set_num_threads(6)		
+	!$ CALL OMP_set_num_threads(6)
 
 	!$ CALL OMP_set_nested(.TRUE.)
 
@@ -82,17 +82,25 @@ PROGRAM PNH
 	!Condições iniciais
 	if (irest.eq.0) then
 		CALL iniciais()
+		write(*,*) "CHECKPOINT B"
 	else
 		CALL restart_ini()
 	endif
+
 
 	!Adicionar os contornos na plotagem inicial						Qual o motivo desta inicialização?		 ### PEDRO ###
 
     CALL cpu_time(fortran_start_plot_i)
     !$ omp_start_plot_i = omp_get_wtime()
 
+
 	CALL contorno(1)
+
+	write(*,*) "CHECKPOINT C"
+
 	CALL contorno(3)
+
+	write(*,*) "CHECKPOINT CC"
 
 	!Solução manufaturada
 	if (mms_t > 0) then
@@ -223,7 +231,6 @@ PROGRAM PNH
 
 			if (wave_t > 0) call boundary_waves() !For wave propagation
 				!Condições de Contorno para a parte Hidrostática
-				!CALL pressh()
 
 
 			CALL cpu_time(fortran_start_contorno2)
