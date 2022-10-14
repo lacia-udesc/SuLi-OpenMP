@@ -1,0 +1,195 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+ Com entrada de onda.
+At line 374 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 374 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 374 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 381 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 381 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 381 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 778 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 778 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 778 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 784 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 784 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+At line 784 of file 14_level_set.f90
+Fortran runtime warning: An array temporary was created
+ Esquema temporal: 
+ RK3.
+ mms: zero
+ Malha (nx x ny x nz):         180 x          60 x          60
+ Intervalo Espacial (dx x dy x dz):   2.0000000000000000E-002 x   2.0000000000000000E-002 x   2.0000000000000000E-002
+ Parâmetros temporais
+ dt =    1.0000000000000000E-003 dt_frame =    1.0000000000000000E-004 ts =           10
+ Parâmetros de modelo
+ der =            3 advectivo =            1 modelo de turb. =            1
+ Condições De Contorno:
+ 	ccxo		ccy0	ccz0
+           3           2           2
+ 	ccxf		ccyf	cczf
+           4           2           1
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+At line 166 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_15' of procedure 'interpy_fc'
+At line 169 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_25' of procedure 'interpz_fc'
+At line 172 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_30' of procedure 'interpx_fc'
+At line 175 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_25' of procedure 'interpz_fc'
+At line 178 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_30' of procedure 'interpx_fc'
+At line 181 of file 7_advectivo.f90
+Fortran runtime warning: An array temporary was created for argument '_formal_15' of procedure 'interpy_fc'
+ Cálculo do primeiro erro   7449822.4131715158     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   4421940.4175082007     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   417766.77464401006     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           1
+ it*dt:   1.0000000000000000E-003
+ Ciclo:   0.0000000000000000     
+ Tempo restante aproximado (h):   0.0000000000000000     
+ Tempo restante aproximado (min):   0.0000000000000000     
+ Duração Da Simulação (s):   93.495346999999995     
+ Duração Da Simulação (min):   1.5582557833333333     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   2.1599999999975537     
+ Vol. Instant.   2.1599999999975537     
+ Erro (%)   0.0000000000000000     
+ Div.   10.965163895590768     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ Cálculo do primeiro erro   3073556.3507025559     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   917870.55229552672     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   477992.61098320299     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           2
+ it*dt:   2.0000000000000000E-003
+ Ciclo:   99.677000000000007     
+ Tempo restante aproximado (h):   3.1643492063492061E-002
+ Tempo restante aproximado (min):   5.2739153439153438E-004
+ Duração Da Simulação (s):   181.57555199999999     
+ Duração Da Simulação (min):   3.0262591999999997     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   2.1599999999975537     
+ Vol. Instant.   2.1728702432587697     
+ Erro (%)  -5.9584459542734135E-003
+ Div.   11.813020245595562     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ Cálculo do primeiro erro   975982.53199259192     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   823246.29018556583     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   170620.76935535303     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           3
+ it*dt:   3.0000000000000001E-003
+ Ciclo:   93.775000000000006     
+ Tempo restante aproximado (h):   5.3171604308390026E-002
+ Tempo restante aproximado (min):   8.8619340513983375E-004
+ Duração Da Simulação (s):   274.77572300000003     
+ Duração Da Simulação (min):   4.5795953833333334     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   2.1599999999975537     
+ Vol. Instant.   2.1729272244222271     
+ Erro (%)  -5.9848261225407704E-003
+ Div.   16.249289705056928     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ Cálculo do primeiro erro   1568553.5886936549     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   1086247.7394232578     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   322242.11460309534     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           4
+ it*dt:   4.0000000000000001E-003
+ Ciclo:   99.260000000000005     
+ Tempo restante aproximado (h):   6.9208994169096219E-002
+ Tempo restante aproximado (min):   1.1534832361516035E-003
+ Duração Da Simulação (s):   369.58943099999999     
+ Duração Da Simulação (min):   6.1598238499999995     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   2.1599999999975537     
+ Vol. Instant.   2.1729889428322591     
+ Erro (%)  -6.0133994605185790E-003
+ Div.   8.2646412121708845     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ Cálculo do primeiro erro   607047.36328339460     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   716984.86355385359     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   293280.54940620071     
+
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ it:           5
+ it*dt:   5.0000000000000001E-003
+ Ciclo:   96.471999999999994     
+ Tempo restante aproximado (h):   7.8463264843352309E-002
+ Tempo restante aproximado (min):   1.3077210807225384E-003
+ Duração Da Simulação (s):   461.63688100000002     
+ Duração Da Simulação (min):   7.6939480166666669     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Vol. Inicial   2.1599999999975537     
+ Vol. Instant.   2.1730908882651199     
+ Erro (%)  -6.0605964201764072E-003
+ Div.   9.2743248386139996     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           1
+ Cálculo do primeiro erro   498516.81369248551     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           2
+ Cálculo do primeiro erro   4555703.6492350223     
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+ Ciclo:           3
+ Cálculo do primeiro erro   375545.06139457296     
+At line 364 of file 4_plot.f90 (unit = 16)
+Fortran runtime error: Cannot open file 'arquivos//campos_00016': Arquivo ou diretório inexistente
+
+Error termination. Backtrace:
+#0  0x7fcd03829d21 in ???
+#1  0x7fcd0382a869 in ???
+#2  0x7fcd0382b54f in ???
+#3  0x7fcd03a6a9d6 in ???
+#4  0x7fcd03a6accc in ???
+#5  0x558ec4e7f881 in ???
+#6  0x558ec4e75a1f in ???
+#7  0x558ec4e752be in ???
+#8  0x7fcd034c0082 in __libc_start_main
+	at ../csu/libc-start.c:308
+#9  0x558ec4e752fd in ???
+#10  0xffffffffffffffff in ???
+

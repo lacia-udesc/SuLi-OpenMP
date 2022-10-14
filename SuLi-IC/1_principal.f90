@@ -48,22 +48,22 @@ PROGRAM PNH
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	CALL OMP_set_num_threads(6)		
+	!$ CALL OMP_set_num_threads(6)		
 
-	CALL OMP_set_nested(.TRUE.)
+	!$ CALL OMP_set_nested(.TRUE.)
 
-	write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
+	!# write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
 	!$ write(*,*) "Nested? ", OMP_GET_NESTED()
 	!$ write(*,*) "Número de threads início = ", OMP_GET_NUM_THREADS()
 	!$ write(*,*) "Paralelo no início? ", OMP_in_parallel()
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	CALL OMP_set_dynamic(.FALSE.)
+	!$ CALL OMP_set_dynamic(.FALSE.)
 
 	!$OMP PARALLEL
 
-	write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
+	!$ write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
 	!$ write(*,*) "Nested? ", OMP_GET_NESTED()
 	!$ write(*,*) "Número de threads início = ", OMP_GET_NUM_THREADS()
 	!$ write(*,*) "Paralelo no início? ", OMP_in_parallel()
