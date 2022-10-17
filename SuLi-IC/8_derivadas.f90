@@ -1,10 +1,11 @@
 SUBROUTINE derivax(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dx
 
   IMPLICIT NONE
+
   integer :: i, j, k
-  integer, intent(IN) :: dimx,dimy,dimz
+  integer, intent(IN) :: dimx, dimy, dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
   real(8), intent(OUT), dimension(dimx,dimy,dimz) :: campo_saida
   !real(8), dimension(dimx,dimy,dimz) :: a1
@@ -24,11 +25,12 @@ END SUBROUTINE derivax
 
 SUBROUTINE derivay(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dy
 
   IMPLICIT NONE
+
   integer :: i, j, k
-  integer, intent(IN) :: dimx,dimy,dimz
+  integer, intent(IN) :: dimx, dimy, dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
   real(8), intent(OUT), dimension(dimx,dimy,dimz) :: campo_saida
 
@@ -47,11 +49,12 @@ END SUBROUTINE derivay
 
 SUBROUTINE derivaz(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dz
 
   IMPLICIT NONE
+
   integer :: i, j, k
-  integer, intent(IN) :: dimx,dimy,dimz
+  integer, intent(IN) :: dimx, dimy, dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
   real(8), intent(OUT), dimension(dimx,dimy,dimz) :: campo_saida
 
@@ -70,11 +73,12 @@ END SUBROUTINE derivaz
 
 SUBROUTINE derivaxu2p(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dx
 
   IMPLICIT NONE
+
   integer :: i, j, k
-  integer, intent(IN) :: dimx,dimy,dimz
+  integer, intent(IN) :: dimx, dimy, dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
   real(8), intent(OUT), dimension(dimx,dimy,dimz) :: campo_saida
   !real(8), dimension(dimx,dimy,dimz) :: a1
@@ -102,9 +106,10 @@ END SUBROUTINE derivaxu2p
 
 SUBROUTINE derivayu2p(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dy
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
@@ -133,9 +138,10 @@ END SUBROUTINE derivayu2p
 
 SUBROUTINE derivazu2p(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+    USE disc, only: dz
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
@@ -163,9 +169,10 @@ END SUBROUTINE derivazu2p
 
 SUBROUTINE derivaxu2n(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dx
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
@@ -195,9 +202,10 @@ END SUBROUTINE derivaxu2n
 
 SUBROUTINE derivayu2n(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dy
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
@@ -226,9 +234,10 @@ END SUBROUTINE derivayu2n
 
 SUBROUTINE derivazu2n(a1,dimx,dimy,dimz,campo_saida)
 
-  USE disc
+  USE disc, only: dz
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(0:dimx+1,0:dimy+1,0:dimz+1)  :: a1
@@ -258,6 +267,7 @@ END SUBROUTINE derivazu2n
 SUBROUTINE interpx_cf(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1
@@ -286,6 +296,7 @@ END SUBROUTINE interpx_cf
 SUBROUTINE interpx_fc(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1
@@ -307,6 +318,7 @@ END SUBROUTINE interpx_fc
 SUBROUTINE interpy_cf(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1
@@ -339,6 +351,7 @@ END SUBROUTINE interpy_cf
 SUBROUTINE interpy_fc(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1
@@ -360,6 +373,7 @@ END SUBROUTINE interpy_fc
 SUBROUTINE interpz_cf(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+  
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1
@@ -392,6 +406,7 @@ END SUBROUTINE interpz_cf
 SUBROUTINE interpz_fc(a1,dimx,dimy,dimz,campo_saida) !cf --> centro pra face fc--> face pro centro
 
   IMPLICIT NONE
+  
   integer :: i, j, k
   integer, intent(IN) :: dimx,dimy,dimz
   real(8), intent(IN), dimension(dimx,dimy,dimz)  :: a1

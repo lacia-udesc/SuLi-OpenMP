@@ -14,48 +14,7 @@
 
 SUBROUTINE convdiff()
 
-	USE velpre
-	USE parametros
-	USE smag
-	USE ls_param
-	USE vartempo
-	USE mms_m
-	USE obst
-	
-	IMPLICIT NONE
-
-	! auxiliares de velocidades: velocidades lagrangianas
-	real(8), dimension(nx1,ny,nz) :: uint
-	real(8), dimension(nx,ny1,nz) :: vint
-	real(8), dimension(nx,ny,nz1) :: wint
-
-	real(8), dimension(0:nx1,ny,nz) :: ama
-	real(8), dimension(nx,0:ny1,nz) :: bmb
-	real(8), dimension(nx,ny,0:nz1) :: dmd
-	real(8), dimension(nx1,ny1,nz)  :: amb, bma
-	real(8), dimension(nx1,ny,nz1)  :: amd, dma
-	real(8), dimension(nx,ny1,nz1)  :: bmd, dmb
-
-	!real(8), dimension(0:nx1,ny1,nz)  :: vx
-	!real(8), dimension(0:nx1,ny,nz1)  :: wx
-
-	!real(8), dimension(nx1,0:ny1,nz)  :: uy
-	!real(8), dimension(nx,0:ny1,nz1)  :: wy
-
-	!real(8), dimension(nx1,ny,0:nz1)  :: uz
-	!real(8), dimension(nx,ny1,0:nz1)  :: vz
-
-	real(8), dimension(nx1,ny,nz) :: rhox, dhsdx
-	real(8), dimension(nx,ny1,nz) :: rhoy, dhsdy
-	real(8), dimension(nx,ny,nz1) :: rhoz, dhsdz, epis_z
-
-	!contadores
-	integer :: i, j, k
-	integer :: ntal
-	real(8)    :: tal
-
-	!auxiliares
-	real(8) :: aux1, aux2
+	USE paodeconvdiff
 
 	!===================================================================================================================
 
@@ -71,7 +30,7 @@ SUBROUTINE convdiff()
 
 	!%%%!-- Advectivo --!%%%!
 	if (adv_type == 0) then
-		CALL lagr(uint,vint,wint)
+		CALL lagr(uint,vint,wint)		!	#	!!!	#	!
 
 	elseif (adv_type == 1) then
 		CALL classico(uint,vint,wint)

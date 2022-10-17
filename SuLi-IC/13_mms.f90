@@ -11,11 +11,10 @@
 
 SUBROUTINE mms_i()
 
-	USE velpre
-	USE parametros
-	USE cond
-	USE mms_m
-	USE ls_param
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dx, dy,dz, t, pi, mms_t
+	USE velpre, only: u, v, w, prd1
+	USE mms_m, only: a, h0, coef, erro_t
+	USE ls_param, only: ls
 
 	IMPLICIT NONE
 	
@@ -194,29 +193,7 @@ END SUBROUTINE mms_i
 
 SUBROUTINE mms()
 
-	USE velpre
-	USE parametros
-	USE mms_m
-	USE ls_param
-
-	IMPLICIT NONE
-	
-	integer :: i, j, k, nxc, nyc, nzc, npc
-
-	real(8), dimension(nx1,ny,nz) :: u_m
-	real(8), dimension(nx,ny1,nz) :: v_m
-	real(8), dimension(nx,ny,nz1) :: w_m
-	real(8), dimension(nx,ny,nz)  :: p_m
-	real(8), dimension(nx,ny)     :: h_m
-	real(8), dimension(nx1,ny)    :: h_mx
-	real(8), dimension(nx,ny1)    :: h_my
-	real(8), dimension(nx1,ny,nz) :: lsx
-	real(8), dimension(nx,ny1,nz) :: lsy
-	real(8), dimension(nx,ny,nz1) :: lsz
-
-	real(8) :: x,y,z,h, hpi
-
-	real(8) :: erro_u1, erro_v1, erro_w1, erro_p1
+	USE paodemms
 
 	hpi = pi * 0.5
 
@@ -429,6 +406,7 @@ END SUBROUTINE mms
 
 SUBROUTINE mms_bc()
 
+	USE disc, only: t, dt, ts, mms_t, pi, dx, dy, dz
 	USE velpre
 	USE parametros
 	USE cond
@@ -767,6 +745,7 @@ SUBROUTINE termo_fonte1()
 	! sn is the sign of h(x,y): sn=1.0 or -1.0
 	! L is the number of vertical mesh and LMAX is the maximum 
 
+	USE disc, only: dx, dy, dz, pi, t
 	USE mms_m
 
 	IMPLICIT NONE
@@ -1010,6 +989,7 @@ SUBROUTINE termo_fonte2()
 	! sn is the sign of h(x,y): sn=1.0 or -1.0
 	! L is the number of vertical mesh and LMAX is the maximum 
 
+	USE disc, only: dx, dy, dz, pi, t
 	USE mms_m
 
 	IMPLICIT NONE
@@ -1255,6 +1235,7 @@ END SUBROUTINE termo_fonte2
 
 SUBROUTINE termo_fontep2()
 
+	USE disc, only: dx, dy, dz, pi, t
 	USE mms_m
 
 	IMPLICIT NONE

@@ -9,20 +9,11 @@
 
 SUBROUTINE contorno(nlock)
 
-	USE disc, only: mms_t, obst_t, esp_type, pi
-	USE velpre
-	USE obst
-	USE cond
-	USE ls_param
-	USE paodemel3
+	USE paodecontorno
 
 	IMPLICIT NONE
 
-	!Declarado também no programa
-
 	integer :: nlock
-
-
 
 	!RESOLUÇÃO DO PROBLEMA
 
@@ -57,11 +48,7 @@ SUBROUTINE contorno(nlock)
 			prd1(:,:,0)    = prd1(:,:,1)
 			prd1(:,:,nz+1) = prd1(:,:,nz)
 
-			write(*,*) "CHECKPOINT D"
-
 			CALL prd_corr(dpdx,dpdy,dpdz)
-
-			write(*,*) "CHECKPOINT DD"
 
 			!Parede esquerda (j = 1)
 			!Periodica
@@ -512,11 +499,7 @@ SUBROUTINE contorno(nlock)
 			enddo
 		enddo
 
-	write(*,*) "CHECKPOINT E"
-
 		CALL heaviside()
-
-	write(*,*) "CHECKPOINT EE"
 
 	endif
 
@@ -531,9 +514,8 @@ SUBROUTINE obstaculo()
 	!Tudo é resolvido em 2D e apenas repetido/transladado ao longo de Y, que para essa investigação terá espessura dy bem pequena (=3), para ignorar seus efeitos.
 	!Assim, tudo é definido sobre a projeção 2D e não é necessário utilizar índices j e k.
 
-	USE velpre	
-	USE obst
-	USE disc
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, obst_t, pi
+	USE obst, only: ku, kv, kw, elev, amp, comp, fase
 
 	IMPLICIT NONE
 
@@ -887,20 +869,13 @@ END SUBROUTINE sponge_layer
 SUBROUTINE prd_corr(dpdx,dpdy,dpdz) !! arrumar rotina para eficiência!!
 	!Derivadas das pressões para adicionar nas condições de contorno (aproximar o valor em u^n+1 ...)
 
-	USE velpre
-	USE parametros
+	USE paodeprd_corr
 
 	IMPLICIT NONE
-	!Declarado também no programa
+
 	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
 	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
 	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
-
-	real(8), dimension(nx1,ny,nz) :: rhox
-	real(8), dimension(nx,ny1,nz) :: rhoy
-	real(8), dimension(nx,ny,nz1) :: rhoz
-
-	integer :: i, j, k
 
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
@@ -958,23 +933,7 @@ END SUBROUTINE prd_corr
 
 SUBROUTINE boundary_waves()
 
-	USE wave_c
-	USE parametros
-	USE velpre
-	USE ls_param
-
-	IMPLICIT NONE
-
-	integer :: i, j, k
-	real(8) :: aux1, aux2, aux3, aux4, aux5, h_fa, l_wa
-
-	real(8), dimension(0:nx) :: h_f
-
-	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: u1
-	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: v1
-	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: w1
-
-	real(4),dimension(0:nx+1,0:ny+1,0:nz+1) :: ls1
+	USE paodeboundary_waves
 
 	!Reference: Coubilla, 2015 (Thesis)
 
@@ -1082,8 +1041,9 @@ END SUBROUTINE boundary_waves
 
 SUBROUTINE waves_coef()
 
+	USE disc, only: nx, nz, dz, wave_t, pi
 	USE wave_c
-	USE parametros
+	USE parametros, only: gz
 
 	IMPLICIT NONE
 

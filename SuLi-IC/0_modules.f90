@@ -29,7 +29,7 @@ module disc
     integer,parameter :: t_tempo = 2 ! 0 = Euler Explícito, 1 = RK 2, 2 = RK 3, 3 = AB2
 
     integer,parameter :: der = 3 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
-    integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional, 3 = antissimétrico
+    integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional (apenas para der = 1), 3 = antissimétrico (apenas para der = 1)
         
     integer,parameter :: obst_t = 11 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
 
@@ -41,7 +41,7 @@ module disc
 
     integer,parameter :: mms_t = 0  ! 0 = sem MMS, 1 = MMS permanente, 2 = MMS não permanente
 
-    integer :: it, tt ,ntt
+    integer :: it, tt, ntt
 
     real(8),dimension(3) :: a_dt
 
@@ -52,7 +52,6 @@ module restart
     real :: interv_rest=100 !de quantas em quantas iteracoes salva o restart
 end module restart
 
-!Condicoes de contorno
 module cond
 
     integer,parameter :: ccx0=3 !condicao de contorno parede x=0 --> 0 é periodico, 1 é free-slip, 2 é no-slip, 3 é prescrita, 4 é fluxo validacao
@@ -75,7 +74,7 @@ module obst
     real(8), dimension(0:nx+1,0:ny+1,0:nz1+1) :: wb
 
     !Obstáculo
-    integer, dimension(0:nx1+1,0:ny+1) :: ku	
+    integer, dimension(0:nx1+1,0:ny+1) :: ku
     !Indicam até que altura as velocidades tem que ser zeradas (até qual índice k)
     integer, dimension(0:nx+1,0:ny1+1) :: kv
     integer, dimension(0:nx+1,0:ny+1)  :: kw
@@ -164,7 +163,7 @@ end module tempo
 
 module wave_c
 
-    USE disc
+    USE disc, only: nz
 
     real(8) :: p_w, n_w, c_w, l_w, a_w, f_w, h0_f, l0_w
     real(8) :: avel1, avel2, avel3, avel4, avel5
@@ -176,7 +175,7 @@ end module wave_c
 !Adicionado por Luísa Lucchese 07/16, variáveis para o LES
 module smag
 
-    use disc
+   USE disc, only: nx, nx1, ny, ny1, nz, nz1
 
     real(8), parameter :: csmag=0.13 ! 0.8 !
     real(8), dimension(nx,ny,nz)  :: nut 
@@ -203,9 +202,9 @@ end module ls_param
 !Variáveis para o LES
 module mms_m
 
-    use disc
+    use disc, only: nx, nx1, ny, ny1, nz, nz1
 
-    real(8), parameter :: a  = 0.!5
+    real(8), parameter :: a  = 0. !5
     real(8), parameter :: h0 = 2.
 
     ! dt / rho?
@@ -260,8 +259,6 @@ module omp
 	real(8) :: soma_grad_1_f90, soma_grad_2_f90
 	real(8) :: soma_grad_1_omp, soma_grad_2_omp
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     real(8) :: fortran_start_convdiff, fortran_end_convdiff, fortran_start_posdin, fortran_end_posdin
 	real(8) :: omp_start_convdiff, omp_end_convdiff, omp_start_posdin, omp_end_posdin
 
@@ -299,7 +296,7 @@ end module omp
 
 module paodemel
 
-    USE disc
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1
 
     IMPLICIT NONE
 
@@ -313,26 +310,409 @@ module paodemel
 	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
 	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
 
+	!contadores
+
+	!auxiliares
+	real(8) :: aux1, aux2, aux3
+
 end module paodemel
 
-module paodemel2
+module paodemod_ls11
 
-    USE disc, only: nx, ny, nz
+	USE disc, only: nx, ny, nz, dx, dy, dz
+	USE ls_param, only: ls, mod_ls, kurv, ddlsdx, ddlsdy, ddlsdz
 
-    IMPLICIT NONE
+	IMPLICIT NONE
 
+	integer :: i, j, k, ihs
+	real(8) :: aux1, aux2
 	real(8), dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
 
-end module paodemel2
+end module paodemod_ls11
 
-module paodemel3
+module paodecontorno
 
-    USE disc, only: nx, nx1, ny, ny1, nz, nz1
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, mms_t, obst_t
+    USE cond
+    USE obst, only: ub, vb, wb, ku, kv, kw
+    USE ls_param, only: ls
+    USE velpre  	!prd0, prd, rho, ls_nu, d_max, d_min, b_eta0, b_eta1 não são usados
 
-	real(8) :: zi, zj, zk
-	integer :: i, j, k, niv, ii
-	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
-	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
-	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
+    real(8) :: zi, zj, zk
+    integer :: i, j, k, niv, ii
+    real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
+    real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
+    real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
 
-end module paodemel3
+end module paodecontorno
+
+module paodeheaviside
+
+	USE disc, only: nx, ny, nz, pi, dt, mms_t
+	USE ls_param, only: ls, alpha1, dx1, mi_f1, mi_f2, hs, hsx, hsy, hsz, rho_f1, rho_f2, t_hs
+	USE velpre, only: rho, ls_nu
+
+	IMPLICIT NONE
+
+	integer :: i, j, k, coefa1, ihs
+	real(8) :: aux1, aux2, aux3, aux4
+	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
+
+end module paodeheaviside
+
+module paodeprd_corr
+
+	USE disc, only: nx, nx1, ny, ny1, nz, nz1
+	USE velpre, only: rho
+
+	IMPLICIT NONE
+	!Declarado também no programa
+
+	real(8), dimension(nx1,ny,nz) :: rhox
+	real(8), dimension(nx,ny1,nz) :: rhoy
+	real(8), dimension(nx,ny,nz1) :: rhoz
+
+	integer :: i, j, k
+
+end module paodeprd_corr
+
+module paodemms
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, it, t, dt, mms_t, ts, dt_frame, pi
+	USE velpre, only: u, v, w, prd1
+	USE mms_m
+	USE ls_param, only: ls
+
+	IMPLICIT NONE
+	
+	integer :: i, j, k, nxc, nyc, nzc, npc
+
+	real(8), dimension(nx1,ny,nz) :: u_m
+	real(8), dimension(nx,ny1,nz) :: v_m
+	real(8), dimension(nx,ny,nz1) :: w_m
+	real(8), dimension(nx,ny,nz)  :: p_m
+	real(8), dimension(nx,ny)     :: h_m
+	real(8), dimension(nx1,ny)    :: h_mx
+	real(8), dimension(nx,ny1)    :: h_my
+	real(8), dimension(nx1,ny,nz) :: lsx
+	real(8), dimension(nx,ny1,nz) :: lsy
+	real(8), dimension(nx,ny,nz1) :: lsz
+
+	real(8) :: x,y,z,h, hpi
+	real(8) :: erro_u1, erro_v1, erro_w1, erro_p1
+
+end module paodemms
+
+module paodeplot_i
+
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dx, dy, dz, dt, dt_frame, it, ts, der, adv_type, m_turb
+	USE ls_param, only: ls, vol_ini, vol_ins
+	USE velpre, only: u, v, w, prd1
+	USE tempo, only: cont, agora, agora1
+	USE smag, only: nut
+	USE obst, only: ku, kw
+	USE mms_m, only: a, erro_p, erro_u, erro_v, erro_w
+	USE cond
+
+	IMPLICIT NONE
+
+	integer :: i, j, k, ii
+
+	real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
+	real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
+	real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk, lasux
+	real(8), dimension(nx1,ny,nz) :: xnuta
+	real(8), dimension(nx,ny1,nz) :: ynuta	
+	real(8), dimension(nx,ny,nz1) :: znuta
+	real(8), dimension(nx1,ny,nz1) :: auxy
+	real(8), dimension(nx1,ny1,nz) :: auxz
+	real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
+
+end module paodeplot_i
+
+module paodelevel_set
+
+	USE disc, only: nx, ny, nz, dx, dy, dz, dt, mms_t
+	USE ls_param, only: ls, mod_ls, hs, vol_ini, vol_ins, adtl, bdtl, gdtl, dt1
+
+	IMPLICIT NONE
+	
+	real(8),dimension(nx,ny,nz) :: sy7_ls,gx_ls,ta1_ls,sy7_ls1,gx_ls1,ta1_ls1
+	integer :: i, j, k, itrl
+	real(8) :: aux1, aux2, dtaux
+
+end module paodelevel_set
+
+module paodeconv_weno
+
+	USE disc, only: nx, ny, nz
+	USE ls_param, only: ls
+	USE velpre, only: u, v, w
+
+	IMPLICIT NONE
+
+	integer :: i, j, k, ihs
+
+	real(8),dimension(nx,ny,nz) :: ta1, tb1, tc1, td1, te1, tf1
+	real(8) :: apos, aneg, bpos, bneg, cpos, cneg
+
+end module paodeconv_weno
+
+module paodereinic_weno
+
+	USE disc, only: nx, ny, nz
+	USE ls_param, only: ls, dx1, dt1, alpha1
+
+	IMPLICIT NONE
+
+	real(8),dimension(nx,ny,nz) :: sy1, sy4, func_s, ddd, ta1, tb1, tc1, td1, te1, tf1
+	real(8),dimension(nx,ny,nz) :: lsaux,ls0
+	real(8) :: error
+	integer :: i, j, k, l, il, nr,ihs,itrl
+	real(8) :: mod_ls1, aux1, aux2
+
+end module paodereinic_weno
+
+module paodevisco
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, m_turb
+	USE smag
+	USE velpre, only: u, v, w, rho, ls_nu
+
+	IMPLICIT NONE
+  
+	integer :: i, j, k
+
+	real(8) :: p1, p2, p3
+							
+	real(8), dimension(nx,ny,nz) :: aux1
+
+	real(8), dimension(nx1,ny,nz) :: dudx_i, dudy_i, dudz_i
+	real(8), dimension(nx,ny1,nz) :: dvdx_i, dvdy_i, dvdz_i
+	real(8), dimension(nx,ny,nz1) :: dwdx_i, dwdy_i, dwdz_i
+
+	real(8), dimension(nx,ny,nz) :: dudx, dudy, dudz
+	real(8), dimension(nx,ny,nz) :: dvdx, dvdy, dvdz
+	real(8), dimension(nx,ny,nz) :: dwdx, dwdy, dwdz
+
+	real(8), dimension(nx1,ny,nz) :: dudx_x, dudy_x, dudz_x, dwdx_x, dvdx_x
+	real(8), dimension(nx,ny1,nz) :: dudy_y, dvdx_y, dwdy_y, dvdz_y, dvdy_y
+	real(8), dimension(nx,ny,nz1) :: dwdy_z, dvdz_z, dwdz_z, dwdx_z, dudz_z
+
+	real(8), dimension(nx1,ny1,nz) :: dvdx_a, dudy_a
+	real(8), dimension(nx1,ny,nz1) :: dwdx_a, dudz_a 
+	real(8), dimension(nx,ny1,nz1) :: dwdy_a, dvdz_a
+
+	real(8) :: aux2,aux3,aux4,deltag,nuor
+
+	real(8), dimension(nx,ny1,nz) :: ynut_a
+	real(8), dimension(nx1,ny,nz) :: xnut_a
+	real(8), dimension(nx,ny,nz1) :: znut_a
+
+	real(8), dimension(nx1,ny,nz) :: ls_nux
+	real(8), dimension(nx,ny1,nz) :: ls_nuy
+	real(8), dimension(nx,ny,nz1) :: ls_nuz
+
+end module paodevisco
+
+module paodeconvdiff
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, adv_type
+	USE velpre, only: u, v, w, rho, prd0, prd1
+	USE parametros, only: chezy, gx, gz
+	USE smag, only: nut, xnut, ynut, znut
+	USE ls_param, only: kurv, hsx, hsy, hsz, sigma
+	USE vartempo, only: Fu, Fv, Fw
+	USE mms_m, only: a, tf_u, tf_v, tf_w
+	USE obst, only: ub, vb, wb
+
+	IMPLICIT NONE
+
+	! auxiliares de velocidades: velocidades lagrangianas
+	real(8), dimension(nx1,ny,nz) :: uint
+	real(8), dimension(nx,ny1,nz) :: vint
+	real(8), dimension(nx,ny,nz1) :: wint
+
+	real(8), dimension(0:nx1,ny,nz) :: ama
+	real(8), dimension(nx,0:ny1,nz) :: bmb
+	real(8), dimension(nx,ny,0:nz1) :: dmd
+	real(8), dimension(nx1,ny1,nz)  :: amb, bma
+	real(8), dimension(nx1,ny,nz1)  :: amd, dma
+	real(8), dimension(nx,ny1,nz1)  :: bmd, dmb
+
+	!real(8), dimension(0:nx1,ny1,nz)  :: vx
+	!real(8), dimension(0:nx1,ny,nz1)  :: wx
+
+	!real(8), dimension(nx1,0:ny1,nz)  :: uy
+	!real(8), dimension(nx,0:ny1,nz1)  :: wy
+
+	!real(8), dimension(nx1,ny,0:nz1)  :: uz
+	!real(8), dimension(nx,ny1,0:nz1)  :: vz
+
+	real(8), dimension(nx1,ny,nz) :: rhox, dhsdx
+	real(8), dimension(nx,ny1,nz) :: rhoy, dhsdy
+	real(8), dimension(nx,ny,nz1) :: rhoz, dhsdz, epis_z
+
+	!contadores
+	integer :: i, j, k
+	integer :: ntal
+	real(8)    :: tal
+
+	!auxiliares
+	real(8) :: aux1, aux2
+
+end module paodeconvdiff
+
+module paodeclassico
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
+
+	IMPLICIT NONE
+
+	real(8), dimension(nx1,ny,nz) :: dudx, dudy, dudz, bma, dma, dudxa, dudya, dudza
+	real(8), dimension(nx,ny1,nz) :: dvdx, dvdy, dvdz, amb, dmb, dvdxa, dvdya, dvdza
+	real(8), dimension(nx,ny,nz1) :: dwdx, dwdy, dwdz, amd, bmd, dwdxa, dwdya, dwdza
+	real(8), dimension(nx,ny,nz)  :: aux
+
+	!contadores
+	integer :: i, j, k
+
+	!auxiliares
+	real(8) :: aux1, aux2
+
+end module paodeclassico
+
+module paoderotacional
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
+
+	IMPLICIT NONE
+
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: ap, an, bma, dma
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: bp, bn, amb, dmb
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: dp, dn, amd, bmd
+
+	!
+	real(8), dimension(nx1,ny1,nz1) :: dudx, dvdx, dwdx
+	real(8), dimension(nx1,ny1,nz1) :: dudy, dvdy, dwdy
+	real(8), dimension(nx1,ny1,nz1) :: dudz, dvdz, dwdz
+
+	!
+	real(8) :: aa, bb, dd
+
+	!contadores
+	integer :: i, j, k, ai, bi, di
+
+	!plotagem
+	real(8) :: acont, bcont, dcont 
+	integer :: loca(3), locb(3), locd(3)
+
+	!auxiliares
+	real(8) :: aux1, aux2
+
+end module paoderotacional
+
+module paodeantissim
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
+
+	IMPLICIT NONE
+
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: ap, an
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: bp, bn
+	real(8), dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: dp, dn
+
+	!
+	real(8), dimension(nx1,ny1,nz1) :: dudx, dvdx, dwdx
+	real(8), dimension(nx1,ny1,nz1) :: dudy, dvdy, dwdy 
+	real(8), dimension(nx1,ny1,nz1) :: dudz, dvdz, dwdz
+	real(8), dimension(nx1,ny1,nz1) :: bma, dma,amb, dmb, amd, bmd
+
+	!
+	real(8) :: aa, bb, dd
+
+	!contadores
+	integer :: i, j, k, ai, bi, di
+
+	!plotagem
+	real(8) :: acont, bcont, dcont 
+	integer :: loca(3), locb(3), locd(3)
+
+	!auxiliares
+	real(8) :: aux1, aux2
+
+end module paodeantissim
+
+module paodeboundary_waves
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dz,t, wave_t
+	USE wave_c, only: n_w, a_w, f_w, h0_f, avel1, avel2, avel3, avel4, avel5, aeta1, aeta2, aeta3, aeta4, aeta5, kp
+	USE velpre, only: u, v, w, bxx0, bxy0, bxz0, bxx1
+	USE ls_param, only: ls
+
+	IMPLICIT NONE
+
+	integer :: i, j, k
+	real(8) :: aux1, aux2, aux3, aux4, aux5, h_fa, l_wa
+
+	real(8), dimension(0:nx) :: h_f
+
+	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: u1
+	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: v1
+	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: w1
+
+	real(4),dimension(0:nx+1,0:ny+1,0:nz+1) :: ls1
+
+endmodule paodeboundary_waves
+
+module paodeplot_f
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, ts, it, dt_frame, dt, mms_t, obst_t, t_a, t_i, t_plot
+	USE ls_param, only: ls
+	USE velpre, only: u, v, w, prd1
+	USE tempo
+	USE smag, only: nut
+	USE obst, only: ku, kw
+	USE mms_m, only: a, erro_p, erro_u, erro_v, erro_w
+
+	IMPLICIT NONE
+	!Declarado também no programa
+
+	real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
+	real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
+	real(8), dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk
+	real(8), dimension(nx1,ny,nz1) :: auxy
+	real(8), dimension(nx1,ny1,nz) :: auxz
+	real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
+	integer :: ifile, nfil, i, j, k, ii
+
+	!Número do arquivo de saída
+	integer :: dig1, dig2, dig3, dig4, dig5
+
+	!Nome do arquivo de saída
+	character(5) chits
+
+	real(8), dimension(nx1,ny,nz) :: xnuta
+	real(8), dimension(nx,ny1,nz) :: ynuta	
+	real(8), dimension(nx,ny,nz1) :: znuta
+
+end module paodeplot_f
+
+module paodeposdin
+
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, dt
+	USE velpre, only: u, v, w, rho, prd, prd0, prd1
+	USE mms_m, only: tf_px, tf_py, tf_pz
+	
+	IMPLICIT NONE
+
+	integer :: i, j, k
+	real(8) :: aux1, aux2
+	real(8), dimension(nx1,ny,nz) :: rhox, hs_x
+	real(8), dimension(nx,ny1,nz) :: rhoy, hs_y
+	real(8), dimension(nx,ny,nz1) :: rhoz, hs_z
+
+end module paodeposdin
