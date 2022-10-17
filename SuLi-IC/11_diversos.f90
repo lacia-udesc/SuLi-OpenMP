@@ -234,6 +234,8 @@ END SUBROUTINE tempo
 SUBROUTINE restart_ini()
 
 	!Só deve rodar caso seja restart
+
+	USE disc, only: t, it, dt, a_dt, ntt, mms_t, t_tempo, wave_t
 	USE velpre
 	USE obst
 	USE tempo

@@ -9,11 +9,12 @@
 
 SUBROUTINE iniciais()
 
-	USE velpre
-	USE obst
-	USE tempo
-	USE cond
-	USE mms_m
+	USE disc, only: nx, ny, nz, uinicial, mms_t, wave_t, obst_t, t_tempo, t, it, dt, ntt, a_dt
+	USE velpre, only: u, v, w, bxx0, bxx1, bxy0, bxz0, prd0, prd1, d_min, d_max
+	USE obst, only: ub, vb, wb, ku
+	USE tempo, only: cont
+	USE cond, only: ccx0
+	USE mms_m, only: tf_p, tf_u, tf_v, tf_w
 
 	IMPLICIT NONE
 

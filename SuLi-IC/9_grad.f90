@@ -9,14 +9,17 @@
 
 SUBROUTINE graddin()
 
+	USE disc, only: nx, nx1, nx2, ny, ny1, ny2, nz, nz1, nz2, dx, dy, dz, dt
 	USE velpre, only: u, v, w, prd1, rho
-	USE parametros, only: gz
     USE cond, only: ccx0, ccy0
-	USE obst
-	USE disc
+	USE obst, only: kw
 	USE omp
 	USE paodemel
 	USE, INTRINSIC :: omp_lib
+
+	IMPLICIT NONE
+	
+	integer :: i, j, k, cont
 
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
@@ -25,12 +28,6 @@ SUBROUTINE graddin()
 
 	!integer, parameter :: Tipo1 = selected_real_kind(10,10)
 
-	!contadores
-	integer :: i, j, k, cont
-
-	!auxiliares
-	real(8) :: aux1, aux2, aux3
-	
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================

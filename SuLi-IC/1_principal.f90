@@ -25,7 +25,7 @@ PROGRAM PNH
 	!Declaração de Variáveis!
 	USE omp
 	USE omp_lib
-	USE disc
+	USE disc, only: nx, ny, nz, mms_t, t, tt, dt, ts, it, ntt, a_dt, wave_t
 	USE restart
 
 	IMPLICIT NONE
@@ -48,7 +48,7 @@ PROGRAM PNH
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	!$ CALL OMP_set_num_threads(6)
+	!$ CALL OMP_set_num_threads(4)
 
 	!$ CALL OMP_set_nested(.TRUE.)
 
@@ -82,25 +82,17 @@ PROGRAM PNH
 	!Condições iniciais
 	if (irest.eq.0) then
 		CALL iniciais()
-		write(*,*) "CHECKPOINT B"
 	else
 		CALL restart_ini()
 	endif
-
 
 	!Adicionar os contornos na plotagem inicial						Qual o motivo desta inicialização?		 ### PEDRO ###
 
     CALL cpu_time(fortran_start_plot_i)
     !$ omp_start_plot_i = omp_get_wtime()
 
-
 	CALL contorno(1)
-
-	write(*,*) "CHECKPOINT C"
-
 	CALL contorno(3)
-
-	write(*,*) "CHECKPOINT CC"
 
 	!Solução manufaturada
 	if (mms_t > 0) then
@@ -108,6 +100,7 @@ PROGRAM PNH
 		call mms()
 	else
 		write (*,*) "mms: zero"
+	
 	endif
 
 	!Plotagens iniciais
@@ -137,9 +130,9 @@ PROGRAM PNH
 
 		!Termo fonte para o método da sulução manufaturada (MMS)
 
-		if ((mms_t .eq. 1) .and. (it .eq. 1)) call termo_fonte1()
+		if ((mms_t .eq. 1) .and. (it .eq. 1)) CALL termo_fonte1()
 		
-		if (mms_t .eq. 2) call termo_fonte2()
+		if (mms_t .eq. 2) CALL termo_fonte2()
 
 		!Tempo do level_set() p/ Fortran e OpenMP
 		CALL cpu_time(fortran_start_level_set)
@@ -211,8 +204,6 @@ PROGRAM PNH
 			!write(*,*) "Tempo acumulado do convdiff() p/ Fortran", soma_convdiff_f90
 			!write(*,*) "Tempo acumulado do convdiff() p/ OpenMP", soma_convdiff_omp				
 
-
-
 			CALL cpu_time(fortran_start_tempo)
 			!$ omp_start_tempo = omp_get_wtime()
 
@@ -227,9 +218,7 @@ PROGRAM PNH
 			!write(*,*) "Tempo acumulado do tempo() p/ Fortran", soma_tempo_f90
 			!write(*,*) "Tempo acumulado do tempo() p/ OpenMP", soma_tempo_omp
 
-
-
-			if (wave_t > 0) call boundary_waves() !For wave propagation
+			if (wave_t > 0) CALL boundary_waves() !For wave propagation
 				!Condições de Contorno para a parte Hidrostática
 
 
@@ -246,7 +235,6 @@ PROGRAM PNH
 			soma_contorno2_omp = soma_contorno2_omp + (omp_end_contorno2-omp_start_contorno2)
 			!write(*,*) "Tempo acumulado do contorno(2) p/ Fortran", soma_contorno2_f90
 			!write(*,*) "Tempo acumulado do contorno(2) p/ OpenMP", soma_contorno2_omp
-			
 			
 			if (mms_t .eq. 0) then
 
@@ -267,9 +255,6 @@ PROGRAM PNH
 				!write(*,*) "Tempo individual do graddin() + posdin() p/ OpenMP:", omp_end_graddin-omp_start_graddin
 				!write(*,*) "Tempo acumulado do graddin() p/ OpenMP", soma_graddin_omp
 			
-
-
-			
 				CALL cpu_time(fortran_start_posdin)
 				!$ omp_start_posdin = omp_get_wtime()
 
@@ -283,10 +268,6 @@ PROGRAM PNH
 				soma_posdin_omp = soma_posdin_omp + (omp_end_posdin - omp_start_posdin)
 				!write(*,*) "Tempo acumulado do posdin() p/ Fortran", soma_posdin_f90
 				!write(*,*) "Tempo acumulado do posdin() p/ OpenMP", soma_posdin_omp			
-
-
-
-
 
 				CALL cpu_time(fortran_start_contorno1)
 				!$ omp_start_contorno1 = omp_get_wtime()
@@ -302,8 +283,8 @@ PROGRAM PNH
 				!write(*,*) "Tempo acumulado do contorno(1) p/ Fortran", soma_contorno1_f90
 				!write(*,*) "Tempo acumulado do contorno(1) p/ OpenMP", soma_contorno1_omp
 				
-
 			endif		! De onde é esse endif?		### PEDRO ###
+		
 		enddo		! De onde é esse enddo?		### PEDRO ###
 
 		!Solução manufaturada; cálculo do erro

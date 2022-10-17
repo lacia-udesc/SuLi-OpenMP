@@ -9,9 +9,9 @@
 
 SUBROUTINE level_set_ini()
 
-	USE disc, only: pi
-	USE ls_param
-	
+	USE disc, only: nx, ny, nz, pi, dx, dy, dz
+	USE ls_param, only: ls, hs, alpha1, mi_f1, mi_f2, rho_f1, rho_f2 , vol_ini, ls_m, rho_m, sigma, adtl, bdtl, gdtl, dx1, t_hs
+
 	IMPLICIT NONE
 
 	!Declarado também no programa
@@ -211,10 +211,8 @@ SUBROUTINE level_set_ini()
 		enddo
 	enddo
 		
-	!CALL heaviside()
+	CALL heaviside()
 		
-	write(*,*) "CHECKPOINT CC"
-
 	vol_ini = 0.
 
 	do k = 1, nz
@@ -225,29 +223,18 @@ SUBROUTINE level_set_ini()
 		enddo
 	enddo
 
-	write(*,*) "CHECKPOINT 1"
-
 	CALL mod_ls11()
-
-	write(*,*) "CHECKPOINT 2"
 
 END SUBROUTINE level_set_ini
 
 SUBROUTINE level_set()
 
-	USE disc, only: dt, mms_t
-	USE ls_param
-	USE velpre
-
-	IMPLICIT NONE
-	real(8),dimension(nx,ny,nz) :: sy7_ls,gx_ls,ta1_ls,sy7_ls1,gx_ls1,ta1_ls1
-	integer :: i, j, k, itrl
-	real(8) :: aux1, aux2, dtaux
+	USE paodelevel_set
 
 	dtaux = dt1
 	dt1 = dt
 
-	do itrl=1,3
+	do itrl = 1, 3
 		CALL conv_weno(sy7_ls)
 		CALL intt_ls(sy7_ls,gx_ls,ta1_ls,itrl,ls)
 	enddo
@@ -257,6 +244,7 @@ SUBROUTINE level_set()
 	CALL reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 
 	CALL mod_ls11()
+
 	CALL heaviside()
 
 	vol_ins = 0.
@@ -281,6 +269,7 @@ SUBROUTINE level_set()
 		enddo
 
 		CALL mod_ls11()
+
 		CALL heaviside()
 
 		vol_ins = 0.
@@ -301,12 +290,13 @@ END SUBROUTINE level_set
 
 SUBROUTINE intt_ls(hx,gx,ta1,itrl,ls1)
 
-	USE ls_param
+	USE disc, only: nx, ny, nz
+	USE ls_param, only: dt1, adtl, bdtl, gdtl
 
-	implicit none
+	IMPLICIT NONE
 
-	integer :: i,j,k,itrl
-	real(8),dimension(nx,ny,nz) :: hx,gx,ta1,ls1
+	integer :: i, j, k, itrl
+	real(8),dimension(nx,ny,nz) :: hx, gx, ta1, ls1
 
 	!RK3 TVD
 	if (adtl(itrl)==1.) then
@@ -321,15 +311,9 @@ END SUBROUTINE intt_ls
 
 SUBROUTINE conv_weno(sy7)
 
-	USE ls_param
-	USE velpre
+	USE paodeconv_weno
 
-	implicit none
-
-	integer :: i,j,k,ihs
-
-	real(8),dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,sy7
-	real(8) :: apos, aneg, bpos, bneg, cpos, cneg
+	real(8),dimension(nx,ny,nz) :: sy7
 
 	!ihs = 1
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
@@ -353,9 +337,9 @@ END SUBROUTINE conv_weno
 SUBROUTINE der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 
 	USE disc, only: nx, ny, nz, dx, dy, dz
-	USE cond
+	USE cond, only: ccx0, ccy0
 
-	implicit none
+	IMPLICIT NONE
 
 	integer :: i,j,k,ihs
 	real(8),dimension(nx,ny,nz) :: ls,ta1,tb1,tc1,td1,te1,tf1
@@ -395,15 +379,11 @@ END SUBROUTINE der_weno
 
 SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 
-	USE ls_param
+	USE paodereinic_weno
 
 	IMPLICIT NONE
 
-	real(8),dimension(nx,ny,nz) :: sy1,sy4,func_s,ddd,ta1,tb1,tc1,td1,te1,tf1
-	real(8),dimension(nx,ny,nz) :: sy7_ls1,gx_ls1,ta1_ls1,lsaux,ls0
-	real(8) :: error
-	integer :: i, j, k, l, il, nr,ihs,itrl
-	real(8) :: mod_ls1, aux1, aux2
+	real(8),dimension(nx,ny,nz) :: sy7_ls1,gx_ls1,ta1_ls1
 
 	ls0 = ls
 	l = 3
@@ -521,11 +501,11 @@ SUBROUTINE weno1(dphidxp,dphidxn,nx1,dx1,phi0,ihs)	!#	VERIFICAR	#
 
 	IMPLICIT NONE
 
-	integer :: i,kk, ii,nx1, ihs
-	real(8),dimension(nx1) :: phiaux,dphidxp,dphidxn,phi0
+	integer :: i, kk, ii, nx1, ihs
+	real(8),dimension(nx1) :: phiaux, dphidxp, dphidxn, phi0
 	real(8),dimension(3) ::isup, isun, auxx
-	real(8),dimension(3) ::alpup, omgup,alpun, omgun
-	real(8) :: dx1, mod_phi1,aux1,aux2,aux3,aux4,aux5,aux6,aux,aux11, aux12
+	real(8),dimension(3) ::alpup, omgup, alpun, omgun
+	real(8) :: dx1, mod_phi1, aux1, aux2, aux3, aux4, aux5, aux6, aux, aux11, aux12
 	real(8),dimension(-2:nx1+3) :: phi1
 	real(8),dimension(nx1+4)  :: un
 	real(8),dimension(-3:nx1) :: up
@@ -622,15 +602,7 @@ END SUBROUTINE weno1
 
 SUBROUTINE heaviside()
 
-	USE disc, only: nx, ny, nz, pi, dt, mms_t
-	USE ls_param, only: ls, alpha1, dx1, mi_f1, mi_f2, hs, hsx, hsy, hsz, rho_f1, rho_f2, t_hs
-	USE velpre, only: rho, ls_nu
-
-	IMPLICIT NONE
-
-	integer :: i, j, k, coefa1, ihs
-	real(8) :: aux1, aux2, aux3, aux4
-	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
+	USE paodeheaviside
 
 	!ihs = 2
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
@@ -724,22 +696,11 @@ END SUBROUTINE heaviside
 
 SUBROUTINE mod_ls11()
 
-	USE disc, only: nx, ny, nz, dx, dy, dz
-	USE ls_param, only: ls, mod_ls, kurv, ddlsdx, ddlsdy, ddlsdz
-	use paodemel2
-
-	IMPLICIT NONE
-
-	integer :: i, j, k, ihs
-	real(8) :: aux1, aux2
+	USE paodemod_ls11
 
 	!ihs = 1
 
-	write(*,*) "CHECKPOINT 2"
-
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
-
-	write(*,*) "CHECKPOINT 3"
 
 	do k = 1, nz
 		do j = 1, ny
