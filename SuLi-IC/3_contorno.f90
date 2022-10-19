@@ -13,7 +13,7 @@ SUBROUTINE contorno(nlock)
 
 	IMPLICIT NONE
 
-	integer :: nlock
+	integer :: i, j, k, nlock
 
 	!RESOLUÇÃO DO PROBLEMA
 
@@ -873,6 +873,8 @@ SUBROUTINE prd_corr(dpdx,dpdy,dpdz) !! arrumar rotina para eficiência!!
 
 	IMPLICIT NONE
 
+	integer :: i, j, k
+
 	real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
 	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
 	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
@@ -934,6 +936,10 @@ END SUBROUTINE prd_corr
 SUBROUTINE boundary_waves()
 
 	USE paodeboundary_waves
+
+	IMPLICIT NONE
+
+	integer :: i, j, k
 
 	!Reference: Coubilla, 2015 (Thesis)
 

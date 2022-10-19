@@ -4,6 +4,8 @@ SUBROUTINE classico(uint,vint,wint)
 
 	IMPLICIT NONE
 
+	integer :: i, j, k
+
 	real(8), dimension(nx1,ny,nz) :: uint
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
@@ -263,6 +265,8 @@ SUBROUTINE rotacional(uint,vint,wint)
 
 	IMPLICIT NONE
 
+	integer :: i, j, k
+
 	real(8), dimension(nx1,ny,nz) :: uint
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
@@ -400,6 +404,8 @@ SUBROUTINE antissim(uint,vint,wint)
 
 	IMPLICIT NONE
 	
+	integer :: i, j, k
+
 	real(8), dimension(nx1,ny,nz) :: uint
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint

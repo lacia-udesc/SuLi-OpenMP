@@ -324,7 +324,6 @@ module paodemod_ls11
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, ihs
 	real(8) :: aux1, aux2
 	real(8), dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
 
@@ -339,7 +338,7 @@ module paodecontorno
     USE velpre  	!prd0, prd, rho, ls_nu, d_max, d_min, b_eta0, b_eta1 não são usados
 
     real(8) :: zi, zj, zk
-    integer :: i, j, k, niv, ii
+    integer :: niv, ii
     real(8),dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
     real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
     real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
@@ -354,7 +353,7 @@ module paodeheaviside
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, coefa1, ihs
+	integer :: coefa1, ihs
 	real(8) :: aux1, aux2, aux3, aux4
 	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
 
@@ -372,8 +371,6 @@ module paodeprd_corr
 	real(8), dimension(nx,ny1,nz) :: rhoy
 	real(8), dimension(nx,ny,nz1) :: rhoz
 
-	integer :: i, j, k
-
 end module paodeprd_corr
 
 module paodemms
@@ -385,7 +382,7 @@ module paodemms
 
 	IMPLICIT NONE
 	
-	integer :: i, j, k, nxc, nyc, nzc, npc
+	integer :: nxc, nyc, nzc, npc
 
 	real(8), dimension(nx1,ny,nz) :: u_m
 	real(8), dimension(nx,ny1,nz) :: v_m
@@ -405,7 +402,7 @@ end module paodemms
 
 module paodeplot_i
 
-    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dx, dy, dz, dt, dt_frame, it, ts, der, adv_type, m_turb
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dx, dy, dz, dt, dt_frame, it, ts, der, adv_type, m_turb, mms_t, obst_t, t_i, t_plot
 	USE ls_param, only: ls, vol_ini, vol_ins
 	USE velpre, only: u, v, w, prd1
 	USE tempo, only: cont, agora, agora1
@@ -416,7 +413,7 @@ module paodeplot_i
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, ii
+	integer :: ii
 
 	real(8), dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
 	real(8), dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
@@ -438,7 +435,6 @@ module paodelevel_set
 	IMPLICIT NONE
 	
 	real(8),dimension(nx,ny,nz) :: sy7_ls,gx_ls,ta1_ls,sy7_ls1,gx_ls1,ta1_ls1
-	integer :: i, j, k, itrl
 	real(8) :: aux1, aux2, dtaux
 
 end module paodelevel_set
@@ -450,8 +446,6 @@ module paodeconv_weno
 	USE velpre, only: u, v, w
 
 	IMPLICIT NONE
-
-	integer :: i, j, k, ihs
 
 	real(8),dimension(nx,ny,nz) :: ta1, tb1, tc1, td1, te1, tf1
 	real(8) :: apos, aneg, bpos, bneg, cpos, cneg
@@ -468,7 +462,7 @@ module paodereinic_weno
 	real(8),dimension(nx,ny,nz) :: sy1, sy4, func_s, ddd, ta1, tb1, tc1, td1, te1, tf1
 	real(8),dimension(nx,ny,nz) :: lsaux,ls0
 	real(8) :: error
-	integer :: i, j, k, l, il, nr,ihs,itrl
+	integer :: l, il, nr,ihs,itrl
 	real(8) :: mod_ls1, aux1, aux2
 
 end module paodereinic_weno
@@ -481,8 +475,6 @@ module paodevisco
 
 	IMPLICIT NONE
   
-	integer :: i, j, k
-
 	real(8) :: p1, p2, p3
 							
 	real(8), dimension(nx,ny,nz) :: aux1
@@ -554,7 +546,6 @@ module paodeconvdiff
 	real(8), dimension(nx,ny,nz1) :: rhoz, dhsdz, epis_z
 
 	!contadores
-	integer :: i, j, k
 	integer :: ntal
 	real(8)    :: tal
 
@@ -576,7 +567,6 @@ module paodeclassico
 	real(8), dimension(nx,ny,nz)  :: aux
 
 	!contadores
-	integer :: i, j, k
 
 	!auxiliares
 	real(8) :: aux1, aux2
@@ -603,7 +593,7 @@ module paoderotacional
 	real(8) :: aa, bb, dd
 
 	!contadores
-	integer :: i, j, k, ai, bi, di
+	integer :: ai, bi, di
 
 	!plotagem
 	real(8) :: acont, bcont, dcont 
@@ -635,7 +625,7 @@ module paodeantissim
 	real(8) :: aa, bb, dd
 
 	!contadores
-	integer :: i, j, k, ai, bi, di
+	integer ::  ai, bi, di
 
 	!plotagem
 	real(8) :: acont, bcont, dcont 
@@ -655,7 +645,6 @@ module paodeboundary_waves
 
 	IMPLICIT NONE
 
-	integer :: i, j, k
 	real(8) :: aux1, aux2, aux3, aux4, aux5, h_fa, l_wa
 
 	real(8), dimension(0:nx) :: h_f
@@ -687,7 +676,7 @@ module paodeplot_f
 	real(8), dimension(nx1,ny,nz1) :: auxy
 	real(8), dimension(nx1,ny1,nz) :: auxz
 	real(8), dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
-	integer :: ifile, nfil, i, j, k, ii
+	integer :: ifile, nfil, ii
 
 	!Número do arquivo de saída
 	integer :: dig1, dig2, dig3, dig4, dig5
@@ -709,7 +698,6 @@ module paodeposdin
 	
 	IMPLICIT NONE
 
-	integer :: i, j, k
 	real(8) :: aux1, aux2
 	real(8), dimension(nx1,ny,nz) :: rhox, hs_x
 	real(8), dimension(nx,ny1,nz) :: rhoy, hs_y
