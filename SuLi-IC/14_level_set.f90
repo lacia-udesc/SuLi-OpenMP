@@ -233,7 +233,7 @@ SUBROUTINE level_set()
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, itrl
+	integer :: i, j, k
 
 	dtaux = dt1
 	dt1 = dt
@@ -320,7 +320,7 @@ SUBROUTINE conv_weno(sy7)
 	IMPLICIT NONE
 
 	real(8),dimension(nx,ny,nz) :: sy7
-	integer :: i, j, k, ihs
+	integer :: i, j, k
 
 	!ihs = 1
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
@@ -712,7 +712,7 @@ SUBROUTINE mod_ls11()
 
 	IMPLICIT NONE
 
-	integer :: i, j, k, ihs
+	integer :: i, j, k
 
 	!ihs = 1
 

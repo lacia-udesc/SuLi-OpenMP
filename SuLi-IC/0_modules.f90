@@ -334,7 +334,7 @@ module paodemod_ls11
 
 	real(8) :: aux1, aux2
 	real(8), dimension(nx,ny,nz) :: ta1, tb1, tc1, td1, te1, tf1,dlsdxa, dlsdya, dlsdza
-
+	integer :: ihs
 
 end module paodemod_ls11
 
@@ -446,6 +446,7 @@ module paodelevel_set
 	
 	real(8), dimension(nx,ny,nz) :: sy7_ls, gx_ls, ta1_ls, sy7_ls1, gx_ls1, ta1_ls1
 	real(8) :: aux1, aux2, dtaux
+	integer :: itrl
 
 end module paodelevel_set
 
@@ -459,6 +460,7 @@ module paodeconv_weno
 
 	real(8), dimension(nx,ny,nz) :: ta1, tb1, tc1, td1, te1, tf1
 	real(8) :: apos, aneg, bpos, bneg, cpos, cneg
+	integer :: ihs
 
 end module paodeconv_weno
 
@@ -600,6 +602,9 @@ module paoderotacional
 	real(8), dimension(nx1,ny1,nz1) :: dudz, dvdz, dwdz
 
 	!
+	real(8) :: aa, bb, dd
+
+	integer :: ai, bi, di
 
 	!plotagem
 	real(8) :: acont, bcont, dcont 
@@ -633,6 +638,12 @@ module paodeantissim
 
 	!auxiliares
 	real(8) :: aux1, aux2
+
+		!
+	real(8) :: aa, bb, dd
+
+	!contadores
+	integer :: ai, bi, di
 
 end module paodeantissim
 
