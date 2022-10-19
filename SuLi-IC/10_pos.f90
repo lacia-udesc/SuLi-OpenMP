@@ -2,10 +2,6 @@ SUBROUTINE posdin()
 
 	USE paodeposdin
 
-	IMPLICIT NONE
-
-	integer :: i, j, k
-
 	!PARTE 5	!%%%!-- Correção das Velocidades e do Desnível --!%%%!
 
 	! velocidades corrigidas

@@ -195,10 +195,6 @@ SUBROUTINE mms()
 
 	USE paodemms
 
-	IMPLICIT NONE
-
-	integer :: i, j, k
-	
 	hpi = pi * 0.5
 
 	! cálculo das soluções manufaturadas

@@ -231,10 +231,6 @@ SUBROUTINE level_set()
 
 	USE paodelevel_set
 
-	IMPLICIT NONE
-
-	integer :: i, j, k, itrl
-
 	dtaux = dt1
 	dt1 = dt
 
@@ -317,10 +313,7 @@ SUBROUTINE conv_weno(sy7)
 
 	USE paodeconv_weno
 
-	IMPLICIT NONE
-
 	real(8),dimension(nx,ny,nz) :: sy7
-	integer :: i, j, k, ihs
 
 	!ihs = 1
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
@@ -391,8 +384,7 @@ SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 	IMPLICIT NONE
 
 	real(8),dimension(nx,ny,nz) :: sy7_ls1,gx_ls1,ta1_ls1
-	integer :: i, j, k
-	
+
 	ls0 = ls
 	l = 3
 
@@ -612,10 +604,6 @@ SUBROUTINE heaviside()
 
 	USE paodeheaviside
 
-	IMPLICIT NONE
-
-	integer :: i, j, k
-
 	!ihs = 2
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
 
@@ -709,10 +697,6 @@ END SUBROUTINE heaviside
 SUBROUTINE mod_ls11()
 
 	USE paodemod_ls11
-
-	IMPLICIT NONE
-
-	integer :: i, j, k, ihs
 
 	!ihs = 1
 

@@ -16,10 +16,6 @@ SUBROUTINE plot_i()
 
 	USE paodeplot_i
 
-	IMPLICIT NONE
-
-	integer :: i, j, k
-	
 	!Criar pastas, se já não existirem
 
 	call system('mkdir -p arquivos')
@@ -220,10 +216,6 @@ END SUBROUTINE plot_i
 SUBROUTINE plot_f()
 
 	USE paodeplot_f
-
-	IMPLICIT NONE
-
-	integer :: i, j, k
 
 	!Cálculo para o a estimativa do tempo restante
 	ciclo = (agora(5)-agora1(5)) * 60 * 60 + (agora(6)-agora1(6)) * 60 + (agora(7)-agora1(7)) + real(agora(8)-agora1(8))/1000
