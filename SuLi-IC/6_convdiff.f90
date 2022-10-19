@@ -16,6 +16,11 @@ SUBROUTINE convdiff()
 
 	USE paodeconvdiff
 
+	IMPLICIT NONE
+
+	integer :: i, j, k
+
+
 	!===================================================================================================================
 
 	!reinicializando a rotina

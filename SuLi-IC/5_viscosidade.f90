@@ -13,6 +13,10 @@ SUBROUTINE visco()
 
 	USE paodevisco
 
+	IMPLICIT NONE
+
+	integer :: i, j, k
+
 	if (m_turb == 0) then ! sem modelo de turbulência
 
 		xnut_a=0.

@@ -9,17 +9,21 @@
 
 SUBROUTINE graddin()
 
-	USE disc, only: nx, nx1, nx2, ny, ny1, ny2, nz, nz1, nz2, dx, dy, dz, dt
+	USE disc, only: nx2, ny2, nz2, dx, dy, dz, dt
 	USE velpre, only: u, v, w, prd1, rho
     USE cond, only: ccx0, ccy0
 	USE obst, only: kw
 	USE omp
 	USE paodemel
-	USE, INTRINSIC :: omp_lib
+	USE omp_lib
 
 	IMPLICIT NONE
 	
+	!contadores
 	integer :: i, j, k, cont
+
+	!auxiliares
+	real(8) :: sumprd1, sumprd1a, sumprd1b
 
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
@@ -31,7 +35,11 @@ SUBROUTINE graddin()
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
+	
 	cont = 0
+    sumprd1 = 0.
+    sumprd1a = 0.
+    sumprd1b = 0.
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
@@ -43,19 +51,27 @@ SUBROUTINE graddin()
 	call interpx_cf(rho,nx,ny,nz,rhox) !(nx1,ny,nz)
 	call interpy_cf(rho,nx,ny,nz,rhoy) !(nx,ny1,nz)
 	call interpz_cf(rho,nx,ny,nz,rhoz) !(nx,ny,nz1)
+
 	matspri = dt / (dx*dx*rhox)
 	matsprj = dt / (dy*dy*rhoy)
 	matsprk = dt / (dz*dz*rhoz)
 
-	! Matrizes p e q
-	do k = 1, nz
-		do j = 1, ny
-			do i = 1, nx
-				matdpr(i+1,j+1,k+1) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
-				matqpr(i,j,k) = (u(i,j,k) - u(i+1,j,k))/dx + (v(i,j,k)-v(i,j+1,k))/dy  + (w(i,j,k) - w(i,j,k+1))/dz
+	write(*,*) "Cálculo do pré primeiro matqpr", sum(matqpr)
+
+	!$OMP BARRIER
+
+		! Matrizes p e q
+		do k = 1, nz
+			do j = 1, ny
+				do i = 1, nx
+					matdpr(i+1,j+1,k+1) = matspri(i+1,j,k) + matspri(i,j,k) + matsprj(i,j+1,k) + matsprj(i,j,k) + matsprk(i,j,k+1) + matsprk(i,j,k)
+
+					matqpr(i,j,k) = ((u(i,j,k) - u(i+1,j,k))/dx) + ((v(i,j,k) - v(i,j+1,k))/dy)  + ((w(i,j,k) - w(i,j,k+1))/dz)
+				enddo
 			enddo
 		enddo
-	enddo
+
+	write(*,*) "Cálculo do primeiro matqpr", sum(matqpr)
 
 	!dentro do obstáculo, divergência nula
 	!do j = 1, ny
@@ -168,7 +184,11 @@ SUBROUTINE graddin()
 			enddo
 		enddo
 
-	write(*,*) "Cálculo do primeiro erro", alfamupr
+	write(*,*) "Cálculo do primeiro alfamupr", alfamupr
+	!write(*,*) "Cálculo do  prd", sum(prd1)
+	write(*,*) "Cálculo do segundo matqpr", sum(matqpr)
+	write(*,*) "Cálculo do erropr", sum(erropr)
+
 
 	if (ccx0.eq.0) then  ! Condição periódica
 		do k = 1, nz2
@@ -211,6 +231,8 @@ SUBROUTINE graddin()
 
 	erroppr = erropr
 
+	write(*,*) "Cálculo do erroppr", sum(erroppr)
+	
 	!CALL cpu_time(end_outros_f90)
 	!end_outros_omp = omp_get_wtime()
 
@@ -282,6 +304,7 @@ SUBROUTINE graddin()
 									enddo
 							enddo
 					enddo
+
 
 			!$OMP SECTION
 					do k = 1, nz
@@ -463,6 +486,8 @@ SUBROUTINE graddin()
 	enddo
 
 
+
+
 	! OTIMIZAR CÓDIGO
 
 	!CALL cpu_time(end_outros4_f90)
@@ -493,9 +518,16 @@ SUBROUTINE graddin()
 		do j = 0, ny+1
 			do i = 0, nx+1
 				prd1(i,j,k) = matepr(i+1,j+1,k+1) / sqrt(matdpr(i+1,j+1,k+1))
+				sumprd1 = sumprd1 + prd1(i,j,k)
+				sumprd1a = sumprd1a + matepr(i+1,j+1,k+1)
+				sumprd1b = sumprd1b	 + matdpr(i+1,j+1,k+1)
 			enddo
 		enddo
 	enddo
+
+	!write(*,*) "Cálculo do primeiro erro", sumprd1
+	!write(*,*) "Cálculo do segundo erro", sumprd1a
+	!write(*,*) "Cálculo do terceiro erro", sumprd1b
 
 END SUBROUTINE graddin
 
