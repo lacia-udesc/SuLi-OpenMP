@@ -271,8 +271,10 @@ SUBROUTINE rotacional(uint,vint,wint)
 	real(8), dimension(nx,ny,nz1) :: wint
 
 	!contadores
-	integer :: i, j, k
+	integer :: i, j, k, ai, bi, di
 	
+	real(8) :: aa, bb, dd
+
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
@@ -410,8 +412,11 @@ SUBROUTINE antissim(uint,vint,wint)
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
 
+	!
+	real(8) :: aa, bb, dd
+
 	!contadores
-	integer :: i, j, k
+	integer :: i, j, k, ai, bi, di
 
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
