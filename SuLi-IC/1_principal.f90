@@ -177,7 +177,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_visco)
 			!$ omp_start_visco = omp_get_wtime()
 
+			write(*,*) "CHECKPOINT A"
+
 			CALL visco()
+
+			write(*,*) "CHECKPOINT B"
 
 			CALL cpu_time(fortran_end_visco)
 			!$ omp_end_visco = omp_get_wtime()
@@ -193,7 +197,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_convdiff)
 			!$ omp_start_convdiff = omp_get_wtime()
 
+			write(*,*) "CHECKPOINT C"
+
 			CALL convdiff()
+
+			write(*,*) "CHECKPOINT D"
 
 			CALL cpu_time(fortran_end_convdiff)
 			!$ omp_end_convdiff = omp_get_wtime()
@@ -207,7 +215,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_tempo)
 			!$ omp_start_tempo = omp_get_wtime()
 
+			write(*,*) "CHECKPOINT E"
+
 			CALL tempo()
+
+			write(*,*) "CHECKPOINT F"
 
 			CALL cpu_time(fortran_end_tempo)
 			!$ omp_end_tempo = omp_get_wtime()
