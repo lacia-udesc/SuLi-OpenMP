@@ -37,7 +37,12 @@ SUBROUTINE convdiff()
 		CALL lagr(uint,vint,wint)		!	#	!!!	#	!
 
 	elseif (adv_type == 1) then
+	
+		write(*,*) "CHECKPOINT AA"
+
 		CALL classico(uint,vint,wint)
+
+		write(*,*) "CHECKPOINT BB"
 
 	elseif (adv_type == 2) then
 		CALL rotacional(uint,vint,wint)

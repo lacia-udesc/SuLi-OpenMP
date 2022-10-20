@@ -653,7 +653,7 @@ module paodeboundary_waves
 	real(8),dimension(0:nx+1,0:ny1+1,0:nz+1) :: v1
 	real(8),dimension(0:nx+1,0:ny+1,0:nz1+1) :: w1
 
-	real(4),dimension(0:nx+1,0:ny+1,0:nz+1) :: ls1
+	real(8),dimension(0:nx+1,0:ny+1,0:nz+1) :: ls1
 
 endmodule paodeboundary_waves
 

@@ -149,22 +149,22 @@ SUBROUTINE classico(uint,vint,wint)
 	elseif (der == 3) then
 		! upwind 2nd order
 
-		CALL interpy_fc(v(1:nx,1:ny1,1:nz),nx,ny1,nz,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpy_fc(v(1:nx,1:ny1,1:nz),nx,ny1,nz,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpx_cf(aux,nx,ny,nz,bma) !(nx1,ny,nz)
 
-		CALL interpz_fc(w(1:nx,1:ny,1:nz1),nx,ny,nz1,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpz_fc(w(1:nx,1:ny,1:nz1),nx,ny,nz1,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpx_cf(aux,nx,ny,nz,dma) !(nx1,ny,nz)
 
-		CALL interpx_fc(u(1:nx1,1:ny,1:nz),nx1,ny,nz,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpx_fc(u(1:nx1,1:ny,1:nz),nx1,ny,nz,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpy_cf(aux,nx,ny,nz,amb) !(nx,ny1,nz)
 
-		CALL interpz_fc(w(1:nx,1:ny,1:nz1),nx,ny,nz1,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpz_fc(w(1:nx,1:ny,1:nz1),nx,ny,nz1,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpy_cf(aux,nx,ny,nz,dmb) !(nx,ny1,nz)
 
-		CALL interpx_fc(u(1:nx1,1:ny,1:nz),nx1,ny,nz,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpx_fc(u(1:nx1,1:ny,1:nz),nx1,ny,nz,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpz_cf(aux,nx,ny,nz,amd) !(nx,ny,nz1)
 
-		CALL interpy_fc(v(1:nx,1:ny1,1:nz),nx,ny1,nz,aux) !(nx,ny,nz)		#		TRETA		#
+		!CALL interpy_fc(v(1:nx,1:ny1,1:nz),nx,ny1,nz,aux) !(nx,ny,nz)		#		TRETA		#
 		CALL interpz_cf(aux,nx,ny,nz,bmd) !(nx,ny,nz1)
 
 
