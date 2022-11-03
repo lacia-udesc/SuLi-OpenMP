@@ -9,6 +9,11 @@
 
 SUBROUTINE contorno(nlock)
 
+    USE disc, only: mms_t, obst_t
+    USE cond
+    USE obst, only: ub, vb, wb, ku, kv, kw
+    USE ls_param, only: ls
+    USE velpre  	!prd0, prd, rho, ls_nu, d_max, d_min, b_eta0, b_eta1 não são usados	USE paodecontorno
 	USE paodecontorno
 
 	IMPLICIT NONE
@@ -456,7 +461,7 @@ SUBROUTINE contorno(nlock)
 		if (cczf.eq.3) then
 			w(:,:,nz1)   = bzzf(:,:)    + dpdz(:,:,nz1)
 		endif
-	! Conversar sobre														### PEDRO ###
+		! Conversar sobre														### PEDRO ###
 
 	elseif ((nlock == 3) .and. (obst_t .ne. 0)) then
 		!Contorno para Level Set, o ideal é que o objeto seja representado por pelo menos dois grid por direção
@@ -869,9 +874,16 @@ END SUBROUTINE sponge_layer
 SUBROUTINE prd_corr(dpdx,dpdy,dpdz) !! arrumar rotina para eficiência!!
 	!Derivadas das pressões para adicionar nas condições de contorno (aproximar o valor em u^n+1 ...)
 
-	USE paodeprd_corr
+
+	USE disc, only: nx, nx1, ny, ny1, nz, nz1
+	USE velpre, only: rho
 
 	IMPLICIT NONE
+	!Declarado também no programa
+
+	real(8), save, dimension(nx1,ny,nz) :: rhox
+	real(8), save, dimension(nx,ny1,nz) :: rhoy
+	real(8), save, dimension(nx,ny,nz1) :: rhoz
 
 	integer :: i, j, k
 

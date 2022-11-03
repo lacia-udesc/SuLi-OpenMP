@@ -9,7 +9,7 @@
 
 SUBROUTINE graddin()
 
-	USE disc, only: nx2, ny2, nz2, dx, dy, dz, dt
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, nx2, ny2, nz2, dx, dy, dz, dt
 	USE velpre, only: u, v, w, prd1, rho
     USE cond, only: ccx0, ccy0
 	USE obst, only: kw
@@ -23,7 +23,12 @@ SUBROUTINE graddin()
 	integer :: i, j, k, cont
 
 	!auxiliares
-	real(8) :: sumprd1, sumprd1a, sumprd1b
+	real(8) :: aux1, aux2, aux3
+
+
+	real(8), save, dimension(nx1,ny,nz) :: rhox
+	real(8), save, dimension(nx,ny1,nz) :: rhoy
+	real(8), save, dimension(nx,ny,nz1) :: rhoz
 
 	!===================================================================================================================
 	!DECLARADO SOMENTE NA SUBROTINA (ou não precisam de entrada)
@@ -36,10 +41,17 @@ SUBROUTINE graddin()
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================
 	
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "Pré u = ", sum(u)
+!	write(*,*) "Pré v = ", sum(v)
+!	write(*,*) "Pré w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
 	cont = 0
-    sumprd1 = 0.
-    sumprd1a = 0.
-    sumprd1b = 0.
 
 	!%%%!-- Método do Gradiente Conjugado - Para Pressão Dinâmica --!%%%!
 
@@ -56,7 +68,15 @@ SUBROUTINE graddin()
 	matsprj = dt / (dy*dy*rhoy)
 	matsprk = dt / (dz*dz*rhoz)
 
-	write(*,*) "Cálculo do pré primeiro matqpr", sum(matqpr)
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "1 u = ", sum(u)
+!	write(*,*) "1 v = ", sum(v)
+!	write(*,*) "1 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	! Matrizes p e q
 	do k = 1, nz
@@ -68,7 +88,15 @@ SUBROUTINE graddin()
 		enddo
 	enddo
 
-	write(*,*) "Cálculo do primeiro matqpr", sum(matqpr)
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "2 u = ", sum(u)
+!	write(*,*) "2 v = ", sum(v)
+!	write(*,*) "2 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	!dentro do obstáculo, divergência nula
 	!do j = 1, ny
@@ -118,6 +146,16 @@ SUBROUTINE graddin()
 		enddo
 	enddo
 	
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "3 u = ", sum(u)
+!	write(*,*) "3 v = ", sum(v)
+!	write(*,*) "3 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
 	! Normalização da pressão dinâmica
 	
 		do k = 0, nz1
@@ -127,6 +165,16 @@ SUBROUTINE graddin()
 				enddo
 			enddo
 		enddo
+
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "4 u = ", sum(u)
+!	write(*,*) "4 v = ", sum(v)
+!	write(*,*) "4 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	!CALL cpu_time(end_outros2_f90)
 	!end_outros2_omp = omp_get_wtime()
@@ -144,8 +192,10 @@ SUBROUTINE graddin()
 	!start_outros_omp = omp_get_wtime()
 
 	!Normalização das matrizes e cálculo do primeiro erro
+	erroppr = 0.
 	erropr =   0.
 	alfamupr = 0.
+
 		do k = 1, nz
 			do j = 1, ny
 				do i = 1, nx
@@ -183,8 +233,16 @@ SUBROUTINE graddin()
 
 	write(*,*) "Cálculo do primeiro alfamupr", alfamupr
 	!write(*,*) "Cálculo do  prd", sum(prd1)
-	write(*,*) "Cálculo do segundo matqpr", sum(matqpr)
-	write(*,*) "Cálculo do erropr", sum(erropr)
+	!write(*,*) "Cálculo do segundo matqpr", sum(matqpr)
+	!write(*,*) "Cálculo do erropr", sum(erropr)
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "5 u = ", sum(u)
+!	write(*,*) "5 v = ", sum(v)
+!	write(*,*) "5 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	if (ccx0.eq.0) then  ! Condição periódica
 		do k = 1, nz2
@@ -227,7 +285,15 @@ SUBROUTINE graddin()
 
 	erroppr = erropr
 
-	write(*,*) "Cálculo do erroppr", sum(erroppr)
+	!write(*,*) "Cálculo do erroppr", sum(erroppr)
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "6 u = ", sum(u)
+!	write(*,*) "6 v = ", sum(v)
+!	write(*,*) "6 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 	
 	!CALL cpu_time(end_outros_f90)
 	!end_outros_omp = omp_get_wtime()
@@ -481,6 +547,15 @@ SUBROUTINE graddin()
 	enddo
 
 
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "7 u = ", sum(u)
+!	write(*,*) "7 v = ", sum(v)
+!	write(*,*) "7 w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
 	! OTIMIZAR CÓDIGO
 
 	!CALL cpu_time(end_outros4_f90)
@@ -511,16 +586,19 @@ SUBROUTINE graddin()
 		do j = 0, ny+1
 			do i = 0, nx+1
 				prd1(i,j,k) = matepr(i+1,j+1,k+1) / sqrt(matdpr(i+1,j+1,k+1))
-				sumprd1 = sumprd1 + prd1(i,j,k)
-				sumprd1a = sumprd1a + matepr(i+1,j+1,k+1)
-				sumprd1b = sumprd1b	 + matdpr(i+1,j+1,k+1)
 			enddo
 		enddo
 	enddo
 
-	!write(*,*) "Cálculo do primeiro erro", sumprd1
-	!write(*,*) "Cálculo do segundo erro", sumprd1a
-	!write(*,*) "Cálculo do terceiro erro", sumprd1b
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "Último u = ", sum(u)
+!	write(*,*) "Último v = ", sum(v)
+!	write(*,*) "Último w = ", sum(w)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 END SUBROUTINE graddin
 

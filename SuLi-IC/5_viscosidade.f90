@@ -11,12 +11,17 @@
 
 SUBROUTINE visco()
 
+	USE disc, only: dx, dy, dz, m_turb
 	USE paodevisco
 
 	IMPLICIT NONE
   
 	integer :: i, j, k
-	
+
+	real(8), save, dimension(nx,ny,nz) :: dudx, dudy, dudz
+	real(8), save, dimension(nx,ny,nz) :: dvdx, dvdy, dvdz
+	real(8), save, dimension(nx,ny,nz) :: dwdx, dwdy, dwdz
+
 	if (m_turb == 0) then ! sem modelo de turbulência
 
 		xnut_a=0.

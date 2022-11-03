@@ -48,7 +48,7 @@ PROGRAM PNH
 	!Inicio do Fortran e OpenMP
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	!$ CALL OMP_set_num_threads(4)
+	!$ CALL OMP_set_num_threads(6)
 
 	!$ CALL OMP_set_nested(.TRUE.)
 
@@ -177,11 +177,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_visco)
 			!$ omp_start_visco = omp_get_wtime()
 
-			write(*,*) "CHECKPOINT A"
+!			write(*,*) "CHECKPOINT A"
 
 			CALL visco()
 
-			write(*,*) "CHECKPOINT B"
+!			write(*,*) "CHECKPOINT B"
 
 			CALL cpu_time(fortran_end_visco)
 			!$ omp_end_visco = omp_get_wtime()
@@ -197,11 +197,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_convdiff)
 			!$ omp_start_convdiff = omp_get_wtime()
 
-			write(*,*) "CHECKPOINT C"
+!			write(*,*) "CHECKPOINT C"
 
 			CALL convdiff()
 
-			write(*,*) "CHECKPOINT D"
+!			write(*,*) "CHECKPOINT D"
 
 			CALL cpu_time(fortran_end_convdiff)
 			!$ omp_end_convdiff = omp_get_wtime()
@@ -215,11 +215,11 @@ PROGRAM PNH
 			CALL cpu_time(fortran_start_tempo)
 			!$ omp_start_tempo = omp_get_wtime()
 
-			write(*,*) "CHECKPOINT E"
+!			write(*,*) "CHECKPOINT E"
 
 			CALL tempo()
 
-			write(*,*) "CHECKPOINT F"
+!			write(*,*) "CHECKPOINT F"
 
 			CALL cpu_time(fortran_end_tempo)
 			!$ omp_end_tempo = omp_get_wtime()
@@ -270,7 +270,11 @@ PROGRAM PNH
 				CALL cpu_time(fortran_start_posdin)
 				!$ omp_start_posdin = omp_get_wtime()
 
+!				write(*,*) "CHECKPOINT G"
+
 				CALL posdin()
+
+!				write(*,*) "CHECKPOINT H"
 
 				CALL cpu_time(fortran_end_posdin)
 				!$ omp_end_posdin = omp_get_wtime()

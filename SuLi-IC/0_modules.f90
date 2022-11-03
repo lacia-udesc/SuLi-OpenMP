@@ -30,8 +30,8 @@ module disc
 
     integer,parameter :: der = 3 ! 1 = upwind, 2 = centrado, 3 = upwind 2nd order (centrado só para advectivo clássico)
     integer,parameter :: adv_type = 1 ! 1 = advectivo clássico, 2 = rotacional (apenas para der = 1), 3 = antissimétrico (apenas para der = 1)
-        
-    integer,parameter :: obst_t = 11 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
+
+    integer,parameter :: obst_t = 0 ! 0 = sem obst, 1 = dunas, 2 = dunas2, 3 = gaussiano3D, 4 = beji, 5 = delft degrau, 6 = delft 1_2, 7 = SBRH calombos e buracos, 8 = fennema1990, 9 = aureli2008, 10 = bd_koshizuka1995eKleefsman2005, 11= canal
 
     integer,parameter :: m_turb = 1 ! 0 = sem modelo, 1 = LES Smagorinsky-Lilly Clássico, 2 = LES Smagorinsky-Lilly Direcional
 
@@ -300,20 +300,12 @@ module paodemel
 
     IMPLICIT NONE
 
-	real(8), dimension(nx1,ny,nz) :: rhox
-	real(8), dimension(nx,ny1,nz) :: rhoy
-	real(8), dimension(nx,ny,nz1) :: rhoz
     real(8) :: alfapr, alfamupr, alfadipr, betapr, betamupr
 	real(8), dimension(nx1,ny,nz) :: matspri
 	real(8), dimension(nx,ny1,nz) :: matsprj
 	real(8), dimension(nx,ny,nz1) :: matsprk
 	real(8), dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
 	real(8), dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
-
-	!contadores
-
-	!auxiliares
-	real(8) :: aux1, aux2, aux3
 
 end module paodemel
 
@@ -331,11 +323,7 @@ end module paodemod_ls11
 
 module paodecontorno
 
-    USE disc, only: nx, nx1, ny, ny1, nz, nz1, mms_t, obst_t
-    USE cond
-    USE obst, only: ub, vb, wb, ku, kv, kw
-    USE ls_param, only: ls
-    USE velpre  	!prd0, prd, rho, ls_nu, d_max, d_min, b_eta0, b_eta1 não são usados
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1
 
     real(8) :: zi, zj, zk
     integer :: niv, ii
@@ -358,20 +346,6 @@ module paodeheaviside
 	real(8), dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
 
 end module paodeheaviside
-
-module paodeprd_corr
-
-	USE disc, only: nx, nx1, ny, ny1, nz, nz1
-	USE velpre, only: rho
-
-	IMPLICIT NONE
-	!Declarado também no programa
-
-	real(8), dimension(nx1,ny,nz) :: rhox
-	real(8), dimension(nx,ny1,nz) :: rhoy
-	real(8), dimension(nx,ny,nz1) :: rhoz
-
-end module paodeprd_corr
 
 module paodemms
 
@@ -469,7 +443,7 @@ end module paodereinic_weno
 
 module paodevisco
 
-	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, m_turb
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1
 	USE smag
 	USE velpre, only: u, v, w, rho, ls_nu
 
@@ -482,10 +456,6 @@ module paodevisco
 	real(8), dimension(nx1,ny,nz) :: dudx_i, dudy_i, dudz_i
 	real(8), dimension(nx,ny1,nz) :: dvdx_i, dvdy_i, dvdz_i
 	real(8), dimension(nx,ny,nz1) :: dwdx_i, dwdy_i, dwdz_i
-
-	real(8), dimension(nx,ny,nz) :: dudx, dudy, dudz
-	real(8), dimension(nx,ny,nz) :: dvdx, dvdy, dvdz
-	real(8), dimension(nx,ny,nz) :: dwdx, dwdy, dwdz
 
 	real(8), dimension(nx1,ny,nz) :: dudx_x, dudy_x, dudz_x, dwdx_x, dvdx_x
 	real(8), dimension(nx,ny1,nz) :: dudy_y, dvdx_y, dwdy_y, dvdz_y, dvdy_y
@@ -514,7 +484,6 @@ module paodeconvdiff
 	USE parametros, only: chezy, gx, gz
 	USE smag, only: nut, xnut, ynut, znut
 	USE ls_param, only: kurv, hsx, hsy, hsz, sigma
-	USE vartempo, only: Fu, Fv, Fw
 	USE mms_m, only: a, tf_u, tf_v, tf_w
 	USE obst, only: ub, vb, wb
 
@@ -541,9 +510,9 @@ module paodeconvdiff
 	!real(8), dimension(nx1,ny,0:nz1)  :: uz
 	!real(8), dimension(nx,ny1,0:nz1)  :: vz
 
-	real(8), dimension(nx1,ny,nz) :: rhox, dhsdx
-	real(8), dimension(nx,ny1,nz) :: rhoy, dhsdy
-	real(8), dimension(nx,ny,nz1) :: rhoz, dhsdz, epis_z
+	real(8), dimension(nx1,ny,nz) :: dhsdx
+	real(8), dimension(nx,ny1,nz) :: dhsdy
+	real(8), dimension(nx,ny,nz1) :: dhsdz, epis_z
 
 	!contadores
 	integer :: ntal
@@ -692,15 +661,13 @@ end module paodeplot_f
 
 module paodeposdin
 
-	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, dt
-	USE velpre, only: u, v, w, rho, prd, prd0, prd1
-	USE mms_m, only: tf_px, tf_py, tf_pz
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1
+
 	
 	IMPLICIT NONE
 
-	real(8) :: aux1, aux2
-	real(8), dimension(nx1,ny,nz) :: rhox, hs_x
-	real(8), dimension(nx,ny1,nz) :: rhoy, hs_y
-	real(8), dimension(nx,ny,nz1) :: rhoz, hs_z
+	real(8), dimension(nx1,ny,nz) :: hs_x
+	real(8), dimension(nx,ny1,nz) :: hs_y
+	real(8), dimension(nx,ny,nz1) :: hs_z
 
 end module paodeposdin

@@ -14,12 +14,31 @@
 
 SUBROUTINE convdiff()
 
+	USE vartempo, only: Fu, Fv, Fw
 	USE paodeconvdiff
 
 	IMPLICIT NONE
   
 	integer :: i, j, k
 	
+	real(8), save, dimension(nx1,ny,nz) :: rhox
+	real(8), save, dimension(nx,ny1,nz) :: rhoy
+	real(8), save, dimension(nx,ny,nz1) :: rhoz
+
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "1 uint = ", sum(uint)
+!	write(*,*) "1 vint = ", sum(vint)
+!	write(*,*) "1 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "1 Fu = ", sum(Fu)
+!	write(*,*) "1 Fv = ", sum(Fv)
+!	write(*,*) "1 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
 	!===================================================================================================================
 
 	!reinicializando a rotina
@@ -38,11 +57,11 @@ SUBROUTINE convdiff()
 
 	elseif (adv_type == 1) then
 	
-		write(*,*) "CHECKPOINT AA"
+!		write(*,*) "CHECKPOINT AA"
 
 		CALL classico(uint,vint,wint)
 
-		write(*,*) "CHECKPOINT BB"
+!		write(*,*) "CHECKPOINT BB"
 
 	elseif (adv_type == 2) then
 		CALL rotacional(uint,vint,wint)
@@ -88,7 +107,6 @@ SUBROUTINE convdiff()
 	!      uz(:,:,0)=uz(:,:,1)
 	!      vz(:,:,0)=vz(:,:,1)
 
-
 	CALL interpy_cf(xnut,nx1,ny,nz,bma) !(nx1,ny1,nz)
 	CALL interpz_cf(xnut,nx1,ny,nz,dma) !(nx1,ny,nz1)
 
@@ -97,6 +115,20 @@ SUBROUTINE convdiff()
 
 	CALL interpx_cf(znut,nx,ny,nz1,amd) !(nx1,ny,nz1)
 	CALL interpy_cf(znut,nx,ny,nz1,bmd) !(nx,ny1,nz1)
+
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "2 uint = ", sum(uint)
+!	write(*,*) "2 vint = ", sum(vint)
+!	write(*,*) "2 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "2 Fu = ", sum(Fu)
+!	write(*,*) "2 Fv = ", sum(Fv)
+!	write(*,*) "2 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	ama(1:nx,1:ny,1:nz)=nut(1:nx,1:ny,1:nz)/dx
 	bma=bma/dy
@@ -118,6 +150,20 @@ SUBROUTINE convdiff()
 	bmb(:,ny1,:)=bmb(:,ny,:)
 	dmd(:,:,nz1)=dmd(:,:,nz)
 
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "3 uint = ", sum(uint)
+!	write(*,*) "3 vint = ", sum(vint)
+!	write(*,*) "3 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "3 Fu = ", sum(Fu)
+!	write(*,*) "3 Fv = ", sum(Fv)
+!	write(*,*) "3 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
 	do k = 1, nz
 		do j = 1, ny
 			do i = 1, nx1
@@ -130,7 +176,23 @@ SUBROUTINE convdiff()
 						-sigma*dhsdx(i,j,k) +tf_u(i,j,k) - gz/(chezy*chezy)*sqrt(ub(i,j,k)*ub(i,j,k))*u(i,j,k)
 			enddo
 		enddo	
+	enddo
 
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "4 uint = ", sum(uint)
+!	write(*,*) "4 vint = ", sum(vint)
+!	write(*,*) "4 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "4 Fu = ", sum(Fu)
+!	write(*,*) "4 Fv = ", sum(Fv)
+!	write(*,*) "4 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
+
+	do k = 1, nz
 		do j = 1, ny1
 			do i = 1, nx
 				Fv(i,j,k) = -vint(i,j,k) + (amb(i+1,j,k)*((v(i+1,j,k)-v(i,j,k))/dx+(u(i+1,j,k)-u(i+1,j-1,k))/dy) - &
@@ -143,6 +205,20 @@ SUBROUTINE convdiff()
 			enddo
 		enddo
 	enddo
+
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "5 uint = ", sum(uint)
+!	write(*,*) "5 vint = ", sum(vint)
+!	write(*,*) "5 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "5 Fu = ", sum(Fu)
+!	write(*,*) "5 Fv = ", sum(Fv)
+!	write(*,*) "5 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 	do k = 1, nz1
 		do j = 1, ny
@@ -158,5 +234,19 @@ SUBROUTINE convdiff()
 			enddo
 		enddo
 	enddo
+
+
+
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "6 uint = ", sum(uint)
+!	write(*,*) "6 vint = ", sum(vint)
+!	write(*,*) "6 wint = ", sum(wint)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+!	write(*,*) "6 Fu = ", sum(Fu)
+!	write(*,*) "6 Fv = ", sum(Fv)
+!	write(*,*) "6 Fw = ", sum(Fw)
+!	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
+
+
 
 END SUBROUTINE convdiff
