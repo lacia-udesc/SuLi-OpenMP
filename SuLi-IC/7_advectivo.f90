@@ -1,6 +1,7 @@
 SUBROUTINE classico(uint,vint,wint)
 
-	USE paodeclassico
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
 
 	IMPLICIT NONE
 
@@ -9,6 +10,16 @@ SUBROUTINE classico(uint,vint,wint)
 	real(8), dimension(nx1,ny,nz) :: uint
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
+
+	real(8), save, dimension(nx1,ny,nz) :: dudx, dudy, dudz, bma, dma, dudxa, dudya, dudza
+	real(8), save, dimension(nx,ny1,nz) :: dvdx, dvdy, dvdz, amb, dmb, dvdxa, dvdya, dvdza
+	real(8), save, dimension(nx,ny,nz1) :: dwdx, dwdy, dwdz, amd, bmd, dwdxa, dwdya, dwdza
+	real(8), save, dimension(nx,ny,nz)  :: aux
+
+	!contadores
+
+	!auxiliares
+	real(8) :: aux1, aux2
 
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
@@ -261,7 +272,8 @@ END SUBROUTINE classico
 
 SUBROUTINE rotacional(uint,vint,wint)
 
-	USE paoderotacional
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
 
 	IMPLICIT NONE
 
@@ -270,6 +282,28 @@ SUBROUTINE rotacional(uint,vint,wint)
 	real(8), dimension(nx1,ny,nz) :: uint
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
+
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: ap, an, bma, dma
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: bp, bn, amb, dmb
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: dp, dn, amd, bmd
+
+	!
+	real(8), save, dimension(nx1,ny1,nz1) :: dudx, dvdx, dwdx
+	real(8), save, dimension(nx1,ny1,nz1) :: dudy, dvdy, dwdy
+	real(8), save, dimension(nx1,ny1,nz1) :: dudz, dvdz, dwdz
+
+	!
+	real(8) :: aa, bb, dd
+
+	!contadores
+	integer :: ai, bi, di
+
+	!plotagem
+	real(8) :: acont, bcont, dcont 
+	integer :: loca(3), locb(3), locd(3)
+
+	!auxiliares
+	real(8) :: aux1, aux2
 
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
@@ -400,7 +434,8 @@ END SUBROUTINE rotacional
 
 SUBROUTINE antissim(uint,vint,wint)
 
-	USE paodeantissim
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, der
+	USE velpre, only: u, v, w
 
 	IMPLICIT NONE
 	
@@ -410,6 +445,26 @@ SUBROUTINE antissim(uint,vint,wint)
 	real(8), dimension(nx,ny1,nz) :: vint
 	real(8), dimension(nx,ny,nz1) :: wint
 
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: ap, an
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: bp, bn
+	real(8), save, dimension(0:nx1+1,0:ny1+1,0:nz1+1) :: dp, dn
+	real(8), save, dimension(nx1,ny1,nz1) :: dudx, dvdx, dwdx
+	real(8), save, dimension(nx1,ny1,nz1) :: dudy, dvdy, dwdy 
+	real(8), save, dimension(nx1,ny1,nz1) :: dudz, dvdz, dwdz
+	real(8), save, dimension(nx1,ny1,nz1) :: bma, dma,amb, dmb, amd, bmd
+
+	!
+	real(8) :: aa, bb, dd
+
+	!contadores
+	integer ::  ai, bi, di
+
+	!plotagem
+	real(8) :: acont, bcont, dcont 
+	integer :: loca(3), locb(3), locd(3)
+
+	!auxiliares
+	real(8) :: aux1, aux2
 	!===================================================================================================================
 	!RESOLUÇÃO DO PROBLEMA
 	!===================================================================================================================

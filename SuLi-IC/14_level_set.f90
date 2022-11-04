@@ -229,11 +229,16 @@ END SUBROUTINE level_set_ini
 
 SUBROUTINE level_set()
 
-	USE paodelevel_set
+	USE disc, only: nx, ny, nz, dx, dy, dz, dt, mms_t
+	USE ls_param, only: ls, mod_ls, hs, vol_ini, vol_ins, adtl, bdtl, gdtl, dt1
 
 	IMPLICIT NONE
 
 	integer :: i, j, k, itrl
+
+	real(8) :: aux1, aux2, dtaux
+
+	real(8), save, dimension(nx,ny,nz) :: sy7_ls,gx_ls,ta1_ls,sy7_ls1,gx_ls1,ta1_ls1
 
 	dtaux = dt1
 	dt1 = dt
@@ -315,11 +320,16 @@ END SUBROUTINE intt_ls
 
 SUBROUTINE conv_weno(sy7)
 
-	USE paodeconv_weno
-	
+	USE disc, only: nx, ny, nz
+	USE ls_param, only: ls
+	USE velpre, only: u, v, w
+
 	IMPLICIT NONE
 
-	real(8),dimension(nx,ny,nz) :: sy7
+	real(8), save, dimension(nx,ny,nz) :: ta1, tb1, tc1, td1, te1, tf1
+	real(8) :: apos, aneg, bpos, bneg, cpos, cneg
+
+	real(8), dimension(nx,ny,nz) :: sy7
 	integer :: i, j, k, ihs
 
 	!ihs = 1
@@ -386,12 +396,20 @@ END SUBROUTINE der_weno
 
 SUBROUTINE reinic_weno(sy7_ls1,gx_ls1,ta1_ls1)
 
-	USE paodereinic_weno
+	USE disc, only: nx, ny, nz
+	USE ls_param, only: ls, dx1, dt1, alpha1
 
 	IMPLICIT NONE
 
-	real(8),dimension(nx,ny,nz) :: sy7_ls1,gx_ls1,ta1_ls1
 	integer :: i, j, k
+
+	real(8), save, dimension(nx,ny,nz) :: sy1, sy4, func_s, ddd, ta1, tb1, tc1, td1, te1, tf1
+	real(8), save, dimension(nx,ny,nz) :: lsaux,ls0
+	real(8) :: error
+	integer :: l, il, nr,ihs,itrl
+	real(8) :: mod_ls1, aux1, aux2
+
+	real(8), dimension(nx,ny,nz) :: sy7_ls1,gx_ls1,ta1_ls1
 
 	ls0 = ls
 	l = 3
@@ -610,11 +628,17 @@ END SUBROUTINE weno1
 
 SUBROUTINE heaviside()
 
-	USE paodeheaviside
+	USE disc, only: nx, ny, nz, pi, dt, mms_t
+	USE ls_param, only: ls, alpha1, dx1, mi_f1, mi_f2, hs, hsx, hsy, hsz, rho_f1, rho_f2, t_hs
+	USE velpre, only: rho, ls_nu
 
 	IMPLICIT NONE
 
 	integer :: i, j, k
+
+	integer :: coefa1, ihs
+	real(8) :: aux1, aux2, aux3, aux4
+	real(8), save, dimension(nx,ny,nz) :: sy60, sy61,ta1,tb1,tc1,td1,te1,tf1
 
 	!ihs = 2
 	CALL der_weno(ls,ta1,tb1,tc1,td1,te1,tf1,ihs)
@@ -708,11 +732,15 @@ END SUBROUTINE heaviside
 
 SUBROUTINE mod_ls11()
 
-	USE paodemod_ls11
+	USE disc, only: nx, ny, nz, dx, dy, dz
+	USE ls_param, only: ls, mod_ls, kurv, ddlsdx, ddlsdy, ddlsdz
 
 	IMPLICIT NONE
 
 	integer :: i, j, k, ihs
+
+	real(8), save :: aux1, aux2
+	real(8), save, dimension(nx,ny,nz) :: ta1,tb1,tc1,td1,te1,tf1,dlsdxa,dlsdya,dlsdza
 
 	!ihs = 1
 

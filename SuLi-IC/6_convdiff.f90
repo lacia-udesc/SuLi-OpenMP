@@ -14,8 +14,14 @@
 
 SUBROUTINE convdiff()
 
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, adv_type
+	USE velpre, only: u, v, w, rho, prd0, prd1
+	USE parametros, only: chezy, gx, gz
+	USE smag, only: nut, xnut, ynut, znut
+	USE ls_param, only: kurv, hsx, hsy, hsz, sigma
+	USE mms_m, only: a, tf_u, tf_v, tf_w
+	USE obst, only: ub, vb, wb
 	USE vartempo, only: Fu, Fv, Fw
-	USE paodeconvdiff
 
 	IMPLICIT NONE
   
@@ -25,7 +31,36 @@ SUBROUTINE convdiff()
 	real(8), save, dimension(nx,ny1,nz) :: rhoy
 	real(8), save, dimension(nx,ny,nz1) :: rhoz
 
+	! auxiliares de velocidades: velocidades lagrangianas
+	real(8), save, dimension(nx1,ny,nz) :: uint
+	real(8), save, dimension(nx,ny1,nz) :: vint
+	real(8), save, dimension(nx,ny,nz1) :: wint
+	real(8), save, dimension(0:nx1,ny,nz) :: ama
+	real(8), save, dimension(nx,0:ny1,nz) :: bmb
+	real(8), save, dimension(nx,ny,0:nz1) :: dmd
+	real(8), save, dimension(nx1,ny1,nz)  :: amb, bma
+	real(8), save, dimension(nx1,ny,nz1)  :: amd, dma
+	real(8), save, dimension(nx,ny1,nz1)  :: bmd, dmb
 
+	!real(8), dimension(0:nx1,ny1,nz)  :: vx
+	!real(8), dimension(0:nx1,ny,nz1)  :: wx
+
+	!real(8), dimension(nx1,0:ny1,nz)  :: uy
+	!real(8), dimension(nx,0:ny1,nz1)  :: wy
+
+	!real(8), dimension(nx1,ny,0:nz1)  :: uz
+	!real(8), dimension(nx,ny1,0:nz1)  :: vz
+
+	real(8), save, dimension(nx1,ny,nz) :: dhsdx
+	real(8), save, dimension(nx,ny1,nz) :: dhsdy
+	real(8), save, dimension(nx,ny,nz1) :: dhsdz, epis_z
+
+	!contadores
+	integer :: ntal
+	real(8) :: tal
+
+	!auxiliares
+	real(8) :: aux1, aux2
 
 !	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 !	write(*,*) "1 uint = ", sum(uint)

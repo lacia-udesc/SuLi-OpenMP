@@ -193,12 +193,30 @@ END SUBROUTINE mms_i
 
 SUBROUTINE mms()
 
-	USE paodemms
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, it, t, dt, mms_t, ts, dt_frame, pi
+	USE velpre, only: u, v, w, prd1
+	USE mms_m
+	USE ls_param, only: ls
 
 	IMPLICIT NONE
 
 	integer :: i, j, k
-	
+	integer :: nxc, nyc, nzc, npc
+
+	real(8), save, dimension(nx1,ny,nz) :: u_m
+	real(8), save, dimension(nx,ny1,nz) :: v_m
+	real(8), save, dimension(nx,ny,nz1) :: w_m
+	real(8), save, dimension(nx,ny,nz)  :: p_m
+	real(8), save, dimension(nx,ny)     :: h_m
+	real(8), save, dimension(nx1,ny)    :: h_mx
+	real(8), save, dimension(nx,ny1)    :: h_my
+	real(8), save, dimension(nx1,ny,nz) :: lsx
+	real(8), save, dimension(nx,ny1,nz) :: lsy
+	real(8), save, dimension(nx,ny,nz1) :: lsz
+
+	real(8), save :: x,y,z,h, hpi
+	real(8), save :: erro_u1, erro_v1, erro_w1, erro_p1
+
 	hpi = pi * 0.5
 
 	! cálculo das soluções manufaturadas

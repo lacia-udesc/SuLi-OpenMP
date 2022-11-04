@@ -14,7 +14,6 @@ SUBROUTINE graddin()
     USE cond, only: ccx0, ccy0
 	USE obst, only: kw
 	USE omp
-	USE paodemel
 	USE :: omp_lib
 
 	IMPLICIT NONE
@@ -23,8 +22,15 @@ SUBROUTINE graddin()
 	integer :: i, j, k, cont
 
 	!auxiliares
-	real(8) :: aux1, aux2, aux3
+	real(8), save :: aux1, aux2, aux3
 
+    real(8), save :: alfapr, alfamupr, alfadipr, betapr, betamupr
+	real(8), save, dimension(nx1,ny,nz) :: matspri
+	real(8), save, dimension(nx,ny1,nz) :: matsprj
+	real(8), save, dimension(nx,ny,nz1) :: matsprk
+
+	real(8), save, dimension(nx,ny,nz) :: matqpr, matapripos, mataprineg, mataprjpos, mataprjneg, mataprkpos, mataprkneg, mppr
+	real(8), save, dimension(nx1+1,ny1+1,nz1+1) :: matdpr, matepr, erropr, erroppr
 
 	real(8), save, dimension(nx1,ny,nz) :: rhox
 	real(8), save, dimension(nx,ny1,nz) :: rhoy

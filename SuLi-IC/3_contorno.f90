@@ -9,16 +9,21 @@
 
 SUBROUTINE contorno(nlock)
 
-    USE disc, only: mms_t, obst_t
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, mms_t, obst_t
     USE cond
     USE obst, only: ub, vb, wb, ku, kv, kw
     USE ls_param, only: ls
     USE velpre  	!prd0, prd, rho, ls_nu, d_max, d_min, b_eta0, b_eta1 não são usados	USE paodecontorno
-	USE paodecontorno
 
 	IMPLICIT NONE
 
 	integer :: i, j, k, nlock
+
+    real(8), save :: zi, zj, zk
+    integer :: niv, ii
+    real(8), save, dimension(0:nx1+1,0:ny+1,0:nz+1) :: dpdx
+    real(8), save, dimension(0:nx+1,0:ny1+1,0:nz+1) :: dpdy
+    real(8), save, dimension(0:nx+1,0:ny+1,0:nz1+1) :: dpdz
 
 	!RESOLUÇÃO DO PROBLEMA
 
@@ -947,11 +952,23 @@ END SUBROUTINE prd_corr
 
 SUBROUTINE boundary_waves()
 
-	USE paodeboundary_waves
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dz,t, wave_t
+	USE wave_c, only: n_w, a_w, f_w, h0_f, avel1, avel2, avel3, avel4, avel5, aeta1, aeta2, aeta3, aeta4, aeta5, kp
+	USE velpre, only: u, v, w, bxx0, bxy0, bxz0, bxx1
+	USE ls_param, only: ls
 
 	IMPLICIT NONE
 
 	integer :: i, j, k
+
+	real(8) :: aux1, aux2, aux3, aux4, aux5, h_fa, l_wa
+
+	real(8), dimension(0:nx) :: h_f
+
+	real(8), save, dimension(0:nx1+1,0:ny+1,0:nz+1) :: u1
+	real(8), save, dimension(0:nx+1,0:ny1+1,0:nz+1) :: v1
+	real(8), save, dimension(0:nx+1,0:ny+1,0:nz1+1) :: w1
+	real(8), save, dimension(0:nx+1,0:ny+1,0:nz+1) :: ls1
 
 	!Reference: Coubilla, 2015 (Thesis)
 

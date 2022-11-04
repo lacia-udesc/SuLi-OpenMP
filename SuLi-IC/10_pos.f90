@@ -3,7 +3,6 @@ SUBROUTINE posdin()
 	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy, dz, dt
 	USE velpre, only: u, v, w, rho, prd, prd0, prd1
 	USE mms_m, only: tf_px, tf_py, tf_pz
-	USE paodeposdin
 
 	IMPLICIT NONE
 
@@ -13,7 +12,10 @@ SUBROUTINE posdin()
 	real(8), save, dimension(nx1,ny,nz) :: rhox
 	real(8), save, dimension(nx,ny1,nz) :: rhoy
 	real(8), save, dimension(nx,ny,nz1) :: rhoz
-
+	
+	real(8), save, dimension(nx1,ny,nz) :: hs_x
+	real(8), save, dimension(nx,ny1,nz) :: hs_y
+	real(8), save, dimension(nx,ny,nz1) :: hs_z
 !	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 !	write(*,*) "1 Posdin u = ", sum(u)
 !	write(*,*) "1 Posdin v = ", sum(v)

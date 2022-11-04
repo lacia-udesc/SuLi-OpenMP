@@ -14,11 +14,28 @@
 
 SUBROUTINE plot_i()
 
-	USE paodeplot_i
+    USE disc, only: nx, nx1, ny, ny1, nz, nz1, dx, dy, dz, dt, dt_frame, it, ts, der, adv_type, m_turb, mms_t, obst_t, t_i, t_plot
+	USE ls_param, only: ls, vol_ini, vol_ins
+	USE velpre, only: u, v, w, prd1
+	USE tempo, only: cont, agora, agora1
+	USE smag, only: nut
+	USE obst, only: ku, kw
+	USE mms_m, only: a, erro_p, erro_u, erro_v, erro_w
+	USE cond
 
 	IMPLICIT NONE
 
-	integer :: i, j, k
+	integer :: i, j, k, ii
+
+	real(8), save, dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
+	real(8), save, dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
+	real(8), save, dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk, lasux
+	real(8), save, dimension(nx1,ny,nz) :: xnuta
+	real(8), save, dimension(nx,ny1,nz) :: ynuta	
+	real(8), save, dimension(nx,ny,nz1) :: znuta
+	real(8), save, dimension(nx1,ny,nz1) :: auxy
+	real(8), save, dimension(nx1,ny1,nz) :: auxz
+	real(8), save, dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
 
 	!Criar pastas, se já não existirem
 
@@ -219,11 +236,36 @@ END SUBROUTINE plot_i
 
 SUBROUTINE plot_f()
 
-	USE paodeplot_f
+	USE disc, only: nx, ny, nz, nx1, ny1, nz1, dx, dy,dz, ts, it, dt_frame, dt, mms_t, obst_t, t_a, t_i, t_plot
+	USE ls_param, only: ls
+	USE velpre, only: u, v, w, prd1
+	USE tempo
+	USE smag, only: nut
+	USE obst, only: ku, kw
+	USE mms_m, only: a, erro_p, erro_u, erro_v, erro_w
 
 	IMPLICIT NONE
+	!Declarado também no programa
 
 	integer :: i, j, k
+
+	real(8), save, dimension(nx1,ny1,nz1) :: uaux, vaux, waux, x11, y11, z11
+	real(8), save, dimension(nx,ny,nz) :: dudy, dudz, dvdx, dvdz, dwdx, dwdy
+	real(8), save, dimension(nx,ny,nz)    ::nutaux, prdaux, div, kaux, vorti, vortj, vortk
+	real(8), save, dimension(nx1,ny,nz1) :: auxy
+	real(8), save, dimension(nx1,ny1,nz) :: auxz
+	real(8), save, dimension(0:nx1,0:ny1,0:nz1) :: x1, y1, z1
+	integer :: ifile, nfil, ii
+
+	!Número do arquivo de saída
+	integer :: dig1, dig2, dig3, dig4, dig5
+
+	!Nome do arquivo de saída
+	character(5) chits
+
+	real(8), save, dimension(nx1,ny,nz) :: xnuta
+	real(8), save, dimension(nx,ny1,nz) :: ynuta	
+	real(8), save, dimension(nx,ny,nz1) :: znuta
 
 	!Cálculo para o a estimativa do tempo restante
 	ciclo = (agora(5)-agora1(5)) * 60 * 60 + (agora(6)-agora1(6)) * 60 + (agora(7)-agora1(7)) + real(agora(8)-agora1(8))/1000
