@@ -59,7 +59,7 @@ PROGRAM PNH
 
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
-	!$ CALL OMP_set_dynamic(.FALSE.)
+	!$ CALL OMP_set_dynamic(.TRUE.)
 
 	!$OMP PARALLEL
 
