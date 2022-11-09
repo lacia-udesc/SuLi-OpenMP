@@ -50,26 +50,12 @@ PROGRAM PNH
 
 	!$ CALL OMP_set_num_threads(6)
 
+	!$ write(*,*) "CÓDIGO EM PARALELO"
+
+	!!$ CALL OMP_set_dynamic(.TRUE.)
+
 	!$ CALL OMP_set_nested(.TRUE.)
 
-	!# write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
-	!$ write(*,*) "Nested? ", OMP_GET_NESTED()
-	!$ write(*,*) "Número de threads início = ", OMP_GET_NUM_THREADS()
-	!$ write(*,*) "Paralelo no início? ", OMP_in_parallel()
-
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-
-	!$ CALL OMP_set_dynamic(.TRUE.)
-
-	!$OMP PARALLEL
-
-	!$ write(*,*) "Dynamic thread adjustment? ", OMP_GET_DYNAMIC()
-	!$ write(*,*) "Nested? ", OMP_GET_NESTED()
-	!$ write(*,*) "Número de threads início = ", OMP_GET_NUM_THREADS()
-	!$ write(*,*) "Paralelo no início? ", OMP_in_parallel()
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- INÍCIO ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-
-	!$OMP END PARALLEL
 
 	CALL cpu_time(fortran_start)
 	!$ openmp_start = omp_get_wtime()
