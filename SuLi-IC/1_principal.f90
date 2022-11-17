@@ -348,30 +348,22 @@ PROGRAM PNH
 	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 	write(*,*) soma_tempo_f90
 	write(*,*) soma_tempo_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) soma_posdin_f90
 	write(*,*) soma_posdin_omp	
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) soma_visco_f90
 	write(*,*) soma_visco_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) (soma_contorno1_f90 + soma_contorno2_f90 + soma_contorno3_f90)
 	write(*,*) (soma_contorno1_omp + soma_contorno2_omp + soma_contorno3_omp)
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) soma_convdiff_f90
 	write(*,*) soma_convdiff_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) (soma_plot_i_f90 + soma_plot_f_f90 + soma_plot_atri_f90)
 	write(*,*) (soma_plot_i_omp + soma_plot_f_omp + soma_plot_atri_omp)
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) soma_level_set_f90
 	write(*,*) soma_level_set_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) soma_graddin_f90
 	write(*,*) soma_graddin_omp
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	write(*,*) (fortran_end - fortran_start)
 	write(*,*) (openmp_end - openmp_start)
-	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+	write(*,*) "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- FIM ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
 
 END PROGRAM PNH
